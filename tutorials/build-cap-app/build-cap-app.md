@@ -30,7 +30,7 @@ You have the SAP Business Application Studio configured. See [Set Up SAP Busines
 
 2. Choose the burger menu and choose **Terminal** &rarr; **New Terminal**.
 
-    ![Terminal](./terminal.png)
+    <!-- border; size:540px --> ![Terminal](./bas-terminal.png)
 
 3. Navigate to the **projects** folder from the root directory.
 
@@ -50,7 +50,7 @@ You have the SAP Business Application Studio configured. See [Set Up SAP Busines
 
 5. Choose the **Explorer** icon and then choose **Open Folder**. Type `/home/user/projects/` in the field and select `incident-management`. Choose **OK** to open the project in SAP Business Application Studio.
 
-    ![Open SAP Business Application Studio folder](./BAS.png)
+    <!-- border; size:540px --> ![Open SAP Business Application Studio folder](./bas-open-folder.png)
 
     > You can also use the **Ctrl+Shift+E** key combination to quickly navigate to the **Explorer**.
   
@@ -143,11 +143,16 @@ You have the SAP Business Application Studio configured. See [Set Up SAP Busines
 As soon as you save your file, the CAP server that is still running reacts immediately with a new output:
 
 ```bash
+[cds] - loaded model from 1 file(s):
+
+  db/schema.cds
+
+[cds] - connect using bindings from: { registry: '~/.cds-services.json' }
 [cds] - connect to db > sqlite { database: ':memory:' }
-/> successfully deployed to in-memory db.
+/> successfully deployed to in-memory database. 
 ```
 
-This means that the CAP server detected the changes in **schema.cds** and automatically created an in-memory SQLite database when restarting the server process. However, after the recent changes, the CAP server prints this message:
+This means that the CAP server detected the changes in **schema.cds** and automatically created an in-memory SQLite database when restarting the server process. However, the CAP server also prints this message:
 
 ```bash
 No service definitions found in loaded models.
@@ -156,23 +161,22 @@ Waiting for some to arrive...
 
 ### Create services
 
-It's a good practice in CAP to create single-purpose services. Hence, let's define a *ProcessorService* for support engineers to process incidents created by customers.
+It's a good practice in CAP to create single-purpose services. Hence, let's define a `ProcessorService` for support engineers to process incidents created by customers.
 
 To create the service definitions:
 
 1. In the **srv** folder, create a new **processor-service.cds** file.
 
-2. Paste the following code snippet in the `srv/processor-service.cds` file:
+2. Paste the following code snippet in the **processor-service.cds** file:
 
     ```js
     using { sap.capire.incidents as my } from '../db/schema';
 
     service ProcessorService { 
-      entity Incidents as projection on my.Incidents;
-      entity Customers as projection on my.Customers;
-      entity Conversations as projection on my.Conversations;
-      entity Urgency as projection on my.Urgency;
-      entity Status as projection on my.Status;
+        entity Incidents as projection on my.Incidents;
+
+        @readonly
+        entity Customers as projection on my.Customers;
     }
     ```
   
@@ -185,7 +189,7 @@ This time, the CAP server reacted with additional output:
 [cds] - [ terminate with ^C ]
 ```
 
-As you can see in the log output, the new file created generic service provider `ProcessorService` that serve requests on the `/odata/v4/processor` endpoint. If you open the link `http://localhost:4004` from SAP Business Application Studio in your browser, you'll see the generic `index.html` page:
+As you can see in the log output, the new file created a generic service provider `ProcessorService` that serves requests on the `/odata/v4/processor` endpoint. If you open the link `http://localhost:4004` from SAP Business Application Studio in your browser, you'll see the generic `index.html` page:
 
 <!-- border; size:540px --> ![index.html](./index.png)
 
@@ -245,7 +249,7 @@ Replace the respective generated CSV templates with the following content:
     ID,incidents_ID,timestamp,author,message
     2b23bb4b-4ac7-4a24-ac02-aa10cabd842c,3b23bb4b-4ac7-4a24-ac02-aa10cabd842c,1995-12-17T03:24:00Z,Harry John,Can you please check if battery connections are fine?
     2b23bb4b-4ac7-4a24-ac02-aa10cabd843c,3a4ede72-244a-4f5f-8efa-b17e032d01ee,1995-12-18T04:24:00Z,Emily Elizabeth,Can you please check if there are any loose connections?
-    9583f982-d7df-4aad-ab26-301d4a157cd7,3583f982-d7df-4aad-ab26-301d4a157cd7,2022-09-04T12:00:00Z,Sunny Sunshine, please check why the solar panel is broken
+    9583f982-d7df-4aad-ab26-301d4a157cd7,3583f982-d7df-4aad-ab26-301d4a157cd7,2022-09-04T12:00:00Z,Sunny Sunshine,Please check why the solar panel is broken.
     9583f982-d7df-4aad-ab26-301d4a158cd7,3ccf474c-3881-44b7-99fb-59a2a4668418,2022-09-04T13:00:00Z,Bradley Flowers,What exactly is wrong?
     ```
 
@@ -295,13 +299,13 @@ Now that the database is filled with some initial data, you can send complex ODa
 
 - `/odata/v4/processor/Customers?$select=firstName&$expand=incidents`
 
-    <!-- border; size:540px --> ![Incidents per Customer](./incidents-per-customer.png)
+    <!-- border; size:540px --> ![Incidents per customer](./incidents-per-customer.png)
 
 > When you revisit the **Incidents** or the **Customers** endpoint, you might see something like this instead of the nicely formatted output from above.
 >
 > ![No JSON Viewer](./incidents-unformatted.png)
 >
-> However, this doesn't mean you've made a mistake in the tutorial. Rather, this is the correct output without any formatting. If you'd like to see a formatted output in your browser, you can add a plugin to your browser. Here are a few exemplary JSON formatters for different browsers:
+> However, this doesn't mean you've made a mistake in the tutorial. Rather, this is the correct output without any formatting. If you'd like to see a formatted output in your browser, you can add an extension to your browser. Here are a few exemplary JSON formatters for different browsers:
 >
 > - [Chrome](https://chrome.google.com/webstore/detail/jsonvue/chklaanhfefbnpoihckbnefhakgolnmc)
 > - [Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/jsonview/kmpfgkgaimakokfhgdahhiaaiidiphco)
@@ -323,4 +327,9 @@ Elements can be specified with a calculation expression, in which you can refer 
       firstName || ' ' || lastName as name: String
     }
     ```
-3. Click the `Customers` endpoint from the `index.html` page and you'll see the new field `name` for each entry.
+3. Click the `Customers` endpoint from the `index.html` page and you'll see the new field `name` for each entry. The value for this field for each of the entries is calculated by taking into account the values of the fields `firstName` and `lastName`.
+
+    <!-- border; size:540px --> ![Calculated element name](./calculated-element-name.png)
+
+    
+
