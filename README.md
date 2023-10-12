@@ -25,26 +25,26 @@ The guidance is divided into several groups of tutorials. The groups define the 
 ### Groups
 
 - [Local Development]() --> Link to be provided. This group should include the following tutorials:
-    - [Introduction to Application Development Using CAP]()
-    - [Set Up SAP Business Application Studio]()
-    - [Build a CAP Application]()
-    - [Add Fiori Elements UIs]()
-    - [Add Custom Logic]()
-    - [Use a Local Launch Page]()
-    - [Add Authorization]()
-    - [Add Test Cases]()
-    - [Prepare for Production]()
+    - [Introduction to Application Development Using CAP](https://developers.sap.com/tutorials/introduction.html)
+    - [Set Up SAP Business Application Studio](https://developers.sap.com/tutorials/set-up-bas.html)
+    - [Build a CAP Application](https://developers.sap.com/tutorials/build-cap-app.html)
+    - [Add Fiori Elements UIs](https://developers.sap.com/tutorials/add-fiori-elements-uis.html)
+    - [Add Custom Logic](https://developers.sap.com/tutorials/add-custom-logic.html)
+    - [Use a Local Launch Page](https://developers.sap.com/tutorials/use-local-launch-page.html)
+    - [Add Authorization](https://developers.sap.com/tutorials/add-authorization.html)
+    - [Add Test Cases](https://developers.sap.com/tutorials/add-test-cases.html)
+    - [Prepare for Production](https://developers.sap.com/tutorials/prep-for-prod.html)
 
 - [Deploy to Cloud Foundry]() --> Link to be provided. This group should include the following tutorials:
-    - [Prepare for SAP BTP Development with Cloud Foundry Runtime]()
-    - [Deploy in SAP BTP, Cloud Foundry Runtime]()
-    - [User Role Assignment]() 
-    - [Integrate Your Application with SAP Build Work Zone, Standard Edition]()
-    - [Set Up a CI/CD Pipeline]()
+    - [Prepare for SAP BTP Development with Cloud Foundry Runtime](https://developers.sap.com/tutorials/prepare-btp-cf.html)
+    - [Deploy in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/tutorials/deploy-to-cf.html)
+    - [User Role Assignment](https://developers.sap.com/tutorials/integrate-with-work-zone.html) 
+    - [Integrate Your Application with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/user-role-assignment.html)
+    - [Set Up a CI/CD Pipeline](https://developers.sap.com/tutorials/set-up-cicd.html)
 
-- [(WIP) Deploy to Kyma]() --> A link should be pasted here once the group is created on Tutorial Navigator PROD
-    - [(WIP) Prepare for SAP BTP Development with Kyma Runtime](https://developers-qa-blue.wcms-nonprod.c.eu-de-2.cloud.sap/tutorials/configure-btp-kyma.html)
-    - [(WIP) Deploy to Kyma](https://developers-qa-blue.wcms-nonprod.c.eu-de-2.cloud.sap/tutorials/deploy-to-kyma.html)
+- [(WIP) Deploy to Kyma]() --> Link to be provided.
+    - [(WIP) Prepare for SAP BTP Development with Kyma Runtime]()
+    - [(WIP) Deploy to Kyma]()
 
 Prerequisites for each tutorial are listed in the beginning of the tutorial.
 
