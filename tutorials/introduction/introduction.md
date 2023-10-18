@@ -26,7 +26,7 @@ Welcome to your guide to application development on the SAP Business Technology 
 
 This guidance covers a variety of topics starting from basic onboarding tasks to creating development pipelines. The tasks are bundled in step-by-step tutorials featuring the following topics:
 
-- Setting up BAS as your development environment
+- Setting up SAP Business Application Studio as your development environment
 - Developing a CAP application including user interface
 - Implementing authorization checks
 - Creating a subaccount in SAP BTP
@@ -59,20 +59,24 @@ On top of open-source technologies, CAP adds:
 
 ### SAP Business Technology Platform (SAP BTP)
 
-SAP BTP is an open set of Software, Platform, and Infrastructure as a Service system that delivers in-memory capabilities, core platform services, and unique micro-services for building and extending intelligent, mobile, and browser-enabled applications. SAP BTP is multilingual, with support for most major languages and support for development, testing, and production systems both inside an organization and to the larger public.
+SAP BTP is an open set of Software-, Platform-, and Infrastructure-as-a-Service system that delivers in-memory capabilities, core platform services, and unique microservices for building and extending intelligent, mobile, and browser-enabled applications. SAP BTP is multilingual, with support for most major languages and support for development, testing, and production systems both inside an organization and to the larger public.
 
-SAP BTP is also constantly evolving. SAP continuously updates the services it provides, the platforms that run the custom code, and the infrastructure that supports everything. This allows developers to focus on the custom code, and not to worry about hardware maintenance or software upgrades. SAP BTP offers you the ability to turn data into business value, compose end-to-end business processes, and build and extend SAP solutions and applications quickly.
+SAP BTP is also constantly evolving. SAP continuously updates the services it provides, the platforms that run the custom code, and the infrastructure. This allows developers to focus on the custom code, and not to worry about hardware maintenance or software upgrades. SAP BTP offers you the ability to turn data into business value, compose end-to-end business processes, and build and extend SAP solutions and applications quickly.
 
 The central point of entry to the platform is the SAP BTP cockpit, where you can access your accounts and applications and manage all activities associated with them.
 
 ### SAP BTP, Cloud Foundry Runtime and SAP BTP, Kyma Runtime
 
-The structure of the account in SAP BTP provides a flexible and scalable way to organize and manage resources. Open-source cloud computing platforms like Cloud Foundry and Kyma offer developers a way to deploy and manage cloud applications with ease. These tutorials provide instructions for deploying your CAP application to both SAP BTP, Cloud Foundry runtime and SAP BTP, Kyma runtime.
+The structure of the account in SAP BTP provides a flexible and scalable way to organize and manage resources. Open-source cloud computing platforms like Cloud Foundry and Kyma offer developers a way to deploy and manage cloud applications with ease. 
+
+<!--
+These tutorials provide instructions for deploying your CAP application to both SAP BTP, Cloud Foundry runtime and SAP BTP, Kyma runtime.
 
 For a thorough comparison and analysis of differences between the Cloud Foundry runtime and the Kyma runtime, see:
 
 - [A Beginner’s Journey to Cloud Computing: SAP BTP, Cloud Foundry and Kyma Demystified](https://blogs.sap.com/2023/03/03/a-beginners-journey-to-cloud-computing-sap-btp-cloud-foundry-and-kyma-demystified./)
 - [Developing an Application on SAP BTP Cloud Foundry Runtime and SAP BTP Kyma Runtime: A Comparative Analysis](https://blogs.sap.com/2023/04/28/developing-an-application-on-sap-cloud-foundry-runtime-and-sap-kyma-runtime-a-comparative-analysis/)
+-->
 
 ### Using Free Service Plans
 

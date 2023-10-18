@@ -140,11 +140,11 @@ In this section, you'll modify the List View Page of the UI with the SAP Fiori p
     >1. Invoke the Command Palette - **View** &rarr; **Command Palette** or <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for macOS / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for Windows. 
     >2. Choose **Fiori: Open Application Info**.
 
-2. In the **List Report** tile, choose the pencil icon next to the title. The page editor is opened.
+2. In the **List Report** tile, choose the **Pencil** icon next to the title. The page editor is opened.
 
     <!-- border; size:540px --> ![List Report Page Config](./ls3.png)
 
-3. In the **Filter Bar** section of the page editor, choose **Filter Fields** and then choose the icon to add filter fields.
+3. In the **Filter Bar** section of the page editor, choose **Filter Fields** and then choose the **Plus** icon to add filter fields. Then, select **Add Filter Fields** in the dropdown menu.
 
     <!-- border; size:540px --> ![Add Filter Fields](./ls4.png)
 
@@ -256,7 +256,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
     >1. Invoke the Command Palette - **View** &rarr; **Command Palette** or <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for macOS / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for Windows. 
     >2. Choose **Fiori: Open Application Info**.
 
-2. In the **Incident Object Page** tile, choose the pencil icon next to the title.
+2. In the **Incident Object Page** tile, choose the **Pencil** icon next to the title.
 
     <!-- border; size:540px --> ![Edit object page](./obj0.png)
 
@@ -314,24 +314,24 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
 #### Configure fields
 
-7. Navigate to **Sections** &rarr; **General Information** &rarr; **Form** &rarr; **Fields** and delete the **urgency_code** and **status_code** fields.
+1. Navigate to **Sections** &rarr; **General Information** &rarr; **Form** &rarr; **Fields** and delete the **urgency_code** and **status_code** fields.
 
     <!-- border; size:540px --> ![Delete Fields](./obj60.png)
 
-5. Choose **Sections** &rarr; **General Information** and choose the **Globe** icon in the **Label** field for **General Information** to generate a translatable text key.  
+2. Choose **Sections** &rarr; **General Information** and choose the **Globe** icon in the **Label** field for **General Information** to generate a translatable text key.  
 
     <!-- border; size:540px --> ![General information label](./obj601.png)
 
-10. Navigate to **Sections** &rarr; **Overview** &rarr; **Subsections** &rarr; **Details** &rarr; **Form** &rarr; **Fields**, choose the **Plus** icon to add more fields, and then choose **Add Basic Fields**.
+3. Choose **Sections** &rarr; **General Information** &rarr; **Fields**, choose the **Plus** icon to add more fields, and then choose **Add Basic Fields**.
 
-    <!-- border; size:540px --> ![Add Basic Fields](./obj6.png)
+    <!-- border; size:540px --> ![Add Basic Fields](./fiori1.png)
 
-11. In the **Add Basic Fields** popup
+4. In the **Add Basic Fields** popup
 
-    - From the dropdown menu in the **Fields** field, select **customer_ID**, **status_code**, and **urgency_code**. 
+    - From the dropdown menu in the **Fields** field, select **customer_ID**.
     - Choose **Add**.
 
-    <!-- border; size:540px --> ![Add Basic Fields popup](./obj61.png)
+    <!-- border; size:540px --> ![Add Basic Fields popup](./fiori2.png)
 
 5. For the **customer_ID** field:
 
@@ -339,25 +339,32 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
     - Press <kbd>Enter</kbd> to confirm the change.
     - Choose the **Globe** icon in the **Label** field to generate a translatable text key.
 
-    <!-- border; size:540px --> ![Customer field update label](./obj62.png)
+    <!-- border; size:540px --> ![Customer field update label](./fiori3.png)
 
-17. For the **Customer** field, select **customer/name** in the **Text** dropdown menu, select **Text Only** in the **Text Arrangement** dropdown menu, and then select **Value Help** in the **Display Type** dropdown menu. A popup opens.
+6. For the **Customer** field, select **customer/name** in the **Text** dropdown menu, select **Text Only** in the **Text Arrangement** dropdown menu, and then select **Value Help** in the **Display Type** dropdown menu. A popup opens.
 
-    <!-- border; size:540px --> ![Customer properties update](./obj63.png)
+    <!-- border; size:540px --> ![Customer properties update](./fiori4.png)
 
-19. In the **Define Value Help Properties for Customer** popup:
+7. Navigate to **Sections**, drag the **General Information** and drop it in the **Overview** &rarr; **Subsections** node.
 
-    - Switch off **Display as Dropdown**.
-    - In the **Result List** section, add the columns **name** and **email** by choosing **Add Column**.
-    - Keep the default values for all other fields and choose **Apply**.
+    <!-- border; size:540px --> ![Customer properties update](./fiori5.png)
 
-    <!-- border; size:540px --> ![Customer value help](./obj64.png)
+11. Navigate to **Sections** &rarr; **Overview** &rarr; **Subsections** &rarr; **Details** &rarr; **Form** &rarr; **Fields**, choose the **Plus** icon to add more fields, and then choose **Add Basic Fields**.
 
-14. For the **Status** field, select **status/descr** in the **Text** dropdown menu and then select **Value Help** in the **Display Type** dropdown menu. A popup opens.
+    <!-- border; size:540px --> ![Add Basic Fields](./obj6.png)
+
+12. In the **Add Basic Fields** popup
+
+    - From the dropdown menu in the **Fields** field, select **status_code**, and **urgency_code**. 
+    - Choose **Add**.
+
+    <!-- border; size:540px --> ![Add Basic Fields popup](./obj61.png)
+
+8. For the **Status** field, select **status/descr** in the **Text** dropdown menu and then select **Value Help** in the **Display Type** dropdown menu. A popup opens.
 
     <!-- border; size:540px --> ![Status properties update](./obj65.png)
 
-13. In the **Define Value Help Properties for Status** popup:
+9. In the **Define Value Help Properties for Status** popup:
 
     - Select **Status** in the **Value Source Entity** dropdown menu.
     - Select **code** in the **Value Source Property** dropdown menu.
@@ -366,11 +373,11 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
     <!-- border; size:540px --> ![Status value help](./obj66.png)
 
-16. For the **Urgency** field, select **urgency/descr** in the **Text** dropdown menu and then select **Value Help** in the **Display Type** dropdown menu. A popup opens.
+10. For the **Urgency** field, select **urgency/descr** in the **Text** dropdown menu and then select **Value Help** in the **Display Type** dropdown menu. A popup opens.
 
     <!-- border; size:540px --> ![Urgency properties update](./obj67.png)
 
-16. In the **Define Value Help Properties for Urgency** popup:
+11. In the **Define Value Help Properties for Urgency** popup:
 
     - Select **Urgency** in the **Value Source Entity** dropdown menu.
     - Select **code** in the **Value Source Property** dropdown menu.
@@ -381,7 +388,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
 #### Add Conversations section
 
-19. Navigate to **Sections** and then choose the **Plus** icon to add more sections. 
+19. Navigate to **Sections** and then choose the **Plus** icon to add more sections. Select **Add Table Section** in the dropdown menu. Select **Add Basic Columns** in the dropdown menu.
 
 20. Choose **Add Table Section**. A popup appears.
 
@@ -428,13 +435,9 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
     <!-- border; size:540px --> ![Table creation mode](./obj95.png)
 
-3. Navigate to **Sections** and then drag the **General Information** and drop it in the **Overview** node.
+3. The complete list object page looks like this:
 
-<!--
-4. The complete list object page looks like this:
-
-    <!-- border; size:540px  ![Complete List Object Page](./obj10.png)
--->
+    <!-- border; size:540px --> ![Complete List Object Page](./obj10.png)
 
 ### Enable draft with `@odata.draft.enabled`
 

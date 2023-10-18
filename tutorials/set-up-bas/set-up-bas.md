@@ -99,7 +99,7 @@ author_profile: https://github.com/slavipande
 
     > If you create a bookmark to this page, it's easy to get back to SAP Business Application Studio later.
 
-4. Enter a **Dev Space Name** (For example, **IncidentManagement**).
+4. Enter a **Dev Space Name**. For example, **IncidentManagement**.
 
 5. Choose the **Full Stack Cloud Application** template and then choose **Create Dev Space**.
 
