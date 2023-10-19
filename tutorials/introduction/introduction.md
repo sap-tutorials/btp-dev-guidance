@@ -67,7 +67,7 @@ The central point of entry to the platform is the SAP BTP cockpit, where you can
 
 ### SAP BTP, Cloud Foundry Runtime and SAP BTP, Kyma Runtime
 
-The structure of the account in SAP BTP provides a flexible and scalable way to organize and manage resources. Open-source cloud computing platforms like Cloud Foundry and Kyma offer developers a way to deploy and manage cloud applications with ease. 
+The structure of the account in SAP BTP provides a flexible and scalable way to organize and manage resources. Open-source cloud computing platforms like Cloud Foundry and Kyma offer developers a way to deploy and manage cloud applications with ease.
 
 <!--
 These tutorials provide instructions for deploying your CAP application to both SAP BTP, Cloud Foundry runtime and SAP BTP, Kyma runtime.
@@ -82,5 +82,4 @@ For a thorough comparison and analysis of differences between the Cloud Foundry 
 
 All services needed for the execution of the tutorials are part of the free tier model for SAP BTP. The free tier model lets you try out services in global accounts without any additional cost using the consumption-based commercial model and an [enterprise account](https://help.sap.com/docs/btp/sap-business-technology-platform/enterprise-accounts).
 
-The free tier model includes free service plans limited in scope and capacity for many services within SAP BTP. To learn more about and how to access free service plans, see [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans). 
-
+The free tier model includes free service plans limited in scope and capacity for many services within SAP BTP. To learn more about and how to access free service plans, see [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans).

@@ -289,6 +289,7 @@ Upon detecting these new files, the CAP server prints a message stating that the
   > init from db\data\sap.capire.incidents-Urgency.texts.csv 
 /> successfully deployed to in-memory database.
 ```
+
 > Make sure your CAP server is still running. You can start it with `cds watch`.
 
 Now that the database is filled with some initial data, you can send complex OData queries served by the built-in generic service providers. With the generic `index.html` page opened in your browser, paste the following queries at the end of the current URL and check the result:
