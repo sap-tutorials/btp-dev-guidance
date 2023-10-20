@@ -341,7 +341,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
     <!-- border; size:540px --> ![Customer field update label](./fiori3.png)
 
-6. For the **Customer** field, select **customer/name** in the **Text** dropdown menu, select **Text Only** in the **Text Arrangement** dropdown menu, and then select **Value Help** in the **Display Type** dropdown menu. A popup opens.
+6. For the **Customer** field, select **customer/name** in the **Text** dropdown menu, select **Text Only** in the **Text Arrangement** dropdown menu, and then select **Value Help** in the **Display Type** dropdown menu. A popup opens, choose **Apply**.
 
     <!-- border; size:540px --> ![Customer properties update](./fiori4.png)
 
@@ -388,7 +388,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
 #### Add Conversations section
 
-19. Navigate to **Sections** and then choose the **Plus** icon to add more sections. Select **Add Table Section** in the dropdown menu. Select **Add Basic Columns** in the dropdown menu.
+19. Navigate to **Sections** and then choose the **Plus** icon to add more sections. Select **Add Table Section** in the dropdown menu.
 
 20. Choose **Add Table Section**. A popup appears.
 
