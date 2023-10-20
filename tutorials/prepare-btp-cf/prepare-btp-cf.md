@@ -17,7 +17,6 @@ author_profile: https://github.com/slavipande
 - How to enable the Cloud Foundry runtime in your subaccount in SAP BTP
 - How to create an SAP HANA Cloud service instance in the SAP BTP cockpit
 
-
 ## Prerequisites
 
 - You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for a CPEA (Cloud Platform Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and make use of the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
@@ -61,7 +60,7 @@ Follow the steps below to add the entitlements.
 
       <!-- border; size:540px --> ![Add service plans](./entitlements1.png)
 
-2. Search for **Cloud Foundry Runtime** and select the **free (Environment** plan).
+2. Search for **Cloud Foundry Runtime** and select the **free (Environment)** plan.
 
       <!-- border; size:540px --> ![Add Cloud Foundry](./entitlements2.png)
 
