@@ -1,5 +1,5 @@
 ---
-title: User Role Assignment
+title: Assign the User Roles
 description: This tutorial shows you how to assign roles to users. 
 parser: v2
 auto_validation: true
