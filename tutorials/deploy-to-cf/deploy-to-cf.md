@@ -26,7 +26,7 @@ author_profile: https://github.com/slavipande
     - Mozilla Firefox
     - Google Chrome
     - Microsoft Edge
-- You have configured the respective entitlements, enabled the Cloud Foundry runtime in your subaccount, and created an SAP HANA Cloud service instance in the SAP BTP cockpit. See [Prepare for SAP BTP Development with Cloud Foundry Runtime](../../prepare-btp-cf.html)
+- You have configured the respective entitlements, enabled the Cloud Foundry runtime in your subaccount, and created an SAP HANA Cloud service instance in the SAP BTP cockpit. See [Prepare for Deployment in the SAP BTP, Cloud Foundry Runtime](../../prepare-btp-cf.html)
 
 ### Introduction
 
