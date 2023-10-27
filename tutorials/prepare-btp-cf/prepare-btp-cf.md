@@ -1,5 +1,5 @@
 ---
-title: Prepare for SAP BTP Development with Cloud Foundry Runtime
+title: Prepare for Deployment in the SAP BTP, Cloud Foundry Runtime
 description: Learn how to prepare the subaccount in SAP BTP for application deployment in the SAP BTP, Cloud Foundry runtime.
 parser: v2
 auto_validation: true
@@ -27,15 +27,13 @@ author_profile: https://github.com/slavipande
     - Mozilla Firefox
     - Google Chrome
     - Microsoft Edge
-- You have configured SAP HANA Cloud and SAP Authorization and Trust Management service in your project in SAP Business Application Studio. See [Prepare for Production](../../prep-for-prod.html)
+- You have configured SAP HANA Cloud and SAP Authorization and Trust Management service in your project in SAP Business Application Studio. See [Prepare for Production](../../prep-for-prod.html).
 
 <!-- Assign Entitlements start -->
 
 ### Configure the entitlements
 
 In this section, you will set up the SAP BTP Cloud Foundry runtime for deploying CAP applications.
-
-**Prerequisite:** You must have an administrator role for SAP BTP.
 
 To deploy the Incident Management applications, you need the following entitlements:
 
@@ -96,6 +94,14 @@ This creates a Cloud Foundry (CF) Org in your subaccount. There’s always one C
 
       <!-- border; size:540px --> ![enable CF popup](./enable-cf-popup.png) 
 
+
+    > Make sure the instance name is CLI-friendly. This will make it easier to manage your instances with the SAP BTP command line interface as well.
+    >
+    > A CLI-friendly name is a short string (up to 32 characters) that contains only alphanumeric characters (A-Z, a-z, 0-9), periods, underscores, and hyphens. It can't contain white spaces.
+    >
+    > When enabling the runtime, you'll notice that the instance name is generated automatically for you. You can use that name or replace it with the name of your choice.
+
+
 3. Navigate to **Cloud Foundry** &rarr; **Spaces** and choose **Create Space**.
 
       <!-- border; size:540px --> ![Create space](./cf-createspace.png)
@@ -104,37 +110,65 @@ This creates a Cloud Foundry (CF) Org in your subaccount. There’s always one C
 
       <!-- border; size:540px --> ![Create space popup](./cf-createspace-popup.png)
 
-<!-- Set Up HANA Cloud start -->
+
+
+<!-- New Set Up HANA Cloud start -->
+
+### Subscribe to SAP HANA Cloud Administration Tools
+
+1. Navigate to your subaccount and choose **Services** &rarr; **Service Marketplace** on the left.
+
+2. Type **SAP HANA Cloud** in the search box and choose **Create**.
+
+      <!-- border; size:540px --> ![Create an SAP HANA Cloud tools instance](./create-hana-tools.png)
+
+2. In the **New Instance or Subscription** popup, select **tools** from the dropdown in the **Plan** field and choose **Create**.
+
+      <!-- border; size:540px --> ![SAP HANA Cloud tools instance creation popup](./create-hana-tools-popup.png)
+
+7. Choose **View Subscription** and wait until the status changes to **Subscribed**.
+
+    <!-- border; size:540px --> ![View subscription](view-subscription.png)
+
+    <!-- border; size:540px --> ![Status subscribed](./hanatools-status-subscribed.png)
+
+8. In your SAP BTP subaccount, choose **Security** &rarr; **Role Collections** in the left-hand pane.
+
+9. Choose role collection **SAP HANA Cloud Administrator**.
+
+10. Choose **Edit**.
+
+    <!-- border; size:540px --> ![Edit role](./hana-edit-role.png)
+
+11. In the **Users** section, enter your user and select the icon to add the user.
+
+    <!-- border; size:540px --> ![Add user](./hana-add-user.png)
+
+    > Keep the setting `Default Identity Provider` unless you have a custom identity provider configured.
+
+13. Choose **Save**.
 
 ### Create an SAP HANA Cloud service instance
 
 SAP HANA Cloud is used as a persistence layer.
 
-> If you already have an SAP HANA Cloud instance in your subaccount, directly navigate to **Step: Map an existing SAP HANA Cloud service instance below**.
-
 Follow these steps to create an SAP HANA Cloud service instance in the SAP BTP cockpit:
 
-1. In the SAP BTP cockpit, navigate to your subaccount.
+1. In your SAP BTP subaccount, navigate to **Services** &rarr; **Instances and Subscriptions** in the left-hand pane.
 
-2. Choose **Cloud Foundry** &rarr; **Spaces**.
+2. Choose **SAP HANA Cloud**. You'll be redirected to SAP HANA Cloud multi-environment administration tools. Sign in with your SAP BTP cockpit username/e-mail if required.
 
-3. Choose the space where you want to deploy the Incident Management application.
+    <!-- border; size:540px --> ![SAP HANA Cloud Go to application](./hana-goto-app.png)
 
-      <!-- border; size:540px --> ![Space tile](./space-tile.png)
+3. In SAP HANA Cloud Central, choose **Create Instance**.
 
-4. Choose **SAP HANA Cloud**.
-
-5. Choose **Create** &rarr; **SAP HANA database**. The SAP HANA Cloud Central tool opens.
-
-      <!-- border; size:540px --> ![Create SAP HANA DB](./create-hana-db0.png)
-
-6. Sign in with your SAP BTP cockpit username/e-mail.
+      <!-- border; size:540px --> ![SAP HANA Cloud create instance](./hana-create-instance.png)
 
 7. Choose **SAP HANA Cloud**, **SAP HANA Database**, and then choose **Next Step**.
 
       <!-- border; size:540px --> ![Create SAP HANA DB Step 1](./create-hana-db1.png)
 
-8. The values in the **Organization** and **Space** dropdown menus will be filled automatically. In the **Instance Name** field, enter the **incident-management**.
+8. In the **Instance Name** field, enter **incident-management**.
 
 9. In the **Administrator Password** and **Confirm Administrator Password** fields, enter a password for DBADMIN. Choose **Next Step**.
 
@@ -150,7 +184,7 @@ Follow these steps to create an SAP HANA Cloud service instance in the SAP BTP c
 
 13. Choose **Create Instance**.
 
-The creation of the database instance can take some minutes to complete. The final result looks like this in SAP BTP cockpit:
+The creation of the database instance can take some minutes to complete.
 
 > Your SAP HANA Cloud service instance will be automatically stopped overnight, according to the server region time zone. That means you need to restart your instance every day before you start working with it.
 > You can either use SAP BTP cockpit or the terminal in the SAP Business Application Studio to restart the stopped instance:
@@ -159,27 +193,38 @@ The creation of the database instance can take some minutes to complete. The fin
 > cf update-service incident-management -c '{"data":{"serviceStopped":false}}'
 > ```
 
-### Map an existing SAP HANA Cloud service instance
+### Map your SAP HANA Cloud service instance to your Cloud Foundry organization
 
 1. Go to SAP HANA Cloud Central. If you have closed it, open it again by following these steps: 
 
-      - In the SAP BTP cockpit, navigate to your subaccount.
-      - Choose **Cloud Foundry** &rarr; **Spaces**.
-      - Choose the Space where you want to deploy the Incident Management application.
-      - Choose **SAP HANA Cloud**.
-      - Choose **Manage SAP HANA Cloud**. The SAP HANA Cloud Central tool opens.
+      - In your SAP BTP subaccount, navigate to **Services** &rarr; **Instances and Subscriptions**.
+      - Choose **SAP HANA Cloud**. You'll be redirected to SAP HANA Cloud multi-environment administration tools. Sign in with your SAP BTP cockpit username/e-mail if required.
 
-2. On the **All Instances** page, choose the **incident-management** instance.
+2. For the **incident-management** instance, choose **Manage Configuration**.
 
-3. Choose **Create Mapping**.
+      <!-- border; size:540px --> ![Manage instance configuration](./hana-config.png)
 
-4. In the **Add Mapping** wizard:
+3. Select the **Instance Mapping** tab and choose **Add Mapping**.
 
-      - In the **Org ID** dropdown menu, select your Cloud Foundry organization.
-      - In the **Space ID** dropdown menu, select your Cloud Foundry space.
+      <!-- border; size:540px --> ![Add instance mapping](./hana-add-mapping.png)
 
-5. Choose **Add**. You have your incident-management SAP HANA database instance mapped to Cloud Foundry.
+4. Choose **Cloud Foundry** from the dropdown under **Environment Type**.
+
+5. Under **Environment Instance ID**, paste the GUID of your Cloud Foudry organization. Here's how to find it:
+
+      - Open a new terminal in SAP Business Application Studio and login with `cf login`.
+      - Run the command `cf org <Your-Cloud-Foundry-Org> --guid`. You'll get the GUID of your Cloud Foudry organization in response.
+
+      <!-- border; size:540px --> ![Add environment instance ID](./cf-env-instance-id.png)
+    
+    > If you only specify the organization GUID, the instance is mapped to all spaces in that organization.
+
+5. Choose **Review and Save** and then choose **Save Changes with Restart** in the popup. 
+
+      <!-- border; size:540px --> ![Save changes](./hana-save-mapping.png)
+
+      You have mapped your SAP HANA Cloud service instance to your Cloud Foundry organization.
 
     > For more information, see [Map an SAP HANA Database to another Environment Context](https://help.sap.com/docs/HANA_CLOUD/9ae9104a46f74a6583ce5182e7fb20cb/1683421d02474567a54a81615e8e2c48.html) to add a new Cloud foundry or Kyma mapping.
 
-<!-- Set Up HANA Cloud end -->
+<!-- New Set Up HANA Cloud end -->
