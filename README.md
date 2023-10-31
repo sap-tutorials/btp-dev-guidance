@@ -20,7 +20,7 @@ The basic group of tutorials covers the following steps for the Cloud Foundry an
 
 
 ## Execution Sequence
-The guidance is divided into several groups of tutorials. The groups define the order of execution of the tutorials. The groups are also organized in missions when published on the [Tutorial Navigator](https://developers.sap.com/tutorial-navigator.html).
+The guidance is divided into several groups of tutorials when published on the [Tutorial Navigator](https://developers.sap.com/tutorial-navigator.html). The groups define the order of execution of the tutorials.
 
 ### Groups
 
@@ -47,7 +47,7 @@ The guidance is divided into several groups of tutorials. The groups define the 
     - [Deploy in SAP BTP, Kyma Runtime](https://developers.sap.com/tutorials/deploy-to-kyma.html)
     - [User Role Assignment](https://developers.sap.com/tutorials/integrate-with-work-zone.html) 
     - [Integrate Your Application with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/user-role-assignment.html)
-    
+
 Prerequisites for each tutorial are listed in the beginning of the tutorial.
 
 
