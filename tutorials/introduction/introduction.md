@@ -36,14 +36,16 @@ This guidance covers a variety of topics starting from basic onboarding tasks to
 
 ### Benefit from a sample application
 
-There is a sample application called Incident Management that you can test and play with. You have the following options:
+There is a sample application called Incident Management that you can test and play with. Go through the following tutorials based on the Incident Management application step by step and explore the source code and the configuration tasks.
 
-- Go through the following tutorials based on the Incident Management application step by step and explore the source code and the administrative tasks.
+<!--
 - Go to the Incident Management application GitHub repository directly and deploy the application without going through the application development steps. See [Incident Management](https://github.com/cap-js/incidents-app).
+
+-->
 
 ### SAP Cloud Application Programming Model (CAP)
 
-CAP is a framework of languages, libraries, and tools for building enterprise-grade services and applications. It guides developers along a 'golden path' of proven best practices and a great wealth of out-of-the-box solutions to recurring tasks.
+CAP is a framework of languages, libraries, and tools for building enterprise-grade services and applications. It guides developers along proven best practices and a great wealth of out-of-the-box solutions to recurring tasks.
 
 Instead of delving into overly-technical disciplines, CAP lets you focus on your domain. This accelerates the development process and safeguards investments in a world of rapidly changing cloud technologies.
 
@@ -67,7 +69,7 @@ The central point of entry to the platform is the SAP BTP cockpit, where you can
 
 ### SAP BTP, Cloud Foundry Runtime and SAP BTP, Kyma Runtime
 
-The structure of the account in SAP BTP provides a flexible and scalable way to organize and manage resources. Open-source cloud computing platforms like Cloud Foundry and Kyma offer developers a way to deploy and manage cloud applications with ease. 
+The structure of the account in SAP BTP provides a flexible and scalable way to organize and manage resources. Open-source cloud computing platforms like Cloud Foundry and Kyma offer developers a way to deploy and manage cloud applications with ease.
 
 <!--
 These tutorials provide instructions for deploying your CAP application to both SAP BTP, Cloud Foundry runtime and SAP BTP, Kyma runtime.
@@ -82,5 +84,4 @@ For a thorough comparison and analysis of differences between the Cloud Foundry 
 
 All services needed for the execution of the tutorials are part of the free tier model for SAP BTP. The free tier model lets you try out services in global accounts without any additional cost using the consumption-based commercial model and an [enterprise account](https://help.sap.com/docs/btp/sap-business-technology-platform/enterprise-accounts).
 
-The free tier model includes free service plans limited in scope and capacity for many services within SAP BTP. To learn more about and how to access free service plans, see [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans). 
-
+The free tier model includes free service plans limited in scope and capacity for many services within SAP BTP. To learn more about and how to access free service plans, see [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans).
