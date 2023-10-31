@@ -156,7 +156,7 @@ build-parameters:
     - npx cds build --production    
 ```
 
-- This snippet adds the destinations required by the SAP Build Work Zone service: HTML5 repo host service and xsuaa service
+- This snippet adds the destinations required by the SAP Build Work Zone, standard edition service: HTML5 repo host service and Authorization and Trust Management (XSUAA) service.
 - The `html5-apps-repo` service with plan `app-host` is required to deploy the HTML5 applications to the HTML5 Application Repository.
 
 > **Important**
@@ -212,7 +212,8 @@ This navigation configuration adds the following section in `app/incidents/webap
       }
     }
   ...
-```
+  }
+  ```
 
 ### Add the UI application
 
@@ -312,7 +313,7 @@ parameters:
   ...  
 ```
 
-> This snippet added as an artifact in application content **nsincidents** which is an HTML5 application.
+> This snippet adds an HTML5 application **nsincidents**.
 
 ### Assemble with the Cloud MTA Build Tool
 
@@ -338,10 +339,10 @@ See [Multitarget Applications in the Cloud Foundry Environment](https://help.sap
 
     > You can find the API endpoint in the **Overview** section of your subaccount in the SAP BTP cockpit.
 
-3. Navigate to the **mta_archives** folder and run the following command to deploy the generated archive to the SAP BTP, Cloud Foundry runtime:
+3. Run the following command to deploy the generated archive to the SAP BTP, Cloud Foundry runtime:
 
     ```bash
-    cf deploy incident-management_1.0.0.mtar 
+    cf deploy mta_archives/incident-management_1.0.0.mtar 
     ```
 
 4. Check if all services have been created:
