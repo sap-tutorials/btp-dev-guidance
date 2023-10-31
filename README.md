@@ -24,7 +24,7 @@ The guidance is divided into several groups of tutorials. The groups define the 
 
 ### Groups
 
-- [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html). This group should include the following tutorials:
+- [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html). This group includes the following tutorials:
     - [Introduction to Application Development Using CAP](https://developers.sap.com/tutorials/introduction.html)
     - [Set Up SAP Business Application Studio](https://developers.sap.com/tutorials/set-up-bas.html)
     - [Build a CAP Application](https://developers.sap.com/tutorials/build-cap-app.html)
@@ -35,7 +35,7 @@ The guidance is divided into several groups of tutorials. The groups define the 
     - [Add Test Cases](https://developers.sap.com/tutorials/add-test-cases.html)
     - [Prepare for Production](https://developers.sap.com/tutorials/prep-for-prod.html)
 
-- [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.deploy-full-stack-cap-application.html) --> This group should include the following tutorials:
+- [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.deploy-full-stack-cap-application.html) --> This group includes the following tutorials:
     - [Prepare for SAP BTP Development with Cloud Foundry Runtime](https://developers.sap.com/tutorials/prepare-btp-cf.html)
     - [Deploy in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/tutorials/deploy-to-cf.html)
     - [User Role Assignment](https://developers.sap.com/tutorials/integrate-with-work-zone.html) 
@@ -47,6 +47,7 @@ The guidance is divided into several groups of tutorials. The groups define the 
     - [Deploy in SAP BTP, Kyma Runtime](https://developers.sap.com/tutorials/deploy-to-kyma.html)
     - [User Role Assignment](https://developers.sap.com/tutorials/integrate-with-work-zone.html) 
     - [Integrate Your Application with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/user-role-assignment.html)
+    
 Prerequisites for each tutorial are listed in the beginning of the tutorial.
 
 
