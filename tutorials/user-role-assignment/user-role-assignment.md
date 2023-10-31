@@ -1,5 +1,5 @@
 ---
-title: User Role Assignment
+title: Assign the User Roles
 description: This tutorial shows you how to assign roles to users. 
 parser: v2
 auto_validation: true
@@ -17,7 +17,15 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-You have deployed your application in SAP BTP, Cloud Foundry runtime. See [Deploy in SAP BTP, Cloud Foundry Runtime](../../deploy-to-cf.html)
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for a CPEA (Cloud Platform Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and make use of the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You have an S-user or P-user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
+- You are an administrator of the global account in SAP BTP.
+- You have a subaccount in SAP BTP to deploy the services and applications.
+- You have one of the following browsers that are supported for working in SAP Business Application Studio:
+    - Mozilla Firefox
+    - Google Chrome
+    - Microsoft Edge
+- You have deployed your application in either the SAP BTP, Cloud Foundry runtime or the SAP BTP, Kyma runtime. See [Deploy in SAP BTP, Cloud Foundry Runtime](../../deploy-to-cf.html) for deploying to the SAP BTP, Cloud Foundry runtime and [Deploy in SAP BTP, Kyma Runtime](../../deploy-to-kyma.html) for deploying to the SAP BTP, Kyma runtime.
 
 ### Create a role collection and add role
 
