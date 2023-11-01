@@ -1,8 +1,13 @@
 [![REUSE status](https://api.reuse.software/badge/github.com/sap-tutorials/btp-dev-guidance)](https://api.reuse.software/info/github.com/sap-tutorials/btp-dev-guidance)
 
 # Tutorials for [SAP Developer Center](https://developers.sap.com)
-This repository contains tutorials that are part of the [SAP Developer Center](https://developers.sap.com) and can be found on the [SAP Tutorials](https://developers.sap.com/tutorial-navigator.html) page.
+This repository contains tutorials created inline with the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/tutorials-for-sap-cloud-application-programming-model?version=Cloud). The tutorials are part of the [SAP Developer Center](https://developers.sap.com) and can be found on the [SAP Tutorials](https://developers.sap.com/tutorial-navigator.html) page.
 
+## [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/tutorials-for-sap-cloud-application-programming-model?version=Cloud)
+
+The goal of the SAP BTP Developer’s Guide is to help developers implementing business applications on SAP BTP including the integration with the SAP cloud suite. SAP BTP Developer’s Guide condenses best practices and technologies that can be safely recommended to you, the business application developers on SAP BTP.
+
+The tutorials in this repository provide the related hands-on experience of the SAP BTP Developer's Guide for SAP Cloud Application Programming Model. 
 
 ## What Topics Are Covered in the Tutorials?
 
@@ -35,14 +40,14 @@ The guidance is divided into several groups of tutorials when published on the [
     - [Add Test Cases](https://developers.sap.com/tutorials/add-test-cases.html)
     - [Prepare for Production](https://developers.sap.com/tutorials/prep-for-prod.html)
 
-- [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.deploy-full-stack-cap-application.html) --> This group includes the following tutorials:
+- [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.deploy-full-stack-cap-application.html). This group includes the following tutorials:
     - [Prepare for SAP BTP Development with Cloud Foundry Runtime](https://developers.sap.com/tutorials/prepare-btp-cf.html)
     - [Deploy in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/tutorials/deploy-to-cf.html)
     - [User Role Assignment](https://developers.sap.com/tutorials/integrate-with-work-zone.html) 
     - [Integrate Your Application with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/user-role-assignment.html)
     - [Set Up a CI/CD Pipeline](https://developers.sap.com/tutorials/set-up-cicd.html)
 
-- [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime ](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) --> LThis group includes the following tutorials:
+- [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime ](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html). This group includes the following tutorials:
     - [Prepare for Deployment in the SAP BTP, Kyma Runtime](https://developers.sap.com/tutorials/prepare-btp-kyma.html)
     - [Deploy in SAP BTP, Kyma Runtime](https://developers.sap.com/tutorials/deploy-to-kyma.html)
     - [User Role Assignment](https://developers.sap.com/tutorials/integrate-with-work-zone.html) 
