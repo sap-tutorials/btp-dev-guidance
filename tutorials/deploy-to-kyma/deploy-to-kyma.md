@@ -105,6 +105,25 @@ brew install int128/kubelogin/kubelogin
 See [Setup](https://github.com/int128/kubelogin#setup) in the kubelogin docs for more details.
 [OPTION END]
 
+### Login to your Kyma cluster
+
+1. Choose `KubeconfigURL` under the **Kyma Environment** tab in your subaccount.
+
+    <!-- border; size:540px --> ![Kubeconfig URL](kubeconfigURL.png)
+
+    A file `kubeconfig.yaml` is downloaded.
+
+    <!-- border; size:540px --> ![Kubeconfig yaml](kubeconfig_yaml.png)
+
+2. Copy the `kubeconfig.yaml` file to the `~/.kube/` directory and rename it to `config`. Replace or rename any existing file with the same name.
+
+
+There are two additional steps for Windows users only:
+
+3. Go to `C:\ProgramData\chocolatey\bin`.
+
+4. Rename `kubelogin.exe` to `kubectl-oidc_login.exe`.
+
 ### Install helm
 
 [OPTION BEGIN [macOS]]
@@ -215,6 +234,8 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 1. In SAP Business Application Studio, choose the icon to download dev space content.
 
     <!-- border; size:540px --> ![Download dev space content](./downloadproject.png)
+
+    > Make sure the **IncidentManagement** dev space is in status **RUNNING**.
 
 2. Extract the **incident-management** folder from the downloaded archive.
 
@@ -542,7 +563,7 @@ CAP provides a configurable Helm chart for Node.js applications.
 
 2. Replace `<your-cluster-domain>` with your cluster domain in the `xsuaa` section of the **chart/values.yaml** file:
 
-    ```yaml
+    ```yaml[9]
     xsuaa:
       serviceOfferingName: xsuaa
       servicePlanName: application
@@ -554,6 +575,20 @@ CAP provides a configurable Helm chart for Node.js applications.
             - https://*.<your-cluster-domain>/**
 
     ```
+
+    > In case the `oauth2-configuration:` section is missing from your `values.yaml` file, make sure to add it altogether like that:
+    >
+    > ```yaml[7-9]
+    >   xsuaa:
+    >       serviceOfferingName: xsuaa
+    >       servicePlanName: application
+    >       parameters:
+    >           xsappname: incidents
+    >           tenant-mode: dedicated
+    >           oauth2-configuration:
+    >               redirect-uris:
+    >                   - https://*.<your-cluster-domain>/**
+    >```
 
 3. Add the destinations under `backendDestinations` in the **chart/values.yaml** file:
 
@@ -567,27 +602,6 @@ CAP provides a configurable Helm chart for Node.js applications.
 > `backend` is the name of the destination. `service` points to the deployment name whose URL will be used for this destination.
 
 ### Deploy CAP Helm chart
-
-#### Login to your Kyma cluster
-
-1. Choose `KubeconfigURL` under the **Kyma Environment** tab in your subaccount.
-
-    <!-- border; size:540px --> ![Kubeconfig URL](kubeconfigURL.png)
-
-    A file `kubeconfig.yaml` is downloaded.
-
-    <!-- border; size:540px --> ![Kubeconfig yaml](kubeconfig_yaml.png)
-
-2. Copy the `kubeconfig.yaml` file to the `~/.kube/` directory and rename it to `config`. Replace or rename any existing file with the same name.
-
-
-There are two additional steps for Windows users only:
-
-3. Go to `C:\ProgramData\chocolatey\bin`.
-
-4. Rename `kubelogin.exe` to `kubectl-oidc_login.exe`.
-
-#### Create a namespace and deploy
 
 2. Run the following command to create a namespace:
 
