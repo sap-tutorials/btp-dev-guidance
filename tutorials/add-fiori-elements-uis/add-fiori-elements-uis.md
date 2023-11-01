@@ -341,7 +341,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
     <!-- border; size:540px --> ![Customer field update label](./fiori3.png)
 
-6. For the **Customer** field, select **customer/name** in the **Text** dropdown menu, select **Text Only** in the **Text Arrangement** dropdown menu, and then select **Value Help** in the **Display Type** dropdown menu. A popup opens, choose **Apply**.
+6. For the **Customer** field, select **customer/name** in the **Text** dropdown menu, select **Text Only** in the **Text Arrangement** dropdown menu, and then select **Value Help** in the **Display Type** dropdown menu. A popup opens, switch off **Diplay as Dropdown** and choose **Apply**.
 
     <!-- border; size:540px --> ![Customer properties update](./fiori4.png)
 
