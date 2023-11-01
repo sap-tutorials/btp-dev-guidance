@@ -42,13 +42,13 @@ The guidance is divided into several groups of tutorials when published on the [
     - [Integrate Your Application with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/user-role-assignment.html)
     - [Set Up a CI/CD Pipeline](https://developers.sap.com/tutorials/set-up-cicd.html)
 
-- [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime ]() --> Link to be provided.
+- [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime ](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) --> LThis group includes the following tutorials:
     - [Prepare for Deployment in the SAP BTP, Kyma Runtime](https://developers.sap.com/tutorials/prepare-btp-kyma.html)
     - [Deploy in SAP BTP, Kyma Runtime](https://developers.sap.com/tutorials/deploy-to-kyma.html)
     - [User Role Assignment](https://developers.sap.com/tutorials/integrate-with-work-zone.html) 
     - [Integrate Your Application with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/user-role-assignment.html)
 
-Prerequisites for each tutorial are listed in the beginning of the tutorial.
+Prerequisites are listed in the beginning of each tutorial.
 
 
 # How to contribute
