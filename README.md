@@ -43,15 +43,15 @@ The guidance is divided into several groups of tutorials when published on the [
 - [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.deploy-full-stack-cap-application.html). This group includes the following tutorials:
     - [Prepare for SAP BTP Development with Cloud Foundry Runtime](https://developers.sap.com/tutorials/prepare-btp-cf.html)
     - [Deploy in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/tutorials/deploy-to-cf.html)
-    - [User Role Assignment](https://developers.sap.com/tutorials/integrate-with-work-zone.html) 
-    - [Integrate Your Application with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/user-role-assignment.html)
+    - [User Role Assignment](https://developers.sap.com/tutorials/user-role-assignment.html) 
+    - [Integrate Your Application with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/integrate-with-work-zone.html)
     - [Set Up a CI/CD Pipeline](https://developers.sap.com/tutorials/set-up-cicd.html)
 
 - [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime ](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html). This group includes the following tutorials:
     - [Prepare for Deployment in the SAP BTP, Kyma Runtime](https://developers.sap.com/tutorials/prepare-btp-kyma.html)
     - [Deploy in SAP BTP, Kyma Runtime](https://developers.sap.com/tutorials/deploy-to-kyma.html)
-    - [User Role Assignment](https://developers.sap.com/tutorials/integrate-with-work-zone.html) 
-    - [Integrate Your Application with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/user-role-assignment.html)
+    - [User Role Assignment](https://developers.sap.com/tutorials/user-role-assignment.html) 
+    - [Integrate Your Application with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/integrate-with-work-zone.html)
 
 Prerequisites are listed in the beginning of each tutorial.
 
