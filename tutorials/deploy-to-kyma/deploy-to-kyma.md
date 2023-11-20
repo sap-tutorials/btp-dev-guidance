@@ -294,7 +294,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
     ```bash
     pack build <your-container-registry>/incident-management-srv:<image-version> \
         --path gen/srv \
-        --builder paketobuildpacks/builder:base \
+        --builder paketobuildpacks/builder-jammy-base \
         --publish
     ```
 
@@ -319,7 +319,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
     ```bash
     pack build <your-container-registry>/incident-management-hana-deployer:<image-version> \
         --path gen/db \
-        --builder paketobuildpacks/builder:base \
+        --builder paketobuildpacks/builder-jammy-base \
         --publish
     ```
     > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` should be a string. 
@@ -473,7 +473,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
     ```bash
     pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \
         --path app/incidents \
-        --builder paketobuildpacks/builder:base \
+        --builder paketobuildpacks/builder-jammy-base \
         --publish
     ```
 
