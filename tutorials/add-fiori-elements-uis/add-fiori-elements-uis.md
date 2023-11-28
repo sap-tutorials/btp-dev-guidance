@@ -38,7 +38,7 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
 
     > Make sure the **IncidentManagement** dev space is in status **RUNNING**.
 
-2. To invoke the Command Palette, choose the burger menu and then choose **View** &rarr; **Command Palette**.
+2. Choose the burger menu and then choose **View** &rarr; **Command Palette**.
 
     > You can also invoke the Command Palette quickly using the following key combination:
     >
@@ -61,7 +61,7 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
 
     - In the **Choose your CAP project** dropdown menu, select the **incident-management** project.
 
-    - In the **OData service** dropdown menu, select the **ProcessorService(Node.js)**.
+    - In the **OData service** dropdown menu, select the **ProcessorService (Node.js)**.
     
     - Choose **Next**.
 
@@ -341,7 +341,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
     <!-- border; size:540px --> ![Customer field update label](./fiori3.png)
 
-6. For the **Customer** field, select **customer/name** in the **Text** dropdown menu, select **Text Only** in the **Text Arrangement** dropdown menu, and then select **Value Help** in the **Display Type** dropdown menu. A popup opens, switch off **Diplay as Dropdown** and choose **Apply**.
+6. For the **Customer** field, select **customer/name** in the **Text** dropdown menu, select **Text Only** in the **Text Arrangement** dropdown menu, and then select the hyperlink **Edit properties for Value Help** under **Display Type**. A popup opens, switch off **Diplay as Dropdown** and choose **Apply**.
 
     <!-- border; size:540px --> ![Customer properties update](./fiori4.png)
 
