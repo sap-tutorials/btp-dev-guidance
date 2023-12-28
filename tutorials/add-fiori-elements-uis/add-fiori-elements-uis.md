@@ -38,7 +38,7 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
 
     > Make sure the **IncidentManagement** dev space is in status **RUNNING**.
 
-2. To invoke the Command Palette, choose the burger menu and then choose **View** &rarr; **Command Palette**.
+2. Choose the burger menu and then choose **View** &rarr; **Command Palette**.
 
     > You can also invoke the Command Palette quickly using the following key combination:
     >
@@ -61,7 +61,7 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
 
     - In the **Choose your CAP project** dropdown menu, select the **incident-management** project.
 
-    - In the **OData service** dropdown menu, select the **ProcessorService(Node.js)**.
+    - In the **OData service** dropdown menu, select the **ProcessorService (Node.js)**.
     
     - Choose **Next**.
 
@@ -207,11 +207,11 @@ The filter labels are text strings. It's a good idea to update them so they are 
 
     <!-- border; size:540px --> ![Reorder Columns](./reorder-columns.png)
 
-15. Choose the **Title** column, choose the **Globe** icon in the **Label** field to generate a translatable text key, and apply the changes.    
+15. Choose the **Title** column, choose the **Globe** icon in the **Label** field to generate a translatable text key, and apply the changes.
 
     > The filter labels are text strings. It's a good idea to update them so they are compliant with internationalization standards (i18n).
 
-    > Learn more about how internationalization works for the backend part in [Where to Place Text Bundles?](https://cap.cloud.sap/cap/docs/guides/i18n#where-to-place-text-bundles) in the CAP documentation.
+    > Learn more about how internationalization works for the backend part in [Where to Place Text Bundles?](https://cap.cloud.sap/docs/guides/i18n#where-to-place-text-bundles) in the CAP documentation.
 
 5. For each of the **name**, **Description (status/descr)**, and **Description (urgency/descr)** columns:
 
@@ -322,7 +322,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
     <!-- border; size:540px --> ![General information label](./obj601.png)
 
-3. Choose **Sections** &rarr; **General Information** &rarr; **Fields**, choose the **Plus** icon to add more fields, and then choose **Add Basic Fields**.
+3. Choose **Sections** &rarr; **General Information** &rarr; **Form** &rarr; **Fields**, choose the **Plus** icon to add more fields, and then choose **Add Basic Fields**.
 
     <!-- border; size:540px --> ![Add Basic Fields](./fiori1.png)
 
@@ -341,7 +341,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
     <!-- border; size:540px --> ![Customer field update label](./fiori3.png)
 
-6. For the **Customer** field, select **customer/name** in the **Text** dropdown menu, select **Text Only** in the **Text Arrangement** dropdown menu, and then select **Value Help** in the **Display Type** dropdown menu. A popup opens, choose **Apply**.
+6. For the **Customer** field, select **customer/name** in the **Text** dropdown menu, select **Text Only** in the **Text Arrangement** dropdown menu, and then select the hyperlink **Edit properties for Value Help** under **Display Type**. A popup opens, switch off **Diplay as Dropdown** and choose **Apply**.
 
     <!-- border; size:540px --> ![Customer properties update](./fiori4.png)
 
@@ -386,7 +386,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
     <!-- border; size:540px --> ![Urgency value help](./obj68.png)
 
-#### Add Conversations section
+#### Add Conversation section
 
 19. Navigate to **Sections** and then choose the **Plus** icon to add more sections. Select **Add Table Section** in the dropdown menu.
 
@@ -396,15 +396,15 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
 20. In the **Add Table Section** popup:
 
-    - Enter **Conversations** in the **Label** field.
+    - Enter **Conversation** in the **Label** field.
     - Choose the **Globe** icon to generate a translatable text key. 
-    - Select **conversations** in the **Source Value** dropdown menu and choose **Add**.
+    - Select **conversation** in the **Source Value** dropdown menu and choose **Add**.
 
-    <!-- border; size:540px --> ![Add Conversations Label](./obj9.png)
+    <!-- border; size:540px --> ![Add Conversation Label](./obj9.png)
 
 #### Configure columns
 
-21. Navigate to **Conversations** &rarr; **Table** &rarr; **Columns** and choose the **Plus** icon to add columns. 
+21. Navigate to **Conversation** &rarr; **Table** &rarr; **Columns** and choose the **Plus** icon to add columns. 
 
 22. Choose **Add Basic Columns**. A popup appears.
 
@@ -417,9 +417,9 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
     <!-- border; size:540px --> ![Add Basic Columns popup](./obj92.png)
 
-5. For each of the **author**, **message**, and **timestamp** columns:
+5. For each of the **CreatedBy**, **message**, and **CreatedOn** columns:
 
-    - In the **Label** field, change the value to **Author**, **Message**, and **Conversation Date**, respectively.
+    - In the **Label** field, change the value to **Author**, **Message**, and **Date**, respectively.
     - Press <kbd>Enter</kbd> to confirm the change.
     - Choose the **Globe** icon in the **Label** field to generate a translatable text key.
 
