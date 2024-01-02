@@ -94,7 +94,12 @@ You have the SAP Business Application Studio configured. See [Set Up SAP Busines
       title        : String  @title : 'Title';
       urgency      : Association to Urgency;
       status       : Association to Status; 
-      conversations: Composition of many Conversations on conversations.incidents = $self;
+      conversation  : Composition of many {
+        key ID    : UUID;
+        timestamp : type of managed:createdAt;
+        author    : type of managed:createdBy;
+        message   : String;
+        };
     }
 
     /**
@@ -106,13 +111,6 @@ You have the SAP Business Application Studio configured. See [Set Up SAP Busines
       email         : EMailAddress;
       phone         : PhoneNumber;
       incidents     : Association to many Incidents on incidents.customer = $self;
-    }
-
-    entity Conversations : cuid, managed {
-      incidents : Association to Incidents;
-      timestamp : DateTime;
-      author    : String @cds.on.insert: $user;
-      message   : String;
     }
 
     entity Status : CodeList {
@@ -163,7 +161,7 @@ Waiting for some to arrive...
 
 It's a good practice in CAP to create single-purpose services. Hence, let's define a `ProcessorService` for support engineers to process incidents created by customers.
 
-To create the service definitions:
+To create the service definition:
 
 1. In the **srv** folder, create a new **processor-service.cds** file.
 
@@ -211,15 +209,18 @@ Since we already have an SQLite in-memory database that was automatically create
     Adding feature 'data'...
     Creating db/data/sap.capire.incidents-Incidents.csv
     Creating db/data/sap.capire.incidents-Customers.csv
-    Creating db/data/sap.capire.incidents-Conversations.csv
     Creating db/data/sap.capire.incidents-Status.csv
     Creating db/data/sap.capire.incidents-Urgency.csv
+    Creating db/data/sap.capire.incidents-Incidents.conversation.csv
     Creating db/data/sap.capire.incidents-Status.texts.csv
     Creating db/data/sap.capire.incidents-Urgency.texts.csv
 
     Successfully added features to your project.
     ```
 
+
+    You can find the generated CSV templates within the **db** folder, in a newly-created **data** folder.
+     
 ### Fill in the test data
 
 Replace the respective generated CSV templates with the following content:
@@ -243,10 +244,10 @@ Replace the respective generated CSV templates with the following content:
     3583f982-d7df-4aad-ab26-301d4a157cd7,2b87f6ca-28a2-41d6-8c69-ccf16aa6389d,Solar panel broken,H,I
     ```
 
-- `db/data/sap.capire.incidents-Conversations.csv`:
+- `db/data/sap.capire.incidents-Incidents.conversation.csv`:
 
     ```csv
-    ID,incidents_ID,timestamp,author,message
+    ID,up__ID,timestamp,author,message
     2b23bb4b-4ac7-4a24-ac02-aa10cabd842c,3b23bb4b-4ac7-4a24-ac02-aa10cabd842c,1995-12-17T03:24:00Z,Harry John,Can you please check if battery connections are fine?
     2b23bb4b-4ac7-4a24-ac02-aa10cabd843c,3a4ede72-244a-4f5f-8efa-b17e032d01ee,1995-12-18T04:24:00Z,Emily Elizabeth,Can you please check if there are any loose connections?
     9583f982-d7df-4aad-ab26-301d4a157cd7,3583f982-d7df-4aad-ab26-301d4a157cd7,2022-09-04T12:00:00Z,Sunny Sunshine,Please check why the solar panel is broken.
@@ -280,7 +281,7 @@ Upon detecting these new files, the CAP server prints a message stating that the
 
 ```bash
 [cds] - connect to db > sqlite { database: ':memory:' }
-  > init from db\data\sap.capire.incidents-Conversations.csv 
+  > init from db\data\sap.capire.incidents-Incidents.conversation.csv 
   > init from db\data\sap.capire.incidents-Customers.csv 
   > init from db\data\sap.capire.incidents-Incidents.csv 
   > init from db\data\sap.capire.incidents-Status.csv 
@@ -289,7 +290,6 @@ Upon detecting these new files, the CAP server prints a message stating that the
   > init from db\data\sap.capire.incidents-Urgency.texts.csv 
 /> successfully deployed to in-memory database.
 ```
-
 > Make sure your CAP server is still running. You can start it with `cds watch`.
 
 Now that the database is filled with some initial data, you can send complex OData queries served by the built-in generic service providers. With the generic `index.html` page opened in your browser, paste the following queries at the end of the current URL and check the result:
@@ -328,7 +328,10 @@ Elements can be specified with a calculation expression, in which you can refer 
       firstName || ' ' || lastName as name: String
     }
     ```
-
 3. Click the `Customers` endpoint from the `index.html` page and you'll see the new field `name` for each entry. The value for this field for each of the entries is calculated by taking into account the values of the fields `firstName` and `lastName`.
 
+
     <!-- border; size:540px --> ![Calculated element name](./calculated-element-name.png)
+
+    
+
