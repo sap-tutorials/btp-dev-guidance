@@ -36,7 +36,7 @@ You have added the basic test cases in your application. See [Add Test Cases](..
     cds add hana --for production
     ```
 
-    > The **cds add hana** command adds the **@sap/cds-hana** module that allows SAP HANA Cloud to access the **package.json** file and the database configuration **"kind": "hana"** that uses SAP HANA Cloud when the application is started on production.
+    > The **cds add hana** command adds the **@sap/cds-hana** module that allows SAP HANA Cloud to access the **package.json** file and the database configuration **"db": "hana"** that uses SAP HANA Cloud when the application is started on production.
     >
     > The **cds add hana** command adds to the **package.json** file the highlighted lines:
 
@@ -52,9 +52,7 @@ You have added the basic test cases in your application. See [Add Test Cases](..
             "requires": {
                 ...
                 "[production]": {
-                    "db": {
-                        "kind": "hana"
-                    }
+                    "db": "hana"
                 }
             }
         }
