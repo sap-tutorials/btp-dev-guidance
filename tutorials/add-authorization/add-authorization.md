@@ -120,8 +120,7 @@ CAP offers a possibility to add local users for testing as part of the `cds` con
 
 ### Access the Incident Management application with a password
 
-When accessing the **Incidents** service of the **Incident Management** application in your browser, you get a basic auth popup now, asking for your user and password. You can use the users to log in and
-see how it works.
+When accessing the **Incidents** service of the **Incident Management** application in your browser, you get a basic auth popup now, asking for your user and password. You can use the users to log in and see how it works.
 
 1. Make sure the SAP Fiori application is running. If you closed it, choose the **Preview Application** option in the **Application Info - incidents** tab and select the **watch-incidents** npm script.
 
