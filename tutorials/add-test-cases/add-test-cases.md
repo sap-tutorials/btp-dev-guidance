@@ -180,7 +180,7 @@ You have configured the access to your application. See [Add Authorization](../.
 
 ### Test the application
 
-1. Open the **package.json** file and add the following line inside the **scripts** section. This adds a command to start the tests.
+1. Open the **package.json** file and add the `"test": "jest tests/test.js"` line inside the **scripts** section. This adds a command to start the tests.
 
     ```json[15]
     {
