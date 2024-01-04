@@ -26,7 +26,7 @@ You have added to your application a launch page for local testing. See [Use a L
 
 1. Open the **srv/processor-service.cds** file.
 
-2. To specify restrictions, add the following line to the **srv/processor-service.cds** file:
+2. To specify restrictions, add the `annotate ProcessorService with @(requires: 'support');` line to the **srv/processor-service.cds** file:
 
     ```js[10]
     using { sap.capire.incidents as my } from '../db/schema';
