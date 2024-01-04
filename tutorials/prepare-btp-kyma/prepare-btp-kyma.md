@@ -26,7 +26,7 @@ author_profile: https://github.com/slavipande
     - Mozilla Firefox
     - Google Chrome
     - Microsoft Edge
-- You have configured SAP HANA Cloud and SAP Authorization and Trust Management service in your project in SAP Business Application Studio. See [Prepare for Production](../../prep-for-prod.html).
+- You have configured SAP HANA Cloud and SAP Authorization and Trust Management service in your project in SAP Business Application Studio. See [Prepare for Production](prep-for-prod).
 
 ### Configure the entitlements
 

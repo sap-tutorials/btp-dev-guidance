@@ -18,7 +18,7 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-You have built your CAP application. See [Build a CAP application](../../build-cap-app.html).
+You have built your CAP application. See [Build a CAP application](build-cap-app).
 
 ### Overview
 

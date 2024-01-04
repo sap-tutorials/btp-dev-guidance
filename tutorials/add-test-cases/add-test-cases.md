@@ -19,7 +19,7 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-You have configured the access to your application. See [Add Authorization](../../add-authorization.html).
+You have configured the access to your application. See [Add Authorization](add-authorization).
 
 ### Add dependencies
 

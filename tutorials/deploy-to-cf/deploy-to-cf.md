@@ -26,7 +26,7 @@ author_profile: https://github.com/slavipande
     - Mozilla Firefox
     - Google Chrome
     - Microsoft Edge
-- You have configured the respective entitlements, enabled the Cloud Foundry runtime in your subaccount, and created an SAP HANA Cloud service instance in the SAP BTP cockpit. See [Prepare for Deployment in the SAP BTP, Cloud Foundry Runtime](../../prepare-btp-cf.html)
+- You have configured the respective entitlements, enabled the Cloud Foundry runtime in your subaccount, and created an SAP HANA Cloud service instance in the SAP BTP cockpit. See [Prepare for Deployment in the SAP BTP, Cloud Foundry Runtime](prepare-btp-cf)
 
 ### Introduction
 
@@ -185,35 +185,37 @@ Navigation targets are required to navigate between applications, but also to st
 
       <!-- border; size:540px --> ![Fiori Launchpad Config](./fiori-launchpad-config2.png)
 
-This navigation configuration adds the following section in `app/incidents/webapp/manifest.json`:
+This navigation configuration adds the following section in **app/incidents/webapp/manifest.json**:
+
 
 ```json[10-23]
-  "sap.app": {
-    "id": "ns.incidents",
+"sap.app": {
+  "id": "ns.incidents",
+  ...
+  "sourceTemplate": {
     ...
-    "sourceTemplate": {
-      ...
-    },
-    "dataSources": {
-      ...
-    },
-    "crossNavigation": {
-      "inbounds": {
-        "incidents-display": {
-          "semanticObject": "incidents",
-          "action": "display",
-          "title": "{{flpTitle}}",
-          "subTitle": "{{flpSubtitle}}",
-          "signature": {
-            "parameters": {},
-            "additionalParameters": "allowed"
-          }
+  },
+  "dataSources": {
+    ...
+  },
+  "crossNavigation": {
+    "inbounds": {
+      "incidents-display": {
+        "semanticObject": "incidents",
+        "action": "display",
+        "title": "{{flpTitle}}",
+        "subTitle": "{{flpSubtitle}}",
+        "signature": {
+          "parameters": {},
+          "additionalParameters": "allowed"
         }
       }
     }
-  ...
   }
-  ```
+...
+}
+
+```
 
 ### Add the UI application
 
@@ -229,7 +231,7 @@ This navigation configuration adds the following section in `app/incidents/webap
 3. In the **Deploy Configuration** step:
 
       - In the **Please choose the target** dropdown menu, select **Cloud Foundry**.
-      - In the **Destination name** dropdown menu, select **Local CAP Project API(Instance Based Destination)**.
+      - In the **Destination name** dropdown menu, select **Local CAP Project API (Instance Based Destination)**.
       - In the **Editing the deployment configuration will overwrite existing configuration, are you sure you want to continue?** field, choose **Yes**.
       - Choose **Finish**.
 
@@ -237,7 +239,7 @@ This navigation configuration adds the following section in `app/incidents/webap
       <!-- border; size:540px --> ![V4 Template](./ui2.png)
 
 
-This deploy configuration adds SAP Cloud service at the end of `app/incidents/webapp/manifest.json`:
+This deploy configuration adds SAP Cloud service at the end of **app/incidents/webapp/manifest.json**:
 
 ```json
  "sap.cloud": {
@@ -317,7 +319,7 @@ parameters:
 
 ### Assemble with the Cloud MTA Build Tool
 
-Run the following command to assemble everything into a single `mta.tar` archive:
+Run the following command to assemble everything into a single **mta.tar** archive:
 
 ```bash
 mbt build

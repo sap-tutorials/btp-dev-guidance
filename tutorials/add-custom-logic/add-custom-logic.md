@@ -18,7 +18,7 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-You have implemented the user interface of your application. See [Add SAP Fiori Elements UIs](../../add-fiori-elements-uis.html).
+You have implemented the user interface of your application. See [Add SAP Fiori Elements UIs](add-fiori-elements-uis).
 
 ### Add custom code
 

@@ -20,7 +20,7 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-You have added to your application a launch page for local testing. See [Use a Local Launch Page](../../use-local-launch-page.html).
+You have added to your application a launch page for local testing. See [Use a Local Launch Page](use-local-launch-page).
 
 ### Add CAP role restrictions to entities
 

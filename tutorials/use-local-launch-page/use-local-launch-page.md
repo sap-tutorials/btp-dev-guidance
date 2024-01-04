@@ -18,7 +18,7 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-You have added business logic to your application. See [Add Custom Logic](../../add-custom-logic.html).
+You have added business logic to your application. See [Add Custom Logic](add-custom-logic).
 
 ### Overview
 

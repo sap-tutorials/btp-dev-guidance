@@ -25,7 +25,7 @@ author_profile: https://github.com/slavipande
     - Mozilla Firefox
     - Google Chrome
     - Microsoft Edge
-- You have deployed your application in either the SAP BTP, Cloud Foundry runtime or the SAP BTP, Kyma runtime. See [Deploy in SAP BTP, Cloud Foundry Runtime](../../deploy-to-cf.html) for deploying to the SAP BTP, Cloud Foundry runtime and [Deploy in SAP BTP, Kyma Runtime](../../deploy-to-kyma.html) for deploying to the SAP BTP, Kyma runtime.
+- You have deployed your application in either the SAP BTP, Cloud Foundry runtime or the SAP BTP, Kyma runtime. See [Deploy in SAP BTP, Cloud Foundry Runtime](deploy-to-cf) for deploying to the SAP BTP, Cloud Foundry runtime and [Deploy in SAP BTP, Kyma Runtime](deploy-to-kyma) for deploying to the SAP BTP, Kyma runtime.
 
 ### Create a role collection and add role
 

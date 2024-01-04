@@ -19,7 +19,7 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-You have added the basic test cases in your application. See [Add Test Cases](../../add-test-cases.html).
+You have added the basic test cases in your application. See [Add Test Cases](add-test-cases).
 
 
 ### Add SAP HANA Cloud
