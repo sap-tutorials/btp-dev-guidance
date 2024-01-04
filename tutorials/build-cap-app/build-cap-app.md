@@ -20,7 +20,7 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-You have the SAP Business Application Studio configured. See [Set Up SAP Business Application Studio for Development](../../set-up-bas.html).
+You have the SAP Business Application Studio configured. See [Set Up SAP Business Application Studio for Development](set-up-bas).
 
 ### Create a CAP project
 
