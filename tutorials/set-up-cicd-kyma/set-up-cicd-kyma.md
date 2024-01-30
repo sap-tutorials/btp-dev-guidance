@@ -26,7 +26,7 @@ author_profile: https://github.com/slavipande
     - Mozilla Firefox
     - Google Chrome
     - Microsoft Edge
-- You have prepared your application for deployment in SAP Kyma runtime. See [Deploy in SAP BTP, Kyma Runtime](deploy-to-kyma).
+- You have prepared your application for deployment in SAP BTP, Kyma runtime. See [Deploy in SAP BTP, Kyma Runtime](deploy-to-kyma).
 
 
 

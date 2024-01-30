@@ -26,7 +26,7 @@ author_profile: https://github.com/slavipande
     - Mozilla Firefox
     - Google Chrome
     - Microsoft Edge
-- You have prepared your application for deployment in SAP Cloud Foundry runtime. See [Deploy in SAP BTP, Cloud Foundry Runtime](deploy-to-cf).
+- You have prepared your application for deployment in SAP BTP, Cloud Foundry runtime. See [Deploy in SAP BTP, Cloud Foundry Runtime](deploy-to-cf).
 
 
 
