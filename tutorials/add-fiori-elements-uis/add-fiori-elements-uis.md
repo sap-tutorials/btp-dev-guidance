@@ -1,5 +1,5 @@
 ---
-title: Add SAP Fiori Elements UIs
+title: Add SAP Fiori Elements UI
 description: This tutorial shows you how to create an SAP Fiori elements application on top of your previously created CAP application.
 keywords: cap 
 parser: v2
@@ -341,7 +341,12 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
     <!-- border; size:540px --> ![Customer field update label](./fiori3.png)
 
-6. For the **Customer** field, select **customer/name** in the **Text** dropdown menu, select **Text Only** in the **Text Arrangement** dropdown menu, and then select the hyperlink **Edit properties for Value Help** under **Display Type**. A popup opens, switch off **Display as Dropdown** and choose **Apply**.
+6. For the **Customer** field, select **customer/name** in the **Text** dropdown menu, select **Text Only** in the **Text Arrangement** dropdown menu, and then select the hyperlink **Edit properties for Value Help** under **Display Type**. A popup opens: 
+
+    - Switch off **Display as Dropdown**.
+    - Select **None** in the **Value Description Property** dropdown menu.
+    - Under **Result List**, choose **Add Column** and add the columns **name** and **email**.
+    - Choose **Apply**.
 
     <!-- border; size:540px --> ![Customer properties update](./fiori4.png)
 
