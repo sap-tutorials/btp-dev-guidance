@@ -136,7 +136,7 @@ You have added the basic test cases in your application. See [Add Test Cases](ad
 
 3. Check the content of the **xs-security.json** file.
 
-    You have already added authorization with the **requires** annotations in the CDS service model (that is the **processor-service.cds** file in the **srv** folder). See [Add Authorization](../../add-authorization.html).
+    You have already added authorization with the **requires** annotations in the CDS service model (that is the **processor-service.cds** file in the **srv** folder). See [Add Authorization](add-authorization).
 
     ```js
     annotate ProcessorService with @(requires: ['support']);

@@ -1,5 +1,5 @@
 ---
-title: Add SAP Fiori Elements UI
+title: Add SAP Fiori Elements UIs
 description: This tutorial shows you how to create an SAP Fiori elements application on top of your previously created CAP application.
 keywords: cap 
 parser: v2
@@ -341,12 +341,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
     <!-- border; size:540px --> ![Customer field update label](./fiori3.png)
 
-6. For the **Customer** field, select **customer/name** in the **Text** dropdown menu, select **Text Only** in the **Text Arrangement** dropdown menu, and then select the hyperlink **Edit properties for Value Help** under **Display Type**. A popup opens: 
-
-    - Switch off **Display as Dropdown**.
-    - Select **None** in the **Value Description Property** dropdown menu.
-    - Under **Result List**, choose **Add Column** and add the columns **name** and **email**.
-    - Choose **Apply**.
+6. For the **Customer** field, select **customer/name** in the **Text** dropdown menu, select **Text Only** in the **Text Arrangement** dropdown menu, and then select the hyperlink **Edit properties for Value Help** under **Display Type**. A popup opens, switch off **Display as Dropdown** and choose **Apply**.
 
     <!-- border; size:540px --> ![Customer properties update](./fiori4.png)
 
@@ -467,13 +462,13 @@ Enabling a draft for an entity allows the users to edit the entities. To enable 
 
 3. Start creating a new incident but leave the **Customer**, **Status**, and **Urgency** fields empty.
 
-    <!-- border; size:540px --> ![Draft incident with empty fields]((./draft-incident-empty.png))
+    <!-- border; size:540px --> ![Draft incident with empty fields](./draft-incident-empty.png)
 
 4. Go back to the list view page without creating the incident. You should be able to see the incident draft there with the empty fields.
 
-    <!-- border; size:540px --> ![List view page with draft incident]((./draft-incident-list-view-page.png))
+    <!-- border; size:540px --> ![List view page with draft incident](./draft-incident-list-view-page.png)
 
 5. Try to access it again to continue the creation from where you stopped.
 
-    <!-- border; size:540px --> ![Draft incident, continue editing ]((./draft-incident-continue.png))
+    <!-- border; size:540px --> ![Draft incident, continue editing ](./draft-incident-continue.png)
 
