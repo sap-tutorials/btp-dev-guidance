@@ -78,17 +78,13 @@ You have added the basic test cases in your application. See [Add Test Cases](ad
     >
     > The output of this command looks like this:
     >
-    > ```js
+    > ```bash
     > {
-    >   db: {
-    >     impl: '@sap/cds/libx/_runtime/hana/Service.js',
-    >     kind: 'hana',
-    >     'deploy-format': 'hdbtable'
-    >   },
-    >   auth: { strategy: 'JWT', kind: 'jwt-auth', vcap: { label: 'xsuaa' } },
-    >   approuter: { kind: 'cloud-foundry' }
+    >   middlewares: true,
+    >   auth: { kind: 'jwt', vcap: { label: 'xsuaa' } },
+    >   db: { impl: '@sap/cds/libx/_runtime/hana/Service.js', kind: 'hana' }
     > }
-    > ```
+    >```
 
 2. Verify that your application still works locally. If you closed it, choose the **Preview Application** option in the **Application Info - incidents** tab and select the **watch-incidents** npm script.
 
