@@ -148,6 +148,10 @@ This creates a Cloud Foundry (CF) Org in your subaccount. There’s always one C
 
 13. Choose **Save**.
 
+      You've assigned the **SAP HANA Cloud Administrator** role collection to your user.
+
+> You might need to log out and log back in to make sure your new role collection is taken into account.
+
 ### Create an SAP HANA Cloud service instance
 
 SAP HANA Cloud is used as a persistence layer.

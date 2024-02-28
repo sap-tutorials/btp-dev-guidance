@@ -134,6 +134,10 @@ This enables your subaccount to use the Kyma runtime.
 
 13. Choose **Save**.
 
+      You've assigned the **SAP HANA Cloud Administrator** role collection to your user.
+
+> You might need to log out and log back in to make sure your new role collection is taken into account.
+
 ### Create an SAP HANA Cloud service instance
 
 SAP HANA Cloud is used as a persistence layer.
