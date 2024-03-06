@@ -105,7 +105,8 @@ You have the SAP Business Application Studio configured. See [Set Up SAP Busines
     /**
     * Customers entitled to create support Incidents.
     */
-    entity Customers : cuid, managed { 
+    entity Customers : managed { 
+    key ID        : String;
     firstName     : String;
     lastName      : String;
     email         : EMailAddress;
@@ -228,19 +229,19 @@ Replace the respective generated CSV templates with the following content:
 
     ```csv
     ID,firstName,lastName,email,phone
-    8fc8231b-f6d7-43d1-a7e1-725c8e988d18,Daniel,Watts,daniel.watts@demo.com,+44-555-123
-    feb04eac-f84f-4232-bd4f-80a178f24a17,Stormy,Weathers,stormy.weathers@demo.com,+359-2-0202-0202
-    2b87f6ca-28a2-41d6-8c69-ccf16aa6389d,Sunny,Sunshine,sunny.sunshine@demo.com,+01-555-789
+    1004155,Daniel,Watts,daniel.watts@demo.com,+44-555-123
+    1004161,Stormy,Weathers,stormy.weathers@demo.com,+359-2-0202-0202
+    1004100,Sunny,Sunshine,sunny.sunshine@demo.com,+01-555-789
     ```
 
 - `db/data/sap.capire.incidents-Incidents.csv`:
 
     ```csv
     ID,customer_ID,title,urgency_code,status_code
-    3b23bb4b-4ac7-4a24-ac02-aa10cabd842c,8fc8231b-f6d7-43d1-a7e1-725c8e988d18,Inverter not functional,H,C
-    3a4ede72-244a-4f5f-8efa-b17e032d01ee,feb04eac-f84f-4232-bd4f-80a178f24a17,No current on a sunny day,H,N
-    3ccf474c-3881-44b7-99fb-59a2a4668418,feb04eac-f84f-4232-bd4f-80a178f24a17,Strange noise when switching off Inverter,M,N
-    3583f982-d7df-4aad-ab26-301d4a157cd7,2b87f6ca-28a2-41d6-8c69-ccf16aa6389d,Solar panel broken,H,I
+    3b23bb4b-4ac7-4a24-ac02-aa10cabd842c,1004155,Inverter not functional,H,C
+    3a4ede72-244a-4f5f-8efa-b17e032d01ee,1004161,No current on a sunny day,H,N
+    3ccf474c-3881-44b7-99fb-59a2a4668418,1004161,Strange noise when switching off Inverter,M,N
+    3583f982-d7df-4aad-ab26-301d4a157cd7,1004100,Solar panel broken,H,I
     ```
 
 - `db/data/sap.capire.incidents-Incidents.conversation.csv`:
