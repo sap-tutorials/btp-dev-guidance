@@ -331,7 +331,6 @@ Elements can be specified with a calculation expression, in which you can refer 
 3. Click the `Customers` endpoint from the `index.html` page and you'll see the new field `name` for each entry. The value for this field for each of the entries is calculated by taking into account the values of the fields `firstName` and `lastName`.
 
 
-
 <!-- border; size:540px --> ![Calculated element name](./calculated-element-name.png)
 
     
