@@ -4,8 +4,8 @@ description: SAP Business Application Studio is a development environment availa
 parser: v2
 auto_validation: true
 time: 20
-tags: [ tutorial>beginner, programming-tool>sapui5, software-product>sap-fiori, software-product>sap-business-technology-platform, software-product-function>sap-cloud-application-programming-model, topic>mobile, software-product>sap-mobile-cards, software-product>mobile-development-kit-client]
-primary_tag: software-product>sap-business-application-studio
+tags: [ tutorial>beginner, programming-tool>sapui5, sap-conversational-ai>sap-business-technology-platform, sap-conversational-ai>sap-fiori, software-product-function>sap-cloud-application-programming-model]
+primary_tag: sap-conversational-ai>sap-business-application-studio
 author_name: Svetoslav Pandeliev
 author_profile: https://github.com/slavipande
 ---

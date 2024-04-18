@@ -4,7 +4,7 @@ description: Learn how to prepare the subaccount in SAP BTP for application depl
 parser: v2
 auto_validation: true
 time: 30
-tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform, software-product>sap-fiori]
+tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, sap-conversational-ai>sap-business-technology-platform, sap-conversational-ai>sap-fiori]
 primary_tag: software-product-function>sap-cloud-application-programming-model
 author_name: Svetoslav Pandeliev
 author_profile: https://github.com/slavipande
@@ -214,10 +214,10 @@ The creation of the database instance can take some minutes to complete.
 
 4. Choose **Cloud Foundry** from the dropdown under **Environment Type**.
 
-5. Under **Environment Instance ID**, paste the GUID of your Cloud Foudry organization. Here's how to find it:
+5. Under **Environment Instance ID**, paste the GUID of your Cloud Foundry organization. Here's how to find it:
 
-      - Open a new terminal in SAP Business Application Studio and login with `cf login`.
-      - Run the command `cf org <Your-Cloud-Foundry-Org> --guid`. You'll get the GUID of your Cloud Foudry organization in response.
+      - Open a new terminal in SAP Business Application Studio and log in with `cf login`.
+      - Run the command `cf org <Your-Cloud-Foundry-Org> --guid`. You'll get the GUID of your Cloud Foundry organization in response.
 
       <!-- border; size:540px --> ![Add environment instance ID](./cf-env-instance-id.png)
     
@@ -229,6 +229,6 @@ The creation of the database instance can take some minutes to complete.
 
       You have mapped your SAP HANA Cloud service instance to your Cloud Foundry organization.
 
-    > For more information, see [Map an SAP HANA Database to another Environment Context](https://help.sap.com/docs/HANA_CLOUD/9ae9104a46f74a6583ce5182e7fb20cb/1683421d02474567a54a81615e8e2c48.html) to add a new Cloud foundry or Kyma mapping.
+    > For more information, see [Map an SAP HANA Database to another Environment Context](https://help.sap.com/docs/HANA_CLOUD/9ae9104a46f74a6583ce5182e7fb20cb/1683421d02474567a54a81615e8e2c48.html) to add a new Cloud foundry mapping.
 
 <!-- New Set Up HANA Cloud end -->

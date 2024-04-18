@@ -5,7 +5,7 @@ keywords: cap
 parser: v2
 auto_validation: true
 time: 10
-tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform, software-product>sap-fiori]
+tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, sap-conversational-ai>sap-business-technology-platform, sap-conversational-ai>sap-fiori]
 primary_tag: software-product-function>sap-cloud-application-programming-model
 author_name: Svetoslav Pandeliev
 author_profile: https://github.com/slavipande
