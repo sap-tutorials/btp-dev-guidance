@@ -574,7 +574,7 @@ CAP provides a configurable Helm chart for Node.js applications.
 
 
 > - `backend` is the name of the destination
-> - `service` points to the deployment name whose URL will be used for this destination.
+> - `service` points to the deployment name whose URL will be used for this destination
 
 ### Deploy CAP Helm chart
 
