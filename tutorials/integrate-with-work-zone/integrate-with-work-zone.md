@@ -151,5 +151,3 @@ You need to assign your user to the `Launchpad_Admin` role collection, so you do
 ### Summary
 
 Congratulations! You now have finished the development of your application and you have integrated SAP Build Work Zone, standard edition service, to have one central entry point to show all of your SAP BTP applications.
-
-**Note Sveto: Need to review all steps, add steps if missing, update screenshots, and edit all notes and summaries for consistency**.

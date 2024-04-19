@@ -50,15 +50,15 @@ Follow the steps below to add the entitlements.
 
 1. Log in to SAP BTP cockpit.
 
-2. Navigate to your subaccount and choose **Entitlements** &rarr; **Configure Entitlements**.
+2. Navigate to your subaccount and choose **Entitlements** &rarr; **Edit**.
 
-      <!-- border; size:540px --> ![Configure entitlements](./entitlements0.png)
+      <!-- border; size:540px --> ![Edit entitlements](./entitlements0.png)
 
 3. Choose **Add Service Plans**.
 
       <!-- border; size:540px --> ![Add service plans](./entitlements1.png)
 
-2. Search for **Cloud Foundry Runtime** and select the **free (Environment)** plan.
+2. Search for **Cloud Foundry Environment** and select the **free (Environment)** plan.
 
       <!-- border; size:540px --> ![Add Cloud Foundry](./entitlements2.png)
 
@@ -66,7 +66,7 @@ Follow the steps below to add the entitlements.
 
       <!-- border; size:540px --> ![Add Work Zone](./entitlements3.png)
 
-3. Search for **SAP HANA Cloud** and select the **tools (Application)** service plan and **hana-free** service plan.
+3. Search for **SAP HANA Cloud** and select the **tools (Application)** service plan and the **hana-free** service plan.
 
       <!-- border; size:540px --> ![Add HANA](./entitlements4.png)
 
@@ -74,7 +74,7 @@ Follow the steps below to add the entitlements.
 
       <!-- border; size:540px --> ![Add HANA HDI](./entitlement5.png)
 
-5. Search for **SAP Continuous Integration & Delivery**, select the **free (Application)** plan, and choose **Add 6 Service Plans**.
+5. Search for **Continuous Integration & Delivery**, select the **free (Application)** plan, and choose **Add 6 Service Plans**.
 
       <!-- border; size:540px --> ![Add CI/CD](./entitlement6.png)
 
@@ -191,6 +191,7 @@ Follow these steps to create an SAP HANA Cloud service instance in the SAP BTP c
 The creation of the database instance can take some minutes to complete.
 
 > Your SAP HANA Cloud service instance will be automatically stopped overnight, according to the server region time zone. That means you need to restart your instance every day before you start working with it.
+>
 > You can either use SAP BTP cockpit or the terminal in the SAP Business Application Studio to restart the stopped instance:
 >
 > ```bash
