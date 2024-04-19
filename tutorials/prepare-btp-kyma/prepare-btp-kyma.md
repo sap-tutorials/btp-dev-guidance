@@ -47,7 +47,7 @@ Follow the steps below to add the entitlements.
 
 1. Log in to SAP BTP cockpit.
 
-2. Navigate to your subaccount and choose **Entitlements** &rarr; **Configure Entitlements**.
+2. Navigate to your subaccount and choose **Entitlements** &rarr; **Edit**.
 
       <!-- border; size:540px --> ![Configure entitlements](./entitlements0.png)
 
@@ -71,7 +71,7 @@ Follow the steps below to add the entitlements.
 
       <!-- border; size:540px --> ![Add HANA HDI](./entitlement5.png)
 
-5. Search for **SAP Continuous Integration & Delivery**, select the **free (Application)** plan, and choose **Add 6 Service Plans**.
+5. Search for **Continuous Integration & Delivery**, select the **free (Application)** plan, and choose **Add 6 Service Plans**.
 
       <!-- border; size:540px --> ![Add CI/CD](./entitlement6.png)
 
