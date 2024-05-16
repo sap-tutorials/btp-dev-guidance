@@ -5,7 +5,7 @@ keywords: cap
 parser: v2
 auto_validation: true
 time: 20
-tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, sap-conversational-ai>sap-business-technology-platform, sap-conversational-ai>sap-fiori]
+tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform, software-product>sap-fiori]
 primary_tag: software-product-function>sap-cloud-application-programming-model
 author_name: Svetoslav Pandeliev
 author_profile: https://github.com/slavipande
@@ -107,7 +107,7 @@ You have added the basic test cases in your application. See [Add Test Cases](ad
     >- Adds the SAP Authorization and Trust Management service service to the **package.json** file of the **INCIDENT-MANAGEMENT** project.
     >- Creates the SAP Authorization and Trust Management service security configuration (that is, the **xs-security.json** file) for the **INCIDENT-MANAGEMENT** project.
 
-2. Check if the following line has been added to the **package.json** file:
+2. Make sure that the following lines have been added to the **package.json** file:
     
     ```json[5-6, 14]
     {
@@ -129,6 +129,8 @@ You have added the basic test cases in your application. See [Add Test Cases](ad
       }
     }
     ```
+
+    > In case any of the lines is missing, go ahead and add it manually. 
 
 3. Check the content of the **xs-security.json** file.
 
@@ -162,7 +164,7 @@ You have added the basic test cases in your application. See [Add Test Cases](ad
     }
     ```
 
-You can learn more about authorization in CAP in [Authorization and Access Control](https://cap.cloud.sap/docs/guides/authorization).
+You can learn more about authorization in CAP in [CDS-based Authorization](https://cap.cloud.sap/docs/guides/security/authorization).
 
 ### Run a test build
 
