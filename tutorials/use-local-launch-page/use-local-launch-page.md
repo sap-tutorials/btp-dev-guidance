@@ -5,7 +5,7 @@ keywords: cap
 parser: v2
 auto_validation: true
 time: 10
-tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, sap-conversational-ai>sap-business-technology-platform, sap-conversational-ai>sap-fiori]
+tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform, software-product>sap-fiori]
 primary_tag: software-product-function>sap-cloud-application-programming-model
 author_name: Svetoslav Pandeliev
 author_profile: https://github.com/slavipande
@@ -47,6 +47,14 @@ In the current implementation, you can open the **Incident Management** applicat
             <script>
                 window['sap-ushell-config'] = {
                     defaultRenderer: 'fiori2',
+                    services: {
+                        NavTargetResolution: {
+                            config: {
+                                allowTestUrlComponentConfig: true,
+                                enableClientSideTargetResolution: true
+                            }
+                        }           
+                    },
                     applications: {
                         "incidents-app": {
                             title: 'Incident-Management',
@@ -99,7 +107,15 @@ Let's have a look at the **launchpage.html** file and the configuration inside. 
 	<script>
 		window["sap-ushell-config"] = {
 			defaultRenderer: "fiori2",
-			applications: {
+			services: {
+                NavTargetResolution: {
+                    config: {
+                        allowTestUrlComponentConfig: true,
+                        enableClientSideTargetResolution: true
+                    }
+                }    
+            },
+            applications: {
 				"incidents-app": {
 					title: "Incidents",
 					description: "Incidents",
