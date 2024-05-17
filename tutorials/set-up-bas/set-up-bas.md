@@ -32,11 +32,11 @@ author_profile: https://github.com/slavipande
   
 1. In the SAP BTP cockpit, choose **Entitlements** &rarr; **Entity Assignments**.
 
-2. In the **Select Entities** field, select the subaccount you have already created.
+2. In the **Subaccounts/Directories** field, select the subaccount you have already created.
 
-3. Choose **Configure Entitlements** and then choose **Add Service Plans**.
+3. Choose **Edit** and then choose **Add Service Plans**.
 
-4. In the **Entitlements** dialog, search for **SAP Business Application Studio** and select plan **free (Application)**.
+4. In the **Add Service Plans** dialog, search for **SAP Business Application Studio** and select plan **free (Application)**.
 
     > The plan **free (Application)** has the following restrictions:
     >
@@ -45,9 +45,12 @@ author_profile: https://github.com/slavipande
     >- When working in the **Full-Stack Application Using Productivity Tools** dev space, a user can deploy a maximum of 2 times.
     >- The maximum size limit of a dev space is 4 GB. 
 
-5. Choose **Add 1 Service Plan** and save your changes.
+5. Choose **Add 1 Service Plan**.
 
     <!-- border; size:540px --> ![Screenshot showing the SAP BTP Cockpit logged in, with the entitlements entry highlighted on the left sidebar indicating it's selected, the "Add Service Plans" highlighted in the entitlements section on the right indicating it's clicked, a popover is visible in which you can find and add entitlements, the entry for "SAP Business Application Studio" is selected and the plan "free (Application) is checked finally the "Add 1 Service Plan" button is highlighted.](./bas-entitlement.png)
+
+6. Choose **Save**.
+
 
 ### Subscribe to the SAP Business Application Studio
 
