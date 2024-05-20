@@ -4,7 +4,7 @@ description: This guide is a step-by-step walkthrough to build a CAP Node.js app
 parser: v2
 auto_validation: true
 time: 30
-tags: [ tutorial>beginner, programming-tool>sapui5, sap-conversational-ai>sap-business-technology-platform, sap-conversational-ai>sap-fiori, software-product-function>sap-cloud-application-programming-model]
+tags: [ tutorial>beginner, programming-tool>sapui5, software-product>sap-business-technology-platform, software-product>sap-fiori, software-product-function>sap-cloud-application-programming-model]
 primary_tag: software-product-function>sap-cloud-application-programming-model
 author_name: Svetoslav Pandeliev
 author_profile: https://github.com/slavipande
