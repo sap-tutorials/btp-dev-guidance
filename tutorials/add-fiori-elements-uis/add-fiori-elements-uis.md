@@ -346,6 +346,8 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
     <!-- border; size:540px --> ![Define Value Help Properties for Customer](./fiori44.png)
 
+    > If there are already some columns in the result list, then delete them and keep only the columns **name** and **email**.
+
 7. Navigate to **Sections**, drag the **General Information** and drop it in the **Overview** &rarr; **Subsections** node.
 
     <!-- border; size:540px --> ![Customer properties update](./fiori5.png)
