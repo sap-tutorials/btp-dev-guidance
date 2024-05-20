@@ -5,7 +5,7 @@ keywords: cap
 parser: v2
 auto_validation: true
 time: 30
-tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, sap-conversational-ai>sap-business-technology-platform, sap-conversational-ai>sap-fiori]
+tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform, software-product>sap-fiori]
 primary_tag: software-product-function>sap-cloud-application-programming-model
 author_name: Svetoslav Pandeliev
 author_profile: https://github.com/slavipande
@@ -333,9 +333,18 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
     <!-- border; size:540px --> ![Customer field update label](./fiori3.png)
 
-6. For the **Customer** field, select **customer/name** in the **Text** dropdown menu, select **Text Only** in the **Text Arrangement** dropdown menu, and then select the hyperlink **Edit properties for Value Help** under **Display Type**. A popup opens, switch off **Display as Dropdown** and choose **Apply**.
+6. For the **Customer** field, select **customer/name** in the **Text** dropdown menu, select **Text Only** in the **Text Arrangement** dropdown menu, and then select the hyperlink **Edit properties for Value Help** under **Display Type**. A popup opens. 
 
     <!-- border; size:540px --> ![Customer properties update](./fiori4.png)
+
+7. In the **Define Value Help Properties for Customer** popup:
+
+    - Select **None** in the **Value Description Property** dropdown. 
+    - Switch off **Display as Dropdown**.
+    - Under **Result List**, choose **Add Column** and add columns **name** and **email**.
+    - Choose **Apply**.
+
+    <!-- border; size:540px --> ![Define Value Help Properties for Customer](./fiori44.png)
 
 7. Navigate to **Sections**, drag the **General Information** and drop it in the **Overview** &rarr; **Subsections** node.
 
