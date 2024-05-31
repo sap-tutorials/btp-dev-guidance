@@ -109,7 +109,7 @@ You have added the basic test cases in your application. See [Add Test Cases](ad
 
 2. Make sure that the following lines have been added to the **package.json** file:
 
-    ```json[5, 14]
+    ```json[5, 13]
     {
       "name": "incident-management",
       "dependencies": {
