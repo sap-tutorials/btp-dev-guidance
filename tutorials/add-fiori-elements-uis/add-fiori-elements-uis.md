@@ -72,6 +72,8 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
     - In the **Main entity** dropdown menu, select **Incidents**.
 
     - Leave the **Navigation entity** value as **none**, and then select **Yes** to add table columns automatically.
+
+    - In the **Table Type** dropdown menu, select **Responsive**.
     
     - Choose **Next**.
 

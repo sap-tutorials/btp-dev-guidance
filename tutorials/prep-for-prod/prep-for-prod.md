@@ -108,14 +108,13 @@ You have added the basic test cases in your application. See [Add Test Cases](ad
     >- Creates the SAP Authorization and Trust Management service security configuration (that is, the **xs-security.json** file) for the **INCIDENT-MANAGEMENT** project.
 
 2. Make sure that the following lines have been added to the **package.json** file:
-    
-    ```json[5-6, 14]
+
+    ```json[5, 14]
     {
       "name": "incident-management",
       "dependencies": {
           ...
-          "@sap/xssec": "^x",
-          "passport": "^x"
+          "@sap/xssec": "^x"
       },
       ...
       "cds": {
