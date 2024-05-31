@@ -250,36 +250,10 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 >- Make sure you're logged in to your container registry.
 >
 >- If you're using any device with a non-x86 processor (e.g. MacBook M1/M2) you need to instruct Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable using the command `export DOCKER_DEFAULT_PLATFORM=linux/amd64`. Check [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables) for more info.
-
-#### Remove unnecesary dependencies and scripts
-
-1. Open the **package.json** file in your project root folder (that is, the **incident-management** folder) and delete the following lines from it:
-
-    ```json[8, 13-14]
-    {
-        "name": "incident-management",
-        ...
-        "dependencies": {
-            ...
-        },
-        "devDependencies": {
-            "@cap-js/sqlite": "^1",
-            ...
-        },
-        "scripts": {
-            ...
-            "build": "rimraf resources mta_archives && mbt build --mtar archive",
-            "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
-        },
-        ...
-    }
-    ```
-
-    This ensures you won't get any errors due to mixing different types of databases and missing npm modules later on when building the images.
-
-2. In VS Code, choose **Terminal** &rarr; **New Terminal** and run `npm install` to update the **package-lock.json** file of your project.
  
 #### Build the CAP Node.js and the database image
+
+1. In VS Code, choose **Terminal** &rarr; **New Terminal** and run `npm install` to install required dependencies and update the **package-lock.json** file of your project.
 
 1. Create the productive CAP build for your application: 
 
@@ -630,7 +604,8 @@ CAP provides a configurable Helm chart for Node.js applications.
     ```
 
 
-> `backend` is the name of the destination. `service` points to the deployment name whose URL will be used for this destination.
+> - `backend` is the name of the destination
+> - `service` points to the deployment name whose URL will be used for this destination
 
 ### Deploy CAP Helm chart
 

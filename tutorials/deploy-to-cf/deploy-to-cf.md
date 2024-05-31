@@ -167,7 +167,7 @@ build-parameters:
 
 Navigation targets are required to navigate between applications, but also to start applications from SAP Build Work Zone, standard edition. In this step, you add the navigation target **incidents-display** to the application manifest file **manifest.json**.
 
-1. In the **Application Info - incidents** tab, choose the **Fiori Launchpad Config** tile.
+1. In the **Application Info - incidents** tab, choose the **Add Fiori Launchpad Config** tile.
 
     > To open the **Application Info - incidents** tab: 
     >
@@ -314,8 +314,6 @@ parameters:
   deploy_mode: html5-repo
   ...  
 ```
-
-> This snippet adds an HTML5 application **nsincidents**.
 
 ### Assemble with the Cloud MTA Build Tool
 

@@ -4,8 +4,8 @@ description: This guide is a step-by-step walkthrough to build a CAP Node.js app
 parser: v2
 auto_validation: true
 time: 30
-tags: [ tutorial>beginner, programming-tool>sapui5, software-product>sap-fiori, software-product>sap-business-technology-platform, software-product-function>sap-cloud-application-programming-model, topic>mobile, software-product>sap-mobile-cards, software-product>mobile-development-kit-client]
-primary_tag: software-product>sap-business-application-studio
+tags: [ tutorial>beginner, programming-tool>sapui5, software-product>sap-business-technology-platform, software-product>sap-fiori, software-product-function>sap-cloud-application-programming-model]
+primary_tag: software-product-function>sap-cloud-application-programming-model
 author_name: Svetoslav Pandeliev
 author_profile: https://github.com/slavipande
 ---
@@ -84,58 +84,58 @@ You have the SAP Business Application Studio configured. See [Set Up SAP Busines
 
     ```js
     using { User, cuid, managed, sap.common.CodeList } from '@sap/cds/common';
-    namespace sap.capire.incidents;
+    namespace sap.capire.incidents; 
 
     /**
-     * Incidents created by Customers.
+    * Incidents created by Customers.
     */
-    entity Incidents : cuid, managed {
-      customer     : Association to Customers;
-      title        : String  @title : 'Title';
-      urgency      : Association to Urgency;
-      status       : Association to Status; 
-      conversation  : Composition of many {
+    entity Incidents : cuid, managed {  
+    customer     : Association to Customers;
+    title        : String  @title : 'Title';
+    urgency        : Association to Urgency default 'M';
+    status         : Association to Status default 'N';
+    conversation  : Composition of many {
         key ID    : UUID;
         timestamp : type of managed:createdAt;
         author    : type of managed:createdBy;
         message   : String;
-        };
+    };
     }
 
     /**
-     * Customers entitled to create support Incidents.
+    * Customers entitled to create support Incidents.
     */
-    entity Customers : cuid, managed {
-      firstName     : String;
-      lastName      : String;
-      email         : EMailAddress;
-      phone         : PhoneNumber;
-      incidents     : Association to many Incidents on incidents.customer = $self;
+    entity Customers : managed { 
+    key ID        : String;
+    firstName     : String;
+    lastName      : String;
+    email         : EMailAddress;
+    phone         : PhoneNumber;
+    incidents     : Association to many Incidents on incidents.customer = $self;
     }
 
     entity Status : CodeList {
-      key code: String enum {
-          new = 'N';
-          assigned = 'A'; 
-          in_process = 'I'; 
-          on_hold = 'H'; 
-          resolved = 'R'; 
-          closed = 'C'; 
-      };
-      criticality : Integer;
+    key code: String enum {
+        new = 'N';
+        assigned = 'A'; 
+        in_process = 'I'; 
+        on_hold = 'H'; 
+        resolved = 'R'; 
+        closed = 'C'; 
+    };
+    criticality : Integer;
     }
 
     entity Urgency : CodeList {
-      key code: String enum {
-          high = 'H';
-          medium = 'M'; 
-          low = 'L'; 
-      };
+    key code: String enum {
+        high = 'H';
+        medium = 'M'; 
+        low = 'L'; 
+    };
     }
 
     type EMailAddress : String;
     type PhoneNumber : String;
-    type City : String;
     ```
 
 As soon as you save your file, the CAP server that is still running reacts immediately with a new output:
@@ -229,19 +229,19 @@ Replace the respective generated CSV templates with the following content:
 
     ```csv
     ID,firstName,lastName,email,phone
-    8fc8231b-f6d7-43d1-a7e1-725c8e988d18,Daniel,Watts,daniel.watts@demo.com,+44-555-123
-    feb04eac-f84f-4232-bd4f-80a178f24a17,Stormy,Weathers,stormy.weathers@demo.com,+359-2-0202-0202
-    2b87f6ca-28a2-41d6-8c69-ccf16aa6389d,Sunny,Sunshine,sunny.sunshine@demo.com,+01-555-789
+    1004155,Daniel,Watts,daniel.watts@demo.com,+44-555-123
+    1004161,Stormy,Weathers,stormy.weathers@demo.com,+359-2-0202-0202
+    1004100,Sunny,Sunshine,sunny.sunshine@demo.com,+01-555-789
     ```
 
 - `db/data/sap.capire.incidents-Incidents.csv`:
 
     ```csv
     ID,customer_ID,title,urgency_code,status_code
-    3b23bb4b-4ac7-4a24-ac02-aa10cabd842c,8fc8231b-f6d7-43d1-a7e1-725c8e988d18,Inverter not functional,H,C
-    3a4ede72-244a-4f5f-8efa-b17e032d01ee,feb04eac-f84f-4232-bd4f-80a178f24a17,No current on a sunny day,H,N
-    3ccf474c-3881-44b7-99fb-59a2a4668418,feb04eac-f84f-4232-bd4f-80a178f24a17,Strange noise when switching off Inverter,M,N
-    3583f982-d7df-4aad-ab26-301d4a157cd7,2b87f6ca-28a2-41d6-8c69-ccf16aa6389d,Solar panel broken,H,I
+    3b23bb4b-4ac7-4a24-ac02-aa10cabd842c,1004155,Inverter not functional,H,C
+    3a4ede72-244a-4f5f-8efa-b17e032d01ee,1004161,No current on a sunny day,H,N
+    3ccf474c-3881-44b7-99fb-59a2a4668418,1004161,Strange noise when switching off Inverter,M,N
+    3583f982-d7df-4aad-ab26-301d4a157cd7,1004100,Solar panel broken,H,I
     ```
 
 - `db/data/sap.capire.incidents-Incidents.conversation.csv`:
@@ -331,7 +331,7 @@ Elements can be specified with a calculation expression, in which you can refer 
 3. Click the `Customers` endpoint from the `index.html` page and you'll see the new field `name` for each entry. The value for this field for each of the entries is calculated by taking into account the values of the fields `firstName` and `lastName`.
 
 
-    <!-- border; size:540px --> ![Calculated element name](./calculated-element-name.png)
+<!-- border; size:540px --> ![Calculated element name](./calculated-element-name.png)
 
     
 

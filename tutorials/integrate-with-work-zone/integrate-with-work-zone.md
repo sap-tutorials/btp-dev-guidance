@@ -58,7 +58,9 @@ You need to assign your user to the `Launchpad_Admin` role collection, so you do
 
     <!-- border; size:540px --> ![Add role](./add_launchpad_admin_role.png)
 
-5. Open another browser or clear your browser's cache.
+    You've assigned the **Launchpad_Admin** role collection to your user.
+
+> You might need to log out and log back in to make sure your new role collection is taken into account.
 
 > See section [Initial Setup](https://help.sap.com/viewer/8c8e1958338140699bd4811b37b82ece/Cloud/en-US/fd79b232967545569d1ae4d8f691016b.html) in the SAP Build Work Zone, standard edition's documentation for more details.
 
@@ -149,5 +151,3 @@ You need to assign your user to the `Launchpad_Admin` role collection, so you do
 ### Summary
 
 Congratulations! You now have finished the development of your application and you have integrated SAP Build Work Zone, standard edition service, to have one central entry point to show all of your SAP BTP applications.
-
-**Note Sveto: Need to review all steps, add steps if missing, update screenshots, and edit all notes and summaries for consistency**.

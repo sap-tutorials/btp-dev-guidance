@@ -78,17 +78,13 @@ You have added the basic test cases in your application. See [Add Test Cases](ad
     >
     > The output of this command looks like this:
     >
-    > ```js
+    > ```bash
     > {
-    >   db: {
-    >     impl: '@sap/cds/libx/_runtime/hana/Service.js',
-    >     kind: 'hana',
-    >     'deploy-format': 'hdbtable'
-    >   },
-    >   auth: { strategy: 'JWT', kind: 'jwt-auth', vcap: { label: 'xsuaa' } },
-    >   approuter: { kind: 'cloud-foundry' }
+    >   middlewares: true,
+    >   auth: { kind: 'jwt', vcap: { label: 'xsuaa' } },
+    >   db: { impl: '@sap/cds/libx/_runtime/hana/Service.js', kind: 'hana' }
     > }
-    > ```
+    >```
 
 2. Verify that your application still works locally. If you closed it, choose the **Preview Application** option in the **Application Info - incidents** tab and select the **watch-incidents** npm script.
 
@@ -111,7 +107,7 @@ You have added the basic test cases in your application. See [Add Test Cases](ad
     >- Adds the SAP Authorization and Trust Management service service to the **package.json** file of the **INCIDENT-MANAGEMENT** project.
     >- Creates the SAP Authorization and Trust Management service security configuration (that is, the **xs-security.json** file) for the **INCIDENT-MANAGEMENT** project.
 
-2. Check if the following line has been added to the **package.json** file:
+2. Make sure that the following lines have been added to the **package.json** file:
     
     ```json[5-6, 14]
     {
@@ -134,9 +130,11 @@ You have added the basic test cases in your application. See [Add Test Cases](ad
     }
     ```
 
+    > In case any of the lines is missing, go ahead and add it manually. 
+
 3. Check the content of the **xs-security.json** file.
 
-    You have already added authorization with the **requires** annotations in the CDS service model (that is the **processor-service.cds** file in the **srv** folder). See [Add Authorization](../../add-authorization.html).
+    You have already added authorization with the **requires** annotations in the CDS service model (that is the **processor-service.cds** file in the **srv** folder). See [Add Authorization](add-authorization).
 
     ```js
     annotate ProcessorService with @(requires: ['support']);
@@ -166,7 +164,7 @@ You have added the basic test cases in your application. See [Add Test Cases](ad
     }
     ```
 
-You can learn more about authorization in CAP in [Authorization and Access Control](https://cap.cloud.sap/docs/guides/authorization).
+You can learn more about authorization in CAP in [CDS-based Authorization](https://cap.cloud.sap/docs/guides/security/authorization).
 
 ### Run a test build
 

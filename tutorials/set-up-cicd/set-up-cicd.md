@@ -114,7 +114,11 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 
 13. Choose **Save**.
 
-    > See [Initial Setup](https://help.sap.com/docs/CONTINUOUS_DELIVERY/99c72101f7ee40d0b2deb4df72ba1ad3/719acaf61e4b4bf0a496483155c52570.html) for more details on how to enable the service.
+    You've assigned the **CICD Service Administrator** role collection to your user.
+
+> You might need to log out and log back in to make sure your new role collection is taken into account.
+    
+> See [Initial Setup](https://help.sap.com/docs/CONTINUOUS_DELIVERY/99c72101f7ee40d0b2deb4df72ba1ad3/719acaf61e4b4bf0a496483155c52570.html) for more details on how to enable the service.
 
 ### Access SAP Continuous Integration and Delivery Service
 

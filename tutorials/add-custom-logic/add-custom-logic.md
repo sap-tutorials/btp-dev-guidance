@@ -62,7 +62,7 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
           return req.reject(`Can't modify a closed incident`)
       }
     }
-    module.exports = ProcessorService
+    module.exports = { ProcessorService }
     ```
 
 3. Make sure the SAP Fiori application is running. If you closed it, choose the **Preview Application** option in the **Application Info - incidents** tab and select the **watch-incidents** npm script.

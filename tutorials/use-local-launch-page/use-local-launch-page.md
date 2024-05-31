@@ -22,7 +22,7 @@ You have added business logic to your application. See [Add Custom Logic](add-cu
 
 ### Overview
 
-You have already generated the **Incident Management** application and can start it in the browser from SAP Business Application Studio. However, you can also add a launch page for local testing. This page looks like a real site, but is just a local copy of the otherwise centrally managed SAP Build Work Zone, standard edition site and comes with a limited version of its functionality. There's no option to add or remove applications via configuration, user roles aren't taken into account, and end-user personalization is also not included. If you want these and other SAP Build Work Zone, standard edition functionalities included, you have to set them up for your project. Find out how to do this in [Integrate App with SAP Build Work Zone, Standard Edition](../../integrate-with-work-zone.html). You stick to the launch page for this tutorial though.
+You have already generated the **Incident Management** application and can start it in the browser from SAP Business Application Studio. However, you can also add a launch page for local testing. This page looks like a real site, but is just a local copy of the otherwise centrally managed SAP Build Work Zone, standard edition site and comes with a limited version of its functionality. There's no option to add or remove applications via configuration, user roles aren't taken into account, and end-user personalization is also not included. If you want these and other SAP Build Work Zone, standard edition functionalities included, you have to set them up for your project. Find out how to do this in [Integrate Your Application with SAP Build Work Zone, Standard Edition](integrate-with-work-zone). You stick to the launch page for this tutorial though.
 
 In the current implementation, you can open the **Incident Management** application via the `app/incidents/webapp/index.html` file and there is no launch page. If you now create a second application using the SAP Fiori application generator within your project, it will be generated in the same way, again with its own `index.html` file. Instead, you can use a launch page for all the applications. You can add a launch page by creating an HTML file that uses the built-in SAPUI5 shell in the **app** folder. 
 
@@ -47,6 +47,14 @@ In the current implementation, you can open the **Incident Management** applicat
             <script>
                 window['sap-ushell-config'] = {
                     defaultRenderer: 'fiori2',
+                    services: {
+                        NavTargetResolution: {
+                            config: {
+                                allowTestUrlComponentConfig: true,
+                                enableClientSideTargetResolution: true
+                            }
+                        }           
+                    },
                     applications: {
                         "incidents-app": {
                             title: 'Incident-Management',
@@ -95,11 +103,19 @@ In the current implementation, you can open the **Incident Management** applicat
 
 Let's have a look at the **launchpage.html** file and the configuration inside. In the first script you will see:
 
-```html[5-7, 10]
+```html[13-15, 18]
 	<script>
 		window["sap-ushell-config"] = {
 			defaultRenderer: "fiori2",
-			applications: {
+			services: {
+                NavTargetResolution: {
+                    config: {
+                        allowTestUrlComponentConfig: true,
+                        enableClientSideTargetResolution: true
+                    }
+                }    
+            },
+            applications: {
 				"incidents-app": {
 					title: "Incidents",
 					description: "Incidents",

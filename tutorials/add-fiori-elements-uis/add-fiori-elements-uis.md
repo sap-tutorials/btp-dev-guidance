@@ -1,5 +1,5 @@
 ---
-title: Add SAP Fiori Elements UI
+title: Add SAP Fiori Elements UIs
 description: This tutorial shows you how to create an SAP Fiori elements application on top of your previously created CAP application.
 keywords: cap 
 parser: v2
@@ -49,7 +49,7 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
 
 4. In the **Template Selection** step:
 
-    - In the **Template Type** dropdown menu, select **SAP Fiori**. Then, choose the **List Report Page** template tile.
+    - Choose the **List Report Page** template tile.
 
     - Choose **Next**.
 
@@ -187,7 +187,7 @@ The filter labels are text strings. It's a good idea to update them so they are 
 
 #### Edit columns
 
-10. Expand the **Columns** section under **Table** and delete the columns **urgency_code** and **status_code**. 
+10. Expand the **Columns** section under **Table** and delete the columns **customer_ID**, **urgency_code** and **status_code**. 
 
     <!-- border; size:540px --> ![Delete Columns](./delete-columns.png)
 
@@ -314,41 +314,39 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
 #### Configure fields
 
-1. Navigate to **Sections** &rarr; **General Information** &rarr; **Form** &rarr; **Fields** and delete the **urgency_code** and **status_code** fields.
-
-    <!-- border; size:540px --> ![Delete Fields](./obj60.png)
-
-2. Choose **Sections** &rarr; **General Information** and choose the **Globe** icon in the **Label** field for **General Information** to generate a translatable text key.  
+1. Choose **Sections** &rarr; **General Information** and choose the **Globe** icon in the **Label** field for **General Information** to generate a translatable text key.  
 
     <!-- border; size:540px --> ![General information label](./obj601.png)
 
-3. Choose **Sections** &rarr; **General Information** &rarr; **Form** &rarr; **Fields**, choose the **Plus** icon to add more fields, and then choose **Add Basic Fields**.
 
-    <!-- border; size:540px --> ![Add Basic Fields](./fiori1.png)
+2. Navigate to **Sections** &rarr; **General Information** &rarr; **Form** &rarr; **Fields** and delete the **urgency_code** and **status_code** fields.
 
-4. In the **Add Basic Fields** popup
+    <!-- border; size:540px --> ![Delete Fields](./obj60.png)
 
-    - From the dropdown menu in the **Fields** field, select **customer_ID**.
-    - Choose **Add**.
-
-    <!-- border; size:540px --> ![Add Basic Fields popup](./fiori2.png)
 
 5. For the **customer_ID** field:
 
+    - Move the field down just under the **Title** field.
     - In the **Label** field, change the value to **Customer**.
     - Press <kbd>Enter</kbd> to confirm the change.
     - Choose the **Globe** icon in the **Label** field to generate a translatable text key.
 
     <!-- border; size:540px --> ![Customer field update label](./fiori3.png)
 
-6. For the **Customer** field, select **customer/name** in the **Text** dropdown menu, select **Text Only** in the **Text Arrangement** dropdown menu, and then select the hyperlink **Edit properties for Value Help** under **Display Type**. A popup opens: 
-
-    - Switch off **Display as Dropdown**.
-    - Select **None** in the **Value Description Property** dropdown menu.
-    - Under **Result List**, choose **Add Column** and add the columns **name** and **email**.
-    - Choose **Apply**.
+6. For the **Customer** field, select **customer/name** in the **Text** dropdown menu, select **Text Only** in the **Text Arrangement** dropdown menu, and then select the hyperlink **Edit properties for Value Help** under **Display Type**. A popup opens. 
 
     <!-- border; size:540px --> ![Customer properties update](./fiori4.png)
+
+7. In the **Define Value Help Properties for Customer** popup:
+
+    - Select **None** in the **Value Description Property** dropdown. 
+    - Switch off **Display as Dropdown**.
+    - Under **Result List**, choose **Add Column** and add columns **name** and **email**.
+    - Choose **Apply**.
+
+    <!-- border; size:540px --> ![Define Value Help Properties for Customer](./fiori44.png)
+
+    > If there are already some columns in the result list, then delete them and keep only the columns **name** and **email**.
 
 7. Navigate to **Sections**, drag the **General Information** and drop it in the **Overview** &rarr; **Subsections** node.
 
@@ -467,13 +465,13 @@ Enabling a draft for an entity allows the users to edit the entities. To enable 
 
 3. Start creating a new incident but leave the **Customer**, **Status**, and **Urgency** fields empty.
 
-    <!-- border; size:540px --> ![Draft incident with empty fields]((./draft-incident-empty.png))
+    <!-- border; size:540px --> ![Draft incident with empty fields](./draft-incident-empty.png)
 
 4. Go back to the list view page without creating the incident. You should be able to see the incident draft there with the empty fields.
 
-    <!-- border; size:540px --> ![List view page with draft incident]((./draft-incident-list-view-page.png))
+    <!-- border; size:540px --> ![List view page with draft incident](./draft-incident-list-view-page.png)
 
 5. Try to access it again to continue the creation from where you stopped.
 
-    <!-- border; size:540px --> ![Draft incident, continue editing ]((./draft-incident-continue.png))
+    <!-- border; size:540px --> ![Draft incident, continue editing ](./draft-incident-continue.png)
 

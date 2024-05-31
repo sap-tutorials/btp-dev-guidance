@@ -66,3 +66,6 @@ author_profile: https://github.com/slavipande
 
       <!-- border; size:540px --> ![role collection](./rolecollection11.png)
 
+      You have assigned the **Incident Management Support** role collection to your user.
+
+> You might need to log out and log back in to make sure your new role collection is taken into account.

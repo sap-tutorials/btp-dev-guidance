@@ -4,7 +4,7 @@ description: Learn how to set up the SAP BTP, Kyma runtime for deploying CAP app
 parser: v2
 auto_validation: true
 time: 30
-tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform, software-product>sap-btp\\, kyma-runtime, software-product>sap-fiori]
+tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform, software-product>sap-fiori, software-product>sap-btp--kyma-runtime]
 primary_tag: software-product-function>sap-cloud-application-programming-model
 author_name: Svetoslav Pandeliev
 author_profile: https://github.com/slavipande
@@ -47,7 +47,7 @@ Follow the steps below to add the entitlements.
 
 1. Log in to SAP BTP cockpit.
 
-2. Navigate to your subaccount and choose **Entitlements** &rarr; **Configure Entitlements**.
+2. Navigate to your subaccount and choose **Entitlements** &rarr; **Edit**.
 
       <!-- border; size:540px --> ![Configure entitlements](./entitlements0.png)
 
@@ -71,7 +71,7 @@ Follow the steps below to add the entitlements.
 
       <!-- border; size:540px --> ![Add HANA HDI](./entitlement5.png)
 
-5. Search for **SAP Continuous Integration & Delivery**, select the **free (Application)** plan, and choose **Add 6 Service Plans**.
+5. Search for **Continuous Integration & Delivery**, select the **free (Application)** plan, and choose **Add 6 Service Plans**.
 
       <!-- border; size:540px --> ![Add CI/CD](./entitlement6.png)
 
@@ -133,6 +133,10 @@ This enables your subaccount to use the Kyma runtime.
     > Keep the setting `Default Identity Provider` unless you have a custom identity provider configured.
 
 13. Choose **Save**.
+
+      You've assigned the **SAP HANA Cloud Administrator** role collection to your user.
+
+> You might need to log out and log back in to make sure your new role collection is taken into account.
 
 ### Create an SAP HANA Cloud service instance
 
