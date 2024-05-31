@@ -507,8 +507,39 @@ CAP provides a configurable Helm chart for Node.js applications.
     cds add html5-repo
     ```
 
+    The result of the **package.json** file looks like this:
+
+    ```json
+    {
+        "name": "incidents",
+        "version": "0.0.1",
+        "description": "A Fiori application.",
+        "keywords": [
+            "ui5",
+            "openui5",
+            "sapui5"
+        ],
+        "main": "webapp/index.html",
+        "scripts": {
+            "start": "node node_modules/@sap/html5-app-deployer/index.js",
+            "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf",
+            "build": "ui5 build preload --clean-dest --include-task=generateCachebusterInfo"
+        },
+        "dependencies": { 
+            "@sap/html5-app-deployer": "5.0.0" 
+          },
+        "devDependencies": { }
+    }
+
+    ```
+
     For more information about Helm and CAP, see [About CAP Helm chart](https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma?impl-variant=node#about-cap-helm).
 
+3. Open the **package.json** file and delete the following line:
+
+    ```json
+        "build": "ui5 build preload --clean-dest --include-task=generateCachebusterInfo"
+    ```
 
 1. Add your container image settings to your **chart/values.yaml** file:
 
