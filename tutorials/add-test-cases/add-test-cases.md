@@ -32,7 +32,7 @@ You have configured the access to your application. See [Add Authorization](add-
 3. To add the required dependencies, run the following command:
 
     ```bash
-    npm add -D axios chai chai-as-promised chai-subset jest
+    npm add -D axios chai@4 chai-as-promised chai-subset jest
     ```
 
 ### Add tests
