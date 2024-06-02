@@ -36,12 +36,11 @@ This guidance covers a variety of topics starting from basic onboarding tasks to
 
 ### Benefit from a sample application
 
-There is a sample application called Incident Management that you can test and play with. Go through the following tutorials based on the Incident Management application step by step and explore the source code and the configuration tasks.
+There is a sample application called Incident Management that you can test and play with.
 
-<!--
-- Go to the Incident Management application GitHub repository directly and deploy the application without going through the application development steps. See [Incident Management](https://github.com/cap-js/incidents-app).
+- Go through the following tutorials based on the Incident Management application step by step and explore the source code and the configuration tasks.
 
--->
+- Go to the Incident Management application GitHub repository directly and deploy the application without going through the application development steps. See [Incident Management](https://github.com/cap-js/incidents-app/tree/beginner-tutorials).
 
 ### SAP Cloud Application Programming Model (CAP)
 
