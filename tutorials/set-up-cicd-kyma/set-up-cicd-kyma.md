@@ -127,7 +127,7 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
 
       <!-- border; size:540px --> ![Open Kyma console](./kyma-console.png)
 
-2. Choose **Namespaces** &rarr; **Create Namespace**.
+2. Choose **Namespaces** &rarr; **Create**.
 
     <!-- border; size:540px --> ![Create namespace](./create-namespace.png)
 
@@ -139,7 +139,7 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
 
     <!-- border; size:540px --> ![Open namespace](./open-namespace.png)
 
-5. Choose **Create Service Account**.
+5. Choose **Create**.
 
     <!-- border; size:540px --> ![Create service account](./create-service-account.png)
 
@@ -161,7 +161,7 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
 
     <!-- border; size:540px --> ![Cluster details](./cluster-details.png)
 
-10. Choose **Create Cluster Role Binding**.
+10. Choose **Create**.
 
     <!-- border; size:540px --> ![Create cluster role binding](./create-cluster-role-binding.png)
 
