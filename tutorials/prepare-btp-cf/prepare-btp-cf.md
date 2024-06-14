@@ -27,7 +27,8 @@ author_profile: https://github.com/slavipande
     - Mozilla Firefox
     - Google Chrome
     - Microsoft Edge
-- You have configured SAP HANA Cloud and SAP Authorization and Trust Management service in your project in SAP Business Application Studio. See [Prepare for Production](prep-for-prod).
+- You have completed the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) group of tutorials based on the Incident Management.
+Alternatively, you have gone to the Incident Management application GitHub repository directly and cloned the application without going through the application development steps. See [Incident Management](https://github.com/cap-js/incidents-app/tree/beginner-tutorials).
 
 <!-- Assign Entitlements start -->
 
