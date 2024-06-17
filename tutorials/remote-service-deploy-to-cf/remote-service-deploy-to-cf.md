@@ -1,6 +1,6 @@
 ---
 title: Deploy and Run the Incident Management Application in the SAP BTP, Cloud Foundry Runtime with SAP S/4HANA Cloud Backend
-description: This tutorial shows you how to prepare your application, deploy it as Multi-Target Application (MTA), and test it with SAP S/4HANA Cloud connectivity.
+description: This tutorial shows you how to prepare your application, deploy it as Multitarget Application (MTA), and test it with SAP S/4HANA Cloud connectivity.
 parser: v2
 auto_validation: true
 time: 45
