@@ -26,8 +26,9 @@ author_profile: https://github.com/slavipande
     - Mozilla Firefox
     - Google Chrome
     - Microsoft Edge
-- You have completed the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) group of tutorials based on the Incident Management.
-Alternatively, you have gone to the Incident Management application GitHub repository directly and cloned the application without going through the application development steps. See [Incident Management](https://github.com/cap-js/incidents-app/tree/beginner-tutorials).
+- You have set up the Incident Management sample application. You can choose from two alternative options:
+    - Follow the tutorials on the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) group of tutorials to develop the application from scratch. 
+    - Go to the Incident Management application GitHub repository directly and clone the application without going through the application development steps. See [Incident Management](https://github.com/cap-js/incidents-app/tree/beginner-tutorials).
 
 ### Configure the entitlements
 
