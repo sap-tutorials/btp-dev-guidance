@@ -1,0 +1,95 @@
+---
+title: Deploy and Run the Incident Management Application in the SAP BTP, Cloud Foundry Runtime with a Mock Server
+description: Learn how to run and deploy the Incident Management application in the SAP BTP, Cloud Foundry runtime with the mock server you have installed.
+parser: v2
+auto_validation: true
+time: 30
+tags: [ tutorial>intermediate, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform]
+primary_tag: software-product-function>sap-cloud-application-programming-model
+author_name: Svetoslav Pandeliev
+author_profile: https://github.com/slavipande
+---
+
+## You will learn
+
+- How to deploy the SAP Business Application Studio project of the Incident Management application in the SAP BTP, Cloud Foundry runtime using an MTA build file.
+
+## Prerequisites
+
+- You have tested the extended Incident Management sample application. See [Test the Extended Incident Management Application with the Business Partner API](remote-service-run-dev-test).
+- You have installed a mock server in your Cloud Foundry space in the SAP BTP, Cloud Foundry runtime. See [Install a Mock Server in the SAP BTP, Cloud Foundry Runtime](remote-service-set-up-mock)
+
+### Deploy the Incident Management application
+
+1. In SAP Business Application Studio, navigate to the Incident Management application folder and add the following snippet to the **package.json** file:
+
+    ```json[4-9]
+      "API_BUSINESS_PARTNER": {
+        "kind": "odata", 
+        "model": "srv/external/API_BUSINESS_PARTNER", 
+        "[production]": { 
+          "credentials": { 
+            "destination": "<destination_name>",
+            "path": "odata/v2/api-business-partner"
+          }
+        }
+      }
+    ```
+
+    > Replace **<destination_name>** with the name of the destination that you created at **Step 5: Create a destination to the mock server** of [Install a Mock Server in the SAP BTP, Cloud Foundry Runtime](remote-service-set-up-mock).
+
+2. In the **mta.yaml** file, look for the **incident-management-srv** module's **requires** section, and add the following line:
+
+    ```yaml[7]
+    - name: incident-management-srv
+      type: nodejs
+      path: gen/srv
+      requires:
+      - name: incident-management-auth
+      - name: incident-management-db
+      - name: incident-management-destination-service
+    ....
+    ```
+
+4. Log in to your subaccount in SAP BTP:
+
+    ```bash
+    cf api <API-ENDPOINT>
+    cf login
+    cf target -o <ORG> -s <SPACE>
+    ```
+
+    > You can find the API endpoint in the **Overview** section of your subaccount in the SAP BTP cockpit.
+
+5. Run the following commands to build and deploy your project to the SAP BTP, Cloud Foundry runtime:
+
+    ```bash
+    mbt build
+    cf deploy mta_archives/incident-management_1.0.0.mtar 
+    ```
+
+### Test the Incident Management application
+
+When creating new entries in the Incident Management application, you should be able to see all values from the mock server in the value help of the **Customer** field.
+
+> Before you continue with this step, don’t forget to perform the steps from the tutorials [Assign the User Roles](https://developers.sap.com/tutorials/user-role-assignment.html) and [Integrate Your Application with SAP Build Work Zone](https://developers.sap.com/tutorials/integrate-with-work-zone.html).
+
+1. Open your SAP Build Work Zone, standard edition site as described in [Integrate Your Application with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/integrate-with-work-zone.html).
+
+6. Choose the **Incident Management** tile.
+
+    <!-- border; size:540px --> ![Incident Management tile on the launchpage](./incident-management-tile.png)
+
+9. Choose **Create** to start creating a new incident.
+  
+    <!-- border; size:540px --> ![Create a new incident](./create-new-incident.png)
+
+11. Open the value help for the **Customer** field. 
+
+    <!-- border; size:540px --> ![Value help for Customer field](./value-help-customer.png)
+
+12. Verify that customer data is fetched from the mock server. 
+
+    <!-- border; size:540px --> ![Data in value help](./value-help-data.png)
+
+Congratulations! You have successfully developed, configured, and deployed the Incident Management application using an external service and a mock server.
