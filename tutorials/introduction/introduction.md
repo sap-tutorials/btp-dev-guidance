@@ -56,7 +56,7 @@ On top of open-source technologies, CAP adds:
 
 ### SAP Business Technology Platform (SAP BTP)
 
-SAP BTP is an open set of Software-, Platform-, and Infrastructure-as-a-Service system that delivers in-memory capabilities, core platform services, and unique microservices for building and extending intelligent, mobile, and browser-enabled applications. SAP BTP is multilingual, with support for most major languages and support for development, testing, and production systems both inside an organization and to the larger public.
+SAP BTP is an integrated offering comprised of four technology portfolios: database and data management, application development and integration, analytics, and intelligent technologies. SAP BTP is built on a multi-cloud foundation, which lets you choose from different infrastructures and runtimes. SAP BTP is multilingual, with support for most major languages and support for development, testing, and production systems both inside an organization and to the larger public.
 
 SAP BTP is also constantly evolving. SAP continuously updates the services it provides, the platforms that run the custom code, and the infrastructure. This allows developers to focus on the custom code, and not to worry about hardware maintenance or software upgrades. SAP BTP offers you the ability to turn data into business value, compose end-to-end business processes, and build and extend SAP solutions and applications quickly.
 
