@@ -286,9 +286,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
     > The pack CLI builds the image that contains the build result in the **gen/srv** folder and the required npm packages by using the [Cloud Native Buildpack for Node.JS](https://github.com/paketo-buildpacks/nodejs) provided by Paketo.
 
-3. Build the database image
-
-    Run the following command to build the database image:
+3. Build the database image:
 
     ```bash
     pack build <your-container-registry>/incident-management-hana-deployer:<image-version> \
@@ -296,6 +294,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
         --builder paketobuildpacks/builder-jammy-base \
         --publish
     ```
+    
     > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` should be a string. 
 
     > Looking for your docker server URL?
@@ -440,6 +439,12 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
             "service": "incidents"
         }
     }
+    ```
+
+5. In the VS Code terminal, navigate back to the root folder of your project:
+
+    ```bash
+    cd ../..
     ```
 
 5. Build the UI deployer image:
