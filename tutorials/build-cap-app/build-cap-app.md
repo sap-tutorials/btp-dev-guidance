@@ -234,16 +234,6 @@ Replace the respective generated CSV templates with the following content:
     1004100,Sunny,Sunshine,sunny.sunshine@demo.com,+01-555-789
     ```
 
-- `db/data/sap.capire.incidents-Incidents.csv`:
-
-    ```csv
-    ID,customer_ID,title,urgency_code,status_code
-    3b23bb4b-4ac7-4a24-ac02-aa10cabd842c,1004155,Inverter not functional,H,C
-    3a4ede72-244a-4f5f-8efa-b17e032d01ee,1004161,No current on a sunny day,H,N
-    3ccf474c-3881-44b7-99fb-59a2a4668418,1004161,Strange noise when switching off Inverter,M,N
-    3583f982-d7df-4aad-ab26-301d4a157cd7,1004100,Solar panel broken,H,I
-    ```
-
 - `db/data/sap.capire.incidents-Incidents.conversation.csv`:
 
     ```csv
@@ -252,6 +242,16 @@ Replace the respective generated CSV templates with the following content:
     2b23bb4b-4ac7-4a24-ac02-aa10cabd843c,3a4ede72-244a-4f5f-8efa-b17e032d01ee,1995-12-18T04:24:00Z,Emily Elizabeth,Can you please check if there are any loose connections?
     9583f982-d7df-4aad-ab26-301d4a157cd7,3583f982-d7df-4aad-ab26-301d4a157cd7,2022-09-04T12:00:00Z,Sunny Sunshine,Please check why the solar panel is broken.
     9583f982-d7df-4aad-ab26-301d4a158cd7,3ccf474c-3881-44b7-99fb-59a2a4668418,2022-09-04T13:00:00Z,Bradley Flowers,What exactly is wrong?
+    ```
+
+- `db/data/sap.capire.incidents-Incidents.csv`:
+
+    ```csv
+    ID,customer_ID,title,urgency_code,status_code
+    3b23bb4b-4ac7-4a24-ac02-aa10cabd842c,1004155,Inverter not functional,H,C
+    3a4ede72-244a-4f5f-8efa-b17e032d01ee,1004161,No current on a sunny day,H,N
+    3ccf474c-3881-44b7-99fb-59a2a4668418,1004161,Strange noise when switching off Inverter,M,N
+    3583f982-d7df-4aad-ab26-301d4a157cd7,1004100,Solar panel broken,H,I
     ```
 
 - `db/data/sap.capire.incidents-Status.csv`:
@@ -318,7 +318,7 @@ Elements can be specified with a calculation expression, in which you can refer 
 
 1. Navigate to the `srv` folder.
 
-2. Open the `processor-service.cds` file and add the following lines to it:
+2. Open the `processor-service.cds` file and add the following highlighted lines to it:
 
     ```js[4-6]
     service ProcessorService {
