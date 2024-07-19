@@ -54,6 +54,23 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 
 1. Make sure you've opened the **incident-management** folder in VS Code.
 
+2. Navigate to the **.gitignore** file in your project's root folder and replace the contents of the file with the following code snippet:
+
+    ```
+    node_modules/
+    package-lock.json
+    gen/
+
+    *.mtar
+    mta_archives/
+    mta.yaml
+    ```
+    
+    > If **.gitignore** doesn't exist, create it and paste the code snippet above in the newly-created file.
+
+    
+        
+
 1. In VS Code, navigate to **Source Control** on the left and choose **Initialize Repository**.
 
     <!-- border; size:540px --> ![Initialize repository](./initialize-repo.png)
@@ -225,7 +242,9 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
 
     >Here's how to get your container registry credentials in the required format:
     >
-    >1. Run `cat /tmp/config.json` in a terminal to print your container registry credentials. This is how the output should look like this:
+    >1. Run `docker --config /tmp login docker.io` in a terminal to login to your container registry.
+    >
+    >1. Run `cat /tmp/config.json` to print your container registry credentials. This is how the output should look like this:
     >
     >       ![Container registry credentials](./container-registry-credentials-print1.png)
     >
