@@ -15,7 +15,7 @@ author_profile: https://github.com/slavipande
 
 - How to subscribe to SAP Build Work Zone, standard edition
 - How to assign SAP Build Work Zone, standard edition role collection
-- How to integrate with SAP Build Work Zone, standard
+- How to integrate with SAP Build Work Zone, standard edition
 
 ## Prerequisites
 
