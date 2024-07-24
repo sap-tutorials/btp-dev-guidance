@@ -1,6 +1,6 @@
 ---
 title: Integrate Your Application with SAP Build Work Zone, Standard Edition
-description: This tutorial shows you how to subscribe to the SAP SAP Build Work Zone, standard edition.
+description: This tutorial shows you how to subscribe to the SAP Build Work Zone, standard edition.
 keywords: cap 
 parser: v2
 auto_validation: true
