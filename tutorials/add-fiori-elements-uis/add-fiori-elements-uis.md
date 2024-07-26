@@ -453,7 +453,7 @@ SAP Fiori supports editing business entities with draft states stored on the ser
 
 Enabling a draft for an entity allows the users to edit the entities. To enable a draft for an entity exposed by a service, follow these steps:
 
-1. Open the **srv/processor-service.cds** file.
+1. Open the **srv/services.cds** file.
 
 2. Annotate the file with `@odata.draft.enabled` like this:
 

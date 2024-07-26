@@ -108,7 +108,7 @@ You have added the basic test cases in your application. See [Add Test Cases](ad
     >- Creates the SAP Authorization and Trust Management service security configuration (that is, the **xs-security.json** file) for the **INCIDENT-MANAGEMENT** project.
 
 2. Make sure that the following lines have been added to the **package.json** file:
-
+    
     ```json[5, 13]
     {
       "name": "incident-management",
@@ -133,7 +133,7 @@ You have added the basic test cases in your application. See [Add Test Cases](ad
 
 3. Check the content of the **xs-security.json** file.
 
-    You have already added authorization with the **requires** annotations in the CDS service model (that is the **processor-service.cds** file in the **srv** folder). See [Add Authorization](add-authorization).
+    You have already added authorization with the **requires** annotations in the CDS service model (that is the **services.cds** file in the **srv** folder). See [Add Authorization](add-authorization).
 
     ```js
     annotate ProcessorService with @(requires: ['support']);
@@ -164,6 +164,76 @@ You have added the basic test cases in your application. See [Add Test Cases](ad
     ```
 
 You can learn more about authorization in CAP in [CDS-based Authorization](https://cap.cloud.sap/docs/guides/security/authorization).
+
+
+### Prepare HTML5 applications with deploy configurations
+
+1. Open **app/incidents/package.json** and add the following content:
+
+    ```json[11-31]
+    {
+      "name": "incidents",
+      "version": "0.0.1",
+      "description": "An SAP Fiori application.",
+      "keywords": [
+          "ui5",
+          "openui5",
+          "sapui5"
+      ],
+      "main": "webapp/index.html",
+      "scripts": {
+          "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf",
+          "build:cf": "ui5 build preload --clean-dest --config ui5-deploy.yaml --include-task=generateCachebusterInfo",
+          "build": "ui5 build preload --clean-dest --include-task=generateCachebusterInfo",
+          "start": "ui5 serve"
+      },
+      "devDependencies": {
+          "@sap/ui5-builder-webide-extension": "^1.1.8",
+          "ui5-task-zipper": "^0.5.0",
+          "mbt": "^1.2.18",
+          "@ui5/cli": "^3.11.0",
+          "ui5-middleware-simpleproxy": "^3.2.10"
+      },
+      "ui5": {
+          "dependencies": [
+              "@sap/ui5-builder-webide-extension",
+              "ui5-task-zipper",
+              "mbt"
+          ]
+      },
+      "private": true
+    }
+    ```
+
+2. Create a new file **ui5-deploy.yaml** in the folder **app/incidents**, with the following content to it:
+
+    ```yaml
+    # yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+    specVersion: '2.4'
+    metadata:
+      name: ns.incidents
+    type: application
+    resources:
+      configuration:
+        propertiesFileSourceEncoding: UTF-8
+    builder:
+      resources:
+        excludes:
+          - "/test/**"
+          - "/localService/**"
+      customTasks:
+      - name: webide-extension-task-updateManifestJson
+        afterTask: replaceVersion
+        configuration:
+          appFolder: webapp
+          destDir: dist
+      - name: ui5-task-zipper
+        afterTask: generateCachebusterInfo
+        configuration:
+          archiveName: nsincidents
+          additionalFiles:
+          - xs-app.json
+    ```
 
 ### Run a test build
 

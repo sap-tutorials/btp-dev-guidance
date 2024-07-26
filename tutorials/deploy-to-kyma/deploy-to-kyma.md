@@ -309,40 +309,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
 ####  Prepare the UI deployer image configuration and build the image
 
-1. Create a new folder **resources** under **app/incidents**.
-
-    The HTML5 applications deployer looks for the **resources** folder which has the static files of the HTML5 application.
-
-2. Move the **app/incidents/webapp** folder in the **resources** folder.
-
-2. Open **app/incidents/package.json** and replace the contents of the file with the following code:
-
-    ```json
-    {
-        "name": "incidents",
-        "version": "0.0.1",
-        "description": "A Fiori application.",
-        "keywords": [
-            "ui5",
-            "openui5",
-            "sapui5"
-        ],
-        "main": "webapp/index.html",
-        "scripts": {
-            "start": "node node_modules/@sap/html5-app-deployer/index.js",
-            "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf"
-        },
-        "dependencies": { 
-            "@sap/html5-app-deployer": "5.0.0" 
-          },
-        "devDependencies": { }
-    }
-
-    ```
-
-3. In the VS Code terminal, navigate to the **app/incidents** folder and run `npm install`.
-
-3. Create a new file **xs-app.json** in **app/incidents/resources/webapp/** and add the following code to it:
+3. Create a new file **xs-app.json** in **app/incidents/webapp/** and add the following code to it:
 
     ```json
     {
@@ -376,7 +343,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
     }
     ```
 
-4. Open **app/incidents/resources/webapp/manifest.json** and remove the leading `/` from the `uri` parameter.
+4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter.
 
     ```json[10]
     {
@@ -407,7 +374,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
     Check [Accessing Business Service UI](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL) for more information.
 
-5. Add navigation configuration and deploy configuration to the **app/incidents/resources/webapp/manifest.json** file:
+5. Add navigation configuration and deploy configuration to the **app/incidents/webapp/manifest.json** file:
 
     ```json[9-22,25-28]
     {
@@ -441,6 +408,43 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
     }
     ```
 
+1. Create a new folder **ui-resources** in your project's root folder.
+
+    The HTML5 applications deployer looks for the **ui-resources** folder which has the static files of the HTML5 application.
+
+2. Create a new file **package.json** inside the **ui-resources** folder and add the following code to the file:
+
+    ```json
+    {
+        "name": "incident-management",
+        "version": "0.0.1",
+        "description": "A Fiori application.",
+        "keywords": [
+            "ui5",
+            "openui5",
+            "sapui5"
+        ],
+        "scripts": {
+            "start": "node node_modules/@sap/html5-app-deployer/index.js",
+            "build:ui5": "npm run build:cf --prefix ../app/incidents --if-present",
+            "copyzips": "copyfiles -f ../app/*/dist/*.zip ./resources/",
+            "package": "run-s build:ui5 copyzips"
+        },
+        "dependencies": { 
+            "@sap/html5-app-deployer": "^6.2.0" 
+        },
+        "devDependencies": {
+            "copyfiles": "^2.4.1",
+            "npm-run-all": "^4.1.5"
+        }
+    }
+
+    ```
+
+3. In the VS Code terminal, navigate to the **ui-resources** folder and run `npm install && npm run package`.
+
+    This will build and copy the archive nsincidents.zip inside the **ui-resources/resources** folder.
+
 5. In the VS Code terminal, navigate back to the root folder of your project:
 
     ```bash
@@ -451,7 +455,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
     ```bash
     pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \
-        --path app/incidents \
+        --path ui-resources \
         --builder paketobuildpacks/builder-jammy-base \
         --publish
     ```

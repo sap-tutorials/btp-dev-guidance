@@ -109,9 +109,19 @@ You have the SAP Business Application Studio configured. See [Set Up SAP Busines
     key ID        : String;
     firstName     : String;
     lastName      : String;
+    name          : String = firstName ||' '|| lastName;
     email         : EMailAddress;
     phone         : PhoneNumber;
     incidents     : Association to many Incidents on incidents.customer = $self;
+    creditCardNo  : String(16) @assert.format: '^[1-9]\d{15}$';
+    addresses     : Composition of many Addresses on addresses.customer = $self;
+    }
+
+    entity Addresses : cuid, managed {
+    customer      : Association to Customers;
+    city          : String;
+    postCode      : String;
+    streetAddress : String;
     }
 
     entity Status : CodeList {
@@ -138,6 +148,23 @@ You have the SAP Business Application Studio configured. See [Set Up SAP Busines
     type PhoneNumber : String;
     ```
 
+> Did you notice that the `Customers` entity includes calculated elements? Check the `name` field. The value for this field is calculated by taking into account the values of the fields `firstName` and `lastName`. 
+> ```js[5]
+> entity Customers : managed { 
+>     key ID        : String;
+>     firstName     : String;
+>     lastName      : String;
+>     name          : String = firstName ||' '|| lastName;
+>     email         : EMailAddress;
+>     phone         : PhoneNumber;
+>     incidents     : Association to many Incidents on incidents.customer = $self;
+>     creditCardNo  : String(16) @assert.format: '^[1-9]\d{15}$';
+>     addresses     : Composition of many Addresses on addresses.customer = $self;
+> }
+> ```
+> Elements can be specified with a calculation expression, in which you can refer to other elements of the same entity. These calculated elements are used for convenience. For more information, see [Calculated Elements](https://cap.cloud.sap/docs/cds/cdl#calculated-elements).
+
+
 As soon as you save your file, the CAP server that is still running reacts immediately with a new output:
 
 ```bash
@@ -163,19 +190,30 @@ It's a good practice in CAP to create single-purpose services. Hence, let's defi
 
 To create the service definition:
 
-1. In the **srv** folder, create a new **processor-service.cds** file.
+1. In the **srv** folder, create a new **services.cds** file.
 
-2. Paste the following code snippet in the **processor-service.cds** file:
+2. Paste the following code snippet in the **services.cds** file:
 
     ```js
     using { sap.capire.incidents as my } from '../db/schema';
 
-    service ProcessorService { 
+    /**
+     * Service used by support personell, i.e. the incidents' 'processors'.
+     */
+    service ProcessorService @(requires: 'support') { 
         entity Incidents as projection on my.Incidents;
 
         @readonly
         entity Customers as projection on my.Customers;
     }
+
+    /**
+     * Service used by administrators to manage customers and incidents.
+     */
+    service AdminService @(requires: 'admin') {
+        entity Customers as projection on my.Customers;
+        entity Incidents as projection on my.Incidents;
+        }
     ```
   
 This time, the CAP server reacted with additional output:
@@ -312,26 +350,6 @@ Now that the database is filled with some initial data, you can send complex ODa
 > - [Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/jsonview/kmpfgkgaimakokfhgdahhiaaiidiphco)
 > - [Safari](https://apps.apple.com/us/app/json-peep-for-safari/id1458969831?mt=12)
 
-### Add calculated elements
-
-Elements can be specified with a calculation expression, in which you can refer to other elements of the same entity. These calculated elements are used for convenience. For more information, see [Calculated Elements](https://cap.cloud.sap/docs/cds/cdl#calculated-elements).
-
-1. Navigate to the `srv` folder.
-
-2. Open the `processor-service.cds` file and add the following highlighted lines to it:
-
-    ```js[4-6]
-    service ProcessorService {
-      ...
-    }
-    extend projection ProcessorService.Customers with {
-      firstName || ' ' || lastName as name: String
-    }
-    ```
-3. Click the `Customers` endpoint from the `index.html` page and you'll see the new field `name` for each entry. The value for this field for each of the entries is calculated by taking into account the values of the fields `firstName` and `lastName`.
-
-
-<!-- border; size:540px --> ![Calculated element name](./calculated-element-name.png)
 
     
 

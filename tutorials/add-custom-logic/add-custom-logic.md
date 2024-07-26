@@ -28,9 +28,9 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
 
     > Make sure the **IncidentManagement** dev space is in status **RUNNING**.
 
-2. Create a new **processor-service.js** file in the **srv** folder of the **INCIDENT-MANAGEMENT** application.
+2. Create a new **services.js** file in the **srv** folder of the **INCIDENT-MANAGEMENT** application.
 
-3. Add the following code (the actual business logic) to the **processor-service.js** file:
+3. Add the following code (the actual business logic) to the **services.js** file:
 
     ```js
     const cds = require('@sap/cds')
@@ -83,6 +83,6 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
 
 ### Understand the custom code
 
-Because your file is called **processor-service.js** and has the same name as your application definition file **processor-service.cds**, CAP automatically treats it as a handler file for the application defined in there. CAP exposes several [events](https://cap.cloud.sap/docs/node.js/events) and you can easily write handlers like the one mentioned above.
+Because your file is called **services.js** and has the same name as your application definition file **services.cds**, CAP automatically treats it as a handler file for the application defined in there. CAP exposes several [events](https://cap.cloud.sap/docs/node.js/events) and you can easily write handlers like the one mentioned above.
 
 In this case, the event is triggered after a **READ** was carried out for the **Incidents** entity. In your custom handler, you get all the data (in this case, all the incidents) that was read according to the query. You can loop over each of them and, if needed, adjust the data of the response. In this case, you change the value of the **urgency** property when the **title** contains the word **urgent**. The new values for **Urgency** are then part of the response to the READ request.
