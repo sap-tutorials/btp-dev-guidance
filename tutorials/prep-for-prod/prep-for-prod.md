@@ -205,7 +205,7 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
     }
     ```
 
-2. Create a new file **ui5-deploy.yaml** in the folder **app/incidents/**, with the following content to it:
+2. Create a new file **ui5-deploy.yaml** in the folder **app/incidents/** with the following content to it:
 
     ```yaml
     # yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
@@ -235,7 +235,7 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
           - xs-app.json
     ```
 
-3. In your terminal, navigate to the **app/incidents/** folder and run `npm install`.
+3. In the terminal, navigate to the **app/incidents/** folder and run `npm install`.
 
 ### Run a test build
 

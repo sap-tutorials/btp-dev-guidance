@@ -256,7 +256,13 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
  
 #### Build the CAP Node.js and the database image
 
-1. In VS Code, choose **Terminal** &rarr; **New Terminal** and run `npm install` to install required dependencies and update the **package-lock.json** file of your project.
+1. In VS Code, choose **Terminal** &rarr; **New Terminal** and run the following command:
+
+    ```bash
+    npm install
+    ```
+    
+    This will install required dependencies and update the **package-lock.json** file of your project.
 
 1. Create the productive CAP build for your application: 
 
@@ -444,14 +450,18 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
     ```
 
-3. In the VS Code terminal, navigate to the **ui-resources** folder and run `npm install && npm run package`.
+3. In the VS Code terminal, navigate to the **ui-resources** folder and run the following command:
+
+    ```bash
+    npm install && npm run package
+    ```
 
     This will build and copy the archive **nsincidents.zip** inside the **ui-resources/resources** folder.
 
 5. In the VS Code terminal, navigate back to the root folder of your project:
 
     ```bash
-    cd ../..
+    cd ..
     ```
 
 5. Build the UI deployer image:
