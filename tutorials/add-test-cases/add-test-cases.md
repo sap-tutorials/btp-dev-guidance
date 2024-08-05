@@ -239,7 +239,7 @@ You have configured the access to your application. See [Add Authorization](add-
           ✓ Should fail to activate draft trying to reopen the incident (21 ms)
 
         Test Suites: 1 passed, 1 total
-        Tests:       14 passed, 14 total
+        Tests:       15 passed, 15 total
         Snapshots:   0 total
         Time:        2.028 s, estimated 7 s
         Ran all test suites.

@@ -312,7 +312,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
 ####  Prepare the UI deployer image configuration and build the image
 
-3. Create a new file **xs-app.json** in **app/incidents/webapp/** and add the following code to it:
+3. Create a new file **xs-app.json** in **app/incidents/** and add the following code to it:
 
     ```json
     {
@@ -446,7 +446,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
 3. In the VS Code terminal, navigate to the **ui-resources** folder and run `npm install && npm run package`.
 
-    This will build and copy the archive nsincidents.zip inside the **ui-resources/resources** folder.
+    This will build and copy the archive **nsincidents.zip** inside the **ui-resources/resources** folder.
 
 5. In the VS Code terminal, navigate back to the root folder of your project:
 

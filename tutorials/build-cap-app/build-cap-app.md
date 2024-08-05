@@ -220,6 +220,7 @@ This time, the CAP server reacted with additional output:
 
 ```bash
 [cds] - serving ProcessorService { path: '/odata/v4/processor' }
+[cds] - serving AdminService { path: '/odata/v4/admin' }
 
 [cds] - server listening on { url: 'http://localhost:4004' }
 [cds] - [ terminate with ^C ]
@@ -245,12 +246,13 @@ Since we already have an SQLite in-memory database that was automatically create
 
     ```bash
     Adding feature 'data'...
-    Creating db/data/sap.capire.incidents-Incidents.csv
+    Creating db/data/sap.capire.incidents-Addresses.csv
     Creating db/data/sap.capire.incidents-Customers.csv
-    Creating db/data/sap.capire.incidents-Status.csv
-    Creating db/data/sap.capire.incidents-Urgency.csv
+    Creating db/data/sap.capire.incidents-Incidents.csv
     Creating db/data/sap.capire.incidents-Incidents.conversation.csv
+    Creating db/data/sap.capire.incidents-Status.csv
     Creating db/data/sap.capire.incidents-Status.texts.csv
+    Creating db/data/sap.capire.incidents-Urgency.csv
     Creating db/data/sap.capire.incidents-Urgency.texts.csv
 
     Successfully added features to your project.

@@ -40,7 +40,7 @@ You have added the basic test cases in your application. See [Add Test Cases](ad
     >
     > The **cds add hana** command adds to the **package.json** file the highlighted lines:
 
-    ```json[5, 11-15]
+    ```json[5, 11-13]
     {
         "name": "incident-management",
         "dependencies": {
@@ -205,7 +205,7 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
     }
     ```
 
-2. Create a new file **ui5-deploy.yaml** in the folder **app/incidents**, with the following content to it:
+2. Create a new file **ui5-deploy.yaml** in the folder **app/incidents/**, with the following content to it:
 
     ```yaml
     # yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
@@ -234,6 +234,8 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
           additionalFiles:
           - xs-app.json
     ```
+
+3. In your terminal, navigate to the **app/incidents/** folder and run `npm install`.
 
 ### Run a test build
 
