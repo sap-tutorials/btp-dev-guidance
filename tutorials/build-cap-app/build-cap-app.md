@@ -265,13 +265,22 @@ Since we already have an SQLite in-memory database that was automatically create
 
 Replace the respective generated CSV templates with the following content:
 
+- `db/data/sap.capire.incidents-Addresses.csv`:
+
+    ```csv
+    ID,customer_ID,city,postCode,streetAddress
+    17e00347-dc7e-4ca9-9c5d-06ccef69f064,1004155,Rome,00164,Piazza Adriana
+    d8e797d9-6507-4aaa-b43f-5d2301df5135,1004161,Munich,80809,Olympia Park
+    ff13d2fa-e00f-4ee5-951c-3303f490777b,1004100,Walldorf,69190,Dietmar-Hopp-Allee
+    ```
+
 - `db/data/sap.capire.incidents-Customers.csv`:
 
     ```csv
     ID,firstName,lastName,email,phone
-    1004155,Daniel,Watts,daniel.watts@demo.com,+44-555-123
-    1004161,Stormy,Weathers,stormy.weathers@demo.com,+359-2-0202-0202
-    1004100,Sunny,Sunshine,sunny.sunshine@demo.com,+01-555-789
+    1004155,Daniel,Watts,daniel.watts@demo.com,+39-555-123
+    1004161,Stormy,Weathers,stormy.weathers@demo.com,+49-020-022
+    1004100,Sunny,Sunshine,sunny.sunshine@demo.com,+49-555-789
     ```
 
 - `db/data/sap.capire.incidents-Incidents.conversation.csv`:
@@ -315,15 +324,16 @@ Replace the respective generated CSV templates with the following content:
     L;Low
     ```
 
-    > Notice that `cds add data` created seven files, while we're adding data to just five of them. We're leaving the files `sap.capire.incidents-Status.texts.csv` and `sap.capire.incidents-Urgency.texts.csv` empty because they hold translated text that will be filled once the application is localized and translations are created.
+    > Notice that `cds add data` created eight files, while we're adding data to just six of them. We're leaving the files `sap.capire.incidents-Status.texts.csv` and `sap.capire.incidents-Urgency.texts.csv` empty because they hold translated text that will be filled once the application is localized and translations are created.
 
 Upon detecting these new files, the CAP server prints a message stating that the content of the files has been filled into the database automatically:
 
 ```bash
 [cds] - connect to db > sqlite { database: ':memory:' }
-  > init from db\data\sap.capire.incidents-Incidents.conversation.csv 
+  > init from db\data\sap.capire.incidents-Addresses.csv 
   > init from db\data\sap.capire.incidents-Customers.csv 
   > init from db\data\sap.capire.incidents-Incidents.csv 
+  > init from db\data\sap.capire.incidents-Incidents.conversation.csv
   > init from db\data\sap.capire.incidents-Status.csv 
   > init from db\data\sap.capire.incidents-Status.texts.csv 
   > init from db\data\sap.capire.incidents-Urgency.csv 
