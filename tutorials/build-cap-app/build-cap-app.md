@@ -38,9 +38,9 @@ You have the SAP Business Application Studio configured. See [Set Up SAP Busines
     cd projects
     ```
 
-    > Your main interaction will be through the `cds` command. It is used to build, run, and debug your CAP application. Besides that, you can also use `cds` to enrich your application with additional capabilities such as messaging, multitenancy, or cloud integration. You can learn more about the tool's capabilities in [Command Line Interface (CLI)](https://cap.cloud.sap/docs/tools/#command-line-interface-cli).
+    > Your main interaction will be through the `cds` command. It is used to build, run, and debug your CAP application. Besides that, you can also use `cds` to enrich your application with additional capabilities such as messaging, multitenancy, or cloud integration. You can learn more about the tool's capabilities in [Command Line Interface (CLI)](https://cap.cloud.sap/docs/tools/cds-cli).
 
-4. Create a new project using [`cds init`](https://cap.cloud.sap/docs/tools/#cds-init-add).
+4. Create a new project using [`cds init`](https://cap.cloud.sap/docs/tools/cds-cli#cds-init).
 
     ```bash
     cds init incident-management
@@ -52,7 +52,7 @@ You have the SAP Business Application Studio configured. See [Set Up SAP Busines
 
     <!-- border; size:540px --> ![Open SAP Business Application Studio folder](./bas-open-folder.png)
 
-    > You can also use the **Ctrl+Shift+E** key combination to quickly navigate to the **Explorer**.
+    > You can also use the **Cmd+Shift+E** (Mac) or **Ctrl+Shift+E** (Windows/Linux) key combination to quickly navigate to the **Explorer**.
   
 6. While you are in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
 
@@ -83,69 +83,76 @@ You have the SAP Business Application Studio configured. See [Set Up SAP Busines
 2. Paste the following code snippet in the **schema.cds** file.
 
     ```js
-    using { User, cuid, managed, sap.common.CodeList } from '@sap/cds/common';
-    namespace sap.capire.incidents; 
-
+    using {
+        cuid,
+        managed,
+        sap.common.CodeList
+    } from '@sap/cds/common';
+    
+    namespace sap.capire.incidents;
+    
     /**
     * Incidents created by Customers.
     */
-    entity Incidents : cuid, managed {  
-    customer     : Association to Customers;
-    title        : String  @title : 'Title';
-    urgency        : Association to Urgency default 'M';
-    status         : Association to Status default 'N';
-    conversation  : Composition of many {
-        key ID    : UUID;
-        timestamp : type of managed:createdAt;
-        author    : type of managed:createdBy;
-        message   : String;
-    };
+    entity Incidents : cuid, managed {
+        customer     : Association to Customers;
+        title        : String @title: 'Title';
+        urgency      : Association to Urgency default 'M';
+        status       : Association to Status default 'N';
+        conversation : Composition of many {
+                           key ID        : UUID;
+                               timestamp : type of managed : createdAt;
+                               author    : type of managed : createdBy;
+                               message   : String;
+                       };
     }
-
+    
     /**
     * Customers entitled to create support Incidents.
     */
-    entity Customers : managed { 
-    key ID        : String;
-    firstName     : String;
-    lastName      : String;
-    name          : String = firstName ||' '|| lastName;
-    email         : EMailAddress;
-    phone         : PhoneNumber;
-    incidents     : Association to many Incidents on incidents.customer = $self;
-    creditCardNo  : String(16) @assert.format: '^[1-9]\d{15}$';
-    addresses     : Composition of many Addresses on addresses.customer = $self;
+    entity Customers : managed {
+        key ID           : String;
+            firstName    : String;
+            lastName     : String;
+            name         : String = firstName || ' ' || lastName;
+            email        : EMailAddress;
+            phone        : PhoneNumber;
+            incidents    : Association to many Incidents
+                               on incidents.customer = $self;
+            creditCardNo : String(16) @assert.format: '^[1-9]\d{15}$';
+            addresses    : Composition of many Addresses
+                               on addresses.customer = $self;
     }
-
+    
     entity Addresses : cuid, managed {
-    customer      : Association to Customers;
-    city          : String;
-    postCode      : String;
-    streetAddress : String;
+        customer      : Association to Customers;
+        city          : String;
+        postCode      : String;
+        streetAddress : String;
     }
-
+    
     entity Status : CodeList {
-    key code: String enum {
-        new = 'N';
-        assigned = 'A'; 
-        in_process = 'I'; 
-        on_hold = 'H'; 
-        resolved = 'R'; 
-        closed = 'C'; 
-    };
-    criticality : Integer;
+        key code        : String enum {
+                new        = 'N';
+                assigned   = 'A';
+                in_process = 'I';
+                on_hold    = 'H';
+                resolved   = 'R';
+                closed     = 'C';
+            };
+            criticality : Integer;
     }
-
+    
     entity Urgency : CodeList {
-    key code: String enum {
-        high = 'H';
-        medium = 'M'; 
-        low = 'L'; 
-    };
+        key code : String enum {
+                high   = 'H';
+                medium = 'M';
+                low    = 'L';
+            };
     }
-
+    
     type EMailAddress : String;
-    type PhoneNumber : String;
+    type PhoneNumber  : String;
     ```
 
 > Did you notice that the `Customers` entity includes calculated elements? Check the `name` field. The value for this field is calculated by taking into account the values of the fields `firstName` and `lastName`. 
@@ -168,12 +175,13 @@ You have the SAP Business Application Studio configured. See [Set Up SAP Busines
 As soon as you save your file, the CAP server that is still running reacts immediately with a new output:
 
 ```bash
-[cds] - loaded model from 1 file(s):
+[cds] - loaded model from 2 file(s):
 
   db/schema.cds
+  <path_to>/node_modules/@sap/cds/common.cds
 
 [cds] - connect using bindings from: { registry: '~/.cds-services.json' }
-[cds] - connect to db > sqlite { database: ':memory:' }
+[cds] - connect to db > sqlite { url: ':memory:' }
 /> successfully deployed to in-memory database. 
 ```
 
@@ -195,25 +203,25 @@ To create the service definition:
 2. Paste the following code snippet in the **services.cds** file:
 
     ```js
-    using { sap.capire.incidents as my } from '../db/schema';
-
+    using {sap.capire.incidents as my} from '../db/schema';
+    
     /**
      * Service used by support personell, i.e. the incidents' 'processors'.
      */
-    service ProcessorService { 
+    service ProcessorService {
         entity Incidents as projection on my.Incidents;
-
+    
         @readonly
         entity Customers as projection on my.Customers;
     }
-
+    
     /**
      * Service used by administrators to manage customers and incidents.
      */
     service AdminService {
         entity Customers as projection on my.Customers;
         entity Incidents as projection on my.Incidents;
-        }
+    }
     ```
   
 This time, the CAP server reacted with additional output:
@@ -364,4 +372,3 @@ Now that the database is filled with some initial data, you can send complex ODa
 
 
     
-
