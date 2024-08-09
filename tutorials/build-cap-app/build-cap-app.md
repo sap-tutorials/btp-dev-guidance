@@ -52,7 +52,7 @@ You have the SAP Business Application Studio configured. See [Set Up SAP Busines
 
     <!-- border; size:540px --> ![Open SAP Business Application Studio folder](./bas-open-folder.png)
 
-    > You can also use the **Cmd+Shift+E** (Mac) or **Ctrl+Shift+E** (Windows/Linux) key combination to quickly navigate to the **Explorer**.
+    > You can also use the **Cmd+Shift+E** (macOS) or **Ctrl+Shift+E** (Windows/Linux) key combination to quickly navigate to the **Explorer**.
   
 6. While you are in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
 
