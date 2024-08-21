@@ -18,7 +18,15 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-- You have set up the connection to an SAP S/4HANA Cloud system. See [Configure Connectivity Between SAP S/4HANA Cloud and SAP Business Technology Platform](remote-service-configure-connectivity). 
+- You have set up the connection to an SAP S/4HANA Cloud system. Follow the steps in the [Configure Connectivity Between SAP S/4HANA Cloud and SAP Business Technology Platform](remote-service-configure-connectivity) tutorial that is part of the [Consume Remote Services from S/4HANA Cloud in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.sap-s4hana-consume-remote-services.html) tutorial group. 
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and make use of the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
+- You are an administrator of the global account in SAP BTP.
+- You have a subaccount in SAP BTP to deploy the services and applications.
+- You have one of the following browsers that are supported for working in SAP Business Application Studio:
+    - Mozilla Firefox
+    - Google Chrome
+    - Microsoft Edge
 
 ### Prepare the Incident Management application
 

@@ -18,15 +18,15 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for a CPEA (Cloud Platform Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and make use of the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
-- You have an S-user or P-user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
+- You have configured the respective entitlements, enabled the Kyma runtime in your subaccount, and created an SAP HANA Cloud service instance in the SAP BTP cockpit. Follow the steps in the [Prepare for Deployment in the SAP BTP, Kyma Runtime](prepare-btp-kyma) tutorial that is part of the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) tutorial group.
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and make use of the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
 - You are an administrator of the global account in SAP BTP.
 - You have a subaccount in SAP BTP to deploy the services and applications.
 - You have one of the following browsers that are supported for working in SAP Business Application Studio:
     - Mozilla Firefox
     - Google Chrome
     - Microsoft Edge
-- You have configured the respective entitlements, enabled the Kyma runtime in your subaccount, and created an SAP HANA Cloud service instance in the SAP BTP cockpit. See [Prepare for Deployment in the SAP BTP, Kyma Runtime](prepare-btp-kyma).
  - For Windows, you'll need Chocolatey. This is a package manager that will speed up and ease installation of the tools in this tutorial. See how to install Chocolatey in [Setup/Install](https://docs.chocolatey.org/en-us/choco/setup).
  - You have prepared a container registry and you've logged in to the container registry through your CLI. A container registry is a repo where you can push your docker images. SAP BTP doesn't currently provide a container registry. You can use any container registry offering as long as it can be reached from public Internet.
 
@@ -261,7 +261,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
     ```bash
     npm install
     ```
-    
+
     This will install required dependencies and update the **package-lock.json** file of your project.
 
 1. Create the productive CAP build for your application: 
@@ -489,73 +489,37 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
 CAP provides a configurable Helm chart for Node.js applications.
 
+
 1. Run the following command in your project root folder: 
 
     ```bash
-    cds add helm
+    cds add helm --y
     ```
 
     As a result, you'll see a newly-created **chart** folder in your project. The **chart** folder holds the helm configuration, including the **values.yaml** file where you'll add your container image settings later on.
 
-2. Run the following command to automate the setup for HTML5 application deployment:
-
-    ```bash
-    cds add html5-repo
-    ```
-
-    The result of the **package.json** file looks like this:
-
-    ```json
-    {
-        "name": "incidents",
-        "version": "0.0.1",
-        "description": "A Fiori application.",
-        "keywords": [
-            "ui5",
-            "openui5",
-            "sapui5"
-        ],
-        "main": "webapp/index.html",
-        "scripts": {
-            "start": "node node_modules/@sap/html5-app-deployer/index.js",
-            "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf",
-            "build": "ui5 build preload --clean-dest --include-task=generateCachebusterInfo"
-        },
-        "dependencies": { 
-            "@sap/html5-app-deployer": "5.0.0" 
-          },
-        "devDependencies": { }
-    }
-
-    ```
-
-    For more information about Helm and CAP, see [About CAP Helm chart](https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma?impl-variant=node#about-cap-helm).
-
-3. Open the **package.json** file and delete the following line:
-
-    ```json
-        "build": "ui5 build preload --clean-dest --include-task=generateCachebusterInfo"
-    ```
-
 1. Add your container image settings to your **chart/values.yaml** file:
 
-    ```yaml[4,5,9,10,14,15]
-    ...
-    srv:
+    ```yaml[6,7]
+    global:
+      domain: 
+      imagePullSecret:
+        name: 
       image:
-        repository: <your-container-registry>/incident-management-srv
-        tag: <incident-management-srv-image-version>
-    ...
-    hana-deployer:
-      image:
-        repository: <your-container-registry>/incident-management-hana-deployer
-        tag: <incident-management-hana-deployer-image-version>
-    ...
-    html5-apps-deployer:
-      image:
-        repository: <your-container-registry>/incident-management-html5-deployer
-        tag: <incident-management-html5-deployer-image-version>
+        registry: <your-container-registry>
+        tag: <image-version>
     ```
+
+    > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` should be a string. 
+
+    > If you'd like to overwrite the global image version, you can add a tag for each image. Here's an example:
+    >
+    > ```yaml[4]
+    > srv:
+    >   image:
+    >     repository: incident-management-srv
+    >     tag: <incident-management-srv-image-version>
+    > ```
 
 2. Change the value of `SAP_CLOUD_SERVICE` to `incidents`:
 
@@ -584,7 +548,7 @@ CAP provides a configurable Helm chart for Node.js applications.
 
     ```yaml[2]
     global:
-        domain: <cluster domain>
+        domain: <your-cluster-domain>
     ...
     ```
 
@@ -625,11 +589,25 @@ CAP provides a configurable Helm chart for Node.js applications.
         service: srv
     ```
 
+    > The parameter `service` points to the deployment name whose URL will be used for this destination.
 
-> - `backend` is the name of the destination
-> - `service` points to the deployment name whose URL will be used for this destination
+4. Add the following parameters to the `destination` section:
+
+    ```yaml[2,3]
+    destination:
+      serviceOfferingName: destination
+      servicePlanName: lite
+      parameters:
+        HTML5Runtime_enabled: true
+    ```
 
 ### Deploy CAP Helm chart
+
+1. Update the productive CAP build for your application: 
+
+    ```bash
+    cds build --production
+    ```
 
 2. Run the following command to create a namespace:
 
@@ -651,7 +629,7 @@ CAP provides a configurable Helm chart for Node.js applications.
 3. Deploy using the Helm command:
 
     ```bash
-    helm upgrade --install incident-management --namespace incident-management ./chart \
+    helm upgrade --install incident-management --namespace incident-management ./gen/chart \
     --set-file xsuaa.jsonParameters=xs-security.json
     ```
 

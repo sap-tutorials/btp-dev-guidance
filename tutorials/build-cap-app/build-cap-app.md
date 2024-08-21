@@ -20,7 +20,7 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-You have the SAP Business Application Studio configured. See [Set Up SAP Business Application Studio for Development](set-up-bas).
+You have configured the SAP Business Application Studio. Follow the steps in the [Set Up SAP Business Application Studio for Development](set-up-bas) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
 ### Create a CAP project
 
@@ -148,21 +148,22 @@ You have the SAP Business Application Studio configured. See [Set Up SAP Busines
     type PhoneNumber : String;
     ```
 
-> Did you notice that the `Customers` entity includes calculated elements? Check the `name` field. The value for this field is calculated by taking into account the values of the fields `firstName` and `lastName`. 
-> ```js[5]
-> entity Customers : managed { 
->     key ID        : String;
->     firstName     : String;
->     lastName      : String;
->     name          : String = firstName ||' '|| lastName;
->     email         : EMailAddress;
->     phone         : PhoneNumber;
->     incidents     : Association to many Incidents on incidents.customer = $self;
->     creditCardNo  : String(16) @assert.format: '^[1-9]\d{15}$';
->     addresses     : Composition of many Addresses on addresses.customer = $self;
-> }
-> ```
-> Elements can be specified with a calculation expression, in which you can refer to other elements of the same entity. These calculated elements are used for convenience. For more information, see [Calculated Elements](https://cap.cloud.sap/docs/cds/cdl#calculated-elements).
+
+> **What happens here?**
+>
+> The provided CDS code snippet defines several entities and their relationships.
+> 
+> The `Incidents` entity represents incidents created by customers, with fields for customer, title, urgency, status, and a composition of many conversations. Each conversation has an ID, timestamp, author, and message.
+>
+> The `Customers` entity represents customers who can create support incidents. It includes fields for ID, first name, last name, email, phone, credit card number, and a composition of many addresses. The name field is calculated from the `firstName` and `lastName` fields. Elements can be specified with a calculation expression, in which you can refer to other elements of the same entity. These calculated elements are used for convenience. For more information, see [Calculated Elements](https://cap.cloud.sap/docs/cds/cdl#calculated-elements).
+> 
+> The `Addresses` entity represents the addresses of customers, with fields for customer, city, postcode, and street address.
+> 
+> The `Status` and `Urgency` entities represent the status and urgency of incidents, respectively. Both are of type `CodeList` and include a code field with a set of predefined values.
+>
+> The `EMailAddress` and `PhoneNumber` are defined as types of `String`.
+>
+> The code also includes the use of `cuid` and `managed` from `@sap/cds/common`, which are common features for defining entities in CDS. The `cuid` feature provides a unique identifier for an entity, while `managed` adds common administrative fields such as `createdAt` and `createdBy`.
 
 
 As soon as you save your file, the CAP server that is still running reacts immediately with a new output:

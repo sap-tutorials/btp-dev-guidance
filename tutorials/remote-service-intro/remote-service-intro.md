@@ -18,9 +18,9 @@ author_profile: https://github.com/slavipande
 ## Prerequisites
 
 - You have set up the Incident Management sample application. You can choose from two alternative options:
-    - Follow the tutorials on the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) group of tutorials to develop the application from scratch. 
+    - Follow the tutorials in the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) group to develop the application from scratch. 
     - Go to the Incident Management application GitHub repository directly and clone the application without going through the application development steps. See [Incident Management](https://github.com/cap-js/incidents-app/tree/beginner-tutorials).
-- You have deployed the Incident Management sample application in the SAP BTP, Cloud Foundry runtime. See [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html). 
+- You have deployed the Incident Management sample application in the SAP BTP, Cloud Foundry runtime. Follow the tutorials in the [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) group to deploy the Incident Management sample application in the SAP BTP, Cloud Foundry runtime.
 
 ### Overview
 

@@ -17,7 +17,7 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-- You have got the Business Partner API from SAP S/4HANA Cloud and have extended the functionality of the Incident Management application. See [Get the Business Partner API and Extend the Incident Management Application](remote-service-extend-cf).
+- You have got the Business Partner API from SAP S/4HANA Cloud and have extended the functionality of the Incident Management application. Follow the steps in the [Get the Business Partner API and Extend the Incident Management Application](remote-service-extend-cf) tutorial.
 
 ### Create mock data for the new entities
 

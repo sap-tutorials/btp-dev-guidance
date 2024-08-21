@@ -18,7 +18,7 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-You have implemented the user interface of your application. See [Add SAP Fiori Elements UIs](add-fiori-elements-uis).
+You have implemented the user interface of your application. Follow the steps in the [Add SAP Fiori Elements UIs](add-fiori-elements-uis) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
 ### Add custom code
 

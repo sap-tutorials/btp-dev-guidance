@@ -16,8 +16,16 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-- You have tested the extended Incident Management sample application. See [Test the Extended Incident Management Application with the Business Partner API](remote-service-run-dev-test).
-- You have installed a mock server in your Cloud Foundry space in the SAP BTP, Cloud Foundry runtime. See [Install a Mock Server in the SAP BTP, Cloud Foundry Runtime](remote-service-set-up-mock)
+- You have tested the extended Incident Management sample application. Follow the steps in the [Test the Extended Incident Management Application with the Business Partner API](remote-service-run-dev-test) tutorial that is part of the [Consume Remote Services from a Mock Server in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.sap-mock-consume-remote-services.html) tutorial group.
+- You have installed a mock server in your Cloud Foundry space in the SAP BTP, Cloud Foundry runtime. Follow the steps in the [Install a Mock Server in the SAP BTP, Cloud Foundry Runtime](remote-service-set-up-mock) tutorial that is part of the [Consume Remote Services from a Mock Server in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.sap-mock-consume-remote-services.html) tutorial group.
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and make use of the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
+- You are an administrator of the global account in SAP BTP.
+- You have a subaccount in SAP BTP to deploy the services and applications.
+- You have one of the following browsers that are supported for working in SAP Business Application Studio:
+    - Mozilla Firefox
+    - Google Chrome
+    - Microsoft Edge
 
 ### Deploy the Incident Management application
 

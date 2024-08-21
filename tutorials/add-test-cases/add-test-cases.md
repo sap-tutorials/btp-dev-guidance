@@ -19,7 +19,7 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-You have configured the access to your application. See [Add Authorization](add-authorization).
+You have configured the access to your application. Follow the steps in the [Add Authorization](add-authorization) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
 ### Add dependencies
 

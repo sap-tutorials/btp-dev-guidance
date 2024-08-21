@@ -18,7 +18,7 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-You have built your CAP application. See [Build a CAP application](build-cap-app).
+You have built your CAP application. Follow the steps in the [Build a CAP application](build-cap-app) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
 ### Overview
 

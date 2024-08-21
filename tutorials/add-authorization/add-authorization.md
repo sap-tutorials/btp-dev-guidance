@@ -20,7 +20,7 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-You have added to your application a launch page for local testing. See [Use a Local Launch Page](use-local-launch-page).
+You have added a launch page for local testing to your application. Follow the steps in the [Use a Local Launch Page](use-local-launch-page) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
 ### Add CAP role restrictions to entities
 
@@ -28,7 +28,7 @@ You have added to your application a launch page for local testing. See [Use a L
 
 2. To specify restrictions, add the `annotate ProcessorService with @(requires: 'support');` line to the **srv/services.cds** file:
 
-    ```js[10]
+    ```js[10, 15]
     using { sap.capire.incidents as my } from '../db/schema';
 
     /**
@@ -39,6 +39,11 @@ You have added to your application a launch page for local testing. See [Use a L
     }
     annotate ProcessorService.Incidents with @odata.draft.enabled; 
     annotate ProcessorService with @(requires: 'support');
+
+    service AdminService {
+      ...
+    }
+    annotate AdminService with @(requires: 'admin');
     ```
 
 With this change, a user with the **support** role can view and change the incidents and customers.

@@ -18,7 +18,7 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-You have added business logic to your application. See [Add Custom Logic](add-custom-logic).
+You have added business logic to your application. Follow the steps in the [Add Custom Logic](add-custom-logic) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
 ### Overview
 

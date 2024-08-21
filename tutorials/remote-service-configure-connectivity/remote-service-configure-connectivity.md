@@ -18,10 +18,12 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
- - You have tested the extended Incident Management application with the Business Partner API. See [Test the Extended Incident Management Application with the Business Partner API](remote-service-run-dev-test).
+ - You have tested the extended Incident Management application with the Business Partner API. Follow the steps in the [Test the Extended Incident Management Application with the Business Partner API](remote-service-run-dev-test) tutorial that is part of the [Consume Remote Services from S/4HANA Cloud in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.sap-s4hana-consume-remote-services.html) tutorial group.
  - On SAP BTP side:
-    - You have an [enterprise](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/171511cc425c4e079d0684936486eee6.html) global account in SAP BTP.
-    - You must be an administrator of the SAP BTP global account where you want to register your SAP S/4HANA Cloud system.
+     - You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and make use of the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+     - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
+     - You must be an administrator of the SAP BTP global account where you want to register your SAP S/4HANA Cloud system.
+     - You have a subaccount in SAP BTP to deploy the services and applications.
  - On SAP S/4HANA Cloud side:
     - You have a dedicated SAP S/4HANA Cloud tenant.
     - You must be an administrator of the SAP S/4HANA Cloud system.

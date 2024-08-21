@@ -19,7 +19,7 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-You have added the basic test cases in your application. See [Add Test Cases](add-test-cases).
+You have added test cases in your application. Follow the steps in the [Add Test Cases](add-test-cases) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
 
 ### Add SAP HANA Cloud
@@ -168,7 +168,14 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
 
 ### Prepare HTML5 applications with deploy configurations
 
-1. Open **app/incidents/package.json** and add the following content:
+
+1. Run the following command in the terminal:
+
+    ```bash
+    cds add html5-repo
+    ```
+
+1. Make sure that the following content is added to **app/incidents/package.json**:
 
     ```json[11-31]
     {
@@ -205,7 +212,7 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
     }
     ```
 
-2. Create a new file **ui5-deploy.yaml** in the folder **app/incidents/** with the following content to it:
+2. Check the newly-created file **ui5-deploy.yaml** in the folder **app/incidents/**.
 
     ```yaml
     # yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
@@ -235,7 +242,11 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
           - xs-app.json
     ```
 
-3. In the terminal, navigate to the **app/incidents/** folder and run `npm install`.
+3. In the terminal, navigate to the **app/incidents/** folder and run the following command:
+
+    ```bash
+    npm install
+    ```
 
 ### Run a test build
 
