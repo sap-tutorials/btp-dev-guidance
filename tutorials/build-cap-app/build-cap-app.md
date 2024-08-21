@@ -82,77 +82,70 @@ You have the SAP Business Application Studio configured. See [Set Up SAP Busines
 
 2. Paste the following code snippet in the **schema.cds** file.
 
-    ```js
-    using {
-        cuid,
-        managed,
-        sap.common.CodeList
-    } from '@sap/cds/common';
-    
-    namespace sap.capire.incidents;
-    
+    ```CDS
+    using { cuid, managed, sap.common.CodeList } from '@sap/cds/common';
+    namespace sap.capire.incidents; 
+
     /**
     * Incidents created by Customers.
     */
-    entity Incidents : cuid, managed {
-        customer     : Association to Customers;
-        title        : String @title: 'Title';
-        urgency      : Association to Urgency default 'M';
-        status       : Association to Status default 'N';
-        conversation : Composition of many {
-                           key ID        : UUID;
-                               timestamp : type of managed : createdAt;
-                               author    : type of managed : createdBy;
-                               message   : String;
-                       };
+    entity Incidents : cuid, managed {  
+    customer     : Association to Customers;
+    title        : String  @title : 'Title';
+    urgency        : Association to Urgency default 'M';
+    status         : Association to Status default 'N';
+    conversation  : Composition of many {
+        key ID    : UUID;
+        timestamp : type of managed:createdAt;
+        author    : type of managed:createdBy;
+        message   : String;
+    };
     }
-    
+
     /**
     * Customers entitled to create support Incidents.
     */
-    entity Customers : managed {
-        key ID           : String;
-            firstName    : String;
-            lastName     : String;
-            name         : String = firstName || ' ' || lastName;
-            email        : EMailAddress;
-            phone        : PhoneNumber;
-            incidents    : Association to many Incidents
-                               on incidents.customer = $self;
-            creditCardNo : String(16) @assert.format: '^[1-9]\d{15}$';
-            addresses    : Composition of many Addresses
-                               on addresses.customer = $self;
+    entity Customers : managed { 
+    key ID        : String;
+    firstName     : String;
+    lastName      : String;
+    name          : String = firstName ||' '|| lastName;
+    email         : EMailAddress;
+    phone         : PhoneNumber;
+    incidents     : Association to many Incidents on incidents.customer = $self;
+    creditCardNo  : String(16) @assert.format: '^[1-9]\d{15}$';
+    addresses     : Composition of many Addresses on addresses.customer = $self;
     }
-    
+
     entity Addresses : cuid, managed {
-        customer      : Association to Customers;
-        city          : String;
-        postCode      : String;
-        streetAddress : String;
+    customer      : Association to Customers;
+    city          : String;
+    postCode      : String;
+    streetAddress : String;
     }
-    
+
     entity Status : CodeList {
-        key code        : String enum {
-                new        = 'N';
-                assigned   = 'A';
-                in_process = 'I';
-                on_hold    = 'H';
-                resolved   = 'R';
-                closed     = 'C';
-            };
-            criticality : Integer;
+    key code: String enum {
+        new = 'N';
+        assigned = 'A'; 
+        in_process = 'I'; 
+        on_hold = 'H'; 
+        resolved = 'R'; 
+        closed = 'C'; 
+    };
+    criticality : Integer;
     }
-    
+
     entity Urgency : CodeList {
-        key code : String enum {
-                high   = 'H';
-                medium = 'M';
-                low    = 'L';
-            };
+    key code: String enum {
+        high = 'H';
+        medium = 'M'; 
+        low = 'L'; 
+    };
     }
-    
+
     type EMailAddress : String;
-    type PhoneNumber  : String;
+    type PhoneNumber : String;
     ```
 
 > Did you notice that the `Customers` entity includes calculated elements? Check the `name` field. The value for this field is calculated by taking into account the values of the fields `firstName` and `lastName`. 
@@ -202,26 +195,26 @@ To create the service definition:
 
 2. Paste the following code snippet in the **services.cds** file:
 
-    ```js
-    using {sap.capire.incidents as my} from '../db/schema';
-    
+    ```CDS
+    using { sap.capire.incidents as my } from '../db/schema';
+
     /**
      * Service used by support personell, i.e. the incidents' 'processors'.
      */
-    service ProcessorService {
+    service ProcessorService { 
         entity Incidents as projection on my.Incidents;
-    
+
         @readonly
         entity Customers as projection on my.Customers;
     }
-    
+
     /**
      * Service used by administrators to manage customers and incidents.
      */
     service AdminService {
         entity Customers as projection on my.Customers;
         entity Incidents as projection on my.Incidents;
-    }
+        }
     ```
   
 This time, the CAP server reacted with additional output:
@@ -337,7 +330,7 @@ Replace the respective generated CSV templates with the following content:
 Upon detecting these new files, the CAP server prints a message stating that the content of the files has been filled into the database automatically:
 
 ```bash
-[cds] - connect to db > sqlite { database: ':memory:' }
+[cds] - connect to db > sqlite { url: ':memory:' }
   > init from db\data\sap.capire.incidents-Addresses.csv 
   > init from db\data\sap.capire.incidents-Customers.csv 
   > init from db\data\sap.capire.incidents-Incidents.csv 
