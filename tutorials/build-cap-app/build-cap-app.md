@@ -174,7 +174,7 @@ As soon as you save your file, the CAP server that is still running reacts immed
   <path_to>/node_modules/@sap/cds/common.cds
 
 [cds] - connect using bindings from: { registry: '~/.cds-services.json' }
-[cds] - connect to db > sqlite { url: ':memory:' }
+[cds] - connect to db > sqlite { database: ':memory:' }
 /> successfully deployed to in-memory database. 
 ```
 
@@ -330,7 +330,7 @@ Replace the respective generated CSV templates with the following content:
 Upon detecting these new files, the CAP server prints a message stating that the content of the files has been filled into the database automatically:
 
 ```bash
-[cds] - connect to db > sqlite { url: ':memory:' }
+[cds] - connect to db > sqlite { database: ':memory:' }
   > init from db\data\sap.capire.incidents-Addresses.csv 
   > init from db\data\sap.capire.incidents-Customers.csv 
   > init from db\data\sap.capire.incidents-Incidents.csv 
