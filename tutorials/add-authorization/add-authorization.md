@@ -26,9 +26,9 @@ You have added a launch page for local testing to your application. Follow the s
 
 1. Open the **srv/services.cds** file.
 
-2. To specify restrictions, add the `annotate ProcessorService with @(requires: 'support');` line to the **srv/services.cds** file:
+2. To specify restrictions, add the `annotate ProcessorService with @(requires: 'support');` and the `annotate AdminService with @(requires: 'admin');` lines to the **srv/services.cds** file:
 
-    ```js[10, 15]
+    ```CDS[10, 15]
     using { sap.capire.incidents as my } from '../db/schema';
 
     /**
@@ -46,7 +46,7 @@ You have added a launch page for local testing to your application. Follow the s
     annotate AdminService with @(requires: 'admin');
     ```
 
-With this change, a user with the **support** role can view and change the incidents and customers.
+With these changes, users with the **support** role can view and change the incidents and customers, while users with the **admin** role can perfom admin activities such as auditing logs.
 
 ### Add users for local testing
 

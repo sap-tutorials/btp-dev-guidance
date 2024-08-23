@@ -133,13 +133,27 @@ You have added test cases in your application. Follow the steps in the [Add Test
 
 3. Check the content of the **xs-security.json** file.
 
-    You have already added authorization with the **requires** annotations in the CDS service model (that is the **services.cds** file in the **srv** folder). See [Add Authorization](add-authorization).
+    You have already added authorizations with the **requires** annotations in the CDS service model (that is the **services.cds** file in the **srv** folder). See [Add Authorization](add-authorization).
 
-    ```js
-    annotate ProcessorService with @(requires: ['support']);
+    ```CDS[10, 15]
+    using { sap.capire.incidents as my } from '../db/schema';
+
+    /**
+    * Used by support team members to process incidents
+    */
+    service ProcessorService  {
+      ...
+    }
+    annotate ProcessorService.Incidents with @odata.draft.enabled; 
+    annotate ProcessorService with @(requires: 'support');
+
+    service AdminService {
+      ...
+    }
+    annotate AdminService with @(requires: 'admin');
     ```
     
-    This is now translated into scopes and role templates for the SAP Authorization and Trust Management service. Hence, a scope and role template for the **support** role are created in the **xs-security.json** file:
+    This is now translated into scopes and role templates for the SAP Authorization and Trust Management service. Hence, a scope and a role template are created in the **xs-security.json** file for the **support** role and for the **admin** role:
 
     ```json
     {
@@ -147,6 +161,10 @@ You have added test cases in your application. Follow the steps in the [Add Test
         {
           "name": "$XSAPPNAME.support",
           "description": "support"
+        },
+        {
+          "name": "$XSAPPNAME.admin",
+          "description": "admin"
         }
       ],
       "attributes": [],
@@ -156,6 +174,14 @@ You have added test cases in your application. Follow the steps in the [Add Test
           "description": "generated",
           "scope-references": [
             "$XSAPPNAME.support"
+          ],
+          "attribute-references": []
+        },
+        {
+          "name": "admin",
+          "description": "generated",
+          "scope-references": [
+            "$XSAPPNAME.admin"
           ],
           "attribute-references": []
         }

@@ -457,7 +457,7 @@ Enabling a draft for an entity allows the users to edit the entities. To enable 
 
 2. Annotate the file with `@odata.draft.enabled` like this:
 
-    ```js[5]
+    ```CDS[5]
     service ProcessorService { 
     ...
     }

@@ -43,7 +43,7 @@ You have configured the access to your application. Follow the steps in the [Add
 
 3. Add the following code to the **test.js** file:
 
-    ```javascript
+    ```js
     const cds = require('@sap/cds/lib')
     const { default: axios } = require('axios')
     const { GET, POST, DELETE, PATCH, expect } = cds.test(__dirname + '../../')
