@@ -66,7 +66,7 @@ You have configured the SAP Business Application Studio. Follow the steps in the
 
     This is the output you should get:
 
-    ```
+    ```bash
     cds serve all --with-mocks --in-memory?
     live reload enabled for browsers
 
@@ -166,17 +166,17 @@ You have configured the SAP Business Application Studio. Follow the steps in the
 > The code also includes the use of `cuid` and `managed` from `@sap/cds/common`, which are common features for defining entities in CDS. The `cuid` feature provides a unique identifier for an entity, while `managed` adds common administrative fields such as `createdAt` and `createdBy`.
 
 
-As soon as you save your file, the CAP server that is still running reacts immediately with a new output:
+As soon as you paste the code in your newly-created file, the CAP server that is still running reacts immediately with a new output:
 
 ```bash
 [cds] - loaded model from 2 file(s):
 
   db/schema.cds
-  <path_to>/node_modules/@sap/cds/common.cds
+  <path-to>/node_modules/@sap/cds/common.cds
 
 [cds] - connect using bindings from: { registry: '~/.cds-services.json' }
-[cds] - connect to db > sqlite { database: ':memory:' }
-/> successfully deployed to in-memory database. 
+[cds] - connect to db > sqlite { url: ':memory:' }
+/> successfully deployed to in-memory database.  
 ```
 
 This means that the CAP server detected the changes in **schema.cds** and automatically created an in-memory SQLite database when restarting the server process. However, the CAP server also prints this message:
@@ -188,9 +188,9 @@ Waiting for some to arrive...
 
 ### Create services
 
-It's a good practice in CAP to create single-purpose services. Hence, let's define a `ProcessorService` for support engineers to process incidents created by customers.
+It's a good practice in CAP to create single-purpose services. Hence, let's define a `ProcessorService` for support engineers to process incidents created by customers and an `AdminService` for administrators to perform admin activities such as analysing audit logs.
 
-To create the service definition:
+To create the services' definition:
 
 1. In the **srv** folder, create a new **services.cds** file.
 
@@ -228,7 +228,7 @@ This time, the CAP server reacted with additional output:
 [cds] - [ terminate with ^C ]
 ```
 
-As you can see in the log output, the new file created a generic service provider `ProcessorService` that serves requests on the `/odata/v4/processor` endpoint. If you open the link `http://localhost:4004` from SAP Business Application Studio in your browser, you'll see the generic `index.html` page:
+As you can see in the log output, the new file created two generic service providers: `ProcessorService` that serves requests on the `/odata/v4/processor` endpoint and `AdminService` that serves requests on the `/odata/v4/admin` endpoint. If you open the link `http://localhost:4004` from SAP Business Application Studio in your browser, you'll see the generic `index.html` page:
 
 <!-- border; size:540px --> ![index.html](./index.png)
 
@@ -366,3 +366,4 @@ Now that the database is filled with some initial data, you can send complex ODa
 
 
     
+
