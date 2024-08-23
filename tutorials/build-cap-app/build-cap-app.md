@@ -38,9 +38,9 @@ You have configured the SAP Business Application Studio. Follow the steps in the
     cd projects
     ```
 
-    > Your main interaction will be through the `cds` command. It is used to build, run, and debug your CAP application. Besides that, you can also use `cds` to enrich your application with additional capabilities such as messaging, multitenancy, or cloud integration. You can learn more about the tool's capabilities in [Command Line Interface (CLI)](https://cap.cloud.sap/docs/tools/#command-line-interface-cli).
+    > Your main interaction will be through the `cds` command. It is used to build, run, and debug your CAP application. Besides that, you can also use `cds` to enrich your application with additional capabilities such as messaging, multitenancy, or cloud integration. You can learn more about the tool's capabilities in [Command Line Interface (CLI)](https://cap.cloud.sap/docs/tools/cds-cli).
 
-4. Create a new project using [`cds init`](https://cap.cloud.sap/docs/tools/#cds-init-add).
+4. Create a new project using [`cds init`](https://cap.cloud.sap/docs/tools/cds-cli#cds-init).
 
     ```bash
     cds init incident-management
@@ -52,7 +52,7 @@ You have configured the SAP Business Application Studio. Follow the steps in the
 
     <!-- border; size:540px --> ![Open SAP Business Application Studio folder](./bas-open-folder.png)
 
-    > You can also use the **Ctrl+Shift+E** key combination to quickly navigate to the **Explorer**.
+    > You can also use the **Cmd+Shift+E** (macOS) or **Ctrl+Shift+E** (Windows/Linux) key combination to quickly navigate to the **Explorer**.
   
 6. While you are in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
 
@@ -82,8 +82,8 @@ You have configured the SAP Business Application Studio. Follow the steps in the
 
 2. Paste the following code snippet in the **schema.cds** file.
 
-    ```js
-    using { User, cuid, managed, sap.common.CodeList } from '@sap/cds/common';
+    ```CDS
+    using { cuid, managed, sap.common.CodeList } from '@sap/cds/common';
     namespace sap.capire.incidents; 
 
     /**
@@ -169,9 +169,10 @@ You have configured the SAP Business Application Studio. Follow the steps in the
 As soon as you save your file, the CAP server that is still running reacts immediately with a new output:
 
 ```bash
-[cds] - loaded model from 1 file(s):
+[cds] - loaded model from 2 file(s):
 
   db/schema.cds
+  <path_to>/node_modules/@sap/cds/common.cds
 
 [cds] - connect using bindings from: { registry: '~/.cds-services.json' }
 [cds] - connect to db > sqlite { database: ':memory:' }
@@ -195,7 +196,7 @@ To create the service definition:
 
 2. Paste the following code snippet in the **services.cds** file:
 
-    ```js
+    ```CDS
     using { sap.capire.incidents as my } from '../db/schema';
 
     /**
@@ -365,4 +366,3 @@ Now that the database is filled with some initial data, you can send complex ODa
 
 
     
-
