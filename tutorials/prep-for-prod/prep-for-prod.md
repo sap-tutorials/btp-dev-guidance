@@ -201,40 +201,36 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
     cds add html5-repo
     ```
 
-1. Make sure that the following content is added to **app/incidents/package.json**:
+1. Check the content of the **app/incidents/package.json** file:
 
-    ```json[11-31]
+    ```json
     {
       "name": "incidents",
       "version": "0.0.1",
       "description": "An SAP Fiori application.",
       "keywords": [
-          "ui5",
-          "openui5",
-          "sapui5"
+        "ui5",
+        "openui5",
+        "sapui5"
       ],
       "main": "webapp/index.html",
-      "scripts": {
-          "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf",
-          "build:cf": "ui5 build preload --clean-dest --config ui5-deploy.yaml --include-task=generateCachebusterInfo",
-          "build": "ui5 build preload --clean-dest --include-task=generateCachebusterInfo",
-          "start": "ui5 serve"
-      },
+      "dependencies": {},
       "devDependencies": {
-          "@sap/ui5-builder-webide-extension": "^1.1.8",
-          "ui5-task-zipper": "^0.5.0",
-          "mbt": "^1.2.18",
-          "@ui5/cli": "^3.11.0",
-          "ui5-middleware-simpleproxy": "^3.2.10"
+        "@ui5/cli": "^3.0.0",
+        "@sap/ux-ui5-tooling": "1",
+        "ui5-task-zipper": "^3"
+      },
+      "scripts": {
+        "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf",
+        "build": "ui5 build preload --clean-dest --config ui5-deploy.yaml",
+        "build-local": "ui5 build preload --clean-dest",
+        "start": "ui5 serve"
       },
       "ui5": {
-          "dependencies": [
-              "@sap/ui5-builder-webide-extension",
-              "ui5-task-zipper",
-              "mbt"
-          ]
-      },
-      "private": true
+        "dependencies": [
+          "ui5-task-zipper"
+        ]
+      }
     }
     ```
 
@@ -242,9 +238,9 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
 
     ```yaml
     # yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
-    specVersion: '2.4'
+    specVersion: '3.1'
     metadata:
-      name: ns.incidents
+      name: incidents
     type: application
     resources:
       configuration:
@@ -255,17 +251,12 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
           - "/test/**"
           - "/localService/**"
       customTasks:
-      - name: webide-extension-task-updateManifestJson
-        afterTask: replaceVersion
-        configuration:
-          appFolder: webapp
-          destDir: dist
-      - name: ui5-task-zipper
-        afterTask: generateCachebusterInfo
-        configuration:
-          archiveName: nsincidents
-          additionalFiles:
-          - xs-app.json
+        - name: ui5-task-zipper
+          afterTask: generateVersionInfo
+          configuration:
+            archiveName: incidents
+            additionalFiles:
+              - xs-app.json
     ```
 
 3. In the terminal, navigate to the **app/incidents/** folder and run the following command:
