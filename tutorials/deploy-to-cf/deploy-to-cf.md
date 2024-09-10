@@ -256,7 +256,7 @@ _schema-version: '3.1'
 ...
 module:
   ...
-- name: incident-management-app-content
+- name: incident-management-app-deployer
   type: com.sap.application.content
   path: .
   requires:
@@ -316,6 +316,46 @@ parameters:
   ...  
 ```
 
+> Make sure that your `mta.yaml` file does not include the following module:
+>
+> ```yaml
+> - name: incidentmanagementincidents
+>   type: html5
+>   path: app/incidents
+>   build-parameters:
+>     build-result: dist
+>     builder: custom
+>     commands:
+>     - npm ci
+>     - npm run build
+>     supported-platforms: []
+> ``` 
+> Delete if it exists because it duplicates the purpose of the `nsincidents` module.
+
+> Make sure that your `mta.yaml` file does not include any references to the `incidentmanagementincidents` module: 
+>
+> ```yaml[10-14]
+> - name: incident-management-app-deployer
+>   type: com.sap.application.content
+>   path: gen
+>   requires:
+>   - name: incident-management-html5-repo-host
+>     parameters:
+>       content-target: true
+>   build-parameters:
+>     build-result: app/
+>     requires:
+>     - artifacts:
+>       - incidents.zip
+>       name: incidentmanagementincidents
+>       target-path: app/
+>     - artifacts:
+>       - nsincidents.zip
+>       name: nsincidents
+>       target-path: app//
+> ``` 
+> Delete if any exist.
+
 ### Assemble with the Cloud MTA Build Tool
 
 Run the following command to assemble everything into a single **mta.tar** archive:
@@ -364,16 +404,18 @@ See [Multitarget Applications in the Cloud Foundry Environment](https://help.sap
 
     <!-- border; size:540px --> ![App after deploy](./cf-apps.png)
 
-6. Enter the route displayed for **incident-management-srv** in your browser.
+<!-- 6. Enter the route displayed for **incident-management-srv** in your browser. -->
 
-    <!-- border; size:540px --> ![Incident Management route](./incident-management-srv-route.png)
+<!-- border; size:540px ![Incident Management route](./incident-management-srv-route.png) -->
 
-    You see the CAP start page:
+<!-- You see the CAP start page: -->
 
-    <!-- border; size:540px --> ![CAP start page](./cap-start-page.png)
+<!-- border; size:540px ![CAP start page](./cap-start-page.png) -->
 
-4. When you choose the **Incidents** service entity, you will see an error message. 
+<!-- 4. When you choose the **Incidents** service entity, you will see an error message.  -->
 
-    <!-- border; size:540px --> ![401 error](./401-error.png)
+<!-- border; size:540px ![401 error](./401-error.png) -->
 
-The service expects a so called JWT (JSON Web Token) in the HTTP Authorization header that contains the required authentication and authorization information to access the service. In the next tutorial, you will access your UIs from SAP Build Work Zone, standard edition. The SAP Build Work Zone, standard edition will trigger the authentication flow to provide the required token to access the service.
+<!-- The service expects a so called JWT (JSON Web Token) in the HTTP Authorization header that contains the required authentication and authorization information to access the service.  -->
+
+In the next tutorials, you will access your UIs from SAP Build Work Zone, standard edition. The SAP Build Work Zone, standard edition will trigger the authentication flow to provide the required token to access the service.

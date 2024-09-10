@@ -12,11 +12,10 @@ author_profile: https://github.com/slavipande
 
 ## You will learn
 
-- How to create a CAP project
+- How to create a CAP project 
 - How to add a domain model
 - How to create services
 - How to add data to your database
-- How to add calculated elements
 
 ## Prerequisites
 
