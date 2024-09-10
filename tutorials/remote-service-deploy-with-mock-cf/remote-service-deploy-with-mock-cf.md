@@ -1,6 +1,6 @@
 ---
 title: Deploy and Run the Incident Management Application in the SAP BTP, Cloud Foundry Runtime with a Mock Server
-description: Learn how to run and deploy the Incident Management application in the SAP BTP, Cloud Foundry runtime with the mock server you have installed.
+description: Learn how to deploy the Incident Management application in the SAP BTP, Cloud Foundry runtime and test it with the mock server you have installed.
 parser: v2
 auto_validation: true
 time: 30
@@ -12,7 +12,8 @@ author_profile: https://github.com/slavipande
 
 ## You will learn
 
-- How to deploy the SAP Business Application Studio project of the Incident Management application in the SAP BTP, Cloud Foundry runtime using an MTA build file.
+- How to deploy and the Incident Management application in the SAP BTP, Cloud Foundry runtime.
+- How to test the application with the mock server.
 
 ## Prerequisites
 
@@ -80,7 +81,7 @@ author_profile: https://github.com/slavipande
 
 When creating new entries in the Incident Management application, you should be able to see all values from the mock server in the value help of the **Customer** field.
 
-> Before you continue with this step, don’t forget to perform the steps from the tutorials [Assign the User Roles](https://developers.sap.com/tutorials/user-role-assignment.html) and [Integrate Your Application with SAP Build Work Zone](https://developers.sap.com/tutorials/integrate-with-work-zone.html).
+> Before you continue with this step, don’t forget to perform the steps from the tutorials [Assign the User Roles](https://developers.sap.com/tutorials/user-role-assignment.html) and [Integrate Your Application with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/integrate-with-work-zone.html).
 
 1. Open your SAP Build Work Zone, standard edition site as described in [Integrate Your Application with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/integrate-with-work-zone.html).
 

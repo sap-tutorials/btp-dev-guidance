@@ -14,7 +14,7 @@ author_profile: https://github.com/slavipande
 
 - How to connect to your SAP S/4HANA Cloud system.
 - How to extend the existing MTA build file with the settings for SAP S/4HANA Cloud extension service.
-- How to test the application.
+- How to test the application with your SAP S/4HANA Cloud system.
 
 ## Prerequisites
 
@@ -164,9 +164,9 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
 
 ### Test the Incident Management application
 
-When creating new entries in the Incident Management application, you should be able to see all values from the mock server the value help of the **Customer** field.
+When creating new entries in the Incident Management application, you should be able to see all values from your SAP S/4HANA Cloud system in the value help of the **Customer** field.
 
-> Before you continue with this step, don’t forget to perform the steps from the tutorials [Assign the User Roles](https://developers.sap.com/tutorials/user-role-assignment.html) and [Integrate Your Application with SAP Build Work Zone](https://developers.sap.com/tutorials/integrate-with-work-zone.html).
+> Before you continue with this step, don’t forget to perform the steps from the tutorials [Assign the User Roles](https://developers.sap.com/tutorials/user-role-assignment.html) and [Integrate Your Application with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/integrate-with-work-zone.html).
 
 1. Open your SAP Build Work Zone, standard edition site as described in [Integrate Your Application with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/integrate-with-work-zone.html).
 
