@@ -40,12 +40,12 @@ You have added test cases in your application. Follow the steps in the [Add Test
     >
     > The **cds add hana** command adds to the **package.json** file the highlighted lines:
 
-    ```json[5, 11-13]
+    ```json[5, 11-13, 15-17]
     {
         "name": "incident-management",
         "dependencies": {
             ...
-            "@sap/cds-hana": "^x"
+            "@cap-js/hana": "^x"
         },
         ...
         "cds": {
@@ -54,6 +54,9 @@ You have added test cases in your application. Follow the steps in the [Add Test
                 "[production]": {
                     "db": "hana"
                 }
+            },
+            "sql": {
+              "native_hana_associations": false
             }
         }
     }
@@ -124,6 +127,7 @@ You have added test cases in your application. Follow the steps in the [Add Test
             "db": "hana",
             "auth": "xsuaa"
           }
+        ...
         }
       }
     }
@@ -201,6 +205,30 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
     cds add html5-repo
     ```
 
+2. Make sure that the following line has been added to the **package.json** file:
+    
+    ```json[13]
+    {
+      "name": "incident-management",
+      "dependencies": {
+          ...
+      },
+      ...
+      "cds": {
+        "requires": {
+          ...
+          "[production]": {
+            ...
+          },
+          "html5-repo": true
+        }
+      ...
+      }
+    }
+    ```
+
+    > In case the line is missing, go ahead and add it manually. 
+
 1. Check the content of the **app/incidents/package.json** file:
 
     ```json
@@ -267,7 +295,7 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
 
 ### Run a test build
 
-To validate everything is prepared as expected, run a test build with the following command:
+To validate that everything is prepared as expected, run a test build. Navigate to your project's root folder in the terminal and run the following command:
 
 ```bash
 cds build --production
