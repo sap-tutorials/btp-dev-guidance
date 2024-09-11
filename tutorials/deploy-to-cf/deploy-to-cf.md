@@ -95,7 +95,7 @@ The managed application router enables you to access and run SAPUI5 applications
 
 The above steps will generate the following module and resources in the **mta.yaml** file:
 
-```yaml[5-34, 38-59]
+```yaml[5-34, 38-55]
 _schema-version: '3.1'
 ...
 module:
@@ -118,12 +118,12 @@ module:
     content:
       instance:
         destinations:
-        - Name: incidents_incident-management_html_repo_host
-          ServiceInstanceName: incident-management-html5-app-host-service
-          ServiceKeyName: incident-management_html_repo_host-key
+        - Name: incidents_incident_management_html5_repo_host
+          ServiceInstanceName: incident-management-html5-repo-host
+          ServiceKeyName: incident-management-html5-repo-host-key
           sap.cloud.service: incidents
         - Authentication: OAuth2UserTokenExchange
-          Name: incidents_incident-management_auth
+          Name: incidents_incident_management_auth
           ServiceInstanceName: incident-management-auth
           ServiceKeyName: incident-management-auth-key
           sap.cloud.service: incidents
@@ -142,27 +142,22 @@ resources:
     service: destination
     service-name: incident-management-destination-service
     service-plan: lite
-- name: incident-management_html_repo_host
-  type: org.cloudfoundry.managed-service
-  parameters:
-    service: html5-apps-repo
-    service-name: incident-management-html5-app-host-service
-    service-plan: app-host
 parameters:
+  deploy_mode: html5-repo
   enable-parallel-deployments: true
 build-parameters:
   before-all:
   - builder: custom
     commands:
+    - npm ci
     - npx cds build --production    
 ```
 
 - This snippet adds the destinations required by the SAP Build Work Zone, standard edition service: HTML5 repo host service and Authorization and Trust Management (XSUAA) service.
-- The `html5-apps-repo` service with plan `app-host` is required to deploy the HTML5 applications to the HTML5 Application Repository.
 
 > **Important**
 >
-> Double check if line 29 in the snippet above was added correctly. In case it is missing, open the **mta.yaml** file and add it. 
+> Double check if line 24 in the snippet above was added correctly. In case it is missing, open the **mta.yaml** file and add it. 
 
 ### Add navigation target for Incidents UI
 
@@ -251,7 +246,7 @@ This deploy configuration adds SAP Cloud service at the end of **app/incidents/w
 
 In addition, in the **mta.yaml** file, new modules have been generated and the resources have been updated:
 
-```yaml[5-28, 36-51, 57, 61]
+```yaml[15-28, 36-51, 57]
 _schema-version: '3.1'
 ...
 module:
@@ -264,12 +259,12 @@ module:
     parameters:
       content-target: true
   build-parameters:
-    build-result: resources
+    build-result: app/ # to be changed to resources/
     requires:
     - artifacts:
       - nsincidents.zip
       name: nsincidents
-      target-path: resources/
+      target-path: app// # to be changed to resources/
 - name: nsincidents
   type: html5
   path: app/incidents
@@ -312,7 +307,6 @@ resources:
 - name: incident-management_html_repo_host
   ...
 parameters:
-  deploy_mode: html5-repo
   ...  
 ```
 
@@ -355,6 +349,34 @@ parameters:
 >       target-path: app//
 > ``` 
 > Delete if any exist.
+
+
+### Update the `incident-management-app-deployer` module
+
+1. Change the build result directory and the target path as follows:
+
+    ```yaml[13, 18]
+    _schema-version: '3.1'
+    ...
+    module:
+      ...
+    - name: incident-management-app-deployer
+      type: com.sap.application.content
+      path: .
+      requires:
+      - name: incident-management_html_repo_host
+        parameters:
+          content-target: true
+      build-parameters:
+        build-result: resources/
+        requires:
+        - artifacts:
+          - nsincidents.zip
+          name: nsincidents
+          target-path: resources/
+    - name: nsincidents
+    ...
+    ```
 
 ### Assemble with the Cloud MTA Build Tool
 
