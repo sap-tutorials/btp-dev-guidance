@@ -128,9 +128,9 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
                 subaccount:
                     destinations:
                     - Name: incident-management_cdm
-                        ServiceInstanceName: incidents-html5-app-runtime-service
-                        ServiceKeyName: incidents-html5-app-runtime-service-key
-                        URL: https://html5-apps-repo-rt.${default-domain}/applications/cdm/<cloud-service-name>
+                      ServiceInstanceName: incidents-html5-app-runtime-service
+                      ServiceKeyName: incidents-html5-app-runtime-service-key
+                      URL: https://html5-apps-repo-rt.${default-domain}/applications/cdm/<cloud-service-name>
         ```
     
     > You can find the value for `<cloud-service-name>` in the **app/incidents/webapp/manifest.json** file.
@@ -142,14 +142,15 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
     >```
     
 
-3. Update the `incident-management-app-content` module:
+3. Update the `incident-management-app-deployer` module:
 
     
     1. Add the following parameters:
 
-        ```yaml[3-10]
-        - name: incident-management-app-content
+        ```yaml[3-11]
+        - name: incident-management-app-deployer
           type: com.sap.application.content
+          path: .
           parameters:
             config:
                 destinations:
@@ -191,7 +192,7 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 
     3. Update destinations with the following:
 
-        ```yaml[3-7]
+        ```yaml[3-8]
         subaccount:
           destinations:
           - Authentication: NoAuthentication
@@ -227,7 +228,7 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 6. Verify. Here's how your **mta.yaml** file should look like at this stage:
 
     ```yaml
-    _schema-version: "3.1"
+    _schema-version: 3.3.0
     ID: incident-management
     description: A simple CAP project.
     version: 1.0.0
@@ -236,32 +237,63 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
       type: nodejs
       path: gen/srv
       requires:
-        - name: incident-management-db
-        - name: incident-management-auth
+      - name: incident-management-db
+      - name: incident-management-auth
       provides:
-        - name: srv-api
-          properties:
-            srv-url: ${default-url}
+      - name: srv-api
+        properties:
+          srv-url: ${default-url}
       parameters:
         buildpack: nodejs_buildpack
         readiness-health-check-http-endpoint: /health
         readiness-health-check-type: http
       build-parameters:
         builder: npm
+    - name: incident-management-db-deployer
+      type: hdb
+      path: gen/db
+      requires:
+      - name: incident-management-db
+      parameters:
+        buildpack: nodejs_buildpack
+    - name: incident-management-app-deployer
+      type: com.sap.application.content
+      path: .
+      parameters:
+        config:
+            destinations:
+            - forwardAuthToken: true
+              name: incident-management-srv-api
+              url: ~{srv-api/srv-url}
+            - name: ui5
+              url: https://ui5.sap.com
+      requires:
+      - name: srv-api
+      - name: incident-management-auth
+      - name: incident-management-html5-repo-host
+        parameters:
+          content-target: true
+      build-parameters:
+        build-result: resources/
+        requires:
+        - artifacts:
+          - nsincidents.zip
+          name: nsincidents
+          target-path: resources/
     - name: incident-management-destination-content
       type: com.sap.application.content
       requires:
       - name: incident-management-destination-service
         parameters:
           content-target: true
-      - name: incident-management_html_repo_runtime
+      - name: incidents_html_repo_runtime
         parameters:
           service-key:
-            name: incident-management-html5-app-runtime-service-key
-      - name: incident-management_html_repo_host
+            name: incidents-html5-app-runtime-service-key
+      - name: incident-management-html5-repo-host
         parameters:
           service-key:
-            name: incident-management_html_repo_host-key
+            name: incident-management-html5-repo-host-key
       - name: incident-management-auth
         parameters:
           service-key:
@@ -271,36 +303,12 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
           subaccount:
             destinations:
             - Name: incident-management_cdm
-              ServiceInstanceName: incident-management-html5-app-runtime-service
-              ServiceKeyName: incident-management-html5-app-runtime-service-key
-              URL: https://html5-apps-repo-rt.${default-domain}/applications/cdm/<cloud-service-name>
+              ServiceInstanceName: incidents-html5-app-runtime-service
+              ServiceKeyName: incidents-html5-app-runtime-service-key
+              URL: https://html5-apps-repo-rt.${default-domain}/applications/cdm/incidents
             existing_destinations_policy: ignore
       build-parameters:
         no-source: true
-    - name: incident-management-app-content
-      type: com.sap.application.content
-      path: .
-      requires:
-      - name: srv-api
-      - name: incident-management-auth
-      - name: incident-management_html_repo_host
-        parameters:
-          content-target: true
-      build-parameters:
-        build-result: resources
-        requires:
-        - artifacts:
-          - nsincidents.zip
-          name: nsincidents
-          target-path: resources/
-      parameters:
-        config:
-          destinations:
-          - forwardAuthToken: true
-            name: incident-management-srv-api
-            url: ~{srv-api/srv-url}
-          - name: ui5
-            url: https://ui5.sap.com
     - name: nsincidents
       type: html5
       path: app/incidents
@@ -313,61 +321,59 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
         supported-platforms: []
     resources:
     - name: incident-management-db
-      type: org.cloudfoundry.managed-service
+      type: com.sap.xs.hdi-container
       parameters:
         service: hana
         service-plan: hdi-shared
+    - name: incident-management-html5-repo-host
+      type: org.cloudfoundry.managed-service
+      parameters:
+        service: html5-apps-repo
+        service-plan: app-host
+    - name: incident-management-auth
+      type: org.cloudfoundry.managed-service
+      parameters:
+        config:
+          tenant-mode: dedicated
+          xsappname: incident-management-${org}-${space}
+        path: ./xs-security.json
+        service: xsuaa
+        service-plan: application
+    - name: incidents_html_repo_runtime
+      type: org.cloudfoundry.managed-service
+      parameters:
+        service: html5-apps-repo
+        service-name: incidents-html5-app-runtime-service
+        service-plan: app-runtime
     - name: incident-management-destination-service
       type: org.cloudfoundry.managed-service
       parameters:
         config:
           init_data:
             subaccount:
-                destinations:
-                - Authentication: NoAuthentication
-                  Name: incident-management-rt
-                  ProxyType: Internet
-                  Type: HTTP
-                  URL: https://<subdomain>.launchpad.${default-domain}
-                  CEP.HTML5contentprovider: true
-                existing_destinations_policy: update
-            version: 1.0.0
+              destinations:
+              - Authentication: NoAuthentication
+                Name: incident-management-rt
+                ProxyType: Internet
+                Type: HTTP
+                URL: https://sveto-test-eu12-kanmyy65.launchpad.${default-domain}
+                CEP.HTML5contentprovider: true
+              existing_destinations_policy: update
+          version: 1.0.0
         service: destination
         service-name: incident-management-destination-service
         service-plan: lite
-    - name: incident-management_html_repo_host
-      type: org.cloudfoundry.managed-service
-      parameters:
-        service: html5-apps-repo
-        service-name: incident-management-html5-app-host-service
-        service-plan: app-host
-    - name: incident-management-auth
-      type: org.cloudfoundry.managed-service
-      parameters:
-        path: ./xs-security.json
-        service: xsuaa
-        service-plan: application
-        config:
-            xsappname: incident-management-${org}-${space}
-            tenant-mode: dedicated
-    - name: incident-management_html_repo_runtime
-      type: org.cloudfoundry.managed-service
-      parameters:
-        service: html5-apps-repo
-        service-name: incidents-html5-app-runtime-service
-        service-plan: app-runtime
     parameters:
-    deploy_mode: html5-repo
-    enable-parallel-deployments: true
+      deploy_mode: html5-repo
+      enable-parallel-deployments: true
     build-parameters:
       before-all:
       - builder: custom
         commands:
-            - npm ci
-            - npx cds build --production
-            - mkdir -p resources
-            - cp workzone/cdm.json resources/cdm.json
-
+        - npm ci
+        - npx cds build --production
+        - mkdir -p resources
+        - cp workzone/cdm.json resources/cdm.json  
     ```
 
 #### Create the CDM configuration
@@ -619,4 +625,4 @@ You need to assign your user to the **~cdm_defaultRole** role collection, so you
 
 ### Summary
 
-Congratulations! You now have finished the development of your application and you have integrated SAP Build Work Zone, standard edition service, to have one central entry point to show all of your SAP BTP applications.
+Congratulations! You now have finished the development of your application and you have integrated SAP Build Work Zone, standard edition to have one central entry point to show all of your SAP BTP applications.
