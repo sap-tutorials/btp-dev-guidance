@@ -351,11 +351,11 @@ parameters:
 > Delete if any exist.
 
 
-### Update the `incident-management-app-deployer` module
+### Make additional changes to the mta.yaml file
 
-1. Change the build result directory and the target path as follows:
+1. Update the `incident-management-app-deployer` module (build result directory and the target path) as follows:
 
-    ```yaml[13, 18]
+    ```yaml[7, 13, 18]
     _schema-version: '3.1'
     ...
     module:
@@ -376,6 +376,18 @@ parameters:
           target-path: resources/
     - name: nsincidents
     ...
+    ```
+
+2. Update the build parameters:
+
+    ```yaml[7]
+    build-parameters:
+    before-all:
+      - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production 
+        - mkdir -p resources  
     ```
 
 ### Assemble with the Cloud MTA Build Tool

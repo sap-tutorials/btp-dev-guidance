@@ -214,7 +214,7 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 
 5. Update the build parameters:
 
-    ```yaml[7-8]
+    ```yaml[8]
     build-parameters:
     before-all:
       - builder: custom
