@@ -14,7 +14,7 @@ author_profile: https://github.com/slavipande
 ## You will learn
 
 - How to configure entitlements
-- How to enable the Cloud Foundry runtime in your subaccount in SAP BTP
+- How to enable the SAP BTP, Cloud Foundry runtime in your subaccount in SAP BTP
 - How to create an SAP HANA Cloud service instance in the SAP BTP cockpit
 
 ## Prerequisites
