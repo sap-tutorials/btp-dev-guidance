@@ -20,6 +20,8 @@ author_profile: https://github.com/slavipande
 
 You have added business logic to your application. Follow the steps in the [Add Custom Logic](add-custom-logic) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
+> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
+
 ### Overview
 
 You have already generated the **Incident Management** application and can start it in the browser from SAP Business Application Studio. However, you can also add a launch page for local testing. This page looks like a real site, but is just a local copy of the otherwise centrally managed SAP Build Work Zone, standard edition site and comes with a limited version of its functionality. There's no option to add or remove applications via configuration, user roles aren't taken into account, and end-user personalization is also not included. If you want these and other SAP Build Work Zone, standard edition functionalities included, you have to set them up for your project. Find out how to do this in [Integrate Your Application with SAP Build Work Zone, Standard Edition](integrate-with-work-zone). You stick to the launch page for this tutorial though.

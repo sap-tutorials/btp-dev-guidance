@@ -22,6 +22,8 @@ author_profile: https://github.com/slavipande
     - Go to the Incident Management application GitHub repository directly and clone the application without going through the application development steps. See [Incident Management](https://github.com/cap-js/incidents-app/tree/beginner-tutorials).
 - You have deployed the Incident Management sample application in the SAP BTP, Cloud Foundry runtime. Follow the tutorials in the [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) group to deploy the Incident Management sample application in the SAP BTP, Cloud Foundry runtime.
 
+> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
+
 ### Overview
 
 In this tutorial, you will integrate the SAP S/4HANA Cloud Business Partner API to the Incident Management application.

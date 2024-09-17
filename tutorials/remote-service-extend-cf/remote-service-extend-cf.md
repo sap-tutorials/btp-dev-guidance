@@ -19,6 +19,8 @@ author_profile: https://github.com/slavipande
 
 - You have set up the Incident Management sample application. See [Introduction to Remote Service Connectivity](remote-service-intro).
 
+> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
+
 ### Get the Business Partner API
 
 SAP Business Accelerator Hub is a web application hosted by SAP where you can discover, explore, and test SAP and partner APIs (Application Programming Interfaces) that are required to build extensions or process integrations.

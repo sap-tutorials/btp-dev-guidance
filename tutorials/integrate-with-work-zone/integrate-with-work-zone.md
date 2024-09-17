@@ -29,6 +29,8 @@ author_profile: https://github.com/slavipande
     - Google Chrome
     - Microsoft Edge
 
+> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
+
 ### Subscribe to SAP Build Work Zone, standard edition
 
 1. Navigate to your subaccount and choose **Services** &rarr; **Service Marketplace** on the left.

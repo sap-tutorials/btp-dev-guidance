@@ -20,6 +20,8 @@ author_profile: https://github.com/slavipande
 
 You have implemented the user interface of your application. Follow the steps in the [Add SAP Fiori Elements UIs](add-fiori-elements-uis) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
+> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
+
 ### Add custom code
 
 In this tutorial, you add some custom code to the CAP application. Depending on the contents of the **title** property, the custom code changes the value of the **urgency** property.

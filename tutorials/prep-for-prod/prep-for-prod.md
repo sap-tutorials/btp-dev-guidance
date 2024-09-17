@@ -16,11 +16,11 @@ author_profile: https://github.com/slavipande
 - How to configure SAP HANA Cloud in your project
 - How to configure SAP Authorization and Trust Management service in your project
 
-
 ## Prerequisites
 
 You have added test cases in your application. Follow the steps in the [Add Test Cases](add-test-cases) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
+> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
 ### Add SAP HANA Cloud
 

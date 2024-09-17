@@ -29,6 +29,7 @@ author_profile: https://github.com/slavipande
     - You must be an administrator of the SAP S/4HANA Cloud system.
     - You need to connect this system to your SAP BTP global account, if you'd like to build extension applications for your SAP S/4HANA Cloud system.
 
+> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
 ### Add a system to your SAP BTP account
 

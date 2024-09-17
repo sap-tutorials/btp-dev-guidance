@@ -28,8 +28,7 @@ author_profile: https://github.com/slavipande
     - Google Chrome
     - Microsoft Edge
 
-
-
+> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
 ### Create a repository
 

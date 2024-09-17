@@ -28,6 +28,8 @@ author_profile: https://github.com/slavipande
     - Google Chrome
     - Microsoft Edge
 
+> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
+
 ### Deploy the Incident Management application
 
 1. In SAP Business Application Studio, navigate to the Incident Management application folder and add the following snippet to the **package.json** file:

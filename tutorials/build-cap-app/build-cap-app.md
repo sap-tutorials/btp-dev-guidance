@@ -10,6 +10,7 @@ author_name: Svetoslav Pandeliev
 author_profile: https://github.com/slavipande
 ---
 
+
 ## You will learn
 
 - How to create a CAP project 
@@ -20,6 +21,9 @@ author_profile: https://github.com/slavipande
 ## Prerequisites
 
 You have configured the SAP Business Application Studio. Follow the steps in the [Set Up SAP Business Application Studio for Development](set-up-bas) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
+
+
+> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
 ### Create a CAP project
 

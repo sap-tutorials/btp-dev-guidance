@@ -26,6 +26,8 @@ author_profile: https://github.com/slavipande
     - Google Chrome
     - Microsoft Edge
 
+> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
+
 ### Use a mock server instead of an SAP S/4HANA Cloud tenant
 
 If you don't have access to an SAP backend system (SAP ECC, SAP S/4HANA Cloud or an SAP on-premise system) but still need OData services with some data, you can use this [mock server application](https://github.com/SAP-samples/cloud-extension-ecc-business-process/blob/mock/README.md). It contains entities of SAP OData services with sample data.

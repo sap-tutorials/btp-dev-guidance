@@ -20,6 +20,8 @@ author_profile: https://github.com/slavipande
 
 There are no prerequisites for this tutorial.
 
+> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
+
 ### Overview
 
 Welcome to your guide to application development on the SAP Business Technology Platform (SAP BTP). This is the introduction followed by comprehensive tutorials that will guide you through the process of developing and deploying a full-stack application based on the [SAP Cloud Application Programming Model (CAP)](https://pages.github.tools.sap/cap/docs/) and [SAP Fiori elements](https://sapui5.hana.ondemand.com/sdk/#/topic/03265b0408e2432c9571d6b3feb6b1fd) on [SAP BTP](https://developers.sap.com/tutorials/cp-explore-cloud-platform.html). With these tutorials, you'll leverage a variety of different tools and services, learning each of them step by step. Whether you're new to SAP BTP or an experienced developer, the following tutorials are designed to help you hit the ground running.

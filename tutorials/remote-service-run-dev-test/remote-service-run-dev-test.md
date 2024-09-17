@@ -19,6 +19,8 @@ author_profile: https://github.com/slavipande
 
 - You have got the Business Partner API from SAP S/4HANA Cloud and have extended the functionality of the Incident Management application. Follow the steps in the [Get the Business Partner API and Extend the Incident Management Application](remote-service-extend-cf) tutorial.
 
+> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
+
 ### Create mock data for the new entities
 
 Since you already have an SQLite in-memory database that was automatically created in the previous step, let's now fill it in with some test data.
