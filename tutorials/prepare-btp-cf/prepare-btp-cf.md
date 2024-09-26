@@ -50,7 +50,7 @@ To deploy the Incident Management applications, you need the following entitleme
 | SAP HANA Schemas & HDI Containers |   hdi-shared   |   1 |
 | SAP Continuous Integration and Delivery | free (Application) |   1 |
 
-Follow the steps below to add the entitlements.
+If you don't have the entitlements added already, follow the steps below to add them.
 
 1. Log in to SAP BTP cockpit.
 
@@ -88,7 +88,7 @@ Follow the steps below to add the entitlements.
 
 ### Enable Cloud Foundry Runtime
 
-This creates a Cloud Foundry (CF) Org in your subaccount. There’s always one Cloud Foundry org per subaccount. Later on, when you log on to Cloud Foundry, it asks you which Cloud Foundry org you want to log on to. For any development in your subaccount, you need to choose this org for your subaccount.
+This creates a Cloud Foundry (CF) organization (org) in your subaccount. There’s always one Cloud Foundry org per subaccount. Later on, when you log on to Cloud Foundry, it asks you which Cloud Foundry org you want to log on to. For any development in your subaccount, you need to choose this org for your subaccount. If you don't have a CF org created in your subaccount already, follow the steps below to create it.
 
 2. Navigate to your subaccount and choose **Enable Cloud Foundry**.
 
@@ -119,6 +119,8 @@ This creates a Cloud Foundry (CF) Org in your subaccount. There’s always one C
 <!-- New Set Up HANA Cloud start -->
 
 ### Subscribe to SAP HANA Cloud Administration Tools
+
+If you don't have a subscription to SAP HANA Cloud already, follow the steps below to subscribe.
 
 1. Navigate to your subaccount and choose **Services** &rarr; **Service Marketplace** on the left.
 
