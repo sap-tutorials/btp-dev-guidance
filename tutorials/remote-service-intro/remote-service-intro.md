@@ -30,7 +30,7 @@ In this tutorial, you will integrate the SAP S/4HANA Cloud Business Partner API 
 
 The Incident Management application helps call center support representatives process and manage customer incidents. A support representative (processor) receives a phone call from an existing customer and creates a new incident on behalf of the customer.
 
-When the processor creates a new incident, they have to assign the incident to the respective customer. The value help of the **Customer** field provides the option to choose a customer from a list of customers. The Incident Management application fethes the list of customers from the SAP S/4HANA Cloud system. For this purpose, you will use the SAP S/4HANA Business Partner API.
+When the processor creates a new incident, they have to assign the incident to the respective customer. The value help of the **Customer** field provides the option to choose a customer from a list of customers. The Incident Management application fetches the list of customers from the SAP S/4HANA Cloud system. For this purpose, you will use the SAP S/4HANA Business Partner API.
 
 <!-- border; size:540px --> ![Solution diagram](tutorials/remote-service-intro/Solution-Diagram-RS.png)
 

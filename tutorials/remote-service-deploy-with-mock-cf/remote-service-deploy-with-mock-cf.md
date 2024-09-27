@@ -1,6 +1,6 @@
 ---
 title: Deploy and Run the Incident Management Application in the SAP BTP, Cloud Foundry Runtime with a Mock Server
-description: Learn how to deploy the Incident Management application in the SAP BTP, Cloud Foundry runtime and test it with the mock server you have installed.
+description: Learn how to deploy the Incident Management application in the SAP BTP, Cloud Foundry runtime and test it with the mock server that you have installed.
 parser: v2
 auto_validation: true
 time: 30
@@ -13,7 +13,7 @@ author_profile: https://github.com/slavipande
 ## You will learn
 
 - How to deploy and the Incident Management application in the SAP BTP, Cloud Foundry runtime.
-- How to test the application with the mock server.
+- How to test the application with the mock server that you have installed.
 
 ## Prerequisites
 

@@ -37,11 +37,11 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
 
 ### Add new business logic to the Incident Management application
 
-1. In SAP Business Application Studio, navigate to the project's root folder of the Incident Management application.
+1. In SAP Business Application Studio, navigate to the **incident-management** root folder of your project.
 
-2. In the **package.json** file, make sure that the name property is set to `incident-management`.
+2. In the **package.json** file, make sure that the `name` property is set to `incident-management`.
 
-    ```js
+    ```json
     {
       "name": "incident-management",
       "version": "1.0.0",
@@ -49,13 +49,13 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
         ....
     ```
 
-3. Add some additional libraries to the **package.json** file for the communication with external systems. In the terminal, go to the project's root folder of the Incident Management application and run the following command:  
+3. Add some additional libraries to the **package.json** file for the communication with external systems. In the terminal, go to the **incident-management** root folder of your project and run the following command:  
 
     ```bash
     npm add @sap-cloud-sdk/http-client@3.x @sap-cloud-sdk/util@3.x @sap-cloud-sdk/connectivity@3.x @sap-cloud-sdk/resilience@3.x
     ```
 
-4. Import the Business Partner API to your project.
+4. Import the Business Partner API to your project:
 
     1. In the project explorer, right-click on the project's root folder and choose **Upload...**
     2. Select the **API_BUSINESS_PARTNER.edmx** file and upload it to your project folder.
@@ -69,13 +69,13 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
 
 5. Open **srv/external/API_BUSINESS_PARTNER.cds**. Search for **entity API_BUSINESS_PARTNER.A_BusinessPartner**. Scroll down to the **to_BusinessPartnerAddress** section and replace it with the following excerpt:
 
-    ```js
+    ```CDS
     to_BusinessPartnerAddress : Composition of many API_BUSINESS_PARTNER.A_BusinessPartnerAddress on to_BusinessPartnerAddress.BusinessPartner = BusinessPartner;
     ```
 
 6. Search for **entity API_BUSINESS_PARTNER.A_BusinessPartnerAddress**. Replace the associations for email address and phone number with the following excerpt:
 
-    ```js
+    ```CDS
     to_EmailAddress : Composition of many API_BUSINESS_PARTNER.A_AddressEmailAddress on to_EmailAddress.AddressID = AddressID;
 
     to_PhoneNumber : Composition of many API_BUSINESS_PARTNER.A_AddressPhoneNumber on to_PhoneNumber.AddressID = AddressID;
@@ -83,7 +83,7 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
 
 7. In the **srv** folder, create a new file **remote.cds** and paste the following code in it:
 
-    ```js
+    ```CDS
     using { API_BUSINESS_PARTNER as S4 } from './external/API_BUSINESS_PARTNER';
 
     service RemoteService {
@@ -114,10 +114,10 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
 
 9. Add application logic for reading and saving a business partner:
 
-    1. Open the **srv/processor-service.js** file.
+    1. Open the **srv/services.js** file.
     2. Set the `init` method to `async`:
   
-        ```js
+        ```js[1]
         async init() {
           this.before("UPDATE", "Incidents", (req) => this.onUpdate(req));
           this.after("READ", "Incidents", (data) => this.changeUrgencyDueToSubject(data));
@@ -128,13 +128,27 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
 
     3. Add a custom handler for READ of customers in the **init()** method:
 
-        ```js
-        this.on('READ', 'Customers', (req) => this.onCustomerRead(req));
+        ```js[4]
+        async init() {
+          this.before("UPDATE", "Incidents", (req) => this.onUpdate(req));
+          this.after("READ", "Incidents", (data) => this.changeUrgencyDueToSubject(data));
+          this.on('READ', 'Customers', (req) => this.onCustomerRead(req));
+
+          return super.init();
+        }
         ```
 
     4. Add the custom handler implementation after the **init()** method:
 
-        ```js
+        ```js[9-37]
+        async init() {
+          this.before("UPDATE", "Incidents", (req) => this.onUpdate(req));
+          this.after("READ", "Incidents", (data) => this.changeUrgencyDueToSubject(data));
+          this.on('READ', 'Customers', (req) => this.onCustomerRead(req));
+
+          return super.init();
+        }
+
         async onCustomerRead(req) {
           console.log('>> delegating to S4 service...', req.query);
           const top = parseInt(req._queryOptions?.$top) || 100;
@@ -166,17 +180,41 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
         }
         ```
 
-    5.  Add a custom handler for CREATE, UPDATE, DELETE of incidents. Add this code snippet to the **init()** method:
+        > **What happens here?**
+        >
+        > The highlighted snippet defines the `onCustomerRead` method to handle reading of customer data. 
+        >
+        > The method logs the request query, parses the `$top` and `$skip` query options with default values, extracts the `BusinessPartner` entity from the remote service, fetches the business partner data from the remote service (including email addresses), maps the result to include only the necessary fields, and sets the `$count` property.
 
-        ```js
-        this.on(['CREATE','UPDATE'], 'Incidents', (req, next) => this.onCustomerCache(req, next));
-        this.S4bupa = await cds.connect.to('API_BUSINESS_PARTNER');
-        this.remoteService = await cds.connect.to('RemoteService');
+    5.  Add a custom handler for CREATE and UPDATE of incidents. Add this code snippet to the **init()** method:
+
+        ```js[5-7]
+        async init() {
+          this.before("UPDATE", "Incidents", (req) => this.onUpdate(req));
+          this.after("READ", "Incidents", (data) => this.changeUrgencyDueToSubject(data));
+          this.on('READ', 'Customers', (req) => this.onCustomerRead(req));
+          this.on(['CREATE','UPDATE'], 'Incidents', (req, next) => this.onCustomerCache(req, next));
+          this.S4bupa = await cds.connect.to('API_BUSINESS_PARTNER');
+          this.remoteService = await cds.connect.to('RemoteService');
+
+          return super.init();
+        }
         ```
 
-    6. Add the custom handler after the **init()** method:
+    6. Add the custom handler implementation after the **init()** method:
 
-        ```js
+        ```js[12-43]
+        async init() {
+          this.before("UPDATE", "Incidents", (req) => this.onUpdate(req));
+          this.after("READ", "Incidents", (data) => this.changeUrgencyDueToSubject(data));
+          this.on('READ', 'Customers', (req) => this.onCustomerRead(req));
+          this.on(['CREATE','UPDATE'], 'Incidents', (req, next) => this.onCustomerCache(req, next));
+          this.S4bupa = await cds.connect.to('API_BUSINESS_PARTNER');
+          this.remoteService = await cds.connect.to('RemoteService');
+
+          return super.init();
+        }
+
         async onCustomerCache(req, next) {
           const { Customers } = this.entities;
           const newCustomerId = req.data.customer_ID;
@@ -209,12 +247,55 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
           }
           return result;
         }
+
+        async onCustomerRead(req) {
+          console.log('>> delegating to S4 service...', req.query);
+          const top = parseInt(req._queryOptions?.$top) || 100;
+          const skip = parseInt(req._queryOptions?.$skip) || 0;
+        
+          const { BusinessPartner } = this.remoteService.entities;
+
+          // Expands are required as the runtime does not support path expressions for remote services
+          let result = await this.S4bupa.run(SELECT.from(BusinessPartner, bp => {
+            bp('*'),
+              bp.addresses(address => {
+                address('email'),
+                  address.email(emails => {
+                    emails('email');
+                  });
+              })
+          }).limit(top, skip));
+        
+          result = result.map((bp) => ({
+            ID: bp.ID,
+            name: bp.name,
+            email: bp.addresses[0]?.email[0]?.email
+          }));
+
+          // Explicitly set $count so the values show up in the value help in the UI
+          result.$count = 1000;
+          console.log("after result", result);
+          return result;
+        }
         ```
 
-10. To run the tests, navigate to the **tests/test.js** file and replace line no.3 with the following code snippet:
+        > **What happens here?**
+        >
+        > The highlighted snippet defines the `onCustomerCache` method to handle caching of customer data during CREATE or UPDATE events.
+        >
+        > The method extracts the `Customers` entity and the new customer ID from the request data, calls the next middleware or handler in the chain, extracts the `BusinessPartner` entity from the remote service, checks if the new customer ID is valid and if the event is either CREATE or UPDATE, fetches the customer data from the remote service (including email and phone number), and, if the customer data is found, updates the local `Customers` entity while also removing unnecessary fields.
 
-    ```js
+10. To run the tests, navigate to the **tests/test.js** file and replace line no.3 with the following highlighted line:
+
+    ```js[3]
+    const cds = require('@sap/cds/lib')
+    const { default: axios } = require('axios') 
     const { GET, POST, DELETE, PATCH, expect } = cds.test(__dirname + '../../', '--with-mocks');
+
+    axios.defaults.auth = { username: 'incident.support@tester.sap.com', password: 'initial' }
+
+    jest.setTimeout(11111)
+    ...
     ```
 
 11. Run the tests:

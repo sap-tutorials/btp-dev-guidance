@@ -104,7 +104,7 @@ You have successfully created a workspace and connected it to your desired Cloud
 
 6. Right-click on the **mta_archives/Mockserver_1.0.0.mtar** file and choose **Deploy MTA Archive**.
 
-Now you need to create a destination to the the mock server.
+Now you need to create a destination to the mock server.
 
 ### Create a destination to the mock server
 

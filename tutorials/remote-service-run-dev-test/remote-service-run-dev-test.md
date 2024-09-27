@@ -99,7 +99,7 @@ Since you already have an SQLite in-memory database that was automatically creat
 
 5. Open a browser and open the server URL: `http://localhost:4004`.
 
-6. Choose **/launchpage.html**.
+6. Choose **/launchpage.html** under **Web Applications**.
 
     <!-- border; size:540px --> ![CAP index page](./cap-index-page.png)
 
