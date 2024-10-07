@@ -320,6 +320,12 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
 ####  Prepare the UI deployer image configuration and build the image
 
+1. In the VS Code terminal, navigate to the **add/incidents** folder and run the following command:
+
+    ```bash
+    npm install && npm run build
+    ```
+
 3. Create a new file **xs-app.json** in **app/incidents/** and add the following code to it:
 
     ```json
@@ -353,6 +359,8 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
       ]
     }
     ```
+
+    > In case the **xs-app.json** already exists, replace its content with the snippet above.
 
 4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter.
 
@@ -437,7 +445,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
         ],
         "scripts": {
             "start": "node node_modules/@sap/html5-app-deployer/index.js",
-            "build:ui5": "npm run build:cf --prefix ../app/incidents --if-present",
+            "build:ui5": "npm run build --prefix ../app/incidents --if-present",
             "copyzips": "copyfiles -f ../app/*/dist/*.zip ./resources/",
             "package": "run-s build:ui5 copyzips"
         },
@@ -533,7 +541,7 @@ CAP provides a configurable Helm chart for Node.js applications.
 
 3. Run the following command to get the domain name of your Kyma cluster:
 
-    ```yaml
+    ```bash
     kubectl get gateway -n kyma-system kyma-gateway \
             -o jsonpath='{.spec.servers[0].hosts[0]}'
     ```
@@ -643,16 +651,16 @@ CAP provides a configurable Helm chart for Node.js applications.
 
     <!-- border; size:540px --> ![Deployed app](./deployedapp.png)
 
-6. Enter the route displayed for **srv** in your browser.
+<!-- 6. Enter the route displayed for **srv** in your browser. -->
 
-    <!-- border; size:540px --> ![Depoyed app route](./deployedapp-route.png)
+<!-- border; size:540px ![Depoyed app route](./deployedapp-route.png) -->
 
-    You see the CAP start page:
+<!--     You see the CAP start page: -->
 
-    <!-- border; size:540px --> ![CAP start page](./cap-start-page.png)
+<!-- border; size:540px ![CAP start page](./cap-start-page.png) --> 
 
-4. When you choose the **Incidents** service entity, you will see an error message. 
+<!-- 4. When you choose the **Incidents** service entity, you will see an error message.  -->
 
-    <!-- border; size:540px --> ![401 error](./401-error.png)
+<!-- border; size:540px  ![401 error](./401-error.png) -->
 
-The service expects a so called JWT (JSON Web Token) in the HTTP Authorization header that contains the required authentication and authorization information to access the service. In the next tutorial, you will access your UIs from SAP Build Work Zone, standard edition. The SAP Build Work Zone, standard edition will trigger the authentication flow to provide the required token to access the service.
+In the next tutorial, you will access your UIs from SAP Build Work Zone, standard edition. The SAP Build Work Zone, standard edition will trigger the authentication flow to provide the required token to access the service.
