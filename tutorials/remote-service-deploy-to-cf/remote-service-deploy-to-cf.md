@@ -99,9 +99,9 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
 
     > For more information, see [Communication Arrangement JSON/YAML File - Properties](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/553a4c6b98be4c1ba7d1dfa0e9df8669.html).
 
-2.  Navigate to the **package.json** file in the root folder of the application. Replace the settings for **API_BUSINESS_PARTNER** with the following code snippet:
+2.  Navigate to the **package.json** file in the root folder of the application. Add the following code snippet to the settings for **API_BUSINESS_PARTNER**:
 
-    ```json[6, 7]
+    ```json[4-9]
     "API_BUSINESS_PARTNER": {
         "kind": "odata-v2",
         "model": "srv/external/API_BUSINESS_PARTNER",
@@ -116,7 +116,7 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
     <!-- If you are deploying to Cloud Foundry, the **destination** is `incidents-api-access`. For Kyma, the **destination** is `incident-management-s4-hana-cloud`. -->
 
 
-2. Open the **mta.yml** file and add the following code snippet to the **resource** section:
+2. Open the **mta.yml** file and add the following code snippet to the **resources** section:
 
     ```yaml
     - name: incidents-api-access
