@@ -28,7 +28,7 @@ author_profile: https://github.com/slavipande
     - Google Chrome
     - Microsoft Edge
  - For Windows, you'll need Chocolatey. This is a package manager that will speed up and ease installation of the tools in this tutorial. See how to install Chocolatey in [Setup/Install](https://docs.chocolatey.org/en-us/choco/setup).
- - You have prepared a container registry and you've logged in to the container registry through your CLI. A container registry is a repo where you can push your docker images. SAP BTP doesn't currently provide a container registry. You can use any container registry offering as long as it can be reached from public Internet.
+ - You have prepared a container registry and you've logged in to the container registry through your CLI. A container registry is a repo where you can push your Docker images. SAP BTP doesn't currently provide a container registry. You can use any container registry offering as long as it can be reached from public Internet.
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
@@ -107,7 +107,7 @@ brew install int128/kubelogin/kubelogin
 See [Setup](https://github.com/int128/kubelogin#setup) in the kubelogin docs for more details.
 [OPTION END]
 
-### Login to your Kyma cluster
+### Log in to your Kyma cluster
 
 1. Choose `KubeconfigURL` under the **Kyma Environment** tab in your subaccount.
 
@@ -320,7 +320,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
 ####  Prepare the UI deployer image configuration and build the image
 
-1. In the VS Code terminal, navigate to the **add/incidents** folder and run the following command:
+1. In the VS Code terminal, navigate to the **app/incidents** folder and run the following command:
 
     ```bash
     npm install && npm run build
