@@ -84,13 +84,13 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
       version: ">0.0.0"
     ```
 
-1. Run the following command to automate the setup for HTML5 application deployment:
+2. Run the following command to automate the setup for HTML5 application deployment:
 
     ```bash
     cds add html5-repo
     ```
 
-2. Add the following configurations for creating an `html5-apps-repo-runtime` service instance in the **values.yaml** file:
+3. Add the following configurations for creating an `html5-apps-repo-runtime` service instance in the **values.yaml** file:
 
     ```yaml
     html5-apps-repo-runtime: 
@@ -98,7 +98,7 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
       servicePlanName: app-runtime
     ```
 
-3. Delete the destination configuration from **chart/values.yaml**:
+4. Delete the destination configuration from **chart/values.yaml**:
 
     ```yaml
     destination:
@@ -110,14 +110,14 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
     ```
 
 
-2. Update the `html5-apps-deployer` section:
+5. Update the `html5-apps-deployer` section:
 
     1. Delete `SAP_CLOUD_SERVICE` and the destination binding:
 
         ```yaml[3, 9-10]
         html5-apps-deployer:
           env:
-            SAP_CLOUD_SERVICE: incidents
+            SAP_CLOUD_SERVICE: incidentmanagementservice
           image:
             repository: "incident-management-html5-deployer"
           bindings:
@@ -127,7 +127,7 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
               serviceInstanceName: destination
         ```
     
-    1. Delete `envFrom:` and the fields under it:
+    2. Delete `envFrom:` and the fields under it:
 
         ```yaml
         envFrom:
@@ -135,9 +135,9 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
             name: "{{ .Release.Name }}-html5-apps-deployer-configmap"
         ```
 
-    2. Delete `backendDestinations:` and its properties.
+    3. Delete `backendDestinations:` and its properties.
 
-    2. Under `env`, add the following:.
+    4. Under `env`, add the following:.
 
         ```yaml[2-3]
           env:
