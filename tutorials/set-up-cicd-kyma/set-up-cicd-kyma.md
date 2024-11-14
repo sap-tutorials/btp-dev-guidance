@@ -99,35 +99,33 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 1. Navigate to your subaccount and choose **Services** &rarr; **Service Marketplace** on the left.
 
 
-4. Type **Continuous Integration & Delivery** in the search box and choose **Create**.
+2. Type **Continuous Integration & Delivery** in the search box and choose **Create**.
 
     <!-- border; size:540px --> ![Continuous Integration and Delivery create service](./cicd-create-service.png)
 
-6. Choose **Create** in the **New Instance or Subscription** popup without changing any values.
+3. Choose **Create** in the **New Instance or Subscription** popup, and select **default** from the **Plan** field.
 
-    <!-- border; size:540px --> ![New Instance or Subscription popup](./cicd-create-service-popup.png)
-
-7. Choose **View Subscription** and wait until the status changes to **Subscribed**.
+4. Choose **View Subscription** and wait until the status changes to **Subscribed**.
 
     <!-- border; size:540px --> ![View subscription](./cicd-view-subscription.png)
 
     <!-- border; size:540px --> ![Status subscribed](./cicd-status-subscribed.png)
 
-8. In your SAP BTP subaccount, choose **Security** &rarr; **Role Collections** in the left-hand pane.
+5. In your SAP BTP subaccount, choose **Security** &rarr; **Role Collections** in the left-hand pane.
 
-9. Choose role collection **CICD Service Administrator**.
+6. Choose role collection **CICD Service Administrator**.
 
-10. Choose **Edit**.
+7.  Choose **Edit**.
 
     <!-- border; size:540px --> ![Edit role](./cicd-edit-role.png)
 
-11. In the **Users** section, enter your user and select the icon to add the user.
+8.  In the **Users** section, enter your user and select the icon to add the user.
 
     <!-- border; size:540px --> ![Add user](./cicd-add-user.png)
 
     > Keep the setting `Default Identity Provider` unless you have a custom identity provider configured.
 
-13. Choose **Save**.
+9.  Choose **Save**.
 
     You've assigned the **CICD Service Administrator** role collection to your user.
 
@@ -326,11 +324,9 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
 
     <!-- border; size:540px --> ![Configure pipeline](./configure-pipeline.png)
 
-3. In the **Stages** tab, enter **chart** in the **Helm Chart Path** field.
+3. In the **Stages** tab, enter **gen/chart** in the **Helm Chart Path** field.
 
 4. Choose **+** to add container images:
-
-    <!-- border; size:540px --> ![Helm chart path](./helm-chart-path.png)
 
     - Enter **`<your-container-registry>/incident-management-srv`** in the **Container Image Name** field.
     - Enter **gen/srv** in the **Project Subdirectory Path** field.
@@ -350,19 +346,15 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
     <!-- border; size:540px --> ![All images](./all-images.png)
 
 
-3. Select **npm** from the dropdown in the **Build Tool** field.
+5. Select **npm** from the dropdown in the **Build Tool** field.
 
-4. Select **Node 18** from the dropdown in the **Build Tool Version** field. 
+6. Select **Node 18** from the dropdown in the **Build Tool Version** field. 
 
-5. Enter **cds-build** in the **Script** field.
+7. Enter **cds-build** in the **Script** field.
 
-6. In the **CNB Build** section, enter the URL of your container registry in the **Container Registry URL** field (for example, https://index.docker.io if you are using Docker Hub).
+8. In the **CNB Build** section, enter the URL of your container registry in the **Container Registry URL** field (for example, https://index.docker.io if you are using Docker Hub).
 
-7. Open the value help for the **Container Registry Credential** field and choose **container-registry-credentials**.
-
-8. Switch the **Helm Dependency Update** toggle **ON**.
-
-    <!-- border; size:540px --> ![Configure stages](./configure-stages.png)
+9. Open the value help for the **Container Registry Credential** field and choose **container-registry-credentials**.
 
 #### Add unit tests and configure release
 

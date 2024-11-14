@@ -261,12 +261,18 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 1. In VS Code, choose **Terminal** &rarr; **New Terminal** and run the following command:
 
     ```bash
+    cds add workzone-standard
+    ```
+
+2. In your terminal, run the following command:
+
+    ```bash
     npm install
     ```
 
     This will install required dependencies and update the **package-lock.json** file of your project.
 
-1. Create the productive CAP build for your application: 
+3. Create the productive CAP build for your application: 
 
     ```bash
     cds build --production
@@ -274,7 +280,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
     The CAP build writes to the **gen/srv** folder.
 
-2. Build the CAP Node.js image:
+4. Build the CAP Node.js image:
 
     ```bash
     pack build <your-container-registry>/incident-management-srv:<image-version> \
@@ -297,7 +303,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
     > The pack CLI builds the image that contains the build result in the **gen/srv** folder and the required npm packages by using the [Cloud Native Buildpack for Node.JS](https://github.com/paketo-buildpacks/nodejs) provided by Paketo.
 
-3. Build the database image:
+5. Build the database image:
 
     ```bash
     pack build <your-container-registry>/incident-management-hana-deployer:<image-version> \
@@ -393,45 +399,11 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
     Check [Accessing Business Service UI](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL) for more information.
 
-5. Add navigation configuration and deploy configuration to the **app/incidents/webapp/manifest.json** file:
-
-    ```json[9-22,25-28]
-    {
-        "_version": "1.49.0",
-        "sap.app": {
-            "id": "ns.incidents",
-            ...
-            "dataSources": {
-                ...
-            },
-            "crossNavigation": {
-                "inbounds": {
-                    "incidents-display": {
-                        "semanticObject": "incidents",
-                        "action": "display",
-                        "title": "{{flpTitle}}",
-                        "subTitle": "{{flpSubtitle}}",
-                        "signature": {
-                            "parameters": {},
-                            "additionalParameters": "allowed"
-                        }
-                    }
-                }
-            }
-        },
-        ...
-        "sap.cloud": {
-            "public": true,
-            "service": "incidents"
-        }
-    }
-    ```
-
-1. Create a new folder **ui-resources** in your project's root folder.
+5. Create a new folder **ui-resources** in your project's root folder.
 
     The HTML5 applications deployer looks for the **ui-resources** folder which has the static files of the HTML5 application.
 
-2. Create a new file **package.json** inside the **ui-resources** folder and add the following code to the file:
+6. Create a new file **package.json** inside the **ui-resources** folder and add the following code to the file:
 
     ```json
     {
@@ -460,7 +432,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
     ```
 
-3. In the VS Code terminal, navigate to the **ui-resources** folder and run the following command:
+7. In the VS Code terminal, navigate to the **ui-resources** folder and run the following command:
 
     ```bash
     npm install && npm run package
@@ -468,13 +440,13 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
     This will build and copy the archive **nsincidents.zip** inside the **ui-resources/resources** folder.
 
-5. In the VS Code terminal, navigate back to the root folder of your project:
+8. In the VS Code terminal, navigate back to the root folder of your project:
 
     ```bash
     cd ..
     ```
 
-5. Build the UI deployer image:
+9. Build the UI deployer image:
 
     ```bash
     pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \
@@ -508,7 +480,7 @@ CAP provides a configurable Helm chart for Node.js applications.
 
     As a result, you'll see a newly-created **chart** folder in your project. The **chart** folder holds the helm configuration, including the **values.yaml** file where you'll add your container image settings later on.
 
-1. Add your container image settings to your **chart/values.yaml** file:
+2. Add your container image settings to your **chart/values.yaml** file:
 
     ```yaml[6,7]
     global:
@@ -531,15 +503,15 @@ CAP provides a configurable Helm chart for Node.js applications.
     >     tag: <incident-management-srv-image-version>
     > ```
 
-2. Change the value of `SAP_CLOUD_SERVICE` to `incidents`:
+3. Change the value of `SAP_CLOUD_SERVICE` to `incidentmanagementservice`:
 
     ```yaml[3]
     html5-apps-deployer:
       env:
-        SAP_CLOUD_SERVICE: incidents
+        SAP_CLOUD_SERVICE: incidentmanagementservice
     ```
 
-3. Run the following command to get the domain name of your Kyma cluster:
+4. Run the following command to get the domain name of your Kyma cluster:
 
     ```bash
     kubectl get gateway -n kyma-system kyma-gateway \
@@ -554,7 +526,7 @@ CAP provides a configurable Helm chart for Node.js applications.
 
     > `<xyz123>` is a placeholder for a string of characters that's unique for your cluster.
 
-1. Add the result without the leading `*.` in the `domain` property to the **chart/values.yaml** file so that the URL of your CAP service can be generated:
+5. Add the result without the leading `*.` in the `domain` property to the **chart/values.yaml** file so that the URL of your CAP service can be generated:
 
     ```yaml[2]
     global:
@@ -562,7 +534,7 @@ CAP provides a configurable Helm chart for Node.js applications.
     ...
     ```
 
-2. Replace `<your-cluster-domain>` with your cluster domain in the `xsuaa` section of the **chart/values.yaml** file:
+6. Replace `<your-cluster-domain>` with your cluster domain in the `xsuaa` section of the **chart/values.yaml** file:
 
     ```yaml[9]
     xsuaa:
@@ -591,7 +563,7 @@ CAP provides a configurable Helm chart for Node.js applications.
     >                   - https://*.<your-cluster-domain>/**
     >```
 
-3. Add the destinations under `backendDestinations` in the **chart/values.yaml** file:
+7. Add the destinations under `backendDestinations` in the **chart/values.yaml** file:
 
     ```yaml[2,3]
     backendDestinations:
@@ -600,16 +572,6 @@ CAP provides a configurable Helm chart for Node.js applications.
     ```
 
     > The parameter `service` points to the deployment name whose URL will be used for this destination.
-
-4. Add the following parameters to the `destination` section:
-
-    ```yaml[2,3]
-    destination:
-      serviceOfferingName: destination
-      servicePlanName: lite
-      parameters:
-        HTML5Runtime_enabled: true
-    ```
 
 ### Deploy CAP Helm chart
 
