@@ -188,31 +188,19 @@ The creation of the database instance can take some minutes to complete.
 > cf update-service incident-management -c '{"data":{"serviceStopped":false}}'
 > ```
 
-### Enable the btp-operator module for your Kyma cluster
+### Add the SAP BTP Operator module for your Kyma cluster
 
-You need to enable the **btp-operator** module for your Kyma cluster so you can map your SAP HANA Cloud service instance to the Kyma cluster. Follow the steps below:
+You need the SAP BTP Operator module to map your SAP HANA Cloud service instance to the Kyma cluster. The module should be added by default when you enabled the SAP BTP, Kyma runtime. Follow these steps to make sure it's enabled:
 
-1. Navigate to your subaccount and choose **Link to dashboard** under the **Kyma Environment** tab to open the Kyma Console.
+1. Navigate to your subaccount and choose **Link to dashboard** under the **Kyma Environment** tab.
 
       <!-- border; size:540px --> ![Open Kyma console](./kyma-console.png)
 
-2. Choose **Namespaces** on the left and choose **kyma-system**.
+2. Choose **Modify Modules**.
 
-      <!-- border; size:540px --> ![Kyma system](./kyma-system.png)
+3. Make sure that **btp-operator** is on the list. If not, choose **Add**. In the new window, check **btp-operator**, and choose **Add**.
 
-3. Choose **Kyma** &rarr; **Kyma** on the left and choose **default**.
-
-      <!-- border; size:540px --> ![Kyma default](./kyma-default.png)
-
-4. Choose **Edit**.
-
-      <!-- border; size:540px --> ![Kyma default edit](./kyma-default-edit.png)
-
-4. Select the checkbox for **btp-operator** under **Modules** and choose **Update**.
-
-      <!-- border; size:540px --> ![Kyma default update](./kyma-default-update.png)
-
-> You can find more info in [Enable and Disable a Kyma Module](https://help.sap.com/docs/btp/sap-business-technology-platform/enable-and-disable-kyma-module).
+> You can find more info in [Add and Delete a Kyma Module](https://help.sap.com/docs/btp/sap-business-technology-platform/enable-and-disable-kyma-module).
 
 ### Map your SAP HANA Cloud service instance to your Kyma cluster
 
