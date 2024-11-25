@@ -212,7 +212,7 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 
 1. Back in the **General Information** tab, enter **main** in the **Branch** field.
 
-2. Select **SAP Cloud Application Programming Model** from the dropdown in the **Pipeline** field.
+2. Select **Cloud Foundry Environment** from the dropdown in the **Pipeline** field.
 
     <!-- border; size:540px --> ![Configure pipeline](./configure-pipeline.png)
 
