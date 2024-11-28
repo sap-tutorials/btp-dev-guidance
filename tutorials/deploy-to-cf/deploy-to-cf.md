@@ -207,6 +207,30 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 
     Check [Accessing Business Service UI](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL) for more information.
 
+5. Make sure that line 2 in the following snippet is added to the **app/incidents/xs-app.json** file. Add if it is missing. 
+
+    ```json[2]
+    {
+      "welcomeFile": "/index.html",
+      "authenticationMethod": "route",
+      "routes": [
+        {
+          "source": "^/?odata/(.*)$",
+          "target": "/odata/$1",
+          "destination": "incident-management-srv-api",
+          "authenticationType": "xsuaa",
+          "csrfProtection": true
+        },
+        {
+          "source": "^(.*)$",
+          "target": "$1",
+          "service": "html5-apps-repo-rt",
+          "authenticationType": "xsuaa"
+        }
+      ]
+    }
+    ```
+
 ### Make additional changes to the mta.yaml file
 
 1. Update the `incident-management-app-deployer` module (build result directory and the target path) as follows:
@@ -226,10 +250,11 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
       build-parameters:
         build-result: resources/
         requires:
-        - artifacts:
-          - nsincidents.zip
-          name: nsincidents
-          target-path: resources/
+          - name: incidentmanagementincidents
+            artifacts:
+              - incidents.zip
+            target-path: resources/
+            
     - name: incidentmanagementincidents
     ...
     ```
