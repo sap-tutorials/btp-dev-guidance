@@ -68,7 +68,75 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 ###  Integrate your application with SAP Build Work Zone, standard edition
 
-> There are two different ways to integrate your application with SAP Build Work Zone, standard edition. You have to choose one way or the other and follow through. It's currently not possible to mix the approaches. Both ways provide the same result. You can integrate your application with SAP Build Work Zone, standard edition through Common Data Model or through the SAP BTP cockpit. The tabs **Common Data Model** and **SAP BTP Cockpit** provide detailed steps for each alternative way.  
+> There are two different ways to integrate your application with SAP Build Work Zone, standard edition. You have to choose one way or the other and follow through. It's currently not possible to mix the approaches. Both ways provide the same result. You can integrate your application with SAP Build Work Zone, standard edition through the SAP BTP cockpit or through Common Data Model. The tabs **SAP BTP cockpit** and **Common Data Model** provide detailed steps for each alternative way.  
+
+[OPTION BEGIN [SAP BTP Cockpit]]
+
+#### Update content
+
+1. Open your subaccount and navigate to **Instances and Subscriptions**.
+
+2. Choose the application **SAP Build Work Zone, standard edition**.
+
+    <!-- border; size:540px --> ![WorkZone0](./integrate_launchpad_0.png)
+
+3. In the menu on the left side, choose the icon for **Channel Manager**.
+
+4. Choose the refresh icon to fetch the updated content.
+
+    <!-- border; size:540px --> ![WorkZone1](./integrate_launchpad_1.png)
+
+#### Add application to Content Explorer
+
+5. Choose **Content Manager** in the menu on the left and choose the **Content Explorer** button.
+
+    <!-- border; size:540px --> ![WorkZone2](./integrate_launchpad_20.png)
+
+6. Select the tile **HTML5 Apps** with your respective subdomain name.
+
+    <!-- border; size:540px --> ![WorkZone2](./integrate_launchpad_2.png)
+
+7. In the items table, set checkmark for the app **Incidents** and choose the button **Add**.
+
+    <!-- border; size:540px --> ![WorkZone3](./integrate_launchpad_3.png)
+
+#### Create a group
+
+8. Go back to the **Content Manager**, choose **Create** &rarr; **Group**.
+
+    <!-- border; size:540px --> ![WorkZone4](./integrate_launchpad_4.png)
+
+9. Add the title **Incident Management Group**.
+
+10. In the **Assignment Status**, choose the slider to assign the **Incident-Management** app to the group.
+
+11. Choose **Save**.
+
+    <!-- border; size:540px --> ![WorkZone5](./integrate_launchpad_5.png)
+
+#### Add application to the Everyone role
+
+12. Back in the **Content Manager**, choose role **Everyone** and choose **Edit**.
+
+13. In the **Assignment Status**, choose the slider to assign the **Incident-Management** app to the role.
+
+14. Choose **Save**.
+
+    <!-- border; size:540px --> ![WorkZone6](./integrate_launchpad_6.png)
+
+#### Create site
+
+15. Navigate to **Site Directory** and choose **Create Site**.
+
+    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_7.png)
+
+17. Enter the site name as **Incident Management Site** and choose **Create**.
+
+    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_71.png)
+
+18. Now, you are forwarded to your created site.
+
+[OPTION END]
 
 [OPTION BEGIN [Common Data Model]]
 
@@ -455,74 +523,6 @@ You need to assign your user to the **~cdm_defaultRole** role collection, so you
     You've assigned the **~cdm_defaultRole** role collection to your user.
 
 > You might need to log out and log in again to make sure your new role collection is taken into account.
-
-[OPTION END]
-
-[OPTION BEGIN [SAP BTP Cockpit]]
-
-#### Update content
-
-1. Open your subaccount and navigate to **Instances and Subscriptions**.
-
-2. Choose the application **SAP Build Work Zone, standard edition**.
-
-    <!-- border; size:540px --> ![WorkZone0](./integrate_launchpad_0.png)
-
-3. In the menu on the left side, choose the icon for **Channel Manager**.
-
-4. Choose the refresh icon to fetch the updated content.
-
-    <!-- border; size:540px --> ![WorkZone1](./integrate_launchpad_1.png)
-
-#### Add application to Content Explorer
-
-5. Choose **Content Manager** in the menu on the left and choose the **Content Explorer** button.
-
-    <!-- border; size:540px --> ![WorkZone2](./integrate_launchpad_20.png)
-
-6. Select the tile **HTML5 Apps** with your respective subdomain name.
-
-    <!-- border; size:540px --> ![WorkZone2](./integrate_launchpad_2.png)
-
-7. In the items table, set checkmark for the app **Incidents** and choose the button **Add**.
-
-    <!-- border; size:540px --> ![WorkZone3](./integrate_launchpad_3.png)
-
-#### Create a group
-
-8. Go back to the **Content Manager**, choose **Create** &rarr; **Group**.
-
-    <!-- border; size:540px --> ![WorkZone4](./integrate_launchpad_4.png)
-
-9. Add the title **Incident Management Group**.
-
-10. In the **Assignment Status**, choose the slider to assign the **Incident-Management** app to the group.
-
-11. Choose **Save**.
-
-    <!-- border; size:540px --> ![WorkZone5](./integrate_launchpad_5.png)
-
-#### Add application to the Everyone role
-
-12. Back in the **Content Manager**, choose role **Everyone** and choose **Edit**.
-
-13. In the **Assignment Status**, choose the slider to assign the **Incident-Management** app to the role.
-
-14. Choose **Save**.
-
-    <!-- border; size:540px --> ![WorkZone6](./integrate_launchpad_6.png)
-
-#### Create site
-
-15. Navigate to **Site Directory** and choose **Create Site**.
-
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_7.png)
-
-17. Enter the site name as **Incident Management Site** and choose **Create**.
-
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_71.png)
-
-18. Now, you are forwarded to your created site.
 
 [OPTION END]
 
