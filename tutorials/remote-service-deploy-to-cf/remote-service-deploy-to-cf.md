@@ -139,7 +139,7 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
       requires:
       - name: incident-management-auth
       - name: incident-management-db
-      - name: incident-management-destination-service
+      - name: incident-management-destination
     ....
     ```
 
