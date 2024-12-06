@@ -184,7 +184,7 @@ When creating new entries in the Incident Management application, you should be 
 
     <!-- border; size:540px --> ![Value help for Customer field](./value-help-customer.png)
 
-12. Verify that customer data is fetched from the mock server. 
+12. Verify that customer data is fetched from the SAP S/4HANA Cloud system. 
 
     <!-- border; size:540px --> ![Data in value help](./value-help-data1.png)
 

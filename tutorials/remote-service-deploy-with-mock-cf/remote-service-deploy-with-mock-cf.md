@@ -47,7 +47,7 @@ author_profile: https://github.com/slavipande
       }
     ```
 
-    > Replace **<destination_name>** with the name of the destination that you created at **Step 5: Create a destination to the mock server** of [Install a Mock Server in the SAP BTP, Cloud Foundry Runtime](remote-service-set-up-mock).
+    > Replace **<destination_name>** with the name of the destination that you created at **Step 5: Create a destination to the mock server** of [Install a Mock Server in the SAP BTP, Cloud Foundry Runtime](remote-service-set-up-mock-cf).
 
 2. In the **mta.yaml** file, look for the **incident-management-srv** module's **requires** section, and make sure that the following line is added:
 

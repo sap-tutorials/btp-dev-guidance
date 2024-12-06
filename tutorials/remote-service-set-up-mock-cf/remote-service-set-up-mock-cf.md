@@ -38,7 +38,7 @@ You need to:
 
 2. Create a destination to the mock server in the same subaccount in SAP BTP.
 
-> The installation of the mock server is only needed if you want to test an application deployed in Cloud Foundry. For local development testing, you can use the local mock server.
+> The installation of the mock server is only needed if you want to test an application deployed in the SAP BTP, Cloud Foundry runtime. For local development testing, you can use the local mock server.
 
 ### Clone the mock server repository
 

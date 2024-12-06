@@ -25,7 +25,7 @@ author_profile: https://github.com/slavipande
 
 Since you already have an SQLite in-memory database that was automatically created in the previous step, let's now fill it in with some test data.
 
-1. In SAP Business Application Studio, navigate to the Incident Management application project and in the **srv/external** folder, create a new folder called **data**.
+1. Navigate to the Incident Management application project and create a new folder **data** in the **srv/external** folder.
 
 2. In the **data** folder, create a new file **API_BUSINESS_PARTNER-A_BusinessPartner.csv** and add the following data to it:
 
