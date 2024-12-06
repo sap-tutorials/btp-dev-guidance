@@ -191,7 +191,7 @@ Waiting for some to arrive...
 
 ### Create services
 
-It's a good practice in CAP to create single-purpose services. Hence, let's define a `ProcessorService` for support engineers to process incidents created by customers and an `AdminService` for administrators to perform admin activities such as analysing audit logs.
+It's a good practice in CAP to create [single-purposed services](https://cap.cloud.sap/docs/guides/providing-services#single-purposed-services). Hence, let's define a `ProcessorService` for support engineers to process incidents created by customers and an `AdminService` for administrators to perform admin activities such as analysing audit logs.
 
 To create the services' definition:
 
