@@ -195,7 +195,9 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
         --publish
     ```
 
-    > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image-version>` should be a string. 
+    >- Make sure to replace `<your-container-registry>` with your docker server URL. 
+    > 
+    >- Keep in mind that `<new-image-version>` should be a string that is different from the string defined in [Deploy in SAP BTP, Kyma Runtime](deploy-to-kyma) to reflect the changes in the Incident Management app.  
     
     > Looking for your docker server URL?
     
@@ -227,12 +229,18 @@ You haven't made any changes to the database image so you don't need to build it
     > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` should be a string. 
 
 
-2. Overwrite the global image version for the CAP Node.js image:
+2. Overwrite the global image version for the CAP Node.js image and for the UI deployer image:
     
-    ```yaml[4]
+    ```yaml[4, 10]
     srv:
       image:
         repository: incident-management-srv
+        tag: <new-image-version>
+    ...
+    html5-apps-deployer:
+      ...
+      image:
+        repository: "incident-management-html5-deployer"
         tag: <new-image-version>
     ```
 
