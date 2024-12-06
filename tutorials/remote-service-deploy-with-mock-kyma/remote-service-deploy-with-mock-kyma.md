@@ -87,28 +87,6 @@ author_profile: https://github.com/slavipande
 
     > The pack CLI builds the image that contains the build result in the **gen/srv** folder and the required npm packages by using the [Cloud Native Buildpack for Node.JS](https://github.com/paketo-buildpacks/nodejs) provided by Paketo.
 
-5. Build the database image:
-
-    ```bash
-    pack build <your-container-registry>/incident-management-hana-deployer:<image-version> \
-        --path gen/db \
-        --builder paketobuildpacks/builder-jammy-base \
-        --publish
-    ```
-    
-    > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image-version>` should be a string. 
-
-    > Looking for your docker server URL?
-    
-    > The docker server URL is the same as the path used for docker login, so you can quickly check it by running the following command in your terminal:
-
-    > ```json
-    > cat ~/.docker/config.json
-    > ```
-
-    > In case you're using Docker Hub as your container registry, replace the placeholder `<your-container-registry>` with your Docker Hub user ID.
-    ```
-
 
 7. In the VS Code terminal, navigate to the **ui-resources** folder and run the following command:
 
@@ -145,7 +123,9 @@ author_profile: https://github.com/slavipande
 
     > In case you're using Docker Hub as your container registry, replace the placeholder `<your-container-registry>` with your Docker Hub user ID.
 
-###  Deploy the Incident Management application
+You haven't made any changes to the database image so you don't need to build it again.
+
+### Deploy the Incident Management application
 
 1. Check your container image settings to your **chart/values.yaml** file:
 
