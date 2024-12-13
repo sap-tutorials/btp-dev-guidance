@@ -399,11 +399,45 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
     Check [Accessing Business Service UI](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL) for more information.
 
-5. Create a new folder **ui-resources** in your project's root folder.
+5. Add navigation configuration and deploy configuration to the **app/incidents/webapp/manifest.json** file:
+
+    ```json[9-22,25-28]
+    {
+        "_version": "1.49.0",
+        "sap.app": {
+            "id": "ns.incidents",
+            ...
+            "dataSources": {
+                ...
+            },
+            "crossNavigation": {
+                "inbounds": {
+                    "incidents-display": {
+                        "semanticObject": "incidents",
+                        "action": "display",
+                        "title": "{{flpTitle}}",
+                        "subTitle": "{{flpSubtitle}}",
+                        "signature": {
+                            "parameters": {},
+                            "additionalParameters": "allowed"
+                        }
+                    }
+                }
+            }
+        },
+        ...
+        "sap.cloud": {
+            "public": true,
+            "service": "incidents"
+        }
+    }
+    ```
+
+6. Create a new folder **ui-resources** in your project's root folder.
 
     The HTML5 applications deployer looks for the **ui-resources** folder which has the static files of the HTML5 application.
 
-6. Create a new file **package.json** inside the **ui-resources** folder and add the following code to the file:
+7. Create a new file **package.json** inside the **ui-resources** folder and add the following code to the file:
 
     ```json
     {
@@ -432,7 +466,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
     ```
 
-7. In the VS Code terminal, navigate to the **ui-resources** folder and run the following command:
+8. In the VS Code terminal, navigate to the **ui-resources** folder and run the following command:
 
     ```bash
     npm install && npm run package
@@ -440,13 +474,13 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
     This will build and copy the archive **nsincidents.zip** inside the **ui-resources/resources** folder.
 
-8. In the VS Code terminal, navigate back to the root folder of your project:
+9.  In the VS Code terminal, navigate back to the root folder of your project:
 
     ```bash
     cd ..
     ```
 
-9. Build the UI deployer image:
+10. Build the UI deployer image:
 
     ```bash
     pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \

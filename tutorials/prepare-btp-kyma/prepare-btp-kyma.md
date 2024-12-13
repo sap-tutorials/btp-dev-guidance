@@ -221,7 +221,7 @@ You need the SAP BTP Operator module to map your SAP HANA Cloud service instance
 
 5. Under **Environment Instance ID**, paste the GUID of your Kyma cluster. Here's how to find it:
 
-      - Open you Kyma Console.
+      - Open your Kyma dashboard.
       - Choose **Namespaces** on the left and choose **kyma-system**. 
       - Navigate to **Configuration** &rarr; **Config Maps** and choose **sap-btp-operator-config**.
       - You can see the GUID of your Kyma cluster in the **CLUSTER_ID** section.
@@ -230,7 +230,7 @@ You need the SAP BTP Operator module to map your SAP HANA Cloud service instance
     
     > If no namespace is provided, the instance is mapped to all namespaces in the cluster.
 
-5. Choose **Review and Save** and then choose **Save Changes with Restart** in the popup. 
+6. Choose **Review and Save**. In the popup, mark **Apply changes with a restart**, and choose **Save Changes**. 
 
       <!-- border; size:540px --> ![Save changes](./hana-save-mapping.png)
 
