@@ -103,7 +103,7 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 
     <!-- border; size:540px --> ![Continuous Integration and Delivery create service](./cicd-create-service.png)
 
-3. Choose **Create** in the **New Instance or Subscription** popup, and select **default** from the **Plan** field.
+3. In the **New Instance or Subscription** popup select **default** from the **Plan** field.
 
 4. Choose **View Subscription** and wait until the status changes to **Subscribed**.
 
@@ -138,7 +138,7 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 
 In order to run the pipeline using the SAP Continuous Integration and Delivery service, you need to create a service account. This is a non-human account that provides a distinct identity in your Kyma cluster. The service account will authenticate your CI/CD pipeline to access your Kyma cluster. See [Service Accounts](https://kubernetes.io/docs/concepts/security/service-accounts/).
 
-1. Navigate to your subaccount and choose **Link to dashboard** under the **Kyma Environment** tab to open the Kyma Console.
+1. Navigate to your subaccount and choose **Link to dashboard** under the **Kyma Environment** tab to open Kyma dashboard.
 
       <!-- border; size:540px --> ![Open Kyma console](./kyma-console.png)
 
@@ -146,7 +146,7 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
 
     <!-- border; size:540px --> ![Create namespace](./create-namespace.png)
 
-3. Enter a name for your namespace (for example, **incident-management-namespace**), switch the **Side Car Injection** toggle **ON**, and choose **Create**.
+3. Enter a name for your namespace (for example, **incident-management-namespace**), switch the **Enable Sidecar Injection** toggle **ON**, and choose **Create**.
 
     <!-- border; size:540px --> ![Create namespace dialog](./create-namespace-dialog.png)
 
