@@ -5,7 +5,7 @@ keywords: cap
 parser: v2
 auto_validation: true
 time: 30
-tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform, software-product>sap-fiori]
+tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, programming-tool>java, software-product>sap-business-technology-platform, software-product>sap-fiori]
 primary_tag: software-product-function>sap-cloud-application-programming-model
 author_name: Svetoslav Pandeliev
 author_profile: https://github.com/slavipande
@@ -25,6 +25,10 @@ You have configured the access to your application. Follow the steps in the [Add
 
 ### Add dependencies
 
+> You can create a CAP project in either Node.js or Java. You have to choose one way or the other and follow through. The tabs **Node.js** and **Java** provide detailed steps for each alternative way.
+
+[OPTION BEGIN [Node.js]]
+
 1. In SAP Business Application Studio, go to your **IncidentManagement** dev space.
 
     > Make sure the **IncidentManagement** dev space is in status **RUNNING**.
@@ -37,7 +41,35 @@ You have configured the access to your application. Follow the steps in the [Add
     npm add -D axios chai@4 chai-as-promised@7.1.2 chai-subset jest
     ```
 
+[OPTION END]
+
+[OPTION BEGIN [Java]]
+
+1. In SAP Business Application Studio, go to your **IncidentManagement** dev space.
+
+    > Make sure the **IncidentManagement** dev space is in status **RUNNING**.
+
+2. Open the **srv/pom.xml** file and add the following snippet to the dependencies section:
+
+    ```xml
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-test</artifactId>
+        <scope>test</scope>	
+    </dependency>
+    ```
+
+
+[OPTION END]
+
 ### Add tests
+
+[OPTION BEGIN [Node.js]]
 
 1. Create a folder at the root of the **INCIDENT-MANAGEMENT** project and name it **tests**.
 
@@ -180,7 +212,204 @@ You have configured the access to your application. Follow the steps in the [Add
 
     > With this code, you have added test cases in the application.
 
+[OPTION END]
+
+[OPTION BEGIN [Java]]
+
+1. Create a new folder **test** in the **srv/src** directory.
+
+2. In the **srv/src/test** folder, create the folder structure **java/customer/incident_management**.
+
+2. In the **srv/src/test/java/customer/incident_management** folder, create a new file **IncidentsODataTests.java**.
+
+3. Add the following code to the **IncidentsODataTests.java** file:
+
+    ```java
+    package customer.incident_management;
+
+    import org.junit.jupiter.api.Test;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+    import org.springframework.boot.test.context.SpringBootTest;
+    import org.springframework.security.test.context.support.WithMockUser;
+    import org.springframework.test.web.servlet.MockMvc;
+    import org.springframework.test.web.servlet.MvcResult;
+    import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+    import static org.hamcrest.Matchers.hasSize;
+    import com.jayway.jsonpath.JsonPath;
+    import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+    import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+    import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+    @SpringBootTest
+    @AutoConfigureMockMvc
+    class IncidentsODataTests {
+      
+      private static final String incidentsURI = "/odata/v4/ProcessorService/Incidents";
+        private static final String customerURI = "/odata/v4/ProcessorService/Customers";
+        private static final String expandEntityURI = "/odata/v4/ProcessorService/Customers?$select=firstName&$expand=incidents";
+
+        @Autowired
+        private MockMvc mockMvc;
+
+        /**
+        * Test GET Api for Incidents
+        * @throws Exception
+        */
+        @Test
+        @WithMockUser(username = "alice")
+        void incidentReturned(@Autowired MockMvc mockMvc) throws Exception {
+            mockMvc.perform(get(incidentsURI))
+                .andExpect(status().isOk())
+                    .andExpect(jsonPath("$.value", hasSize(4)));
+
+        }
+
+        /**
+        * Test GET Api for Customers
+        * @throws Exception
+        */
+        @Test
+        @WithMockUser(username = "alice")
+        void customertReturned() throws Exception {
+            mockMvc.perform(get(customerURI))
+                .andExpect(status().isOk())
+                    .andExpect(jsonPath("$.value", hasSize(3)));
+
+        }
+
+        /**
+        * Test to ensure there is an Incident created by each Customer.
+        * @throws Exception
+        */
+
+        @Test
+        @WithMockUser(username = "alice")
+        void expandEntityEndpoint() throws Exception {
+            mockMvc.perform(get(expandEntityURI))
+            .andExpect(jsonPath("$.value[0].incidents[0]").isMap())
+            .andExpect(jsonPath("$.value[0].incidents[0]").isNotEmpty());
+
+        }
+
+
+        /**
+        * Test for creating an Draft Incident
+        * Activating the draft Incident and check Urgency code as H using custom logic
+        * Delete the Incident
+        */
+
+        @Test
+        @WithMockUser(username = "alice")
+        void draftIncident() throws Exception {
+            String incidentCreateJson = "{ \"title\": \"Urgent attention required!\", \"status_code\": \"N\",\"urgency_code\": \"M\"}";
+
+                    /**
+                      * Create a draft Incident
+                      */
+
+                    MvcResult createResult=  mockMvc.perform(MockMvcRequestBuilders.post("/odata/v4/ProcessorService/Incidents")
+                    .content(incidentCreateJson)
+                    .contentType("application/json")
+                    .accept("application/json"))
+                    .andExpect(status().isCreated())
+                    .andExpect(jsonPath("$.title").value("Urgent attention required!"))
+                    .andExpect(jsonPath("$.status_code").value("N"))
+                    .andExpect(jsonPath("$.urgency_code").value("M"))
+                    .andReturn();
+    
+                    String createResponseContent = createResult.getResponse().getContentAsString();
+                    String ID = JsonPath.read(createResponseContent, "$.ID");
+                    System.out.println("Incident ID : " + ID);
+            
+                    /**
+                      * Activating the draft Incident
+                      */
+
+                    mockMvc.perform(MockMvcRequestBuilders.post("/odata/v4/ProcessorService/Incidents(ID="+ID+",IsActiveEntity=false)/ProcessorService.draftActivate")
+                    .contentType("application/json")
+                    .accept("application/json"))
+                    .andExpect(status().isOk())
+                    .andExpect(jsonPath("$").isMap())
+                    .andExpect(jsonPath("$.title").value("Urgent attention required!"))
+                    .andExpect(jsonPath("$.status_code").value("N"))
+                    .andExpect(jsonPath("$.urgency_code").value("H"));  
+
+                    /**
+                    * Deleting an Incident
+                    */
+
+                    mockMvc.perform(MockMvcRequestBuilders.delete("/odata/v4/ProcessorService/Incidents(ID="+ID+",IsActiveEntity=true)"))
+                    .andExpect(status().is(204));
+        }
+
+
+        /**
+        * Test for creating an Active Incident
+        * Test for closing the Active Incident
+        * Test for custom handler ensuing prevent users from modifying a closed Incident
+        */
+
+        @Test
+        @WithMockUser(username = "alice")
+        void updateIncident() throws Exception {
+            String incidentCreateJson = "{ \"title\": \"Urgent attention required!\", \"status_code\": \"N\", \"IsActiveEntity\": true }";
+            String incidentUpdateJson = "{\"status_code\": \"C\"}";
+            String closedIncidentUpdateJson = "{\"status_code\": \"I\"}";
+
+            MvcResult createResult=  mockMvc.perform(MockMvcRequestBuilders.post("/odata/v4/ProcessorService/Incidents")
+                    .content(incidentCreateJson)
+                    .contentType("application/json")
+                    .accept("application/json"))
+                    .andExpect(status().isCreated())
+                    .andExpect(jsonPath("$.title").value("Urgent attention required!"))
+                    .andExpect(jsonPath("$.status_code").value("N"))
+                    .andReturn();
+
+                    String createResponseContent = createResult.getResponse().getContentAsString();
+                    String ID = JsonPath.read(createResponseContent, "$.ID");
+                    System.out.println("Incident ID : " + ID);
+                    /**
+                    * Closing an open Incident
+                    */
+                    MvcResult updateResult=  mockMvc.perform(MockMvcRequestBuilders.patch("/odata/v4/ProcessorService/Incidents(ID="+ID+",IsActiveEntity=true)")
+                    .content(incidentUpdateJson)
+                    .contentType("application/json")
+                    .accept("application/json"))
+                    .andExpect(status().isOk())
+                    .andExpect(jsonPath("$.title").value("Urgent attention required!"))
+                    .andExpect(jsonPath("$.status_code").value("C"))
+                    .andReturn();
+
+                    String updateResponseContent = updateResult.getResponse().getContentAsString();
+                    String statusCode = JsonPath.read(updateResponseContent, "$.status_code");
+                    System.out.println("status code : " + statusCode);
+
+                    /**
+                    * Updating a Closed Incident will throw an error with error message "Can't modify a closed incident"
+                    */
+                    mockMvc.perform(MockMvcRequestBuilders.patch("/odata/v4/ProcessorService/Incidents(ID="+ID+",IsActiveEntity=true)")
+                    .content(closedIncidentUpdateJson)
+                    .contentType("application/json")
+                    .accept("application/json"))
+                    .andExpect(status().isConflict())
+                    .andExpect(jsonPath("$.error.message").value("Can't modify a closed incident"));
+
+
+
+        }
+
+    }
+    ```
+
+    > With this code, you have added test cases in the application.
+
+[OPTION END]
+
+
 ### Test the application
+
+[OPTION BEGIN [Node.js]]
 
 1. Open the **package.json** file and add the `"test": "jest tests/test.js"` line inside the **scripts** section. This adds a command to start the tests.
 
@@ -249,3 +478,28 @@ You have configured the access to your application. Follow the steps in the [Add
    
     > For a more detailed guide, see [Testing](https://cap.cloud.sap/docs/node.js/cds-test) in the CAP Node.js SDK documentation.
 
+[OPTION END]
+
+[OPTION BEGIN [Java]]
+
+2. To test the application, run the following command in the terminal:
+
+    ```bash
+    mvn verify
+    ```
+
+3. When all the test cases pass, the output should look like this:
+
+    ```bash
+    [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.28 s -- in com.sap.cap.incident_management.IncidentsODataTests
+    [INFO] 
+    [INFO] Results:
+    [INFO] 
+    [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+    [INFO] 
+    [INFO] ------------------------------------------------------------------------
+    ```
+   
+    > For a more detailed guide, see [Testing Applications](https://cap.cloud.sap/docs/java/developing-applications/testing#testing-cap-java-applications) in the CAP Java SDK documentation.
+
+[OPTION END]

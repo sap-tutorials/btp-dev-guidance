@@ -5,7 +5,7 @@ keywords: cap
 parser: v2
 auto_validation: true
 time: 20
-tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform, software-product>sap-fiori]
+tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, programming-tool>java, software-product>sap-business-technology-platform, software-product>sap-fiori]
 primary_tag: software-product-function>sap-cloud-application-programming-model
 author_name: Svetoslav Pandeliev
 author_profile: https://github.com/slavipande
@@ -25,6 +25,7 @@ You have added a launch page for local testing to your application. Follow the s
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
 ### Add CAP role restrictions to entities
+
 
 1. Open the **srv/services.cds** file.
 
@@ -51,6 +52,10 @@ You have added a launch page for local testing to your application. Follow the s
 With these changes, users with the **support** role can view and change the incidents and customers, while users with the **admin** role can perfom admin activities such as auditing logs.
 
 ### Add users for local testing
+
+> You can create a CAP project in either Node.js or Java. You have to choose one way or the other and follow through. The tabs **Node.js** and **Java** provide detailed steps for each alternative way.
+
+[OPTION BEGIN [Node.js]]
 
 The authorization checks that you added to the CAP model apply not only when deployed in the cloud but also when testing locally. Therefore, you need a way to log in to the application locally.
 
@@ -125,7 +130,45 @@ CAP offers a possibility to add local users for testing as part of the `cds` con
 
     > Keep in mind that the CAP roles and the Cloud Foundry roles and scopes are not the same thing. See [Authentication](https://cap.cloud.sap/docs/node.js/authentication) in the CAP documentation.
 
+[OPTION END]
+
+[OPTION BEGIN [Java]]
+
+The authorization checks that you added to the CAP model apply not only when deployed in the cloud but also when testing locally. Therefore, you need a way to log in to the application locally.
+
+
+1. Add the `cds-starter-cloudfoundry` dependency to your `srv` module. This is needed to enable authorization and authentication at runtime. Without that dependency any call to a service annotated with `@requires` will result in an authentication failure. Open your **srv/pom.xml** file and add the following snippet as a child node to the `<dependencies>` node:
+
+    ```xml
+    <dependency>
+      <groupId>com.sap.cds</groupId>
+      <artifactId>cds-starter-cloudfoundry</artifactId>
+    </dependency>
+    ```
+   
+2. Now, we can add the mock users to the application's configuration. As with any other Spring Boot application, the configuration can be done in the application's **application.yaml** file. In our case, it is the file **srv/src/main/resources/application.yaml**. Add the following content to this file::
+    ```yaml    
+    cds:
+      security:
+        mock.users:
+          alice:
+            roles: [ admin, support ]
+          bob:
+            roles: [ support ]
+    ```
+  
+    You have added two users:
+
+    - `alice` with the `support` amd `admin` roles and no password
+    - `bob` with the `support` role and no password
+
+    > Keep in mind that the CAP roles and the Cloud Foundry roles and scopes are not the same thing. See [Authentication](https://cap.cloud.sap/docs/node.js/authentication) in the CAP documentation.
+
+[OPTION END]
+
 ### Access the Incident Management application with a password
+
+[OPTION BEGIN [Node.js]]
 
 When accessing the **Incidents** service of the **Incident Management** application in your browser, you get a basic auth popup now, asking for your user and password. You can use the users to log in and see how it works.
 
@@ -147,4 +190,25 @@ When accessing the **Incidents** service of the **Incident Management** applicat
 
     <!-- border; size:540px --> ![Access Incident Management Application](./incident-management-app.png)
 
-    > Currently, there’s no logout functionality. You can clear your browser's cache or simply close all browser windows to get rid of the login data in your browser. For Google Chrome, restart your browser (complete shutdown and restart) by entering `chrome://restart` in the address line.
+[OPTION END]
+
+[OPTION BEGIN [Java]]
+
+When accessing the **Incidents** service of the **Incident Management** application in your browser, you get a basic auth popup now, asking for your user and password. You can use the users to log in and see how it works.
+
+1. Make sure the SAP Fiori application is running. If you closed it, navigate to the **srv** folder in the terminal and run `mvn cds:watch`.
+
+
+3. In the **Username** field of the auth popup, enter `alice`.
+
+4. Leave the **Password** field empty.
+
+    <!-- border; size:540px --> ![Sign In Incident Management Application](./local-login-java.png)
+
+    You can now access the **Incident Management** application.
+
+    <!-- border; size:540px --> ![Access Incident Management Application](./incident-management-app.png)
+
+[OPTION END]
+
+> Currently, there’s no logout functionality. You can clear your browser's cache or simply close all browser windows to get rid of the login data in your browser. For Google Chrome, restart your browser (complete shutdown and restart) by entering `chrome://restart` in the address line.

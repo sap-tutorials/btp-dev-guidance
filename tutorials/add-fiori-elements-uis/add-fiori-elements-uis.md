@@ -5,7 +5,7 @@ keywords: cap
 parser: v2
 auto_validation: true
 time: 30
-tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform, software-product>sap-fiori]
+tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, programming-tool>java, software-product>sap-business-technology-platform, software-product>sap-fiori]
 primary_tag: software-product-function>sap-cloud-application-programming-model
 author_name: Svetoslav Pandeliev
 author_profile: https://github.com/slavipande
@@ -63,7 +63,7 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
 
     - In the **Choose your CAP project** dropdown menu, select the **incident-management** project.
 
-    - In the **OData service** dropdown menu, select the **ProcessorService (Node.js)**.
+    - In the **OData service** dropdown menu, select the **ProcessorService (Node.js)** (or **ProcessorService (Java)** if you're developing a CAP Java application).
     
     - Choose **Next**.
 
@@ -95,7 +95,15 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
 
     The application is now generated and in a few seconds you can see the application's **incidents** folder in the **app** folder of your **incident-management** project. It contains a **webapp** folder with a **Component.js** file that is typical for an SAPUI5 application. However, the source code of this application is minimal. It inherits its logic from the **sap/fe/core/AppComponent** class. This class is managed centrally by SAP Fiori elements and provides all the services that are required (routing, edit flow) so that the building blocks and the templates work properly.
 
+
+
 ### Start the Incident-Management application
+
+> You can create a CAP project in either Node.js or Java. You have to choose one way or the other and follow through. The tabs **Node.js** and **Java** provide detailed steps for each alternative way.
+
+[OPTION BEGIN [Node.js]]
+
+<!-- Section Start: This entire section is not needed for the Java version -->
 
 Instead of using `cds watch` command in the terminal to start the service, you will use the `watch-incidents` script that has been added to the **package.json** file by the application generator. The script contains an additional `sap-ui-xx-viewCache=false` parameter added to the application's start URL. This parameter ensures that if custom extensions are implemented, changes to the extension artifacts get properly updated when refreshing the UI.
 
@@ -115,6 +123,9 @@ Instead of using `cds watch` command in the terminal to start the service, you w
     >1. Invoke the Command Palette - **View** &rarr; **Command Palette** or <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for macOS / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for Windows. 
     >2. Choose **Fiori: Open Application Info**.
 
+
+
+
 2. Select the **watch-incidents** npm script.
 
     <!-- border; size:540px --> ![Watch script](./watchScript.png)
@@ -124,6 +135,46 @@ Instead of using `cds watch` command in the terminal to start the service, you w
 3. You can now see the application with the generated columns. Choose **Go**.
 
     <!-- border; size:540px --> ![Application with the generated columns](./ls2.png)
+
+
+<!-- Section End: This entire section is not needed for the Java version -->
+
+[OPTION END]
+
+[OPTION BEGIN [Java]]
+
+6. While you are in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
+
+7. Navigate to the **srv** folder.
+
+    ```bash
+    cd srv
+    ```
+
+
+8. Run the following command to start a CAP Java server:
+
+
+    ```bash
+    mvn cds:watch
+    ```
+
+1. In the bottom right of your SAP Business Application Studio window, look for the popup **A service is listening to port 8080**.
+ 
+
+2. Choose **Open in a New Tab**.
+
+    <!-- border; size:540px --> ![Open in a new tab](./open-new-tab.png)
+
+3. You'll see the generic `index.html` page:
+
+    <!-- border; size:540px --> ![index.html](./index-java.png)
+
+> You might need to stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it again with the `mvn cds:watch` command.
+
+[OPTION END]
+
+<!-- Instead, we need to add some additional steps how to start local preview of the app and how to navigate to the Incident Management app (mind the name of the app in the preview, may need to changes some input values in the process of generating the fiori app) from the CAP generic index page where there's the option to choose Fiori Preview OR consider supplying the user with the partial URL to append to the generic CAP index page so they access the Incident Management app -->
 
 ### Configure the List View Page
 
@@ -245,6 +296,11 @@ The filter labels are text strings. It's a good idea to update them so they are 
 
     <!-- border; size:540px --> ![Incident Management App's List Page](./IncidentsUI.png)
 
+    <!-- We need to add some additional steps how to start local preview of the app and how to navigate to the Incident Management app (mind the name of the app in the preview, may need to changes some input values in the process of generating the fiori app) from the CAP generic index page where there's the option to choose Fiori Preview OR consider supplying the user with the partial URL to append to the generic CAP index page so they access the Incident Management app -->
+
+    
+    <!-- Mind that with the Java version a heading Incidents is missing over the table with the created incidents. This is present for the Node.js version -->
+
 21. Navigate back to the page editor and choose **Page Map** in the top left. This takes you back to the overview of the **incidents** application.
 
 ### Configure the Incident Object Page
@@ -362,7 +418,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
 12. In the **Add Basic Fields** popup
 
-    - From the dropdown menu in the **Fields** field, select **status_code**, and **urgency_code**. 
+    - From the dropdown menu in the **Fields** field, select **status_code** and **urgency_code**. 
     - Choose **Add**.
 
     <!-- border; size:540px --> ![Add Basic Fields popup](./obj61.png)
@@ -445,6 +501,9 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 3. The complete list object page looks like this:
 
     <!-- border; size:540px --> ![Complete List Object Page](./obj10.png)
+
+    <!-- Instead, we need to add some additional steps how to start local preview of the app and how to navigate to the Incident Management app (mind the name of the app in the preview, may need to changes some input values in the process of generating the fiori app) from the CAP generic index page where there's the option to choose Fiori Preview OR consider supplying the user with the partial URL to append to the generic CAP index page so they access the Incident Management app -->
+
 
 ### Enable draft with `@odata.draft.enabled`
 
