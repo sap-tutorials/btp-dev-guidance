@@ -528,6 +528,16 @@ Upon detecting these new files, the CAP server prints a message stating that the
 ```
 > Make sure your CAP server is still running. You can start it with `cds watch`.
 
+Now that the database is filled with some initial data, you can send complex OData queries served by the built-in generic service providers. With the generic `index.html` page opened in your browser, paste the following queries at the end of the current URL and check the result:
+
+- `/odata/v4/processor/Incidents`
+
+    <!-- border; size:540px --> ![Incidents](./incidents.png)
+
+- `/odata/v4/processor/Customers?$select=firstName&$expand=incidents`
+
+    <!-- border; size:540px --> ![Incidents per customer](./incidents-per-customer.png)
+
 [OPTION END]
 
 [OPTION BEGIN [Java]]
@@ -545,17 +555,17 @@ Upon detecting these new files, the CAP server prints a message stating that the
 ```
 > Make sure your CAP server is still running. You can start it with `mvn cds:watch`.
 
-[OPTION END]
-
 Now that the database is filled with some initial data, you can send complex OData queries served by the built-in generic service providers. With the generic `index.html` page opened in your browser, paste the following queries at the end of the current URL and check the result:
 
-- `/odata/v4/processor/Incidents`
+- `/odata/v4/ProcessorService/Incidents`
 
     <!-- border; size:540px --> ![Incidents](./incidents.png)
 
-- `/odata/v4/processor/Customers?$select=firstName&$expand=incidents`
+- `/odata/v4/ProcessorService/Customers?$select=firstName&$expand=incidents`
 
     <!-- border; size:540px --> ![Incidents per customer](./incidents-per-customer.png)
+
+[OPTION END]
 
 > When you revisit the **Incidents** or the **Customers** endpoint, you might see something like this instead of the nicely formatted output from above.
 >
