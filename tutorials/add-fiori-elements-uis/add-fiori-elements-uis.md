@@ -507,7 +507,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
 ### Enable draft with `@odata.draft.enabled`
 
-SAP Fiori supports editing business entities with draft states stored on the server, so users can interrupt editing and continue later on, possibly from different places and devices. CAP, as well as SAP Fiori elements, provide out-of-the-box support for drafts. We recommend that you always use draft when your SAP Fiori application needs data input by end users.
+SAP Fiori supports editing business entities with draft states stored on the server, so users can interrupt editing and continue later on, possibly from different places and devices. CAP, as well as SAP Fiori elements, provides out-of-the-box support for drafts. We recommend that you always use draft when your SAP Fiori application needs data input by end users.
 
 >- For more details, see the SAP Fiori Design Guidelines for [Draft Handling](https://experience.sap.com/fiori-design-web/draft-handling/).
 >- Read more about [Draft Support](https://cap.cloud.sap/docs/advanced/fiori#draft-support) in the CAP documentation.
