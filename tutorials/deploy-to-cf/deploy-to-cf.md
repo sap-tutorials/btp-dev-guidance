@@ -60,6 +60,8 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 
 ### Add configuration for SAP Build Work Zone, standard edition
 
+> You can create a CAP project in either Node.js or Java. You have to choose one way or the other and follow through. The tabs **Node.js** and **Java** provide detailed steps for each alternative way.
+
 [OPTION BEGIN [Node.js]]
 
 1. Run the following command in the terminal:
