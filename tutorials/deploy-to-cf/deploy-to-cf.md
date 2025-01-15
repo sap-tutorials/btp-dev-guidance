@@ -60,6 +60,8 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 
 ### Add configuration for SAP Build Work Zone, standard edition
 
+[OPTION BEGIN [Node.js]]
+
 1. Run the following command in the terminal:
 
     ```bash
@@ -231,7 +233,179 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
     }
     ```
 
+[OPTION END]
+
+[OPTION BEGIN [Java]]
+
+1. Run the following command in the root folder of your project:
+
+    ```bash
+    cds add workzone
+    ```
+
+    You should see the following output in the terminal:
+
+    ```bash
+    Adding feature 'destination'...
+    Adding feature 'html5-repo'...
+    Adding feature 'workzone'...
+    Adding feature 'workzone-standard'...
+    ```
+
+2. Verify that all required modules and resources have been added to the **mta.yaml** file without errors:
+
+    ```yaml[5-62, 66-100]
+    _schema-version: '3.1'
+    ...
+    module:
+      ...
+    - name: incident-management-app-deployer
+      type: com.sap.application.content
+      path: .
+      requires:
+        - name: incident-management-html5-repo-host
+          parameters:
+            content-target: true
+      build-parameters:
+        build-result: resources
+        requires:
+          - name: incidentmanagementincidents
+            artifacts:
+              - incidents.zip
+            target-path: resources
+
+    - name: incidentmanagementincidents
+      type: html5
+      path: app/incidents
+      build-parameters:
+        build-result: dist
+        builder: custom
+        commands:
+          - npm ci
+          - npm run build
+        supported-platforms:
+          []
+
+    - name: incident-management-destinations
+      type: com.sap.application.content
+      requires:
+        - name: incident-management-auth
+          parameters:
+            service-key:
+              name: incident-management-auth-key
+        - name: incident-management-html5-repo-host
+          parameters:
+            service-key:
+              name: incident-management-html5-repo-host-key
+        - name: srv-api
+        - name: incident-management-destination
+          parameters:
+            content-target: true
+      build-parameters:
+        no-source: true
+      parameters:
+        content:
+          instance:
+            existing_destinations_policy: update
+            destinations:
+              - Name: incident-management-html5-repository
+                ServiceInstanceName: incident-management-html5-repo-host
+                ServiceKeyName: incident-management-html5-repo-host-key
+                sap.cloud.service: incidentmanagement.service
+              - Name: incident-management-auth
+                Authentication: OAuth2UserTokenExchange
+                ServiceInstanceName: incident-management-auth
+                ServiceKeyName: incident-management-auth-key
+                sap.cloud.service: incidentmanagement.service
+        ...
+    resources:
+      ...
+    - name: incident-management-destination
+      type: org.cloudfoundry.managed-service
+      parameters:
+        service: destination
+        service-plan: lite
+        config:
+          HTML5Runtime_enabled: true
+          init_data:
+            instance:
+              existing_destinations_policy: update
+              destinations:
+                - Name: incident-management-srv-api
+                  URL: ~{srv-api/srv-url}
+                  Authentication: NoAuthentication
+                  Type: HTTP
+                  ProxyType: Internet
+                  HTML5.ForwardAuthToken: true
+                  HTML5.DynamicDestination: true
+                - Name: ui5
+                  URL: https://ui5.sap.com
+                  Authentication: NoAuthentication
+                  Type: HTTP
+                  ProxyType: Internet
+      requires:
+        - name: srv-api
+          group: destinations
+          properties:
+            name: srv-api # must be used in xs-app.json as well
+            url: ~{srv-url}
+            forwardAuthToken: true
+    - name: incident-management-html5-repo-host
+      type: org.cloudfoundry.managed-service
+      parameters:
+        service: html5-apps-repo
+        service-plan: app-host
+    ```
+
+4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter.
+
+    ```json[10]
+    {
+        "_version": "1.49.0",
+        "sap.app": {
+            "id": "ns.incidents",
+            "type": "application",
+            "i18n": "i18n/i18n.properties",
+            ...
+            "dataSources": {
+                "mainService": {
+                    "uri": "odata/v4/processor/",
+                    "type": "OData",
+                    "settings": {
+                        "annotations": [],
+                        "localUri": "localService/metadata.xml",
+                        "odataVersion": "4.0"
+                    }
+                }
+            },
+            ...
+        },
+        ...
+    }
+    ```
+
+    This is needed as the dataSource URIs must be relative to the base URL, which means there is no need for a slash as the first character.
+
+    Check [Accessing Business Service UI](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL) for more information.
+
+6. Navigate to the **db** folder in the terminal and run the following command:
+
+    ```bash
+    npm install
+    ```
+
+7. Navigate to the **app/incidents** folder in the terminal and run the following command:
+
+    ```bash
+    npm install
+    ```
+
+
+[OPTION END]
+
 ### Make additional changes to the mta.yaml file
+
+[OPTION BEGIN [Node.js]]
 
 1. Update the `incident-management-app-deployer` module (build result directory and the target path) as follows:
 
@@ -271,7 +445,7 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
         - mkdir -p resources  
     ```
 
-3. Verify the mta.yaml file before deployment.
+3. Verify the **mta.yaml** file before deployment.
 
     This is how your **mta.yaml** file should look like at this stage:
 
@@ -429,6 +603,175 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
     
     ```
 
+[OPTION END]
+
+[OPTION BEGIN [Java]]
+
+3. Verify the **mta.yaml** file before deployment.
+
+
+    This is how your **mta.yaml** file should look like at this stage:
+
+    ```yaml
+    _schema-version: 3.3.0
+    ID: incident-management
+    version: 1.0.0-SNAPSHOT
+    description: "A simple CAP project."
+    parameters:
+      enable-parallel-deployments: true
+      deploy_mode: html5-repo
+    modules:
+      - name: incident-management-srv
+        type: java
+        path: srv
+        parameters:
+          buildpack: sap_java_buildpack_jakarta
+          readiness-health-check-type: http
+          readiness-health-check-http-endpoint: /actuator/health/readiness
+        properties:
+          SPRING_PROFILES_ACTIVE: cloud,sandbox
+          JBP_CONFIG_COMPONENTS: "jres: ['com.sap.xs.java.buildpack.jre.SAPMachineJRE']"
+          JBP_CONFIG_SAP_MACHINE_JRE: '{ version: 21.+ }'
+        build-parameters:
+          builder: custom
+          commands:
+            - mvn clean package -DskipTests=true --batch-mode
+          build-result: target/*-exec.jar
+        provides:
+          - name: srv-api # required by consumers of CAP services (e.g. approuter)
+            properties:
+              srv-url: ${default-url}
+        requires:
+          - name: incident-management-db
+          - name: incident-management-auth
+          - name: incident-management-destination
+
+      - name: incident-management-db-deployer
+        type: hdb
+        path: db
+        parameters:
+          buildpack: nodejs_buildpack
+        build-parameters:
+          builder: custom
+          commands:
+            - npm run build
+        requires:
+          - name: incident-management-db
+
+      - name: incident-management-app-deployer
+        type: com.sap.application.content
+        path: .
+        requires:
+          - name: incident-management-html5-repo-host
+            parameters:
+              content-target: true
+        build-parameters:
+          build-result: resources
+          requires:
+            - name: incidentmanagementincidents
+              artifacts:
+                - incidents.zip
+              target-path: resources
+
+      - name: incidentmanagementincidents
+        type: html5
+        path: app/incidents
+        build-parameters:
+          build-result: dist
+          builder: custom
+          commands:
+            - npm ci
+            - npm run build
+          supported-platforms:
+            []
+
+      - name: incident-management-destinations
+        type: com.sap.application.content
+        requires:
+          - name: incident-management-auth
+            parameters:
+              service-key:
+                name: incident-management-auth-key
+          - name: incident-management-html5-repo-host
+            parameters:
+              service-key:
+                name: incident-management-html5-repo-host-key
+          - name: srv-api
+          - name: incident-management-destination
+            parameters:
+              content-target: true
+        build-parameters:
+          no-source: true
+        parameters:
+          content:
+            instance:
+              existing_destinations_policy: update
+              destinations:
+                - Name: incident-management-html5-repository
+                  ServiceInstanceName: incident-management-html5-repo-host
+                  ServiceKeyName: incident-management-html5-repo-host-key
+                  sap.cloud.service: incidentmanagement.service
+                - Name: incident-management-auth
+                  Authentication: OAuth2UserTokenExchange
+                  ServiceInstanceName: incident-management-auth
+                  ServiceKeyName: incident-management-auth-key
+                  sap.cloud.service: incidentmanagement.service
+
+    resources:
+      - name: incident-management-db
+        type: com.sap.xs.hdi-container
+        parameters:
+          service: hana
+          service-plan: hdi-shared
+      - name: incident-management-auth
+        type: org.cloudfoundry.managed-service
+        parameters:
+          service: xsuaa
+          service-plan: application
+          path: ./xs-security.json
+          config:
+            xsappname: incident-management-${org}-${space}
+            tenant-mode: dedicated
+      - name: incident-management-destination
+        type: org.cloudfoundry.managed-service
+        parameters:
+          service: destination
+          service-plan: lite
+          config:
+            HTML5Runtime_enabled: true
+            init_data:
+              instance:
+                existing_destinations_policy: update
+                destinations:
+                  - Name: incident-management-srv-api
+                    URL: ~{srv-api/srv-url}
+                    Authentication: NoAuthentication
+                    Type: HTTP
+                    ProxyType: Internet
+                    HTML5.ForwardAuthToken: true
+                    HTML5.DynamicDestination: true
+                  - Name: ui5
+                    URL: https://ui5.sap.com
+                    Authentication: NoAuthentication
+                    Type: HTTP
+                    ProxyType: Internet
+        requires:
+          - name: srv-api
+            group: destinations
+            properties:
+              name: srv-api # must be used in xs-app.json as well
+              url: ~{srv-url}
+              forwardAuthToken: true
+      - name: incident-management-html5-repo-host
+        type: org.cloudfoundry.managed-service
+        parameters:
+          service: html5-apps-repo
+          service-plan: app-host
+
+    
+    ```
+
+[OPTION END]
 
 ### Assemble with the Cloud MTA Build Tool
 
@@ -441,6 +784,8 @@ mbt build
 See [Multitarget Applications in the Cloud Foundry Environment](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/d04fc0e2ad894545aebfd7126384307c.html?locale=en-US) to learn more about MTA-based deployment.
 
 ### Deploy in the SAP BTP, Cloud Foundry runtime
+
+[OPTION BEGIN [Node.js]]
 
 1. From the root of the **INCIDENT-MANAGEMENT** project, choose the burger menu, and then choose **Terminal** &rarr; **New Terminal**.
 
@@ -493,5 +838,48 @@ See [Multitarget Applications in the Cloud Foundry Environment](https://help.sap
 <!-- border; size:540px ![401 error](./401-error.png) -->
 
 <!-- The service expects a so called JWT (JSON Web Token) in the HTTP Authorization header that contains the required authentication and authorization information to access the service.  -->
+
+[OPTION END]
+
+[OPTION BEGIN [Java]]
+
+1. From the root of the **INCIDENT-MANAGEMENT** project, choose the burger menu, and then choose **Terminal** &rarr; **New Terminal**.
+
+2. Log in to your subaccount in SAP BTP:
+
+    ```bash
+    cf api <API-ENDPOINT>
+    cf login
+    cf target -o <ORG> -s <SPACE>
+    ```
+
+    > You can find the API endpoint in the **Overview** section of your subaccount in the SAP BTP cockpit.
+
+3. Run the following command to deploy the generated archive to the SAP BTP, Cloud Foundry runtime:
+
+    ```bash
+    cf deploy mta_archives/incident-management_1.0.0-SNAPSHOT.mtar 
+    ```
+
+4. Check if all services have been created:
+
+    ```bash 
+    cf services
+    ```
+
+    You should see the following services in your space:
+
+    <!-- border; size:540px --> ![Services after deploy](./cf-services.jpg)
+
+5. Check if the apps are running:
+
+    ```bash
+    cf apps
+    ```
+
+    <!-- border; size:540px --> ![App after deploy](./cf-apps.png)
+
+
+[OPTION END]
 
 In the next tutorials, you will access your UIs from SAP Build Work Zone, standard edition. The SAP Build Work Zone, standard edition will trigger the authentication flow to provide the required token to access the service.
