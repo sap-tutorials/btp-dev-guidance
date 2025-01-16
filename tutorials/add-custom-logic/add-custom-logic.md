@@ -120,43 +120,48 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
     import com.sap.cds.services.persistence.PersistenceService;
     import org.slf4j.Logger;
     import org.slf4j.LoggerFactory;
-    import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.stereotype.Component;
     import java.util.List;
     import java.util.Locale;
 
     @Component
-    @ServiceName(ProcessorService_.CDS_NAME)  
+    @ServiceName(ProcessorService_.CDS_NAME)
     public class ProcessorServiceHandler implements EventHandler {
 
-            @Autowired
-            private PersistenceService db;
-    /*
-     * Change the urgency of an incident to "high" if the title contains the word "urgent"
-     */
-            private static final Logger logger = LoggerFactory.getLogger(ProcessorServiceHandler.class);
-            @Before(event = CqnService.EVENT_CREATE)  
-            public void ensureHighUrgencyForIncidentsWithUrgentInTitle(List<Incidents> incidents) {  
-                    for (Incidents incident : incidents) {
-                            if (incident.getTitle().toLowerCase(Locale.ENGLISH).contains("urgent") &&
-                incident.getUrgencyCode() == null || !incident.getUrgencyCode().equals("H")) {  
-                    incident.setUrgencyCode("H");  
-                                    logger.info("Adjusted Urgency for incident '{}' to 'HIGH'.", incident.getTitle());  
-                            }  
+        private static final Logger logger = LoggerFactory.getLogger(ProcessorServiceHandler.class);
 
-                    }  
-            }
-    /*
-     * Handler to avoid updating a "closed" incident
-     */
-        @Before(event = CqnService.EVENT_UPDATE)  
-            public void onUpdate(Incidents incident) { 
-            Incidents in = db.run(Select.from((Class<Incidents_>) Incidents_.class).where(i -> i.ID().eq(incident.getId()))).single(Incidents.class);
-                    if(in.getStatusCode().equals("C")){
-                throw new ServiceException(ErrorStatuses.CONFLICT, "Can't modify a closed incident");
+        private final PersistenceService db;
+
+        public ProcessorServiceHandler(PersistenceService db) {
+            this.db = db;
+        }
+
+        /*
+        * Change the urgency of an incident to "high" if the title contains the word "urgent"
+        */
+        @Before(event = CqnService.EVENT_CREATE)
+        public void ensureHighUrgencyForIncidentsWithUrgentInTitle(List<Incidents> incidents) {
+            for (Incidents incident : incidents) {
+                if (incident.getTitle().toLowerCase(Locale.ENGLISH).contains("urgent") &&
+                        incident.getUrgencyCode() == null || !incident.getUrgencyCode().equals("H")) {
+                    incident.setUrgencyCode("H");
+                    logger.info("Adjusted Urgency for incident '{}' to 'HIGH'.", incident.getTitle());
                 }
 
             }
+        }
+
+        /*
+        * Handler to avoid updating a "closed" incident
+        */
+        @Before(event = CqnService.EVENT_UPDATE)
+        public void ensureNoUpdateOnClosedIncidents(Incidents incident) {
+            Incidents in = db.run(Select.from(Incidents_.class).where(i -> i.ID().eq(incident.getId()))).single(Incidents.class);
+            if (in.getStatusCode().equals("C")) {
+                throw new ServiceException(ErrorStatuses.CONFLICT, "Can't modify a closed incident");
+            }
+
+        }
 
     }
     ```
