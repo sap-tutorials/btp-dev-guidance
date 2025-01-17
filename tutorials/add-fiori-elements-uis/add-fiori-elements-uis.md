@@ -10,8 +10,8 @@ primary_tag: software-product-function>sap-cloud-application-programming-model
 author_name: Svetoslav Pandeliev
 author_profile: https://github.com/slavipande
 ---
-
-## You will learn
+ 
+## You will learn 
 
 - How to generate the UI with an SAP Fiori elements template
 - How to modify the UI with the SAP Fiori page editor
