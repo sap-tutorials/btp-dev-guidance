@@ -181,7 +181,7 @@ You have added test cases in your application. Follow the steps in the [Add Test
 
 3. You'll see the generic `index.html` page:
 
-    <!-- border; size:540px --> ![index.html](./index-java.png)
+    <!-- border; size:540px --> ![index.html](./index-java.jpg)
 
 > You might need to stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it again with the `mvn cds:watch` command.
 
@@ -473,6 +473,8 @@ No changes required at this stage for your Java project.
 
 ### Run a test build
 
+[OPTION BEGIN [Node.js]]
+
 To validate that everything is prepared as expected, run a test build. Navigate to your project's root folder in the terminal and run the following command:
 
 ```bash
@@ -483,3 +485,25 @@ You should get an output like:
 ```bash
 [cds] - build completed in 511 ms
 ```
+
+[OPTION END]
+
+[OPTION BEGIN [Java]]
+
+To validate that everything is prepared as expected, run a test build. Navigate to your project's root folder in the terminal and run the following command:
+
+```bash
+mvn clean package
+```
+You should get an output like:
+
+```bash
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  33.848 s
+[INFO] Finished at: 
+[INFO] ------------------------------------------------------------------------
+```
+
+[OPTION END]

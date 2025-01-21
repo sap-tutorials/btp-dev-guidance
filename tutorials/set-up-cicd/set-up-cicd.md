@@ -142,8 +142,10 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
     - Enter **github** in the **Credential Name** field.
     - Choose **Basic Authentication** from the dropdown in the **Type** field.
     - Enter your GitHub user name in the **Username** field.
-    - Enter your GitHub password (or GitHub access token if you have created one) in the **Password** field.
+    - Enter your GitHub personal access token in the **Password** field.
     - Choose **Create**. 
+
+    > See [Create a Credential for a Private GitHub Repository](https://help.sap.com/docs/continuous-integration-and-delivery/sap-continuous-integration-and-delivery/create-credential-for-private-github-repository?language=en-US) for instructions how to create a GitHub personal access token if you don't have one.
 
     <!-- border; size:540px --> ![Create GitHub credential](./create-github-credential.png)
 
