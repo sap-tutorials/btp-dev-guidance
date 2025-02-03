@@ -74,7 +74,7 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 2. Verify that the destinations module and resource have been added to the **mta.yaml** file without errors:
 
 
-    ```yaml[5-35 39-68]
+    ```yaml[5-68]
     _schema-version: '3.1'
     ...
     module:
