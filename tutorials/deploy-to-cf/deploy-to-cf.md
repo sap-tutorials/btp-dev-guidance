@@ -148,7 +148,7 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 
 
 
-2. Verify that the navigation target **incidents-display** and the SAP Cloud service have been correctly added to the application manifest file **app/incidents/webapp/manifest.json**:
+3. Verify that the navigation target **incidents-display** and the SAP Cloud service have been correctly added to the application manifest file **app/incidents/webapp/manifest.json**:
 
 
     ```json[10-23, 25-28]
