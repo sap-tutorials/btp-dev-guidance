@@ -74,7 +74,7 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 2. Verify that the destinations module and resource have been added to the **mta.yaml** file without errors:
 
 
-    ```yaml
+    ```yaml[5-35, 39-68]
     _schema-version: '3.1'
     ...
     module:
@@ -151,7 +151,7 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 3. Verify that the navigation target **incidents-display** and the SAP Cloud service have been correctly added to the application manifest file **app/incidents/webapp/manifest.json**:
 
 
-    ```json[10-23, 25-28]
+    ```json[10-23,25-28]
     "sap.app": {
       "id": "ns.incidents",
       ...
