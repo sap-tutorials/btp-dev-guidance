@@ -73,76 +73,79 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 
 2. Verify that the destinations module and resource have been added to the **mta.yaml** file without errors:
 
-    ```yaml[5-35, 39-68]
-    _schema-version: '3.1'
-    ...
-    module:
+      ```yaml[5-35, 39-68]
+      _schema-version: '3.1'
       ...
-    - name: incident-management-destinations
-      type: com.sap.application.content
-      requires:
-        - name: incident-management-auth
-          parameters:
-            service-key:
-              name: incident-management-auth-key
-        - name: incident-management-html5-repo-host
-          parameters:
-            service-key:
-              name: incident-management-html5-repo-host-key
-        - name: srv-api
-        - name: incident-management-destination
-          parameters:
-            content-target: true
-      build-parameters:
-        no-source: true
-      parameters:
-        content:
-          instance:
-            existing_destinations_policy: update
-            destinations:
-              - Name: incident-management-html5-repository
-                ServiceInstanceName: incident-management-html5-repo-host
-                ServiceKeyName: incident-management-html5-repo-host-key
-                sap.cloud.service: incidentmanagement.service
-              - Name: incident-management-auth
-                Authentication: OAuth2UserTokenExchange
-                ServiceInstanceName: incident-management-auth
-                ServiceKeyName: incident-management-auth-key
-                sap.cloud.service: incidentmanagement.service
+      module:
         ...
-    resources:
-      ...
-    - name: incident-management-destination
-      type: org.cloudfoundry.managed-service
-      parameters:
-        service: destination
-        service-plan: lite
-        config:
-          HTML5Runtime_enabled: true
-          init_data:
+      - name: incident-management-destinations
+        type: com.sap.application.content
+        requires:
+          - name: incident-management-auth
+            parameters:
+              service-key:
+                name: incident-management-auth-key
+          - name: incident-management-html5-repo-host
+            parameters:
+              service-key:
+                name: incident-management-html5-repo-host-key
+          - name: srv-api
+          - name: incident-management-destination
+            parameters:
+              content-target: true
+        build-parameters:
+          no-source: true
+        parameters:
+          content:
             instance:
               existing_destinations_policy: update
               destinations:
-                - Name: incident-management-srv-api
-                  URL: ~{srv-api/srv-url}
-                  Authentication: NoAuthentication
-                  Type: HTTP
-                  ProxyType: Internet
-                  HTML5.ForwardAuthToken: true
-                  HTML5.DynamicDestination: true
-                - Name: ui5
-                  URL: https://ui5.sap.com
-                  Authentication: NoAuthentication
-                  Type: HTTP
-                  ProxyType: Internet
-      requires:
-        - name: srv-api
-          group: destinations
-          properties:
-            name: srv-api # must be used in xs-app.json as well
-            url: ~{srv-url}
-            forwardAuthToken: true
-    ```
+                - Name: incident-management-html5-repository
+                  ServiceInstanceName: incident-management-html5-repo-host
+                  ServiceKeyName: incident-management-html5-repo-host-key
+                  sap.cloud.service: incidentmanagement.service
+                - Name: incident-management-auth
+                  Authentication: OAuth2UserTokenExchange
+                  ServiceInstanceName: incident-management-auth
+                  ServiceKeyName: incident-management-auth-key
+                  sap.cloud.service: incidentmanagement.service
+          ...
+      resources:
+        ...
+      - name: incident-management-destination
+        type: org.cloudfoundry.managed-service
+        parameters:
+          service: destination
+          service-plan: lite
+          config:
+            HTML5Runtime_enabled: true
+            init_data:
+              instance:
+                existing_destinations_policy: update
+                destinations:
+                  - Name: incident-management-srv-api
+                    URL: ~{srv-api/srv-url}
+                    Authentication: NoAuthentication
+                    Type: HTTP
+                    ProxyType: Internet
+                    HTML5.ForwardAuthToken: true
+                    HTML5.DynamicDestination: true
+                  - Name: ui5
+                    URL: https://ui5.sap.com
+                    Authentication: NoAuthentication
+                    Type: HTTP
+                    ProxyType: Internet
+        requires:
+          - name: srv-api
+            group: destinations
+            properties:
+              name: srv-api # must be used in xs-app.json as well
+              url: ~{srv-url}
+              forwardAuthToken: true
+      ```
+
+
+
 
 2. Verify that the navigation target **incidents-display** and the SAP Cloud service have been correctly added to the application manifest file **app/incidents/webapp/manifest.json**:
 
