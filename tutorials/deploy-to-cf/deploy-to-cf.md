@@ -869,11 +869,9 @@ See [Multitarget Applications in the Cloud Foundry Environment](https://help.sap
 
 4. Check if all services have been created:
 
-    ```bash 
+    ```bash
     cf services
     ```
-
-    You should see the following services in your space:
 
     <!-- border; size:540px --> ![Services after deploy](./cf-services.jpg)
 
