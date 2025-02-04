@@ -71,10 +71,10 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
     ```
 
 
-2. Verify that the destinations module and resource have been added to the **mta.yaml** file without errors:
+2. Verify that the destinations module (lines 5-35 below) and resource (lines 39-68 below) have been added to the **mta.yaml** file without errors:
 
 
-    ```yaml[5-68]
+    ```yaml
     _schema-version: '3.1'
     ...
     module:
@@ -148,10 +148,10 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 
 
 
-3. Verify that the navigation target **incidents-display** and the SAP Cloud service have been correctly added to the application manifest file **app/incidents/webapp/manifest.json**:
+3. Verify that the navigation target **incidents-display** (lines 10-23 below) and the SAP Cloud service (lines 25-28 below) have been correctly added to the application manifest file **app/incidents/webapp/manifest.json**:
 
 
-    ```json[10-28]
+    ```json
     "sap.app": {
       "id": "ns.incidents",
       ...
@@ -184,7 +184,7 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
     ```
 
 
-4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter.
+4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter (line 10).
 
     ```json[10]
     {
@@ -258,9 +258,9 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
     Adding feature 'workzone-standard'...
     ```
 
-2. Verify that all required modules and resources have been added to the **mta.yaml** file without errors:
+2. Verify that all required modules (lines 5-62 below) and resources (lines 66-100 below) have been added to the **mta.yaml** file without errors:
 
-    ```yaml[5-100]
+    ```yaml
     _schema-version: '3.1'
     ...
     module:
@@ -363,7 +363,7 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
         service-plan: app-host
     ```
 
-4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter.
+4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter (line 10 below).
 
     ```json[10]
     {
@@ -415,6 +415,10 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 
 1. Update the `incident-management-app-deployer` module (build result directory and the target path) as follows:
 
+    - Line 7: update `path` to `.`
+    - Line 13: update `build-result` to `resources/`
+    - Line 18: update `target-path` to `resources/`
+
     ```yaml
     _schema-version: '3.1'
     ...
@@ -439,7 +443,7 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
     ...
     ```
 
-2. Update the build parameters:
+2. Update the build parameters. Add line 7 `mkdir -p resources`:
 
     ```yaml[7]
     build-parameters:
