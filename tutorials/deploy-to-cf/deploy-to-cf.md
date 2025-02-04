@@ -415,7 +415,7 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 
 1. Update the `incident-management-app-deployer` module (build result directory and the target path) as follows:
 
-    ```yaml[7, 13, 18]
+    ```yaml
     _schema-version: '3.1'
     ...
     module:
