@@ -88,7 +88,7 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 #### Add application to Content Explorer
 
-5. Choose **Content Manager** in the menu on the left and choose the **Content Explorer** button.
+1. Choose **Content Manager** in the menu on the left and choose the **Content Explorer** button.
 
     <!-- border; size:540px --> ![WorkZone2](./integrate_launchpad_20.png)
 
@@ -102,7 +102,7 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 #### Create a group
 
-8. Go back to the **Content Manager**, choose **Create** &rarr; **Group**.
+1. Go back to the **Content Manager**, choose **Create** &rarr; **Group**.
 
     <!-- border; size:540px --> ![WorkZone4](./integrate_launchpad_4.png)
 
@@ -116,7 +116,7 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 #### Add application to the Everyone role
 
-12. Back in the **Content Manager**, choose role **Everyone** and choose **Edit**.
+1. Back in the **Content Manager**, choose role **Everyone** and choose **Edit**.
 
 13. In the **Assignment Status**, choose the slider to assign the **Incident-Management** app to the role.
 
@@ -126,7 +126,7 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 #### Create site
 
-15. Navigate to **Site Directory** and choose **Create Site**.
+1. Navigate to **Site Directory** and choose **Create Site**.
 
     <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_7.png)
 
@@ -585,7 +585,7 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 
 #### Create site
 
-15. Navigate to **Site Directory** and choose **Create Site**.
+1. Navigate to **Site Directory** and choose **Create Site**.
 
     <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_7.png)
 
@@ -621,7 +621,7 @@ You need to assign your user to the **~cdm_defaultRole** role collection, so you
 
 ### Test your site
 
-19. Navigate to **Site Directory** and find your site.
+1. Navigate to **Site Directory** and find your site.
 
     <!-- border; size:540px --> ![WorkZone8](./integrate_launchpad_8.png)
 
