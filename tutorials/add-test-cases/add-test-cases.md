@@ -413,7 +413,7 @@ You have configured the access to your application. Follow the steps in the [Add
 
 1. Open the **package.json** file and add the `"test": "jest tests/test.js"` line inside the `scripts` section. This adds a command to start the tests.
 
-    ```json[15]
+    ```json
     {
       "name": "incident-management",
       "version": "1.0.0",
