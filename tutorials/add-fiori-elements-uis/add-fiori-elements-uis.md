@@ -278,7 +278,7 @@ The filter labels are text strings. It's a good idea to update them so they are 
 
 #### Configure tables
 
-17. Choose **Table** and in the **Initial Load** dropdown menu, select **Enabled** to load the data automatically.
+1. Choose **Table** and in the **Initial Load** dropdown menu, select **Enabled** to load the data automatically.
 
     <!-- border; size:540px --> ![Enable Data Auto Load](./ls8.png)
 
@@ -292,7 +292,7 @@ The filter labels are text strings. It's a good idea to update them so they are 
 
 #### Check the result
 
-20. The list page of the Incident Management application should look like this:
+1. The list page of the Incident Management application should look like this:
 
     <!-- border; size:540px --> ![Incident Management App's List Page](./IncidentsUI.png)
 
@@ -343,7 +343,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
 #### Add Overview section
 
-8. Choose **Sections** and then choose the **Plus** icon to add more sections. Choose **Add Group Section**.
+1. Choose **Sections** and then choose the **Plus** icon to add more sections. Choose **Add Group Section**.
 
     <!-- border; size:540px --> ![Add Group Section](./obj22.png)
 
@@ -357,7 +357,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
 #### Add Details subsection
 
-9. Navigate to **Sections** &rarr; **Overview** &rarr; **Subsections**.
+1. Navigate to **Sections** &rarr; **Overview** &rarr; **Subsections**.
 
 
 10. Choose the **Plus** icon to add more sections and choose **Add Form Section**.
@@ -451,7 +451,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
 #### Add Conversation section
 
-19. Navigate to **Sections** and then choose the **Plus** icon to add more sections. Select **Add Table Section** in the dropdown menu.
+1. Navigate to **Sections** and then choose the **Plus** icon to add more sections. Select **Add Table Section** in the dropdown menu.
 
 20. Choose **Add Table Section**. A popup appears.
 
@@ -467,7 +467,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
 #### Configure columns
 
-21. Navigate to **Conversation** &rarr; **Table** &rarr; **Columns** and choose the **Plus** icon to add columns. 
+1. Navigate to **Conversation** &rarr; **Table** &rarr; **Columns** and choose the **Plus** icon to add columns. 
 
 22. Choose **Add Basic Columns**. A popup appears.
 
