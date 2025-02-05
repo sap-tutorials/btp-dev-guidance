@@ -71,7 +71,7 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
     ```
 
 
-2. Verify that the destinations module (lines 5-35 below) and resource (lines 39-68 below) have been added to the **mta.yaml** file without errors:
+2. Verify that the destinations module `incident-management-destinations` and resource `incident-management-destination` have been added to the **mta.yaml** file without errors:
 
 
     ```yaml
@@ -148,7 +148,7 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 
 
 
-3. Verify that the navigation target **incidents-display** (lines 10-23 below) and the SAP Cloud service (lines 25-28 below) have been correctly added to the application manifest file **app/incidents/webapp/manifest.json**:
+3. Verify that the navigation target `incidents-display` and the SAP Cloud service `sap.cloud` have been correctly added to the application manifest file **app/incidents/webapp/manifest.json**:
 
 
     ```json
@@ -184,9 +184,9 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
     ```
 
 
-4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter (line 10).
+4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter.
 
-    ```json[10]
+    ```json
     {
         "_version": "1.49.0",
         "sap.app": {
@@ -215,9 +215,9 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 
     Check [Accessing Business Service UI](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL) for more information.
 
-5. Make sure that line 2 in the following snippet is added to the **app/incidents/xs-app.json** file. Add if it is missing. 
+5. Make sure that the line `"welcomeFile": "/index.html"` in the following snippet is added to the **app/incidents/xs-app.json** file. Add if it is missing. 
 
-    ```json[2]
+    ```json
     {
       "welcomeFile": "/index.html",
       "authenticationMethod": "route",
@@ -258,7 +258,7 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
     Adding feature 'workzone-standard'...
     ```
 
-2. Verify that all required modules (lines 5-62 below) and resources (lines 66-100 below) have been added to the **mta.yaml** file without errors:
+2. Verify that all required modules (`incident-management-app-deployer`, `incidentmanagementincidents`, and `incident-management-destinations`) and resources (`incident-management-destination` and `incident-management-html5-repo-host`) have been added to the **mta.yaml** file without errors:
 
     ```yaml
     _schema-version: '3.1'
@@ -363,9 +363,9 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
         service-plan: app-host
     ```
 
-4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter (line 10 below).
+4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter.
 
-    ```json[10]
+    ```json
     {
         "_version": "1.49.0",
         "sap.app": {
@@ -413,11 +413,7 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 
 [OPTION BEGIN [Node.js]]
 
-1. Update the `incident-management-app-deployer` module (build result directory and the target path) as follows:
-
-    - Line 7: update `path` to `.`
-    - Line 13: update `build-result` to `resources/`
-    - Line 18: update `target-path` to `resources/`
+1. Update the `incident-management-app-deployer` module (`path`, `build-result`, and `target-path` parameters) as follows:
 
     ```yaml
     _schema-version: '3.1'
@@ -443,7 +439,7 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
     ...
     ```
 
-2. Update the build parameters. Add line 7 `mkdir -p resources`:
+2. Add `mkdir -p resources` command to the `build-parameters` section:
 
     ```yaml[7]
     build-parameters:
