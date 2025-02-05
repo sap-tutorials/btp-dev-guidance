@@ -90,7 +90,7 @@ If you don't have the entitlements added already, follow the steps below to add 
 
 This creates a Cloud Foundry (CF) organization (org) in your subaccount. There’s always one Cloud Foundry org per subaccount. Later on, when you log on to Cloud Foundry, it asks you which Cloud Foundry org you want to log on to. For any development in your subaccount, you need to choose this org for your subaccount. If you don't have a CF org created in your subaccount already, follow the steps below to create it.
 
-2. Navigate to your subaccount and choose **Enable Cloud Foundry**.
+1. Navigate to your subaccount and choose **Enable Cloud Foundry**.
 
       <!-- border; size:540px --> ![enable CF](./enable-cf.png) 
 
