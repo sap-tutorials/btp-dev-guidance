@@ -143,30 +143,30 @@ Instead of using `cds watch` command in the terminal to start the service, you w
 
 [OPTION BEGIN [Java]]
 
-6. While you are in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
+1. While you are in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
 
-7. Navigate to the **srv** folder.
+2. Navigate to the **srv** folder.
 
     ```bash
     cd srv
     ```
 
 
-8. Run the following command to start a CAP Java server:
+3. Run the following command to start a CAP Java server:
 
 
     ```bash
     mvn cds:watch
     ```
 
-1. In the bottom right of your SAP Business Application Studio window, look for the popup **A service is listening to port 8080**.
+4. In the bottom right of your SAP Business Application Studio window, look for the popup **A service is listening to port 8080**.
  
 
-2. Choose **Open in a New Tab**.
+5. Choose **Open in a New Tab**.
 
     <!-- border; size:540px --> ![Open in a new tab](./open-new-tab.png)
 
-3. You'll see the generic `index.html` page:
+6. You'll see the generic `index.html` page:
 
     <!-- border; size:540px --> ![index.html](./index-java.png)
 
@@ -216,23 +216,23 @@ In this section, you'll modify the List View Page of the UI with the SAP Fiori p
 
 The filter labels are text strings. It's a good idea to update them so they are compliant with internationalization standards (i18n).
 
-5. Change the **urgency_code** filter label. In the **Label** field, change the value to **Urgency**. Press <kbd>Enter</kbd> to confirm the change.
+1. Change the **urgency_code** filter label. In the **Label** field, change the value to **Urgency**. Press <kbd>Enter</kbd> to confirm the change.
 
     <!-- border; size:540px --> ![Update filter label](./update-filter-label.png)
 
-6. Choose the **Globe** icon to generate a translatable text key and choose **Apply**.
+2. Choose the **Globe** icon to generate a translatable text key and choose **Apply**.
 
     <!-- border; size:540px --> ![Generate Translatable Text Key](./ls10.png)
 
-7. Choose the **status_code** filter. In the **Label** field, change the value to **Status**. Press <kbd>Enter</kbd> to confirm the change.
+3. Choose the **status_code** filter. In the **Label** field, change the value to **Status**. Press <kbd>Enter</kbd> to confirm the change.
 
-8. Choose the **Globe** icon to generate a translatable text key and choose **Apply**.
+4. Choose the **Globe** icon to generate a translatable text key and choose **Apply**.
 
-9. For both the **Urgency** and **Status** filters, in the **Display Type** dropdown menu, select **Value Help**. A popup shows up. 
+5. For both the **Urgency** and **Status** filters, in the **Display Type** dropdown menu, select **Value Help**. A popup shows up. 
 
     <!-- border; size:540px --> ![Value help display type](./value-help-dipslay-type.png)
 
-10. In the **Define Value Help Properties for Urgency/Status** popup: 
+6. In the **Define Value Help Properties for Urgency/Status** popup: 
 
     - Choose the dropdown menu in the **Value Description Property** field.
     - Select **descr**.
@@ -242,7 +242,7 @@ The filter labels are text strings. It's a good idea to update them so they are 
 
 #### Edit columns
 
-10. Expand the **Columns** section under **Table** and delete the columns **customer_ID**, **urgency_code** and **status_code**. 
+1. Expand the **Columns** section under **Table** and delete the columns **customer_ID**, **urgency_code** and **status_code**. 
 
     <!-- border; size:540px --> ![Delete Columns](./delete-columns.png)
 
