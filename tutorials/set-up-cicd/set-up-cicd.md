@@ -169,7 +169,7 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 
 #### Add repository 
 
-3. Open the value help for the **Repository** field. 
+1. Open the value help for the **Repository** field. 
 
     <!-- border; size:540px --> ![Add job name](./job-name.png)
 
