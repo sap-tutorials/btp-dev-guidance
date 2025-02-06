@@ -180,9 +180,9 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 
 5. Update the `html5-apps-deployer` section:
 
-    1. Delete `SAP_CLOUD_SERVICE` and the destination binding:
+    1. Delete the `SAP_CLOUD_SERVICE`line and the lines `destination:` and `serviceInstanceName: destination`:
 
-        ```yaml[3, 9-10]
+        ```yaml
         html5-apps-deployer:
           env:
             SAP_CLOUD_SERVICE: incidentmanagementservice
