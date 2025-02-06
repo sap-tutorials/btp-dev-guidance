@@ -259,9 +259,9 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
 
 1. Open the **package.json** file in your project root folder.
 
-2. Add the following lines to the **package.json** file:
+2. Add `"@cap-js/sqlite": "^1"` as a `devDependency` and the script `"cds-build": "npm install --include=dev && cds build --production"` to the **package.json** file:
 
-    ```json[8, 13]
+    ```json
     {
         "name": "incident-management",
         ...
@@ -294,7 +294,7 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
 
 #### Add repository 
 
-3. Open the value help for the **Repository** field. 
+1. Open the value help for the **Repository** field. 
 
     <!-- border; size:540px --> ![Add job name](./job-name.png)
 
