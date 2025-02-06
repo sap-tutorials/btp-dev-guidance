@@ -445,10 +445,10 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
     build-parameters:
       before-all:
         - builder: custom
-        commands:
-          - npm ci
-          - npx cds build --production 
-          - mkdir -p resources  
+          commands:
+            - npm ci
+            - npx cds build --production 
+            - mkdir -p resources  
     ```
 
 3. Verify the **mta.yaml** file before deployment.
