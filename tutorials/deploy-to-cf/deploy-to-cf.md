@@ -441,6 +441,7 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 
 2. Add `mkdir -p resources` command to the `build-parameters` section:
 
+
     ```yaml 
     build-parameters:
     before-all:
