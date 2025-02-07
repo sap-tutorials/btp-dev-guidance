@@ -197,12 +197,7 @@ Follow these steps to create an SAP HANA Cloud service instance in the SAP BTP c
 The creation of the database instance can take some minutes to complete.
 
 > Your SAP HANA Cloud service instance will be automatically stopped overnight, according to the server region time zone. That means you need to restart your instance every day before you start working with it.
->
-> You can either use SAP BTP cockpit or the terminal in the SAP Business Application Studio to restart the stopped instance:
->
-> ```bash
-> cf update-service incident-management -c '{"data":{"serviceStopped":false}}'
-> ```
+
 
 ### Map your SAP HANA Cloud service instance to your Cloud Foundry organization
 
