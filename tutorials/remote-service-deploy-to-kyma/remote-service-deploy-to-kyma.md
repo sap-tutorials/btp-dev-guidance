@@ -138,7 +138,7 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
 >- If you're using any device with a non-x86 processor (e.g. MacBook M1/M2) you need to instruct Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable using the command `export DOCKER_DEFAULT_PLATFORM=linux/amd64`. Check [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables) for more info.
 
 
-3. Create the productive CAP build for your application: 
+1. Create the productive CAP build for your application: 
 
     ```bash
     cds build --production

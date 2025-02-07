@@ -146,7 +146,7 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
 
 ### Deploy the application
 
-4. Log in to your subaccount in SAP BTP:
+1. Log in to your subaccount in SAP BTP:
 
     ```bash
     cf api <API-ENDPOINT>
