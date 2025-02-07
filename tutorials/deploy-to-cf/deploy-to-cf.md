@@ -71,9 +71,10 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
     ```
 
 
-2. Verify that the destinations module and resource have been added to the **mta.yaml** file without errors:
+2. Verify that the destinations module `incident-management-destinations` and resource `incident-management-destination` have been added to the **mta.yaml** file without errors:
 
-    ```yaml[5-35, 39-68]
+
+    ```yaml
     _schema-version: '3.1'
     ...
     module:
@@ -144,10 +145,13 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
             forwardAuthToken: true
     ```
 
-2. Verify that the navigation target **incidents-display** and the SAP Cloud service have been correctly added to the application manifest file **app/incidents/webapp/manifest.json**:
 
 
-    ```json[10-23, 25-28]
+
+3. Verify that the navigation target `incidents-display` and the SAP Cloud service `sap.cloud` have been correctly added to the application manifest file **app/incidents/webapp/manifest.json**:
+
+
+    ```json
     "sap.app": {
       "id": "ns.incidents",
       ...
@@ -182,7 +186,7 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 
 4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter.
 
-    ```json[10]
+    ```json
     {
         "_version": "1.49.0",
         "sap.app": {
@@ -211,9 +215,9 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 
     Check [Accessing Business Service UI](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL) for more information.
 
-5. Make sure that line 2 in the following snippet is added to the **app/incidents/xs-app.json** file. Add if it is missing. 
+5. Make sure that the line `"welcomeFile": "/index.html"` in the following snippet is added to the **app/incidents/xs-app.json** file. Add if it is missing. 
 
-    ```json[2]
+    ```json
     {
       "welcomeFile": "/index.html",
       "authenticationMethod": "route",
@@ -254,9 +258,9 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
     Adding feature 'workzone-standard'...
     ```
 
-2. Verify that all required modules and resources have been added to the **mta.yaml** file without errors:
+2. Verify that all required modules (`incident-management-app-deployer`, `incidentmanagementincidents`, and `incident-management-destinations`) and resources (`incident-management-destination` and `incident-management-html5-repo-host`) have been added to the **mta.yaml** file without errors:
 
-    ```yaml[5-62, 66-100]
+    ```yaml
     _schema-version: '3.1'
     ...
     module:
@@ -361,7 +365,7 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 
 4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter.
 
-    ```json[10]
+    ```json
     {
         "_version": "1.49.0",
         "sap.app": {
@@ -409,9 +413,9 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 
 [OPTION BEGIN [Node.js]]
 
-1. Update the `incident-management-app-deployer` module (build result directory and the target path) as follows:
+1. Update the `incident-management-app-deployer` module (`path`, `build-result`, and `target-path` parameters) as follows:
 
-    ```yaml[7, 13, 18]
+    ```yaml
     _schema-version: '3.1'
     ...
     module:
@@ -435,16 +439,16 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
     ...
     ```
 
-2. Update the build parameters:
+2. Add `mkdir -p resources` command to the `build-parameters` section:
 
-    ```yaml[7]
-    build-parameters:
-    before-all:
-      - builder: custom
-      commands:
-        - npm ci
-        - npx cds build --production 
-        - mkdir -p resources  
+    ```yaml
+      build-parameters:
+        before-all:
+          - builder: custom
+            commands:
+              - npm ci
+              - npx cds build --production
+              - mkdir -p resources 
     ```
 
 3. Verify the **mta.yaml** file before deployment.
@@ -809,11 +813,9 @@ See [Multitarget Applications in the Cloud Foundry Environment](https://help.sap
 
 4. Check if all services have been created:
 
-    ```bash 
+    ```bash
     cf services
     ```
-
-    You should see the following services in your space:
 
     <!-- border; size:540px --> ![Services after deploy](./cf-services.png)
 
@@ -865,11 +867,9 @@ See [Multitarget Applications in the Cloud Foundry Environment](https://help.sap
 
 4. Check if all services have been created:
 
-    ```bash 
+    ```bash
     cf services
     ```
-
-    You should see the following services in your space:
 
     <!-- border; size:540px --> ![Services after deploy](./cf-services.jpg)
 

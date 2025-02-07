@@ -40,11 +40,11 @@ You have added test cases in your application. Follow the steps in the [Add Test
     cds add hana --for production
     ```
 
-    > The **cds add hana** command adds the **@sap/cds-hana** module that allows SAP HANA Cloud to access the **package.json** file and the database configuration **"db": "hana"** that uses SAP HANA Cloud when the application is started on production.
+    > The **cds add hana** command adds the `@sap/cds-hana` module that allows SAP HANA Cloud to access the **package.json** file and the database configuration `"db": "hana"` that uses SAP HANA Cloud when the application is started on production.
     >
-    > The **cds add hana** command adds to the **package.json** file the highlighted lines:
+    > The **cds add hana** command adds to the **package.json** file the `"@cap-js/hana": "^x"` dependency, the `cds.requires` `[production]` profile `"db": "hana"`, and the `sql` configuration `"native_hana_associations": false`.
 
-    ```json[5, 11-13, 15-17]
+    ```json
     {
         "name": "incident-management",
         "dependencies": {
@@ -181,7 +181,7 @@ You have added test cases in your application. Follow the steps in the [Add Test
 
 3. You'll see the generic `index.html` page:
 
-    <!-- border; size:540px --> ![index.html](./index-java.png)
+    <!-- border; size:540px --> ![index.html](./index-java.jpg)
 
 > You might need to stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it again with the `mvn cds:watch` command.
 
@@ -199,12 +199,12 @@ You have added test cases in your application. Follow the steps in the [Add Test
 
     > Running **cds add xsuaa** does two things:
     >
-    >- Adds the SAP Authorization and Trust Management service to the **package.json** file of the **INCIDENT-MANAGEMENT** project.
+    >- Adds the SAP Authorization and Trust Management service (including the `"@sap/xssec": "^x"` dependency and the `cds.requires` `[production]` profile `"auth": "xsuaa"`) to the **package.json** file of the **INCIDENT-MANAGEMENT** project.
     >- Creates the SAP Authorization and Trust Management service security configuration (that is, the **xs-security.json** file) for the **INCIDENT-MANAGEMENT** project.
 
-2. Make sure that the following lines have been added to the **package.json** file:
+2. Make sure that the SAP Authorization and Trust Management configuration has been added to the **package.json** file:
     
-    ```json[5, 13]
+    ```json
     {
       "name": "incident-management",
       "dependencies": {
@@ -231,7 +231,7 @@ You have added test cases in your application. Follow the steps in the [Add Test
 
     You have already added authorizations with the **requires** annotations in the CDS service model (that is the **services.cds** file in the **srv** folder). See [Add Authorization](add-authorization).
 
-    ```CDS[10, 15]
+    ```CDS
     using { sap.capire.incidents as my } from '../db/schema';
 
     /**
@@ -307,7 +307,7 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
 
     You have already added authorizations with the **requires** annotations in the CDS service model (that is the **services.cds** file in the **srv** folder). See [Add Authorization](add-authorization).
 
-    ```CDS[10, 15]
+    ```CDS
     using { sap.capire.incidents as my } from '../db/schema';
 
     /**
@@ -375,9 +375,9 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
     cds add html5-repo
     ```
 
-2. Make sure that the following line has been added to the **package.json** file:
+2. Make sure that the `"html5-repo": true` line has been added to the **package.json** file:
     
-    ```json[13]
+    ```json
     {
       "name": "incident-management",
       "dependencies": {
@@ -473,6 +473,8 @@ No changes required at this stage for your Java project.
 
 ### Run a test build
 
+[OPTION BEGIN [Node.js]]
+
 To validate that everything is prepared as expected, run a test build. Navigate to your project's root folder in the terminal and run the following command:
 
 ```bash
@@ -483,3 +485,25 @@ You should get an output like:
 ```bash
 [cds] - build completed in 511 ms
 ```
+
+[OPTION END]
+
+[OPTION BEGIN [Java]]
+
+To validate that everything is prepared as expected, run a test build. Navigate to your project's root folder in the terminal and run the following command:
+
+```bash
+mvn clean package
+```
+You should get an output like:
+
+```bash
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  33.848 s
+[INFO] Finished at: 
+[INFO] ------------------------------------------------------------------------
+```
+
+[OPTION END]

@@ -88,7 +88,7 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 #### Add application to Content Explorer
 
-5. Choose **Content Manager** in the menu on the left and choose the **Content Explorer** button.
+1. Choose **Content Manager** in the menu on the left and choose the **Content Explorer** button.
 
     <!-- border; size:540px --> ![WorkZone2](./integrate_launchpad_20.png)
 
@@ -102,7 +102,7 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 #### Create a group
 
-8. Go back to the **Content Manager**, choose **Create** &rarr; **Group**.
+1. Go back to the **Content Manager**, choose **Create** &rarr; **Group**.
 
     <!-- border; size:540px --> ![WorkZone4](./integrate_launchpad_4.png)
 
@@ -116,7 +116,7 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 #### Add application to the Everyone role
 
-12. Back in the **Content Manager**, choose role **Everyone** and choose **Edit**.
+1. Back in the **Content Manager**, choose role **Everyone** and choose **Edit**.
 
 13. In the **Assignment Status**, choose the slider to assign the **Incident-Management** app to the role.
 
@@ -126,7 +126,7 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 #### Create site
 
-15. Navigate to **Site Directory** and choose **Create Site**.
+1. Navigate to **Site Directory** and choose **Create Site**.
 
     <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_7.png)
 
@@ -180,9 +180,9 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 
 5. Update the `html5-apps-deployer` section:
 
-    1. Delete `SAP_CLOUD_SERVICE` and the destination binding:
+    1. Delete the `SAP_CLOUD_SERVICE`line and the lines `destination:` and `serviceInstanceName: destination`:
 
-        ```yaml[3, 9-10]
+        ```yaml
         html5-apps-deployer:
           env:
             SAP_CLOUD_SERVICE: incidentmanagementservice
@@ -240,7 +240,7 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 
 #### Create the CDM configuration
 
-2. In the **ui-resources/resources** folder, create a new file **cdm.json** and paste the following code snippet in the file:
+1. In the **ui-resources/resources** folder, create a new file **cdm.json** and paste the following code snippet in the file:
 
     ```json
     [
@@ -322,7 +322,7 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 
 #### Build the images and deploy your application in SAP BTP, Kyma runtime
 
-5. Build the UI deployer image:
+1. Build the UI deployer image:
 
     ```bash
     pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \
@@ -492,7 +492,7 @@ When the application is successfully deployed, you have to configure design and 
 
 #### Create site
 
-15. Navigate to **Site Directory** and choose **Create Site**.
+1. Navigate to **Site Directory** and choose **Create Site**.
 
     <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_7.png)
 
@@ -528,7 +528,7 @@ You need to assign your user to the **~cdm_defaultRole** role collection, so you
 
 ### Test your site
 
-19. Navigate to **Site Directory** and find your site.
+1. Navigate to **Site Directory** and find your site.
 
     <!-- border; size:540px --> ![WorkZone8](./integrate_launchpad_8.png)
 

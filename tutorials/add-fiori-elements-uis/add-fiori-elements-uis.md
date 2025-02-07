@@ -143,30 +143,30 @@ Instead of using `cds watch` command in the terminal to start the service, you w
 
 [OPTION BEGIN [Java]]
 
-6. While you are in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
+1. While you are in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
 
-7. Navigate to the **srv** folder.
+2. Navigate to the **srv** folder.
 
     ```bash
     cd srv
     ```
 
 
-8. Run the following command to start a CAP Java server:
+3. Run the following command to start a CAP Java server:
 
 
     ```bash
     mvn cds:watch
     ```
 
-1. In the bottom right of your SAP Business Application Studio window, look for the popup **A service is listening to port 8080**.
+4. In the bottom right of your SAP Business Application Studio window, look for the popup **A service is listening to port 8080**.
  
 
-2. Choose **Open in a New Tab**.
+5. Choose **Open in a New Tab**.
 
     <!-- border; size:540px --> ![Open in a new tab](./open-new-tab.png)
 
-3. You'll see the generic `index.html` page:
+6. You'll see the generic `index.html` page:
 
     <!-- border; size:540px --> ![index.html](./index-java.png)
 
@@ -216,23 +216,23 @@ In this section, you'll modify the List View Page of the UI with the SAP Fiori p
 
 The filter labels are text strings. It's a good idea to update them so they are compliant with internationalization standards (i18n).
 
-5. Change the **urgency_code** filter label. In the **Label** field, change the value to **Urgency**. Press <kbd>Enter</kbd> to confirm the change.
+1. Change the **urgency_code** filter label. In the **Label** field, change the value to **Urgency**. Press <kbd>Enter</kbd> to confirm the change.
 
     <!-- border; size:540px --> ![Update filter label](./update-filter-label.png)
 
-6. Choose the **Globe** icon to generate a translatable text key and choose **Apply**.
+2. Choose the **Globe** icon to generate a translatable text key and choose **Apply**.
 
     <!-- border; size:540px --> ![Generate Translatable Text Key](./ls10.png)
 
-7. Choose the **status_code** filter. In the **Label** field, change the value to **Status**. Press <kbd>Enter</kbd> to confirm the change.
+3. Choose the **status_code** filter. In the **Label** field, change the value to **Status**. Press <kbd>Enter</kbd> to confirm the change.
 
-8. Choose the **Globe** icon to generate a translatable text key and choose **Apply**.
+4. Choose the **Globe** icon to generate a translatable text key and choose **Apply**.
 
-9. For both the **Urgency** and **Status** filters, in the **Display Type** dropdown menu, select **Value Help**. A popup shows up. 
+5. For both the **Urgency** and **Status** filters, in the **Display Type** dropdown menu, select **Value Help**. A popup shows up. 
 
     <!-- border; size:540px --> ![Value help display type](./value-help-dipslay-type.png)
 
-10. In the **Define Value Help Properties for Urgency/Status** popup: 
+6. In the **Define Value Help Properties for Urgency/Status** popup: 
 
     - Choose the dropdown menu in the **Value Description Property** field.
     - Select **descr**.
@@ -242,7 +242,7 @@ The filter labels are text strings. It's a good idea to update them so they are 
 
 #### Edit columns
 
-10. Expand the **Columns** section under **Table** and delete the columns **customer_ID**, **urgency_code** and **status_code**. 
+1. Expand the **Columns** section under **Table** and delete the columns **customer_ID**, **urgency_code** and **status_code**. 
 
     <!-- border; size:540px --> ![Delete Columns](./delete-columns.png)
 
@@ -278,7 +278,7 @@ The filter labels are text strings. It's a good idea to update them so they are 
 
 #### Configure tables
 
-17. Choose **Table** and in the **Initial Load** dropdown menu, select **Enabled** to load the data automatically.
+1. Choose **Table** and in the **Initial Load** dropdown menu, select **Enabled** to load the data automatically.
 
     <!-- border; size:540px --> ![Enable Data Auto Load](./ls8.png)
 
@@ -292,7 +292,7 @@ The filter labels are text strings. It's a good idea to update them so they are 
 
 #### Check the result
 
-20. The list page of the Incident Management application should look like this:
+1. The list page of the Incident Management application should look like this:
 
     <!-- border; size:540px --> ![Incident Management App's List Page](./IncidentsUI.png)
 
@@ -343,7 +343,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
 #### Add Overview section
 
-8. Choose **Sections** and then choose the **Plus** icon to add more sections. Choose **Add Group Section**.
+1. Choose **Sections** and then choose the **Plus** icon to add more sections. Choose **Add Group Section**.
 
     <!-- border; size:540px --> ![Add Group Section](./obj22.png)
 
@@ -357,7 +357,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
 #### Add Details subsection
 
-9. Navigate to **Sections** &rarr; **Overview** &rarr; **Subsections**.
+1. Navigate to **Sections** &rarr; **Overview** &rarr; **Subsections**.
 
 
 10. Choose the **Plus** icon to add more sections and choose **Add Form Section**.
@@ -451,7 +451,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
 #### Add Conversation section
 
-19. Navigate to **Sections** and then choose the **Plus** icon to add more sections. Select **Add Table Section** in the dropdown menu.
+1. Navigate to **Sections** and then choose the **Plus** icon to add more sections. Select **Add Table Section** in the dropdown menu.
 
 20. Choose **Add Table Section**. A popup appears.
 
@@ -467,7 +467,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
 #### Configure columns
 
-21. Navigate to **Conversation** &rarr; **Table** &rarr; **Columns** and choose the **Plus** icon to add columns. 
+1. Navigate to **Conversation** &rarr; **Table** &rarr; **Columns** and choose the **Plus** icon to add columns. 
 
 22. Choose **Add Basic Columns**. A popup appears.
 

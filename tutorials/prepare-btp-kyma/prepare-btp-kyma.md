@@ -85,7 +85,7 @@ Follow the steps below to add the entitlements.
 
 This enables your subaccount to use the Kyma runtime.
 
-2. Navigate to your subaccount and choose **Enable Kyma** under the **Kyma Environment** tab.
+1. Navigate to your subaccount and choose **Enable Kyma** under the **Kyma Environment** tab.
 
       <!-- border; size:540px --> ![Enable Kyma](./enable-kyma.png)
 

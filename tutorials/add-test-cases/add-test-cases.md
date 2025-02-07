@@ -411,9 +411,9 @@ You have configured the access to your application. Follow the steps in the [Add
 
 [OPTION BEGIN [Node.js]]
 
-1. Open the **package.json** file and add the `"test": "jest tests/test.js"` line inside the **scripts** section. This adds a command to start the tests.
+1. Open the **package.json** file and add the `"test": "jest tests/test.js"` line inside the `scripts` section. This adds a command to start the tests.
 
-    ```json[15]
+    ```json
     {
       "name": "incident-management",
       "version": "1.0.0",
@@ -482,7 +482,7 @@ You have configured the access to your application. Follow the steps in the [Add
 
 [OPTION BEGIN [Java]]
 
-2. To test the application, run the following command in the terminal:
+1. To test the application, run the following command in the terminal:
 
     ```bash
     mvn verify

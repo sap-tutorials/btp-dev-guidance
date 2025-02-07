@@ -447,6 +447,22 @@ Since we already have an SQLite in-memory database that was automatically create
      
 ### Fill in the test data
 
+> **Important consideration for test data**
+>
+> In the previous step, you added several CSV files with test data. These files are required to pre-fill the SQLite memory with data for local testing. **This is most suitable for development environments, where schema changes are very frequent and broad.** 
+> 
+> When you redeploy your database, it will always delete all tables and views and create them from scratch. This behaviour is known as drop-create.
+>
+> - **Test files should never be deployed to an SAP HANA production database as table data.**
+>
+>       In such cases, changing a data file can cause the deletion of all files of affected database tables, even if the data files for the affected tables have been removed before. SAP HANA remembers all data files that have ever been deployed to the tables and might restore them. 
+>
+>       **Only master data files should be delivered in this way.** Master data files are files, which are defined by the application developer and can't be changed by the application. Examples for master data include country codes, status codes and criticality, and urgency codes and descriptions.
+>
+>       **Delivering files for tables with customer data will cause data loss in productive scenarios!** See section [Providing Initial Data](https://cap.cloud.sap/docs/guides/databases#providing-initial-data) in the CAP documentation for more details.
+> - **Drop-create is most appropriate for development. However, drop-create isn't suitable for database upgrades in production**, as all customer data would be lost. To avoid this, `cds deploy` also supports automatic schema evolution. See section [Schema Evolution](https://cap.cloud.sap/docs/guides/databases-sqlite#schema-evolution).
+
+
 Replace the respective generated CSV templates with the following content:
 
 - `db/data/sap.capire.incidents-Addresses.csv`:

@@ -252,6 +252,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
 ### Build images
 
+[OPTION BEGIN [Node.js]]
 >- Make sure you're logged in to your container registry.
 >
 >- If you're using any device with a non-x86 processor (e.g. MacBook M1/M2) you need to instruct Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable using the command `export DOCKER_DEFAULT_PLATFORM=linux/amd64`. Check [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables) for more info.
@@ -501,6 +502,264 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
     > In case you're using Docker Hub as your container registry, replace the placeholder `<your-container-registry>` with your Docker Hub user ID.
 
+[OPTION END]
+[OPTION BEGIN [Java]]
+
+>- Make sure you're logged in to your container registry.
+>
+>- If you're using any device with a non-x86 processor (e.g. MacBook M1/M2) you need to instruct Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable using the command `export DOCKER_DEFAULT_PLATFORM=linux/amd64`. Check [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables) for more info.
+ 
+#### Build the CAP Java and the database image
+
+1. In VS Code, choose **Terminal** &rarr; **New Terminal** and run the following command:
+
+    ```bash
+    npm install
+    ```
+
+    This will install required dependencies and update the **package-lock.json** file of your project.
+
+2. Create the productive CAP build for your application:
+
+    ```bash
+    cds build --profile production,java
+    ```
+
+3. Add configuration for the managed App Router: 
+
+    ```bash
+    cds add workzone
+    ```
+
+4. Add additional configuration for the XSUAA and HANA: 
+
+    ```bash
+    cds add xsuaa,hana --for production
+    ```  
+
+5. Build the CAP Java image:
+
+    ```bash
+    pack build <your-container-registry>/incident-management-srv:<image-version> \
+        --path srv/target/*-exec.jar \
+        --builder paketobuildpacks/builder-jammy-base \
+        --publish
+    ```
+
+    > Make sure to replace `<your-container-registry>` with your docker server URL and keep in mind that `<image version>` should be a string. 
+
+    > Looking for your docker server URL?
+    
+    > The docker server URL is the same as the path used for docker login, so you can quickly check it by running the following command in your terminal:
+
+    > ```json
+    > cat ~/.docker/config.json
+    > ```
+
+    > In case you're using Docker Hub as your container registry, replace the placeholder `<your-container-registry>` with your Docker Hub user ID.
+
+    > The pack CLI builds the image that contains the build result in the **gen/srv** folder and the required npm packages by using the [Cloud Native Buildpack for Node.JS](https://github.com/paketo-buildpacks/nodejs) provided by Paketo.
+
+6. Build the database image:
+
+    ```bash
+    pack build <your-container-registry>/incident-management-hana-deployer:<image-version> \
+        --path db \
+        --env BP_NODE_RUN_SCRIPTS="" \
+        --builder paketobuildpacks/builder-jammy-base \
+        --publish
+    ```
+    
+    > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` should be a string. 
+
+    > Looking for your docker server URL?
+    
+    > The docker server URL is the same as the path used for docker login, so you can quickly check it by running the following command in your terminal:
+
+    > ```json
+    > cat ~/.docker/config.json
+    > ```
+
+    > In case you're using Docker Hub as your container registry, replace the placeholder `<your-container-registry>` with your Docker Hub user ID.
+
+####  Prepare the UI deployer image configuration and build the image
+
+1. In the VS Code terminal, navigate to the **app/incidents** folder and run the following command:
+
+    ```bash
+    npm install && npm run build
+    ```
+
+3. Create a new file **xs-app.json** in **app/incidents/** and add the following code to it:
+
+    ```json
+    {
+    "welcomeFile": "/index.html",
+    "authenticationMethod": "route",
+    "routes": [
+        {
+        "source": "^/odata/v4/processor/(.*)$",
+        "destination": "srv-api",
+        "authenticationType": "xsuaa"
+        },
+        {
+        "source": "^/resources/(.*)$",
+        "target": "/resources/$1",
+        "authenticationType": "none",
+        "destination": "ui5"
+        },
+        {
+        "source": "^/test-resources/(.*)$",
+        "target": "/test-resources/$1",
+        "authenticationType": "none",
+        "destination": "ui5"
+        },
+        {
+        "source": "^(.*)$",
+        "target": "$1",
+        "service": "html5-apps-repo-rt",
+        "authenticationType": "xsuaa"
+        }
+      ]
+    }
+    ```
+
+    > In case the **xs-app.json** already exists, replace its content with the snippet above.
+
+4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter.
+
+    ```json[10]
+    {
+        "_version": "1.49.0",
+        "sap.app": {
+            "id": "ns.incidents",
+            "type": "application",
+            "i18n": "i18n/i18n.properties",
+            ...
+            "dataSources": {
+                "mainService": {
+                    "uri": "odata/v4/ProcessorService/",
+                    "type": "OData",
+                    "settings": {
+                        "annotations": [],
+                        "localUri": "localService/metadata.xml",
+                        "odataVersion": "4.0"
+                    }
+                }
+            },
+            ...
+        },
+        ...
+    }
+    ```
+
+    This is needed as the dataSource URIs must be relative to the base URL, which means there is no need for a slash as the first character.
+
+    Check [Accessing Business Service UI](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL) for more information.
+
+5. Add navigation configuration and deploy configuration to the **app/incidents/webapp/manifest.json** file:
+
+    ```json[9-22,25-28]
+    {
+        "_version": "1.49.0",
+        "sap.app": {
+            "id": "ns.incidents",
+            ...
+            "dataSources": {
+                ...
+            },
+            "crossNavigation": {
+                "inbounds": {
+                    "incidents-display": {
+                        "semanticObject": "incidents",
+                        "action": "display",
+                        "title": "{{flpTitle}}",
+                        "subTitle": "{{flpSubtitle}}",
+                        "signature": {
+                            "parameters": {},
+                            "additionalParameters": "allowed"
+                        }
+                    }
+                }
+            }
+        },
+        ...
+        "sap.cloud": {
+            "public": true,
+            "service": "incidents"
+        }
+    }
+    ```
+
+6. Create a new folder **ui-resources** in your project's root folder.
+
+    The HTML5 applications deployer looks for the **ui-resources** folder which has the static files of the HTML5 application.
+
+7. Create a new file **package.json** inside the **ui-resources** folder and add the following code to the file:
+
+    ```json
+    {
+        "name": "incident-management",
+        "version": "0.0.1",
+        "description": "A Fiori application.",
+        "keywords": [
+            "ui5",
+            "openui5",
+            "sapui5"
+        ],
+        "scripts": {
+            "start": "node node_modules/@sap/html5-app-deployer/index.js",
+            "build:ui5": "npm run build --prefix ../app/incidents --if-present",
+            "copyzips": "copyfiles -f ../app/*/dist/*.zip ./resources/",
+            "package": "run-s build:ui5 copyzips"
+        },
+        "dependencies": { 
+            "@sap/html5-app-deployer": "^6.2.0" 
+        },
+        "devDependencies": {
+            "copyfiles": "^2.4.1",
+            "npm-run-all": "^4.1.5"
+        }
+    }
+
+    ```
+
+8. In the VS Code terminal, navigate to the **ui-resources** folder and run the following command:
+
+    ```bash
+    npm install && npm run package
+    ```
+
+    This will build and copy the archive **nsincidents.zip** inside the **ui-resources/resources** folder.
+
+9.  In the VS Code terminal, navigate back to the root folder of your project:
+
+    ```bash
+    cd ..
+    ```
+
+10. Build the UI deployer image:
+
+    ```bash
+    pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \
+        --path ui-resources \
+        --builder paketobuildpacks/builder-jammy-base \
+        --publish
+    ```
+
+    > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` should be a string. 
+    
+    > Looking for your docker server URL?
+    
+    > The docker server URL is the same as the path used for docker login, so you can quickly check it by running the following command in your terminal:
+
+    > ```json
+    > cat ~/.docker/config.json
+    > ```
+
+    > In case you're using Docker Hub as your container registry, replace the placeholder `<your-container-registry>` with your Docker Hub user ID.
+[OPTION END]
+
 ### Add Helm chart
 
 CAP provides a configurable Helm chart for Node.js applications.
@@ -609,6 +868,7 @@ CAP provides a configurable Helm chart for Node.js applications.
 
 ### Deploy CAP Helm chart
 
+[OPTION BEGIN [Node.js]]
 1. Update the productive CAP build for your application: 
 
     ```bash
@@ -660,3 +920,59 @@ CAP provides a configurable Helm chart for Node.js applications.
 <!-- border; size:540px  ![401 error](./401-error.png) -->
 
 In the next tutorial, you will access your UIs from SAP Build Work Zone, standard edition. The SAP Build Work Zone, standard edition will trigger the authentication flow to provide the required token to access the service.
+
+[OPTION END]
+[OPTION BEGIN [Java]]
+
+1. Update the productive CAP build for your application: 
+
+    ```bash
+    cds build --profile production,java
+    ```
+
+2. Run the following command to create a namespace:
+
+    ```bash
+    kubectl create namespace incident-management
+    kubectl label namespace incident-management istio-injection=enabled
+    ```
+
+3. Make sure your SAP HANA Cloud instance is running. Free tier HANA instances are stopped overnight.
+
+    > Your SAP HANA Cloud service instance will be automatically stopped overnight, according to the server region time zone. That means you need to restart your instance every day before you start working with it.
+    >
+    > You can either use SAP BTP cockpit or the terminal in the SAP Business Application Studio to restart the stopped instance:
+    >
+    > ```bash
+    > cf update-service incident-management -c '{"data":{"serviceStopped":false}}'
+    > ```
+
+3. Deploy using the Helm command:
+
+    ```bash
+    helm upgrade --install incident-management --namespace incident-management ./gen/chart \
+    --set-file xsuaa.jsonParameters=xs-security.json
+    ```
+
+    This installs the Helm chart from the **chart** folder with the release name **incident-management** in the namespace **incident-management**.
+
+    > With the ***helm upgrade --install*** command you can install a new chart as well as upgrade an existing chart.
+
+    The outcome of installation looks like this:
+
+    <!-- border; size:540px --> ![Deployed app](./deployedapp.png)
+
+<!-- 6. Enter the route displayed for **srv** in your browser. -->
+
+<!-- border; size:540px ![Depoyed app route](./deployedapp-route.png) -->
+
+<!--     You see the CAP start page: -->
+
+<!-- border; size:540px ![CAP start page](./cap-start-page.png) --> 
+
+<!-- 4. When you choose the **Incidents** service entity, you will see an error message.  -->
+
+<!-- border; size:540px  ![401 error](./401-error.png) -->
+
+In the next tutorial, you will access your UIs from SAP Build Work Zone, standard edition. The SAP Build Work Zone, standard edition will trigger the authentication flow to provide the required token to access the service.
+[OPTION END]
