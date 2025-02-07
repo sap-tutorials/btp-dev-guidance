@@ -95,9 +95,9 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
 
     > For more information, see [Communication Arrangement JSON/YAML File - Properties](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/553a4c6b98be4c1ba7d1dfa0e9df8669.html).
 
-2.  Navigate to the **package.json** file in the root folder of the application. Add the following code snippet to the settings for **API_BUSINESS_PARTNER**:
+2.  Navigate to the **package.json** file in the root folder of the application. Add the `[production]` profile `credentials` (`destination` and `path`) to the settings for **API_BUSINESS_PARTNER**:
 
-    ```json[4-9]
+    ```json
     "API_BUSINESS_PARTNER": {
         "kind": "odata-v2",
         "model": "srv/external/API_BUSINESS_PARTNER",
@@ -216,7 +216,7 @@ You haven't made any changes to the database image so you don't need to build it
 
 1. Check your container image settings to your **chart/values.yaml** file:
 
-    ```yaml[6,7]
+    ```yaml
     global:
       domain: 
       imagePullSecret:
@@ -231,7 +231,7 @@ You haven't made any changes to the database image so you don't need to build it
 
 2. Overwrite the global image version for the CAP Node.js image and for the UI deployer image:
     
-    ```yaml[4, 10]
+    ```yaml
     srv:
       image:
         repository: incident-management-srv

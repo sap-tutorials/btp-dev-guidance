@@ -99,9 +99,9 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
 
     > For more information, see [Communication Arrangement JSON/YAML File - Properties](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/553a4c6b98be4c1ba7d1dfa0e9df8669.html).
 
-2.  Navigate to the **package.json** file in the root folder of the application. Add the following code snippet to the settings for **API_BUSINESS_PARTNER**:
+2.  Navigate to the **package.json** file in the root folder of the application. Add the `[production]` profile `credentials` (`destination` and `path`) to the settings for **API_BUSINESS_PARTNER**:
 
-    ```json[4-9]
+    ```json
     "API_BUSINESS_PARTNER": {
         "kind": "odata-v2",
         "model": "srv/external/API_BUSINESS_PARTNER",
@@ -130,9 +130,9 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
 
     > For **system-name**, enter the name of your registered SAP S/4HANA Cloud system. For example, `SAP S/4HANA DEV System`.
 
-4. In the **mta.yml** file, make sure that the following line is added to the **requires** section of the **incident-management-srv** module:
+4. In the **mta.yml** file, make sure that the line `- name: incident-management-destination` is added to the **requires** section of the **incident-management-srv** module:
    
-    ```yaml[7]
+    ```yaml
     - name: incident-management-srv
       type: nodejs
       path: gen/srv

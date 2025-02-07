@@ -32,9 +32,9 @@ author_profile: https://github.com/slavipande
 
 ### Deploy the Incident Management application
 
-1. In SAP Business Application Studio, navigate to the Incident Management application folder and add the following snippet to the **package.json** file:
+1. In SAP Business Application Studio, navigate to the Incident Management application folder and add the `[production]` profile `credentials` (`destination` and `path`) to the settings for **API_BUSINESS_PARTNER** to the **package.json** file:
 
-    ```json[4-9]
+    ```json
       "API_BUSINESS_PARTNER": {
         "kind": "odata", 
         "model": "srv/external/API_BUSINESS_PARTNER", 
@@ -49,9 +49,9 @@ author_profile: https://github.com/slavipande
 
     > Replace **<destination_name>** with the name of the destination that you created at **Step 5: Create a destination to the mock server** of [Install a Mock Server in the SAP BTP, Cloud Foundry Runtime](remote-service-set-up-mock-cf).
 
-2. In the **mta.yaml** file, look for the **incident-management-srv** module's **requires** section, and make sure that the following line is added:
+2. In the **mta.yaml** file, look for the **incident-management-srv** module's **requires** section, and make sure that the line `- name: incident-management-destination` is added:
 
-    ```yaml[7]
+    ```yaml
     - name: incident-management-srv
       type: nodejs
       path: gen/srv

@@ -36,9 +36,9 @@ author_profile: https://github.com/slavipande
 
 
 
-1. In VS Code, open the **package.json** file and add the following snippet to it:
+1. In VS Code, open the **package.json** file and add the `[production]` profile `credentials` (`destination` and `path`) to the settings for **API_BUSINESS_PARTNER**:
 
-    ```json[4-9]
+    ```json
       "API_BUSINESS_PARTNER": {
         "kind": "odata", 
         "model": "srv/external/API_BUSINESS_PARTNER", 
@@ -131,7 +131,7 @@ You haven't made any changes to the database image so you don't need to build it
 
 1. Check your container image settings to your **chart/values.yaml** file:
 
-    ```yaml[6,7]
+    ```yaml
     global:
       domain: 
       imagePullSecret:
@@ -146,7 +146,7 @@ You haven't made any changes to the database image so you don't need to build it
 
 2. Overwrite the global image version for the CAP Node.js image and for the UI deployer image:
     
-    ```yaml[4, 10]
+    ```yaml
     srv:
       image:
         repository: incident-management-srv
