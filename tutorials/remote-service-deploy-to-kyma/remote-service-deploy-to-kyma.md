@@ -263,7 +263,7 @@ You haven't made any changes to the database image so you don't need to build it
 5. Deploy using the Helm command:
 
     ```bash
-    helm upgrade --install incident-management --namespace incident-management ./chart \
+    helm upgrade --install incident-management --namespace incident-management ./gen/chart \
    --set-file xsuaa.jsonParameters=xs-security.json --set-file s4-hana-cloud.jsonParameters=bupa.json
     ```
 
