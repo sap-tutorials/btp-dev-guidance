@@ -79,7 +79,6 @@ We have a large tutorial pipeline in the works, but in case you have something i
 
 
 # License
-The tutorials in this repository are provided under the Terms & Conditions set out in the [`LICENSE.txt`](LICENSE.txt) file.
 © 2023-2025 SAP SE or an SAP affiliate company and btp-dev-guidance contributors. Please see our [`LICENSE.txt`](LICENSE.txt) file for copyright and license information. Detailed information including third-party components and their licensing/copyright information is available via the REUSE tool (link to https://api.reuse.software/info/github.com/SAP/btp-dev-guidance)
 
 
