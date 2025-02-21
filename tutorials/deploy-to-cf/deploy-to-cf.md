@@ -781,9 +781,10 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
 
 ### Assemble with the Cloud MTA Build Tool
 
-Run the following command to assemble everything into a single **mta.tar** archive:
+Run the following commands to assemble everything into a single **mta.tar** archive:
 
 ```bash
+npm install
 mbt build
 ```
 
