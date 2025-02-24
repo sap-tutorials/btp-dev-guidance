@@ -203,7 +203,7 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
 
     6. Add the custom handler implementation after the **init()** method:
 
-        ```js[12-43]
+        ```js
         async init() {
           this.before("UPDATE", "Incidents", (req) => this.onUpdate(req));
           this.after("READ", "Incidents", (data) => this.changeUrgencyDueToSubject(data));
