@@ -231,7 +231,7 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
             console.log('>> CREATE or UPDATE customer!');
 
             // Expands are required as the runtime does not support path expressions for remote services
-            const customer = await this.S4bupa.run(SELECT.one(BusinessPartner, bp => {
+            const customer = await this.S4bupa.run(SELECT.one(BusinessPartner, bp =\> {
               bp('*'),
                 bp.addresses(address => {
                   address('email', 'phoneNumber'),
