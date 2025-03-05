@@ -210,7 +210,7 @@ In this section, you'll modify the List View Page of the UI with the SAP Fiori p
 
     <!-- border; size:540px --> ![New Filters Added](./ls5.png)
 
-    > This this is how you define which properties are exposed as search fields in the header bar above the list.
+    > This is how you define which properties are exposed as search fields in the header bar above the list.
 
 #### Edit filter fields
 
