@@ -73,7 +73,7 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
 
     - In the **Main entity** dropdown menu, select **Incidents**.
 
-    - Leave the **Navigation entity** value as **none**, and then select **Yes** to add table columns automatically.
+    - Leave the **Navigation entity** value as **None**, and then select **Yes** to add table columns automatically.
 
     - In the **Table Type** dropdown menu, select **Responsive**.
     
@@ -91,7 +91,7 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
 
     - Leave the default values for all the other settings and choose **Finish**.
 
-        <!-- border; size:540px --> ![Project names](./vscrfeapp.png)
+        <!-- border; size:540px --> ![Project names](./vscrfeapp.jpg)
 
     The application is now generated and in a few seconds you can see the application's **incidents** folder in the **app** folder of your **incident-management** project. It contains a **webapp** folder with a **Component.js** file that is typical for an SAPUI5 application. However, the source code of this application is minimal. It inherits its logic from the **sap/fe/core/AppComponent** class. This class is managed centrally by SAP Fiori elements and provides all the services that are required (routing, edit flow) so that the building blocks and the templates work properly.
 
@@ -210,7 +210,7 @@ In this section, you'll modify the List View Page of the UI with the SAP Fiori p
 
     <!-- border; size:540px --> ![New Filters Added](./ls5.png)
 
-    > This this is how you define which properties are exposed as search fields in the header bar above the list.
+    > This is how you define which properties are exposed as search fields in the header bar above the list.
 
 #### Edit filter fields
 

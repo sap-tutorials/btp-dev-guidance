@@ -17,7 +17,7 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-- You have got the Business Partner API from SAP S/4HANA Cloud and have extended the functionality of the Incident Management application. Follow the steps in the [Get the Business Partner API and Extend the Incident Management Application](remote-service-extend-cf) tutorial.
+- You have got the Business Partner API from SAP S/4HANA Cloud and have extended the functionality of the Incident Management application. Follow the steps in the [Get the Business Partner API and Extend the Incident Management Application](remote-service-extend) tutorial.
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 

@@ -60,11 +60,11 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
     1. In the project explorer, right-click on the project's root folder and choose **Upload...**
     2. Select the **API_BUSINESS_PARTNER.edmx** file and upload it to your project folder.
 
-      > If you're using VS Code instead of SAP Business Application Studio:
-      >
-      > 1. Skip the previous steps.
-      > 2. Paste the already downloaded **API_BUSINESS_PARTNER.edmx** file in your project root folder.
-      > 3. Proceed with the steps below.
+        > If you're using VS Code instead of SAP Business Application Studio:
+        >
+        > 1. Skip the previous steps.
+        > 2. Paste the already downloaded **API_BUSINESS_PARTNER.edmx** file in your project root folder.
+        > 3. Proceed with the steps below.
 
     3. In the terminal, run the following command:
 
@@ -229,7 +229,6 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
           const { BusinessPartner } = this.remoteService.entities;
           if (newCustomerId && (newCustomerId !== "") && ((req.event == "CREATE") || (req.event == "UPDATE"))) {
             console.log('>> CREATE or UPDATE customer!');
-
             // Expands are required as the runtime does not support path expressions for remote services
             const customer = await this.S4bupa.run(SELECT.one(BusinessPartner, bp => {
               bp('*'),

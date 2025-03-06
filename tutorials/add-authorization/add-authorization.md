@@ -97,7 +97,7 @@ CAP offers a possibility to add local users for testing as part of the `cds` con
 
     The code creates the `cds.requires` section that didn't exist so far in the **package.json** file. Also, the code defines which configuration to use when running with the `[development]` profile. You define some general parameters for the authentication behavior. Notice that the users object is empty, in the next step, you will define some test users.
 
-3. In the **package.json** file, replace the empty `users` object with the `user` object from following code:
+3. In the **package.json** file, replace the empty `users` object with the `users` object from following code:
 
     ```json
     "cds": {

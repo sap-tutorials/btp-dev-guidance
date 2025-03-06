@@ -18,7 +18,7 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-- You have set up the connection to an SAP S/4HANA Cloud system. Follow the steps in the [Configure Connectivity Between SAP S/4HANA Cloud and SAP Business Technology Platform](remote-service-configure-connectivity) tutorial that is part of the [Consume Remote Services from S/4HANA Cloud in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in SAP BTP, Kyma Runtime](link-to-new-group-goes-here) tutorial group. 
+- You have set up the connection to an SAP S/4HANA Cloud system. Follow the steps in the [Configure Connectivity Between SAP S/4HANA Cloud and SAP Business Technology Platform](remote-service-configure-connectivity) tutorial that is part of the [Consume Remote Services from S/4HANA Cloud in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in SAP BTP, Kyma Runtime](https://developers.sap.com/group.kyma-cap-consume-s4-services.html) tutorial group. 
 - You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and make use of the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
 - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
 - You are an administrator of the global account in SAP BTP.
@@ -95,9 +95,9 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
 
     > For more information, see [Communication Arrangement JSON/YAML File - Properties](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/553a4c6b98be4c1ba7d1dfa0e9df8669.html).
 
-2.  Navigate to the **package.json** file in the root folder of the application. Add the following code snippet to the settings for **API_BUSINESS_PARTNER**:
+2.  Navigate to the **package.json** file in the root folder of the application. Add the `[production]` profile `credentials` (`destination` and `path`) to the settings for **API_BUSINESS_PARTNER**:
 
-    ```json[4-9]
+    ```json
     "API_BUSINESS_PARTNER": {
         "kind": "odata-v2",
         "model": "srv/external/API_BUSINESS_PARTNER",
@@ -138,7 +138,7 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
 >- If you're using any device with a non-x86 processor (e.g. MacBook M1/M2) you need to instruct Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable using the command `export DOCKER_DEFAULT_PLATFORM=linux/amd64`. Check [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables) for more info.
 
 
-3. Create the productive CAP build for your application: 
+1. Create the productive CAP build for your application: 
 
     ```bash
     cds build --production
@@ -216,7 +216,7 @@ You haven't made any changes to the database image so you don't need to build it
 
 1. Check your container image settings to your **chart/values.yaml** file:
 
-    ```yaml[6,7]
+    ```yaml
     global:
       domain: 
       imagePullSecret:
@@ -231,7 +231,7 @@ You haven't made any changes to the database image so you don't need to build it
 
 2. Overwrite the global image version for the CAP Node.js image and for the UI deployer image:
     
-    ```yaml[4, 10]
+    ```yaml
     srv:
       image:
         repository: incident-management-srv
@@ -263,7 +263,7 @@ You haven't made any changes to the database image so you don't need to build it
 5. Deploy using the Helm command:
 
     ```bash
-    helm upgrade --install incident-management --namespace incident-management ./chart \
+    helm upgrade --install incident-management --namespace incident-management ./gen/chart \
    --set-file xsuaa.jsonParameters=xs-security.json --set-file s4-hana-cloud.jsonParameters=bupa.json
     ```
 
