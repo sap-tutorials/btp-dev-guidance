@@ -439,18 +439,6 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
     ...
     ```
 
-2. Add `mkdir -p resources` command to the `build-parameters` section:
-
-    ```yaml
-      build-parameters:
-        before-all:
-          - builder: custom
-            commands:
-              - npm ci
-              - npx cds build --production
-              - mkdir -p resources 
-    ```
-
 3. Verify the **mta.yaml** file before deployment.
 
     This is how your **mta.yaml** file should look like at this stage:
@@ -468,8 +456,7 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
         - builder: custom
           commands:
             - npm ci
-            - npx cds build --production
-            - mkdir -p resources  
+            - npx cds build --production  
     modules:
       - name: incident-management-srv
         type: nodejs

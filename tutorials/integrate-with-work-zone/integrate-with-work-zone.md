@@ -142,18 +142,102 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 The Common Data Model (CDM) is the basis for interoperability and content federation of business content from various SAP and third-party products, all integrated in a unified manner in one site that serves as a central entry point. Business content items such as roles, catalogs, groups, spaces, and pages can be included in the CDM. For this purpose, developers must specify the business content of the site in a **cdm.json** file that is part of the multitarget application (MTA) and also define design-time and runtime destinations in the **mta.yaml** file. For more information, see [Developing HTML5 Business Solutions as Content Providers](https://help.sap.com/docs/build-work-zone-advanced-edition/sap-build-work-zone-advanced-edition/developing-html5-apps-for-cross-subaccount-consumption) and [About the Common Data Model](https://help.sap.com/docs/build-work-zone-advanced-edition/sap-build-work-zone-advanced-edition/creating-cdm-json-file-for-multi-tenancy-html5-app).
 
+
+#### Create the CDM configuration
+
+1. Create a new folder **workzone** in the root of your project.
+
+2. Create file **cdm.json** in the **workzone** folder and paste the following code snippet in the file:
+
+    ```json
+    [
+        {
+        "_version": "3.0",
+        "identification": {
+            "id": "defaultCatalogId",
+            "title": "{{title}}",
+            "entityType": "catalog"
+        },
+        "payload": {
+            "viz": [
+            {
+                "appId": "ns.incidents",
+                "vizId": "incidents-display"
+            }
+            ]
+        },
+        "texts": [
+            {
+            "locale": "",
+            "textDictionary": {
+                "title": "Default Catalog Title"
+            }
+            }
+        ]
+        },
+        {
+        "_version": "3.0",
+        "identification": {
+            "id": "defaultGroupId",
+            "title": "{{title}}",
+            "entityType": "group"
+        },
+        "payload": {
+            "viz": [
+            {
+                "appId": "ns.incidents",
+                "vizId": "incidents-display"
+            }
+            ]
+        },
+        "texts": [
+            {
+            "locale": "",
+            "textDictionary": {
+                "title": "Business Apps"
+            }
+            }
+        ]
+        },
+        {
+        "_version": "3.0",
+        "identification": {
+            "id": "defaultRole",
+            "entityType": "role",
+            "title": "Default Role"
+        },
+        "payload": {
+            "apps": [
+            {
+                "id": "ns.incidents"
+            }
+            ],
+            "catalogs": [
+            {
+                "id": "defaultCatalogId"
+            }
+            ],
+            "groups": [
+            {
+                "id": "defaultGroupId"
+            }
+            ]
+        }
+        }
+    ]
+    ```
+
 #### Update the mta.yaml file
 
 1. Add `html5-repo-runtime` under resources:
 
-    ```yaml[3-8]
+    ```yaml[3-7]
        resources:
         ...
-        - name: incidents_html_repo_runtime
+        - name: incident-management-html5-repo-runtime
           type: org.cloudfoundry.managed-service
           parameters:
             service: html5-apps-repo
-            service-name: incidents-html5-app-runtime-service
             service-plan: app-runtime
     ```
 
@@ -165,15 +249,15 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
         - name: incident-management-destinations
           type: com.sap.application.content
           requires:
-          - name: incidents_html_repo_runtime
+          - name: incident-management-html5-repo-runtime
             parameters:
-              service-key:
-                name: incidents-html5-app-runtime-service-key
+              service-key: 
+                name: incident-management-html5-repo-runtime-service-key
         ```
 
-    2. Locate the entry `instance` under `parameters.content` and change it to `subaccount`.
+    3. Add the following code snippet for subaccount destinations in the `parameters.content` section:
 
-        ```yaml[7]
+        ```yaml[7-12]
         - name: incident-management-destinations
           type: com.sap.application.content
           requires:
@@ -182,25 +266,14 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
             content:
                 subaccount:
                     destinations:
-                    - Name: incidents_incident_management_html_repo_host
-                    ...
-        ```
-
-    3. Replace existing destinations with the following code snippet:
-
-        ```yaml[9-12]
-        - name: incident-management-destinations
-          type: com.sap.application.content
-          requires:
-          ...
-          parameters:
-            content:
-                subaccount:
-                    destinations:
-                    - Name: incident-management_cdm
-                      ServiceInstanceName: incidents-html5-app-runtime-service
-                      ServiceKeyName: incidents-html5-app-runtime-service-key
+                    - Name: incident-management-cdm
+                      ServiceInstanceName: incident-management-html5-repo-runtime
+                      ServiceKeyName: incident-management-html5-repo-runtime-service-key
                       URL: https://html5-apps-repo-rt.${default-domain}/applications/cdm/<cloud-service-name>
+                instance:
+                    existing_destinations_policy: update
+                    destinations:
+                    ...
         ```
     
     > You can find the value for `<cloud-service-name>` in the **app/incidents/webapp/manifest.json** file.
@@ -212,93 +285,84 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
     >```
     
 
-3. Update the `incident-management-app-deployer` module:
-
-    
-    1. Add the following parameters:
-
-        ```yaml[4-11]
-        - name: incident-management-app-deployer
-          type: com.sap.application.content
-          path: .
-          parameters:
-            config:
-                destinations:
-                - forwardAuthToken: true
-                  name: incident-management-srv-api
-                  url: ~{srv-api/srv-url}
-                - name: ui5
-                  url: https://ui5.sap.com
-        ```
-
-    2. Under the `requires` section, add the following dependencies:
-
-        ```yaml[2-3]
-        requires:
-        - name: srv-api
-        - name: incident-management-auth
-        ```
-    
-
-
-    <!--  - the name of the destination inserted here should be the same as in the **xsapp.json** file `destination` parameter in the `routes` section. -->
-
 4. Update the `incident-management-destination` resource:
 
-    1. Delete `HTML5Runtime_enabled: true` under `parameters`.
+    1. Add the following code snippet for destinations to the `parameters.config.init_data` section:
 
-    2. Change `instance` to `subaccount`.
-
-        ```[6]
+        ```[8-15]
         - name: incident-management-destination
           type: org.cloudfoundry.managed-service
           parameters:
+            ...
             config:
+            ...
               init_data:
                 subaccount:
+                  destinations:
+                  - Name: incident-management-rt
+                    Authentication: NoAuthentication
+                    ProxyType: Internet
+                    Type: HTTP
+                    URL: https://<subdomain>.launchpad.${default-domain}
+                    CEP.HTML5contentprovider: true
+                instance:
+                  existing_destinations_policy: update
                   destinations:
                   ...
         ```
 
-    3. Update destinations with the following:
-
-        ```yaml[3-8]
-        subaccount:
-          destinations:
-          - Authentication: NoAuthentication
-            Name: incident-management-rt
-            ProxyType: Internet
-            Type: HTTP
-            URL: https://<subdomain>.launchpad.${default-domain}
-            CEP.HTML5contentprovider: true
-        ```
-
         > Replace `<subdomain>` with your SAP BTP account's subdomain. You can find the subdomain in the **Overview** page in SAP BTP Cockpit. 
 
-    4. Delete the `requires` section and its content:
+5. Create a new module `incident-management-workzone-cdm` to add the CDM Configuration from the **cdm.json** file as part of the `incident-management-app-deployer`.
+
+    ```yaml
+      - name: incident-management-workzone-cdm
+        type: html5
+        path: workzone
+        build-parameters:
+          build-result: .
+          supported-platforms:
+            []
+    ```
+
+5. Update the `incident-management-app-deployer` module:
+
+    1. Update (`path`, `build-result`, and `target-path` parameters) of the `incident-management-app-deployer` module as follows:
 
         ```yaml
-        requires:
-          - name: srv-api
-            group: destinations
-            properties:
-              name: srv-api # must be used in xs-app.json as well
-              url: ~{srv-url}
-              forwardAuthToken: true
+        - name: incident-management-app-deployer
+          type: com.sap.application.content
+          path: gen
+          ...
+          build-parameters:
+            build-result: app/
+            requires:
+              - name: incidentmanagementincidents
+                artifacts:
+                  - incidents.zip
+                target-path: app/
+        ```
+        <!--  - the name of the destination inserted here should be the same as in the **xsapp.json** file `destination` parameter in the `routes` section. -->
+
+    1. Add the following lines to the `requires` section:
+
+        ```yaml[5-6]
+          - name: incident-management-app-deployer
+            type: com.sap.application.content
+            path: gen
+            requires:
+              - name: incident-management-auth
+              - name: incident-management-destination
         ```
 
-5. Update the build parameters:
+    2. Add the following to the `build-parameters.requires  ` section:
 
-    ```yaml[8]
-    build-parameters:
-    before-all:
-      - builder: custom
-      commands:
-        - npm ci
-        - npx cds build --production 
-        - mkdir -p resources
-        - cp workzone/cdm.json resources/cdm.json  
-    ```
+        ```yaml
+          - name: incident-management-workzone-cdm
+            artifacts:
+              - cdm.json
+            target-path: app/
+        ```
 
 6. Verify. Here's how your **mta.yaml** file should look like at this stage:
 
@@ -316,8 +380,6 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
           commands:
             - npm ci
             - npx cds build --production
-            - mkdir -p resources
-            - cp workzone/cdm.json resources/cdm.json    
     modules:
       - name: incident-management-srv
         type: nodejs
@@ -345,9 +407,30 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
         requires:
           - name: incident-management-db
 
+        - name: incident-management-app-deployer
+          type: com.sap.application.content
+          path: gen
+          requires:
+            - name: incident-management-auth
+            - name: incident-management-destination
+            - name: incident-management-html5-repo-host
+              parameters:
+                content-target: true
+          build-parameters:
+            build-result: app/
+            requires:
+              - name: incident-management-workzone-cdm
+                artifacts:
+                  - cdm.json
+                target-path: app/
+              - name: incidentmanagementincidents
+                artifacts:
+                  - incidents.zip
+                target-path: app/
+      
       - name: incident-management-app-deployer
         type: com.sap.application.content
-        path: .
+        path: gen
         parameters:
           config:
             destinations:
@@ -363,12 +446,16 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
             parameters:
               content-target: true
         build-parameters:
-          build-result: resources/
+          build-result: app/
           requires:
+            - name: incident-management-workzone-cdm
+              artifacts:
+                - cdm.json
+              target-path: app/
             - name: incidentmanagementincidents
               artifacts:
                 - incidents.zip
-              target-path: resources/
+              target-path: app/
 
       - name: incidentmanagementincidents
         type: html5
@@ -458,90 +545,6 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
   
     ```
 
-#### Create the CDM configuration
-
-1. Create a new folder **workzone** in the root of your project.
-
-2. Create file **cdm.json** in the **workzone** folder and paste the following code snippet in the file:
-
-    ```json
-    [
-        {
-        "_version": "3.0",
-        "identification": {
-            "id": "defaultCatalogId",
-            "title": "{{title}}",
-            "entityType": "catalog"
-        },
-        "payload": {
-            "viz": [
-            {
-                "appId": "ns.incidents",
-                "vizId": "incidents-display"
-            }
-            ]
-        },
-        "texts": [
-            {
-            "locale": "",
-            "textDictionary": {
-                "title": "Default Catalog Title"
-            }
-            }
-        ]
-        },
-        {
-        "_version": "3.0",
-        "identification": {
-            "id": "defaultGroupId",
-            "title": "{{title}}",
-            "entityType": "group"
-        },
-        "payload": {
-            "viz": [
-            {
-                "appId": "ns.incidents",
-                "vizId": "incidents-display"
-            }
-            ]
-        },
-        "texts": [
-            {
-            "locale": "",
-            "textDictionary": {
-                "title": "Business Apps"
-            }
-            }
-        ]
-        },
-        {
-        "_version": "3.0",
-        "identification": {
-            "id": "defaultRole",
-            "entityType": "role",
-            "title": "Default Role"
-        },
-        "payload": {
-            "apps": [
-            {
-                "id": "ns.incidents"
-            }
-            ],
-            "catalogs": [
-            {
-                "id": "defaultCatalogId"
-            }
-            ],
-            "groups": [
-            {
-                "id": "defaultGroupId"
-            }
-            ]
-        }
-        }
-    ]
-    ```
-
 #### Deploy your application in SAP BTP, Cloud Foundry runtime
 
 1. Open a terminal in your project's root folder and run the following commands:
@@ -569,14 +572,14 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 
     1. Enter **CDM** in the **Title** field.
 
-    2. Choose **incident-management_cdm** from the dropdown in the **Design-Time Destination** field.
+    2. Choose **incident-management-cdm** from the dropdown in the **Design-Time Destination** field.
 
     3. Choose **incident-management-rt** from the dropdown in the **Runtime Destination** field.
 
     4. Choose **Save**.
 
 
-     <!-- border; size:540px --> ![New Content Provider dialog](./new-content-provider-dialog.png)
+     <!-- border; size:540px --> ![New Content Provider dialog](./new-content-provider-dialog.jpg)
 
 
 6. Choose the refresh icon to fetch the updated content from the **CDM** content provider. 
