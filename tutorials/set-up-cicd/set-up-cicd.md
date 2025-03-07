@@ -227,7 +227,7 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
     <!-- border; size:540px --> ![Configure stages](./configure-stages.png)
 
 [OPTION END]
-  
+
 [OPTION BEGIN [Java]]
 
 1. Back in the **General Information** tab, enter **main** in the **Branch** field.

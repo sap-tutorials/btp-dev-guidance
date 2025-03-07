@@ -91,7 +91,7 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
 
     - Leave the default values for all the other settings and choose **Finish**.
 
-        <!-- border; size:540px --> ![Project names](./vscrfeapp.jpg)
+        <!-- border; size:540px --> ![Project names](./vscrfeapp.png)
 
     The application is now generated and in a few seconds you can see the application's **incidents** folder in the **app** folder of your **incident-management** project. It contains a **webapp** folder with a **Component.js** file that is typical for an SAPUI5 application. However, the source code of this application is minimal. It inherits its logic from the **sap/fe/core/AppComponent** class. This class is managed centrally by SAP Fiori elements and provides all the services that are required (routing, edit flow) so that the building blocks and the templates work properly.
 

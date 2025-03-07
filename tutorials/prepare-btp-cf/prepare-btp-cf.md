@@ -225,7 +225,7 @@ The creation of the database instance can take some minutes to complete.
     
     > If you only specify the organization GUID, the instance is mapped to all spaces in that organization.
 
-5. Choose **Review and Save** and then choose **Save Changes with Restart** in the popup. 
+5. Choose **Review and Save** and then choose **Save Changes** in the popup. 
 
       <!-- border; size:540px --> ![Save changes](./hana-save-mapping.png)
 
