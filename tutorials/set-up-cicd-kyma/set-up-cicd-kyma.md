@@ -52,6 +52,7 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 
 ### Initialize a repository in VS Code
 
+[OPTION BEGIN [Node.js]]
 1. Make sure you've opened the **incident-management** folder in VS Code.
 
 2. Navigate to the **.gitignore** file in your project's root folder and replace the contents of the file with the following code snippet:
@@ -68,31 +69,66 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
     
     > If **.gitignore** doesn't exist, create it and paste the code snippet above in the newly-created file.
 
-    
-        
-
-1. In VS Code, navigate to **Source Control** on the left and choose **Initialize Repository**.
+3. In VS Code, navigate to **Source Control** on the left and choose **Initialize Repository**.
 
     <!-- border; size:540px --> ![Initialize repository](./initialize-repo.png)
 
-3. Open the three dots menu next to **Source Control** and choose **Remote** &rarr; **Add Remote...**.
+4. Open the three dots menu next to **Source Control** and choose **Remote** &rarr; **Add Remote...**.
 
     <!-- border; size:540px --> ![Add remote](./add-remote.png)
 
-4. Paste the URL of your repository in the **Provide repository URL** field and press <kbd>Enter<kbd>.
+5. Paste the URL of your repository in the **Provide repository URL** field and press <kbd>Enter<kbd>.
 
     <!-- border; size:540px --> ![Provide repo URL](./provide-repo-url.png)
 
-5. Provide a remote name and press <kbd>Enter<kbd>.
+6. Provide a remote name and press <kbd>Enter<kbd>.
 
     <!-- border; size:540px --> ![Provide remote name](./provide-remote-name.png)
 
-6. Stage your changes, add a commit message and choose **Publish Branch**.
+7. Stage your changes, add a commit message and choose **Publish Branch**.
 
     <!-- border; size:540px --> ![Publish branch](./publish-branch.png)
 
-7. Provide your GitHub username and password when prompted. When the changes are pushed, you'll be able to see your project in your GitHub repository.
+8. Provide your GitHub username and password when prompted. When the changes are pushed, you'll be able to see your project in your GitHub repository.
+[OPTION END]
 
+[OPTION BEGIN [Java]]
+1. Make sure you've opened the **incident-management** folder in VS Code.
+
+2. Navigate to the **.gitignore** file in your project's root folder and replace the contents of the file with the following code snippet:
+
+    ```
+    node_modules/
+
+    *.mtar
+    mta_archives/
+    mta.yaml
+    ```
+    
+    > If **.gitignore** doesn't exist, create it and paste the code snippet above in the newly-created file.
+
+3. In VS Code, navigate to **Source Control** on the left and choose **Initialize Repository**.
+
+    <!-- border; size:540px --> ![Initialize repository](./initialize-repo.png)
+
+4. Open the three dots menu next to **Source Control** and choose **Remote** &rarr; **Add Remote...**.
+
+    <!-- border; size:540px --> ![Add remote](./add-remote.png)
+
+5. Paste the URL of your repository in the **Provide repository URL** field and press <kbd>Enter<kbd>.
+
+    <!-- border; size:540px --> ![Provide repo URL](./provide-repo-url.png)
+
+6. Provide a remote name and press <kbd>Enter<kbd>.
+
+    <!-- border; size:540px --> ![Provide remote name](./provide-remote-name.png)
+
+7. Stage your changes, add a commit message and choose **Publish Branch**.
+
+    <!-- border; size:540px --> ![Publish branch](./publish-branch.png)
+
+8. Provide your GitHub username and password when prompted. When the changes are pushed, you'll be able to see your project in your GitHub repository.
+[OPTION END]
 
 ### Enable SAP Continuous Integration and Delivery service
 
@@ -257,6 +293,7 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
 
 ### Prepare package.json
 
+[OPTION BEGIN [Node.js]]
 1. Open the **package.json** file in your project root folder.
 
 2. Add `"@cap-js/sqlite": "^1"` as a `devDependency` and the script `"cds-build": "npm install --include=dev && cds build --production"` to the **package.json** file:
@@ -283,9 +320,59 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
 
 4. Make sure to commit and push your changes to the remote repository.
 
+[OPTION END]
+[OPTION BEGIN [Java]]
+
+1. Open the **package.json** file in your project root folder.
+
+2. Add `"@cap-js/sqlite": "^1"` as a `devDependency` and the script `"cds-build": "npm install --include=dev && cds build --production"` to the **package.json** file:
+
+    ```json
+    {
+        "name": "incident-management",
+        ...
+        "dependencies": {
+            ...
+        },
+        "devDependencies": {
+            "@cap-js/sqlite": "^1",
+            ...
+        },
+        "scripts": {
+            ...
+            "cds-build": "npm install --include=dev && cds build --production"
+        },
+        ...
+    }
+    ```
+3. In VS Code, choose **Terminal** &rarr; **New Terminal** and run `npm add -D @sap/cds-dk` to add `@sap/cds-dk` as a `devDependency` in the **package.json** file.
+   
+4. Navigate to the **db** folder and run the following command:
+
+    ```bash
+    npm install
+    ```
+
+5. Open **db/package.json** and remove the `"build": "npm i && npx cds build .. --for hana --production"` line from `scripts`.
+
+    ```json[6]
+    {
+        "name": "deploy",
+        ...
+        "scripts": {
+          "start": "node node_modules/@sap/hdi-deploy/deploy.js --use-hdb",
+          "build": "npm i && npx cds build .. --for hana --production"
+        },
+        ...
+    }
+    ```
+
+6. Make sure to commit and push your changes to the remote repository.
+[OPTION END]
 
 ### Add a CI/CD job
 
+[OPTION BEGIN [Node.js]]
 1. Navigate to the **Jobs** tab and choose the icon to add a new job.
 
     <!-- border; size:540px --> ![Add new job](./add-job.png)
@@ -324,24 +411,21 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
 
     <!-- border; size:540px --> ![Configure pipeline](./configure-pipeline.png)
 
-3. In the **Stages** tab, enter **gen/chart** in the **Helm Chart Path** field.
+3. In the **Stages** tab, enter **gen/chart** in the **Chart Path** field.
 
 4. Choose **+** to add container images:
 
     - Enter **`<your-container-registry>/incident-management-srv`** in the **Container Image Name** field.
     - Enter **gen/srv** in the **Project Subdirectory Path** field.
-    - Choose **OK**.
-
-    <!-- border; size:540px --> ![Add srv image](./add-srv-image.png)
-
+    - Choose **Add**.
     - Choose **+**.
     - Enter **`<your-container-registry>/incident-management-hana-deployer`** in the **Container Image Name** field.
     - Enter **gen/db** in the **Project Subdirectory Path** field.
-    - Choose **OK**.
+    - Choose **Add**.
     - Choose **+**.
     - Enter **`<your-container-registry>/incident-management-html5-deployer`** in the **Container Image Name** field.
     - Enter **app/incidents** in the **Project Subdirectory Path** field.
-    - Choose **OK**.
+    - Choose **Add**.
 
     <!-- border; size:540px --> ![All images](./all-images.png)
 
@@ -384,6 +468,99 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
     <!-- border; size:540px --> ![Add Helm Values](./add-helm-values.png)
 
 6. Choose **Create**.
+
+[OPTION END]
+[OPTION BEGIN [Java]]
+1. Navigate to the **Jobs** tab and choose the icon to add a new job.
+
+    <!-- border; size:540px --> ![Add new job](./add-job.png)
+
+2. Enter **Incident-Management** in the **Job Name** field.
+
+#### Add repository 
+
+1. Open the value help for the **Repository** field. 
+
+    <!-- border; size:540px --> ![Add job name](./job-name.png)
+
+2. In the **Select Repository** popup, choose **Add Repository**. A popup opens.
+
+    <!-- border; size:540px --> ![Select Repository popup](./select-repository.png)
+
+3. In the **Add Repository** popup, enter details for the repository you created in **Step 1: Create a repository**:
+
+    - Enter **incident-management** in the **Name** field.
+    - Enter your repository's URL in the **Clone URL** field.
+    - Open the value help in the **Credentials** field and choose the credential **github** that you created in **Step 6: Add credentials**. 
+    - Remove the **Webhook Event Receiver** section.
+
+    <!-- border; size:540px --> ![Add Repository popup](./add-repository.png)
+
+
+4. Choose **Add** to complete the addition of a repository.
+
+    <!-- border; size:540px --> ![Complete repo addition](./complete-repo-add.png)
+
+#### Configure pipeline and stages
+
+1. Back in the **General Information** tab, enter **main** in the **Branch** field.
+
+2. Select **Kyma Runtime** from the dropdown in the **Pipeline** field.
+
+    <!-- border; size:540px --> ![Configure pipeline](./configure-pipeline.png)
+
+3. In the **Stages** tab, enter **gen/chart** in the **Chart Path** field.
+
+4. Choose **+** to add container images:
+
+    - Enter **`<your-container-registry>/incident-management-srv`** in the **Container Image Name** field.
+    - Enter **srv/target** in the **Project Subdirectory Path** field.
+    - Choose **Add**.
+    - Choose **+**.
+    - Enter **`<your-container-registry>/incident-management-hana-deployer`** in the **Container Image Name** field.
+    - Enter **db** in the **Project Subdirectory Path** field.
+    - Choose **Add**.
+    - Choose **+**.
+    - Enter **`<your-container-registry>/incident-management-html5-deployer`** in the **Container Image Name** field.
+    - Enter **app/incidents** in the **Project Subdirectory Path** field.
+    - Choose **Add**.
+
+    <!-- border; size:540px --> ![All images](./all-images.png)
+
+
+5. Select **maven** from the dropdown in the **Build Tool** field.
+
+6. Select **Java 21** from the dropdown in the **Build Tool Version** field. 
+
+7. In the **CNB Build** section, enter the URL of your container registry in the **Container Registry URL** field (for example, https://index.docker.io if you are using Docker Hub).
+
+8. Open the value help for the **Container Registry Credential** field and choose **container-registry-credentials**.
+
+#### Add unit tests and configure release
+
+1. In the **Additional Unit Tests** section, leave the toggle set to **OFF**.  
+
+2. Scroll down to the **Release** section and switch the **Release** toggle **ON**. 
+
+3. Provide the required information under **Deploy to Kyma**:
+
+    - Open the value help for the **Kubernetes Configuration Credential** field and choose **kube-config**.
+    - Enter **incident-management-namespace** in the **Kubernetes Namespace** field.
+    - Enter **incident-management** in the **Helm Release Name** field.
+    - Choose **+** to add helm values.
+
+    <!-- border; size:540px --> ![Deploy to Kyma info](./deploy-to-kyma-info.png)
+
+4. In the **Add Helm Values** dialog:
+    - Enter **xsuaa.jsonParameters** in the **Helm Value Path** field.
+    - Enter **xs-security.json** in the **Value** field.
+    - Select **file** from the dropdown in the **Source** field.
+    - Choose **OK**.
+
+    <!-- border; size:540px --> ![Add Helm Values](./add-helm-values.png)
+
+5. Choose **Create**.
+[OPTION END]
 
 ### Test your job
 
