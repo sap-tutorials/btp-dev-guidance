@@ -65,32 +65,25 @@ CAP offers a possibility to add local users for testing as part of the `cds` con
    
 2. In the **package.json** file, add the `cds.requires` section:
 
-    ```json  
-    {
-      "name": "incident-management",
-      "version": "1.0.0",
-      "description": "A simple CAP project.",
-      "repository": "<Add your repository here>",
-      "license": "UNLICENSED",
-      "private": true,
-      "dependencies": {
-        ...
-      },
-      "scripts": {
-        ...
-      },  
-      "cds": {
-        "requires": {
-          "[development]": {
-            "auth": {
-              "kind": "mocked",
-              "users": {}
-            }
+    ```json
+    ...  
+    "dependencies": {
+      ...
+    },
+    "scripts": {
+      ...
+    },  
+    "cds": {
+      "requires": {
+        "[development]": {
+          "auth": {
+            "kind": "mocked",
+            "users": {}
           }
         }
-      },
-      ...
-    }
+      }
+    },
+    ...
     ```
 
     The code creates the `cds.requires` section that didn't exist so far in the **package.json** file. Also, the code defines which configuration to use when running with the `[development]` profile. You define some general parameters for the authentication behavior. Notice that the users object is empty, in the next step, you will define some test users.
@@ -119,6 +112,7 @@ CAP offers a possibility to add local users for testing as part of the `cds` con
             }
           }
         }
+      },
     ```
 
     Each user entry is part of the `users` object. The key is the `id` of the user and they can have different properties. For this scenario, you define a `password` and an array of roles.
