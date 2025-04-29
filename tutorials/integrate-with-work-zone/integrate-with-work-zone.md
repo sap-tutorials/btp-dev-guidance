@@ -66,8 +66,7 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 > You might need to log out and log back in to make sure your new role collection is taken into account.
 
 > See section [Initial Setup](https://help.sap.com/viewer/8c8e1958338140699bd4811b37b82ece/Cloud/en-US/fd79b232967545569d1ae4d8f691016b.html) in the SAP Build Work Zone, standard edition's documentation for more details.
-
-
+   
 ###  Integrate your application with SAP Build Work Zone, standard edition
 
 > There are two different ways to integrate your application with SAP Build Work Zone, standard edition. You have to choose one way or the other and follow through. It's currently not possible to mix the approaches. Both ways provide the same result. You can integrate your application with SAP Build Work Zone, standard edition through the SAP BTP cockpit or through Common Data Model. The tabs **SAP BTP cockpit** and **Common Data Model** provide detailed steps for each alternative way.  
@@ -84,13 +83,13 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 3. In the menu on the left side, choose the icon for **Channel Manager**.
 
-4. Choose the refresh icon to fetch the updated content.
+4. Fetch the updated content.
 
     <!-- border; size:540px --> ![WorkZone1](./integrate_launchpad_1.png)
 
 #### Add application to Content Explorer
 
-1. Choose **Content Manager** in the menu on the left and choose the **Content Explorer** button.
+1. Choose **Content Manager** in the menu on the left and choose **Content Explorer**.
 
     <!-- border; size:540px --> ![WorkZone2](./integrate_launchpad_20.png)
 
@@ -98,7 +97,7 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
     <!-- border; size:540px --> ![WorkZone2](./integrate_launchpad_2.png)
 
-7. In the items table, set checkmark for the app **Incidents** and choose the button **Add**.
+7. In the items table, select the checkbox for **incident-management** app and choose **Add**.
 
     <!-- border; size:540px --> ![WorkZone3](./integrate_launchpad_3.png)
 
@@ -108,9 +107,9 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
     <!-- border; size:540px --> ![WorkZone4](./integrate_launchpad_4.png)
 
-9. Add the title **Incident Management Group**.
+9. In the **Group title** field enter **Incident Management Group**.
 
-10. In the **Assignment Status**, choose the slider to assign the **Incident-Management** app to the group.
+10. Assign the **Incident-Management** app to the group.
 
 11. Choose **Save**.
 
@@ -118,9 +117,9 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 #### Add application to the Everyone role
 
-1. Back in the **Content Manager**, choose role **Everyone** and choose **Edit**.
+1. Back in the **Content Manager**, choose the **Everyone** role and choose **Edit**.
 
-13. In the **Assignment Status**, choose the slider to assign the **Incident-Management** app to the role.
+13. In the **Assignment Status**, assign the **Incident-Management** app to the role.
 
 14. Choose **Save**.
 
@@ -132,7 +131,7 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
     <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_7.png)
 
-17. Enter the site name as **Incident Management Site** and choose **Create**.
+17. In the **Site Name** field enter **Incident Management Site** and choose **Create**.
 
     <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_71.png)
 
@@ -572,19 +571,19 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 
 5. In the **New Content Provider** dialog:
 
-    1. Enter **CDM** in the **Title** field.
+    1. In the **Title** field еnter **CDM**.
 
-    2. Choose **incident-management-cdm** from the dropdown in the **Design-Time Destination** field.
+    2. In the **Design-Time Destination** field choose **incident-management-cdm** from the dropdown.
 
-    3. Choose **incident-management-rt** from the dropdown in the **Runtime Destination** field.
+    3. In the **Runtime Destination** field choose **incident-management-rt** from the dropdown.
 
     4. Choose **Save**.
 
 
-     <!-- border; size:540px --> ![New Content Provider dialog](./new-content-provider-dialog.jpg)
+     <!-- border; size:540px --> ![New Content Provider dialog](./new-content-provider-dialog.png)
 
 
-6. Choose the refresh icon to fetch the updated content from the **CDM** content provider. 
+6. Fetch the updated content from the **CDM** content provider. 
 
     <!-- border; size:540px --> ![New Content Provider fetch](./new-content-provider-fetch.png)
 
@@ -594,15 +593,15 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 
     <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_7.png)
 
-17. Enter the site name as **Incident Management Site** and choose **Create**.
+17. In the **Site Name** field enter **Incident Management Site** and choose **Create**.
 
     <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_71.png)
 
-18. When you are forwarded to your created site, choose **Edit**.
+18. When you are forwarded to your created site, choose **Role Assignments** and then choose **Edit**.
 
     <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_72.png)
 
-19. Choose the **Assign Items** field, add **+** the **Default Role** to your site and choose **Save**.
+19. In the **Assignment status** field, switch on **Default Role** for your site and choose **Save**.
 
     <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_73.png)
 
