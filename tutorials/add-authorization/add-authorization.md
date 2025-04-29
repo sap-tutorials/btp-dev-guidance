@@ -98,6 +98,7 @@ CAP offers a possibility to add local users for testing as part of the `cds` con
 3. In the **package.json** file, replace the empty `users` object with the `users` object from following code:
 
     ```json
+    ...
     "cds": {
         "requires": {
           "[development]": {
@@ -118,7 +119,6 @@ CAP offers a possibility to add local users for testing as part of the `cds` con
             }
           }
         }
-      
     ```
 
     Each user entry is part of the `users` object. The key is the `id` of the user and they can have different properties. For this scenario, you define a `password` and an array of roles.
@@ -150,7 +150,8 @@ The authorization checks that you added to the CAP model apply not only when dep
 2. Now, we can add the mock users to the application's configuration. As with any other Spring Boot application, the configuration can be done in the application's **application.yaml** file. In our case, it is the file **srv/src/main/resources/application.yaml**. Add the following content to this file:
 
 
-    ```yaml    
+    ```yaml
+    ...    
     cds:
       security:
         mock.users:
