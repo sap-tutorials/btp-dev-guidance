@@ -82,7 +82,7 @@ You have configured the access to your application. Follow the steps in the [Add
     const { default: axios } = require('axios')
     const { GET, POST, DELETE, PATCH, expect } = cds.test(__dirname + '../../')
 
-    axios.defaults.auth = { username: 'incident.support@tester.sap.com', password: 'initial' }
+    axios.defaults.auth = { username: 'alice' }
 
     jest.setTimeout(11111)
 
