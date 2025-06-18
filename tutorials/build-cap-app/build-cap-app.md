@@ -64,8 +64,13 @@ You have configured the SAP Business Application Studio. Follow the steps in the
   
 6. While you are in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
 
+7. Install dependencies with the following command:
 
-    Now you can use the terminal to start a CAP server.
+    ```bash
+    npm install
+    ```
+
+8. Start a CAP server:
 
     ```bash
     cds watch
