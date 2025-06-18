@@ -65,41 +65,33 @@ CAP offers a possibility to add local users for testing as part of the `cds` con
    
 2. In the **package.json** file, add the `cds.requires` section:
 
-
-    ```json  
-    {
-      "name": "incident-management",
-      "version": "1.0.0",
-      "description": "A simple CAP project.",
-      "repository": "<Add your repository here>",
-      "license": "UNLICENSED",
-      "private": true,
-      "dependencies": {
-        ...
-      },
-      "scripts": {
-        ...
-      },  
-      "cds": {
-        "requires": {
-          "[development]": {
-            "auth": {
-              "kind": "mocked",
-              "users": {}
-            }
+    ```json
+    ...  
+    "dependencies": {
+      ...
+    },
+    "scripts": {
+      ...
+    },  
+    "cds": {
+      "requires": {
+        "[development]": {
+          "auth": {
+            "kind": "mocked",
+            "users": {}
           }
         }
-      },
-      ...
-    }
+      }
+    },
+    ...
     ```
-
 
     The code creates the `cds.requires` section that didn't exist so far in the **package.json** file. Also, the code defines which configuration to use when running with the `[development]` profile. You define some general parameters for the authentication behavior. Notice that the users object is empty, in the next step, you will define some test users.
 
 3. In the **package.json** file, replace the empty `users` object with the `users` object from following code:
 
     ```json
+    ...
     "cds": {
         "requires": {
           "[development]": {
@@ -120,7 +112,7 @@ CAP offers a possibility to add local users for testing as part of the `cds` con
             }
           }
         }
-      
+      },
     ```
 
     Each user entry is part of the `users` object. The key is the `id` of the user and they can have different properties. For this scenario, you define a `password` and an array of roles.
@@ -144,14 +136,16 @@ The authorization checks that you added to the CAP model apply not only when dep
 
     ```xml
     <dependency>
-      <groupId>com.sap.cds</groupId>
-      <artifactId>cds-starter-cloudfoundry</artifactId>
+      <groupid>com.sap.cds</groupid>
+      <artifactid>cds-starter-cloudfoundry</artifactid>
     </dependency>
     ```
    
 2. Now, we can add the mock users to the application's configuration. As with any other Spring Boot application, the configuration can be done in the application's **application.yaml** file. In our case, it is the file **srv/src/main/resources/application.yaml**. Add the following content to this file:
 
-    ```yaml    
+
+    ```yaml
+    ...    
     cds:
       security:
         mock.users:
