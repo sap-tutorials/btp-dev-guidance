@@ -38,7 +38,7 @@ You have configured the access to your application. Follow the steps in the [Add
 3. To add the required dependencies, run the following command:
 
     ```bash
-    npm add -D axios chai@4 chai-as-promised@7.1.2 chai-subset jest
+    npm add -D @cap-js/cds-test
     ```
 
 [OPTION END]
