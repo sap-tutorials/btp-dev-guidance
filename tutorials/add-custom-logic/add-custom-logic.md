@@ -173,7 +173,7 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
 
     <!-- border; size:540px --> ![Create new incident](./create-new-incident.png)
     
-    You'll see that the value in the **Urgency** field is automatically set to **high**.
+    You'll see that the value in the **Urgency** field is automatically set to **High**.
 
     <!-- border; size:540px --> ![Fiori Elements Work List](./incidentapp.png)
 
