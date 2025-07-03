@@ -225,14 +225,6 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
     > ```
     > Add the result without the leading `*.` in the placeholder `<cluster-domain>`.
 
-    
-    > You can find the value for `<cloud-service-name>` in the **app/incidents/webapp/manifest.json** file.
-    > ```json[3]
-    > "sap.cloud": {
-    >    "public": true,
-    >    "service": "incidents"
-    >}
-    >```
 
 <!-- 6. Verify. Here's how your **values.yaml** file should look like at this stage: -->
 <!--     -->
@@ -383,7 +375,7 @@ When the application is successfully deployed, you have to configure design and 
 
     2. Choose **New Property** on the right and add the following property:
 
-        - **CEP.HTML5contentprovide** = `true`
+        - **CEP.HTML5contentprovider** = `true`
     
     2. Select the **Use default JDK truststore** checkbox and choose **Save**.
 
@@ -434,12 +426,20 @@ When the application is successfully deployed, you have to configure design and 
 
         - **Name** = `incident-management_cdm`
         - **Type** = `HTTP`
-        - **URL** = `https://html5-apps-repo-rt.cfapps.<subaccount-region>.hana.ondemand.com/applications/cdm/<sap-app-id>`
+        - **URL** = `https://html5-apps-repo-rt.cfapps.<subaccount-region>.hana.ondemand.com/applications/cdm/<cloud-service-name>`
         - **Proxy Type** = `Internet`
         - **Authentication** = `OAuth2ClientCredentials`
         - **Client ID** =  `<Client ID from decoded secret details>`
         - **Client Secret** =  `<Client Secret from decoded secret details>`
         - **Token Service URL** =  `<url from decoded secret details>` + `/oauth/token`
+
+        > You can find the value for `<cloud-service-name>` in the **app/incidents/webapp/manifest.json** file.
+        > ```json[3]
+        > "sap.cloud": {
+        >    "public": true,
+        >    "service": "incidents"
+        >}
+        >```
 
     2. Choose **New Property** on the right and add the following properties:
 
@@ -498,15 +498,15 @@ When the application is successfully deployed, you have to configure design and 
 
     <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_7.png)
 
-17. Enter the site name as **Incident Management Site** and choose **Create**.
+17. In the **Site Name** field enter **Incident Management Site** and choose **Create**.
 
     <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_71.png)
 
-18. When you are forwarded to your created site, choose **Edit**.
+18. When you are forwarded to your created site, choose **Role Assignments** and then choose **Edit**.
 
     <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_72.png)
 
-19. Choose the **Assign Items** field, add **+** the **Default Role** to your site and choose **Save**.
+19. In the **Assignment status** field, switch on **Default Role** for your site and choose **Save**.
 
     <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_73.png)
 
