@@ -428,7 +428,7 @@ You have configured the access to your application. Follow the steps in the [Add
           ...
       },
       "scripts": {
-          "test": "jest tests/test.js",
+          "test": "npx jest tests/test.js",
           "start": "cds-serve",
           "watch-incidents": "cds watch --open incidents/webapp/index.html?sap-ui-xx-viewCache=false"
       },
