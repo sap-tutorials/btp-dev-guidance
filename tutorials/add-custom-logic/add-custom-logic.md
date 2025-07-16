@@ -135,10 +135,13 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
         public ProcessorServiceHandler(PersistenceService db) {
             this.db = db;
         }
+
         /*
         * Change the urgency of an incident to "high" if the title contains the word "urgent"
         */
+
         @Before(event = CqnService.EVENT_CREATE)
+
         public void ensureHighUrgencyForIncidentsWithUrgentInTitle(List<Incidents> incidents) {
             for (Incidents incident : incidents) {
                 if (incident.getTitle().toLowerCase(Locale.ENGLISH).contains("urgent") &&
@@ -149,6 +152,7 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
 
             }
         }
+        
         /*
         * Handler to avoid updating a "closed" incident
         */
