@@ -149,7 +149,7 @@ You need to:
         ...
         ```
 
-1. Open the **chart/Chart.yaml** file and remove the dependency for `event-mesh`(last 3 lines) from it:
+1. Open the **chart/Chart.yaml** file and remove the dependency for `event-mesh` (last 3 lines) from it:
 
     ```yaml
      dependencies:
