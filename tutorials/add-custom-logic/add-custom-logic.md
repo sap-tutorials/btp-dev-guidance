@@ -135,7 +135,6 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
         public ProcessorServiceHandler(PersistenceService db) {
             this.db = db;
         }
-
         /*
         * Change the urgency of an incident to "high" if the title contains the word "urgent"
         */
@@ -150,7 +149,6 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
 
             }
         }
-
         /*
         * Handler to avoid updating a "closed" incident
         */
