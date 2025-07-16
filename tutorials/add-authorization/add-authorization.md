@@ -136,8 +136,8 @@ The authorization checks that you added to the CAP model apply not only when dep
 
     ```xml
     <dependency>
-      <groupid>com.sap.cds</groupid>
-      <artifactid>cds-starter-cloudfoundry</artifactid>
+      <groupId>com.sap.cds</groupId>
+      <artifactId>cds-starter-cloudfoundry</artifactId>
     </dependency>
     ```
    
