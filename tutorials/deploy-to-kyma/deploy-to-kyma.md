@@ -539,7 +539,13 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
     cds add xsuaa,hana --for production
     ```  
 
-5. Build the CAP Java image:
+5. Install dependencies added by the `cds add` commands in the previous steps and build the `.jar` file to create the srv image:
+
+    ```bash
+    mvn clean install
+    ```
+
+6. Build the CAP Java image:
 
     ```bash
     pack build <your-container-registry>/incident-management-srv:<image-version> \
@@ -562,7 +568,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
     > The pack CLI builds the image that contains the build result in the **gen/srv** folder and the required npm packages by using the [Cloud Native Buildpack for Node.JS](https://github.com/paketo-buildpacks/nodejs) provided by Paketo.
 
-6. Build the database image:
+7. Build the database image:
 
     ```bash
     pack build <your-container-registry>/incident-management-hana-deployer:<image-version> \
@@ -600,7 +606,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
     "authenticationMethod": "route",
     "routes": [
         {
-        "source": "^/odata/v4/processor/(.*)$",
+        "source": "^/odata/v4/ProcessorService/(.*)$",
         "destination": "srv-api",
         "authenticationType": "xsuaa"
         },
