@@ -42,7 +42,7 @@ You have added test cases in your application. Follow the steps in the [Add Test
 
     > The **cds add hana** command adds the `@sap/cds-hana` module that allows SAP HANA Cloud to access the **package.json** file and the database configuration `"db": "hana"` that uses SAP HANA Cloud when the application is started on production.
     >
-    > The **cds add hana** command adds to the **package.json** file the `"@cap-js/hana": "^x"` dependency, the `cds.requires` `[production]` profile `"db": "hana"`, and the `sql` configuration `"native_hana_associations": false`.
+    > The **cds add hana** command adds to the **package.json** file the `"@cap-js/hana": "^x"` dependency and the `cds.requires` `[production]` profile `"db": "hana"`.
 
     ```json
     {
@@ -58,11 +58,9 @@ You have added test cases in your application. Follow the steps in the [Add Test
                 "[production]": {
                     "db": "hana"
                 }
-            },
-            "sql": {
-              "native_hana_associations": false
             }
         }
+        ...
     }
     ```
     
@@ -365,17 +363,19 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
 
 [OPTION END]
 
-### Prepare HTML5 applications with deploy configurations
+### Add configuration for SAP Build Work Zone, standard edition
+
+> You can create a CAP project in either Node.js or Java. You have to choose one way or the other and follow through. The tabs **Node.js** and **Java** provide detailed steps for each alternative way.
 
 [OPTION BEGIN [Node.js]]
 
 1. Run the following command in the terminal:
 
     ```bash
-    cds add html5-repo
+    cds add workzone-standard
     ```
 
-2. Make sure that the `"html5-repo": true` line has been added to the **package.json** file:
+2. Make sure that the lines `"destinations": true`, `"html5-runtime": true`, and `"workzone": true` have been added to the **package.json** file:
     
     ```json
     {
@@ -390,14 +390,16 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
           "[production]": {
             ...
           },
-          "html5-repo": true
+          "destinations": true,
+          "html5-runtime": true,
+          "workzone": true
         }
       ...
       }
     }
     ```
 
-    > In case the line is missing, go ahead and add it manually. 
+    > In case any of the lines is missing, go ahead and add it manually. 
 
 1. Check the content of the **app/incidents/package.json** file:
 
@@ -457,6 +459,95 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
               - xs-app.json
     ```
 
+3. Verify that the navigation target `incidents-display` and the SAP Cloud service `sap.cloud` have been correctly added to the application manifest file **app/incidents/webapp/manifest.json**:
+
+
+    ```json
+    "sap.app": {
+      "id": "ns.incidents",
+      ...
+      "sourceTemplate": {
+        ...
+      },
+      "dataSources": {
+        ...
+      },
+      "crossNavigation": {
+        "inbounds": {
+          "incidents-display": {
+            "semanticObject": "incidents",
+            "action": "display",
+            "signature": {
+              "parameters": {},
+              "additionalParameters": "allowed"
+            }
+          }
+        }
+      }
+    ...
+    "sap.cloud": {
+        "public": true,
+        "service": "incidentmanagement.service"
+      }
+    }   
+    ```
+
+
+4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter.
+
+    ```json
+    {
+        "_version": "1.49.0",
+        "sap.app": {
+            "id": "ns.incidents",
+            "type": "application",
+            "i18n": "i18n/i18n.properties",
+            ...
+            "dataSources": {
+                "mainService": {
+                    "uri": "odata/v4/processor/",
+                    "type": "OData",
+                    "settings": {
+                        "annotations": [],
+                        "localUri": "localService/metadata.xml",
+                        "odataVersion": "4.0"
+                    }
+                }
+            },
+            ...
+        },
+        ...
+    }
+    ```
+
+    This is needed as the dataSource URIs must be relative to the base URL, which means there is no need for a slash as the first character.
+
+    Check [Accessing Business Service UI](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL) for more information.
+
+5. Make sure that the line `"welcomeFile": "/index.html"` in the following snippet is added to the **app/incidents/xs-app.json** file. Add if it is missing. 
+
+    ```json
+    {
+      "welcomeFile": "/index.html",
+      "authenticationMethod": "route",
+      "routes": [
+        {
+          "source": "^/?odata/(.*)$",
+          "target": "/odata/$1",
+          "destination": "incident-management-srv-api",
+          "authenticationType": "xsuaa",
+          "csrfProtection": true
+        },
+        {
+          "source": "^(.*)$",
+          "target": "$1",
+          "service": "html5-apps-repo-rt",
+          "authenticationType": "xsuaa"
+        }
+      ]
+    }
+    ```
+
 3. In the terminal, navigate to the **app/incidents/** folder and run the following command:
 
     ```bash
@@ -467,7 +558,63 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
 
 [OPTION BEGIN [Java]]
 
-No changes required at this stage for your Java project.
+1. Run the following command in the root folder of your project:
+
+    ```bash
+    cds add workzone
+    ```
+
+    You should see the following output in the terminal:
+
+    ```bash
+    Adding feature 'destination'...
+    Adding feature 'html5-repo'...
+    Adding feature 'workzone'...
+    Adding feature 'workzone-standard'...
+    ```
+
+4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter.
+
+    ```json
+    {
+        "_version": "1.49.0",
+        "sap.app": {
+            "id": "ns.incidents",
+            "type": "application",
+            "i18n": "i18n/i18n.properties",
+            ...
+            "dataSources": {
+                "mainService": {
+                    "uri": "odata/v4/processor/",
+                    "type": "OData",
+                    "settings": {
+                        "annotations": [],
+                        "localUri": "localService/metadata.xml",
+                        "odataVersion": "4.0"
+                    }
+                }
+            },
+            ...
+        },
+        ...
+    }
+    ```
+
+    This is needed as the dataSource URIs must be relative to the base URL, which means there is no need for a slash as the first character.
+
+    Check [Accessing Business Service UI](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL) for more information.
+
+6. Navigate to the **db** folder in the terminal and run the following command:
+
+    ```bash
+    npm install
+    ```
+
+7. Navigate to the **app/incidents** folder in the terminal and run the following command:
+
+    ```bash
+    npm install
+    ```
 
 [OPTION END]
 

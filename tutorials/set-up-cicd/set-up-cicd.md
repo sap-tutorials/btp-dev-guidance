@@ -236,9 +236,9 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 
     <!-- border; size:540px --> ![Configure pipeline](./configure-pipeline.png)
 
-3. In the **Stages** section, select **maven** from the dropdown in the **Build Tool** field.
+3. In the **Stages** section, select **mta** from the dropdown in the **Build Tool** field.
 
-4. Select the latest Java version from the dropdown in the **Build Tool Version** field. 
+4. Select the latest Java and Node version from the dropdown in the **Build Tool Version** field. 
 
     <!-- border; size:540px --> ![Configure stages](./configure-stages-java.png)
 

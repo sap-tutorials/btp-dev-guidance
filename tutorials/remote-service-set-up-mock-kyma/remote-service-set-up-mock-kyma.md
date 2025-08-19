@@ -99,9 +99,9 @@ You need to:
 
 2. Make changes to the **chart/values.yaml** file:
 
-    1. Remove the following lines from the `srv.bindings` section:
+    1. Remove the lines `messaging:` and `serviceInstanceName: event-mesh` from the `srv.bindings` section:
 
-        ```yaml[5, 6]
+        ```yaml
         srv:
           bindings:
             destination:
@@ -149,9 +149,9 @@ You need to:
         ...
         ```
 
-1. Open the **chart/Chart.yaml** file and remove the following dependency from it:
+1. Open the **chart/Chart.yaml** file and remove the dependency for `event-mesh` (last 3 lines) from it:
 
-    ```yaml[8-10]
+    ```yaml
      dependencies:
        - name: web-application
          alias: srv

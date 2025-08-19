@@ -60,18 +60,11 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
     cds add mta
     ```
 
-### Add configuration for SAP Build Work Zone, standard edition
+### Check configuration for SAP Build Work Zone, standard edition
 
 > You can create a CAP project in either Node.js or Java. You have to choose one way or the other and follow through. The tabs **Node.js** and **Java** provide detailed steps for each alternative way.
 
 [OPTION BEGIN [Node.js]]
-
-1. Run the following command in the terminal:
-
-    ```bash
-    cds add workzone-standard
-    ```
-
 
 2. Verify that the destinations module `incident-management-destinations` and resource `incident-management-destination` have been added to the **mta.yaml** file without errors:
 
@@ -147,118 +140,9 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
             forwardAuthToken: true
     ```
 
-
-
-
-3. Verify that the navigation target `incidents-display` and the SAP Cloud service `sap.cloud` have been correctly added to the application manifest file **app/incidents/webapp/manifest.json**:
-
-
-    ```json
-    "sap.app": {
-      "id": "ns.incidents",
-      ...
-      "sourceTemplate": {
-        ...
-      },
-      "dataSources": {
-        ...
-      },
-      "crossNavigation": {
-        "inbounds": {
-          "incidents-display": {
-            "semanticObject": "incidents",
-            "action": "display",
-            "title": "{{flpTitle}}",
-            "subTitle": "{{flpSubtitle}}",
-            "signature": {
-              "parameters": {},
-              "additionalParameters": "allowed"
-            }
-          }
-        }
-      }
-    ...
-    "sap.cloud": {
-        "public": true,
-        "service": "incidents"
-      }
-    }   
-    ```
-
-
-4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter.
-
-    ```json
-    {
-        "_version": "1.49.0",
-        "sap.app": {
-            "id": "ns.incidents",
-            "type": "application",
-            "i18n": "i18n/i18n.properties",
-            ...
-            "dataSources": {
-                "mainService": {
-                    "uri": "odata/v4/processor/",
-                    "type": "OData",
-                    "settings": {
-                        "annotations": [],
-                        "localUri": "localService/metadata.xml",
-                        "odataVersion": "4.0"
-                    }
-                }
-            },
-            ...
-        },
-        ...
-    }
-    ```
-
-    This is needed as the dataSource URIs must be relative to the base URL, which means there is no need for a slash as the first character.
-
-    Check [Accessing Business Service UI](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL) for more information.
-
-5. Make sure that the line `"welcomeFile": "/index.html"` in the following snippet is added to the **app/incidents/xs-app.json** file. Add if it is missing. 
-
-    ```json
-    {
-      "welcomeFile": "/index.html",
-      "authenticationMethod": "route",
-      "routes": [
-        {
-          "source": "^/?odata/(.*)$",
-          "target": "/odata/$1",
-          "destination": "incident-management-srv-api",
-          "authenticationType": "xsuaa",
-          "csrfProtection": true
-        },
-        {
-          "source": "^(.*)$",
-          "target": "$1",
-          "service": "html5-apps-repo-rt",
-          "authenticationType": "xsuaa"
-        }
-      ]
-    }
-    ```
-
 [OPTION END]
 
 [OPTION BEGIN [Java]]
-
-1. Run the following command in the root folder of your project:
-
-    ```bash
-    cds add workzone
-    ```
-
-    You should see the following output in the terminal:
-
-    ```bash
-    Adding feature 'destination'...
-    Adding feature 'html5-repo'...
-    Adding feature 'workzone'...
-    Adding feature 'workzone-standard'...
-    ```
 
 2. Verify that all required modules (`incident-management-app-deployer`, `incidentmanagementincidents`, and `incident-management-destinations`) and resources (`incident-management-destination` and `incident-management-html5-repo-host`) have been added to the **mta.yaml** file without errors:
 
@@ -364,50 +248,6 @@ You will use the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-to
         service: html5-apps-repo
         service-plan: app-host
     ```
-
-4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter.
-
-    ```json
-    {
-        "_version": "1.49.0",
-        "sap.app": {
-            "id": "ns.incidents",
-            "type": "application",
-            "i18n": "i18n/i18n.properties",
-            ...
-            "dataSources": {
-                "mainService": {
-                    "uri": "odata/v4/processor/",
-                    "type": "OData",
-                    "settings": {
-                        "annotations": [],
-                        "localUri": "localService/metadata.xml",
-                        "odataVersion": "4.0"
-                    }
-                }
-            },
-            ...
-        },
-        ...
-    }
-    ```
-
-    This is needed as the dataSource URIs must be relative to the base URL, which means there is no need for a slash as the first character.
-
-    Check [Accessing Business Service UI](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL) for more information.
-
-6. Navigate to the **db** folder in the terminal and run the following command:
-
-    ```bash
-    npm install
-    ```
-
-7. Navigate to the **app/incidents** folder in the terminal and run the following command:
-
-    ```bash
-    npm install
-    ```
-
 
 [OPTION END]
 

@@ -146,7 +146,6 @@ You have configured the access to your application. Follow the steps in the [Add
           )
           expect(status).to.equal(201)
         })
-
         it(`Should Close the Incident-${draftId}`, async () => {
           const { status } = await PATCH(`/odata/v4/processor/Incidents(ID=${incidentId},IsActiveEntity=false)`, {
             status_code: 'C'
@@ -159,7 +158,6 @@ You have configured the access to your application. Follow the steps in the [Add
           )
           expect(response.status).to.eql(200)
         })
-
         it('+ Test the incident status to be closed', async () => {
           const {
             status,
@@ -178,7 +176,6 @@ You have configured the access to your application. Follow the steps in the [Add
             )
             expect(status).to.equal(201)
           })
-
           it(`Should re-open the Incident-${draftId} but fail`, async () => {
             const { status } = await PATCH(`/odata/v4/processor/Incidents(ID=${incidentId},IsActiveEntity=false)`, {
               status_code: 'N'
@@ -197,12 +194,10 @@ You have configured the access to your application. Follow the steps in the [Add
           })
         })
       })
-
       it('- Delete the Draft', async () => {
         const response = await DELETE(`/odata/v4/processor/Incidents(ID=${draftId},IsActiveEntity=false)`)
         expect(response.status).to.eql(204)
       })
-
       it('- Delete the Incident', async () => {
         const response = await DELETE(`/odata/v4/processor/Incidents(ID=${draftId},IsActiveEntity=true)`)
         expect(response.status).to.eql(204)
@@ -411,7 +406,7 @@ You have configured the access to your application. Follow the steps in the [Add
 
 [OPTION BEGIN [Node.js]]
 
-1. Open the **package.json** file and add the `"test": "jest tests/test.js"` line inside the `scripts` section. This adds a command to start the tests.
+1. Open the **package.json** file and add the `"test": "npx jest tests/test.js"` line inside the `scripts` section. This adds a command to start the tests.
 
     ```json
     {
@@ -428,7 +423,7 @@ You have configured the access to your application. Follow the steps in the [Add
           ...
       },
       "scripts": {
-          "test": "jest tests/test.js",
+          "test": "npx jest tests/test.js",
           "start": "cds-serve",
           "watch-incidents": "cds watch --open incidents/webapp/index.html?sap-ui-xx-viewCache=false"
       },

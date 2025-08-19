@@ -127,15 +127,11 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
     @Component
     @ServiceName(ProcessorService_.CDS_NAME)
     public class ProcessorServiceHandler implements EventHandler {
-
         private static final Logger logger = LoggerFactory.getLogger(ProcessorServiceHandler.class);
-
         private final PersistenceService db;
-
         public ProcessorServiceHandler(PersistenceService db) {
             this.db = db;
         }
-
         /*
         * Change the urgency of an incident to "high" if the title contains the word "urgent"
         */
@@ -147,10 +143,8 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
                     incident.setUrgencyCode("H");
                     logger.info("Adjusted Urgency for incident '{}' to 'HIGH'.", incident.getTitle());
                 }
-
             }
         }
-
         /*
         * Handler to avoid updating a "closed" incident
         */
@@ -160,9 +154,7 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
             if (in.getStatusCode().equals("C")) {
                 throw new ServiceException(ErrorStatuses.CONFLICT, "Can't modify a closed incident");
             }
-
         }
-
     }
     ```
 
@@ -173,7 +165,7 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
 
     <!-- border; size:540px --> ![Create new incident](./create-new-incident.png)
     
-    You'll see that the value in the **Urgency** field is automatically set to **high**.
+    You'll see that the value in the **Urgency** field is automatically set to **High**.
 
     <!-- border; size:540px --> ![Fiori Elements Work List](./incidentapp.png)
 
