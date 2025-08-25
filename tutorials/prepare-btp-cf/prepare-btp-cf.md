@@ -168,7 +168,7 @@ Follow these steps to create an SAP HANA Cloud service instance in the SAP BTP c
 
 1. In your SAP BTP subaccount, navigate to **Services** &rarr; **Instances and Subscriptions** in the left-hand pane.
 
-2. Choose **SAP HANA Cloud**. You'll be redirected to SAP HANA Cloud multi-environment administration tools. Sign in with your SAP BTP cockpit username/e-mail if required.
+2. Choose **SAP HANA Cloud**. You'll be redirected to SAP HANA Cloud Central. Sign in with your SAP BTP cockpit username/e-mail if required.
 
     <!-- border; size:540px --> ![SAP HANA Cloud Go to application](./hana-goto-app.png)
 
@@ -176,7 +176,7 @@ Follow these steps to create an SAP HANA Cloud service instance in the SAP BTP c
 
       <!-- border; size:540px --> ![SAP HANA Cloud create instance](./hana-create-instance.png)
 
-7. Choose **SAP HANA Cloud**, **SAP HANA Database**, and then choose **Next Step**.
+7. Select the **Free Tier** tab, then select the **Configure manually** radio button and make sure the **SAP HANA Database** tab is selected. Choose **Next Step**.
 
       <!-- border; size:540px --> ![Create SAP HANA DB Step 1](./create-hana-db1.png)
 
