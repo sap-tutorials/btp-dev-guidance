@@ -98,10 +98,6 @@ CAP offers a possibility to add local users for testing as part of the `cds` con
             "auth": {
               "kind": "mocked",
               "users": {
-                "incident.support@tester.sap.com": {
-                  "password": "initial",
-                  "roles": ["support"]
-                },
                 "alice": {
                   "roles": ["support"]
                 },
@@ -117,9 +113,8 @@ CAP offers a possibility to add local users for testing as part of the `cds` con
 
     Each user entry is part of the `users` object. The key is the `id` of the user and they can have different properties. For this scenario, you define a `password` and an array of roles.
   
-    You have added three users:
+    You have added two users:
 
-    - `incident.support@tester.sap.com` with the `support` role and the `initial` password
     - `alice` with the `support` role and no password
     - `bob` with the `support` role and no password
 
@@ -178,11 +173,11 @@ When accessing the **Incidents** service of the **Incident Management** applicat
     >2. Choose **Fiori: Open Application Info**.
 
 
-3. In the **Username** field of the auth popup, enter `incident.support@tester.sap.com`.
+3. In the **Username** field of the auth popup, enter `alice`.
 
-4. In the **Password** field, enter `initial`.
+4. Leave the **Password** field empty.
 
-    <!-- border; size:540px --> ![Sign In Incident Management Application](./local-login.png)
+    <!-- border; size:540px --> ![Sign In Incident Management Application](./local-login-java.png)
 
     You can now access the **Incident Management** application.
 

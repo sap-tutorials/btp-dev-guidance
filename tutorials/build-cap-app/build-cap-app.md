@@ -511,22 +511,22 @@ Replace the respective generated CSV templates with the following content:
 - `db/data/sap.capire.incidents-Status.csv`:
 
     ```csv
-    code;descr;criticality
-    N;New;3
-    A;Assigned;2
-    I;In Process;2
-    H;On Hold;3
-    R;Resolved;2
-    C;Closed;4
+    code,descr,criticality
+    N,New,3
+    A,Assigned,2
+    I,In Process,2
+    H,On Hold,3
+    R,Resolved,2
+    C,Closed,4
     ```
 
 - `db/data/sap.capire.incidents-Urgency.csv`:
 
     ```csv
-    code;descr
-    H;High
-    M;Medium
-    L;Low
+    code,descr
+    H,High
+    M,Medium
+    L,Low
     ```
 
     > Notice that `cds add data` created eight files, while we're adding data to just six of them. We're leaving the files `sap.capire.incidents-Status.texts.csv` and `sap.capire.incidents-Urgency.texts.csv` empty because they hold translated text that will be filled once the application is localized and translations are created.

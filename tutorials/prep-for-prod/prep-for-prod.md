@@ -654,3 +654,9 @@ You should get an output like:
 ```
 
 [OPTION END]
+
+### Deployment Options
+
+Now that you have prepared your CAP application for deployment, you can choose from the following deployment options:
+- Follow the tutorials in the [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) group to deploy the application in the SAP BTP, Cloud Foundry runtime.
+- Follow the tutorials in the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) group to deploy the application in the SAP BTP, Kyma runtime.
