@@ -12,9 +12,9 @@ author_profile: https://github.com/slavipande
 
 ## You will learn
 
-- How to develop and deploy a full-stack application based on the SAP Cloud Application Programming Model (CAP)
-- How to use SAP Business Application Studio
-- How to follow best practices to improve the process of implementing a business application on SAP BTP
+- How to develop and deploy a full-stack application based on the SAP Cloud Application Programming Model (CAP).
+- How to use SAP Business Application Studio.
+- How to follow best practices to improve the process of implementing a business application on SAP BTP.
 
 ## Prerequisites
 
@@ -24,7 +24,7 @@ There are no prerequisites for this tutorial.
 
 ### Overview
 
-Welcome to your guide to application development on the SAP Business Technology Platform (SAP BTP). This is the introduction followed by comprehensive tutorials that will guide you through the process of developing and deploying a full-stack application based on the [SAP Cloud Application Programming Model (CAP)](https://cap.cloud.sap/docs/) and [SAP Fiori elements](https://sapui5.hana.ondemand.com/sdk/#/topic/03265b0408e2432c9571d6b3feb6b1fd) on [SAP BTP](https://developers.sap.com/tutorials/cp-explore-cloud-platform.html). With these tutorials, you'll leverage a variety of different tools and services, learning each of them step by step. Whether you're new to SAP BTP or an experienced developer, the following tutorials are designed to help you hit the ground running.
+Welcome to your guide to application development on the SAP Business Technology Platform (SAP BTP). This page is the introduction followed by comprehensive tutorials that guide you through the process of developing and deploying a full-stack application based on the [SAP Cloud Application Programming Model (CAP)](https://cap.cloud.sap/docs/) and [SAP Fiori elements](https://sapui5.hana.ondemand.com/sdk/#/topic/03265b0408e2432c9571d6b3feb6b1fd) on [SAP BTP](https://developers.sap.com/tutorials/cp-explore-cloud-platform.html). With these tutorials, you leverage a variety of different tools and services, learning each of them step by step. Whether you're new to SAP BTP or an experienced developer, the following tutorials are designed to help you hit the ground running.
 
 This guidance covers a variety of topics starting from basic onboarding tasks to creating development pipelines. The tasks are bundled in step-by-step tutorials featuring the following topics:
 
@@ -38,15 +38,15 @@ This guidance covers a variety of topics starting from basic onboarding tasks to
 
 ### Benefit from a sample application
 
-There is a sample application called Incident Management that you can test and play with. Go through the following tutorials based on the Incident Management application step by step and explore the source code and the configuration tasks.
+There's a sample application called Incident Management that you can test and play with. Go through the following tutorials based on the Incident Management application step by step and explore the source code and the configuration tasks.
 
 ### SAP Cloud Application Programming Model (CAP)
 
 CAP is a framework of languages, libraries, and tools for building enterprise-grade services and applications. It guides developers along proven best practices and a great wealth of out-of-the-box solutions to recurring tasks.
 
-Instead of delving into overly-technical disciplines, CAP lets you focus on your domain. This accelerates the development process and safeguards investments in a world of rapidly changing cloud technologies.
+Instead of delving into overly technical disciplines, CAP lets you focus on your domain. Focusing on your domain accelerates the development process and safeguards investments in a world of rapidly changing cloud technologies.
 
-The CAP framework features a mix of proven and broadly-adopted open-source and SAP technologies, as highlighted in the following figure.
+The CAP framework features a mix of proven and broadly adopted open-source and SAP technologies, as highlighted in the following figure.
 
 ![CAP Overview](cap_overview.png)
 
@@ -60,7 +60,7 @@ On top of open-source technologies, CAP adds:
 
 SAP BTP is an integrated offering comprised of four technology portfolios: database and data management, application development and integration, analytics, and intelligent technologies. SAP BTP is built on a multi-cloud foundation, which lets you choose from different infrastructures and runtimes. SAP BTP is multilingual, with support for most major languages and support for development, testing, and production systems both inside an organization and to the larger public.
 
-SAP BTP is also constantly evolving. SAP continuously updates the services it provides, the platforms that run the custom code, and the infrastructure. This allows developers to focus on the custom code, and not to worry about hardware maintenance or software upgrades. SAP BTP offers you the ability to turn data into business value, compose end-to-end business processes, and build and extend SAP solutions and applications quickly.
+SAP BTP is also constantly evolving. SAP continuously updates the services that it provides, the platforms that run the custom code, and the infrastructure. This maintenance allows developers to focus on the custom code, and not to worry about hardware maintenance or software upgrades. SAP BTP offers you the ability to turn data into business value, compose end-to-end business processes, and build and extend SAP solutions and applications quickly.
 
 The central point of entry to the platform is the SAP BTP cockpit, where you can access your accounts and applications and manage all activities associated with them.
 

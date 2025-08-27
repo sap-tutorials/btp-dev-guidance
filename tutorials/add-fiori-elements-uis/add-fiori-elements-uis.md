@@ -13,24 +13,24 @@ author_profile: https://github.com/slavipande
  
 ## You will learn 
 
-- How to generate the UI with an SAP Fiori elements template
-- How to modify the UI with the SAP Fiori page editor
+- How to generate the UI with an SAP Fiori elements template.
+- How to modify the UI with the SAP Fiori page editor.
 
 ## Prerequisites
 
-You have built your CAP application. Follow the steps in the [Build a CAP application](build-cap-app) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
+You've built your CAP application. Follow the steps in the [Build a CAP application](build-cap-app) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
 ### Overview
 
-SAP Fiori elements provides designs for UI patterns and predefined floorplans for common application use cases. Application developers can use SAP Fiori elements to create SAP Fiori applications based on OData services and annotations that don't need JavaScript UI coding. The resulting application uses predefined views and controllers that are provided centrally. This means no application-specific view instances are required. SAPUI5 interprets the metadata and the annotations of the underlying OData service and uses the corresponding views for the SAP Fiori application at startup.
+SAP Fiori elements provide designs for UI patterns and predefined floor plans for common application use cases. Application developers can use SAP Fiori elements to create SAP Fiori applications based on OData services and annotations that don't need JavaScript UI coding. The resulting application uses predefined views and controllers that are provided centrally. This approach means that no application-specific view instances are required. SAPUI5 interprets the metadata and the annotations of the underlying OData service and uses the corresponding views for the SAP Fiori application at startup.
 
 By following one of the [SAP Fiori elements floorplans](https://sapui5.hana.ondemand.com/#/topic/797c3239b2a9491fa137e4998fd76aa7.html), you:
 
-- Boost your development productivity
-- Get future-proof UX consistency
-- Get enterprise readiness
+- Boost your development productivity.
+- Get future-proof UX consistency.
+- Get enterprise readiness.
 
 To learn more about each of these points, see [Why Use SAP Fiori Elements?](https://sapui5.hana.ondemand.com/#/topic/0a5377076f4e4ccba055a9072befadbd).
 
@@ -93,7 +93,7 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
 
         <!-- border; size:540px --> ![Project names](./vscrfeapp.png)
 
-    The application is now generated and in a few seconds you can see the application's **incidents** folder in the **app** folder of your **incident-management** project. It contains a **webapp** folder with a **Component.js** file that is typical for an SAPUI5 application. However, the source code of this application is minimal. It inherits its logic from the **sap/fe/core/AppComponent** class. This class is managed centrally by SAP Fiori elements and provides all the services that are required (routing, edit flow) so that the building blocks and the templates work properly.
+    The application is now generated and in a few seconds you can see the application's **incidents** folder in the **app** folder of your **incident-management** project. It contains a **webapp** folder with a **Component.js** file that’s typical for an SAPUI5 application. However, the source code of this application is minimal. It inherits its logic from the **sap/fe/core/AppComponent** class. This class is managed centrally by SAP Fiori elements and provides all the services that are required (routing, edit flow) so that the building blocks and the templates work properly.
 
 
 
@@ -105,9 +105,9 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
 
 <!-- Section Start: This entire section is not needed for the Java version -->
 
-Instead of using `cds watch` command in the terminal to start the service, you will use the `watch-incidents` script that has been added to the **package.json** file by the application generator. The script contains an additional `sap-ui-xx-viewCache=false` parameter added to the application's start URL. This parameter ensures that if custom extensions are implemented, changes to the extension artifacts get properly updated when refreshing the UI.
+Instead of using `cds watch` command in the terminal to start the service, you use the `watch-incidents` script that has been added to the **package.json** file by the application generator. The script contains an additional `sap-ui-xx-viewCache=false` parameter added to the application's start URL. This parameter ensures that if custom extensions are implemented, changes to the extension artifacts get properly updated when refreshing the UI.
 
-> If the `cds watch` command is already running in a terminal, end it with the <kbd>Ctrl</kbd> + <kbd>C</kbd> key combination. Otherwise the default port 4004 will already be in use by the running CAP server's process.
+> If the `cds watch` command is already running in a terminal, end it with the <kbd>Ctrl</kbd> + <kbd>C</kbd> key combination. Otherwise, the default port 4004 is already in use by the running CAP server's process.
 
 
 1. In the **Application Info - incidents** tab, choose the **Preview Application** option.
@@ -116,7 +116,7 @@ Instead of using `cds watch` command in the terminal to start the service, you w
 
     > If you get an error **SyntaxError: Unexpected token / in JSON at position 4**, open the file **.vscode/launch.json**, delete any comments that you have there, and try again. 
 
-    This opens a dropdown menu at the top offering all scripts maintained in the scripts section of the `package.json` file that are based on the `cds run` and `cds watch` commands.
+    This option opens a dropdown menu at the top offering all scripts maintained in the scripts section of the `package.json` file that is based on the `cds run` and `cds watch` commands.
 
     > In case the **Application Info - incidents** tab is closed: 
     >
@@ -130,7 +130,7 @@ Instead of using `cds watch` command in the terminal to start the service, you w
 
     <!-- border; size:540px --> ![Watch script](./watchScript.png)
 
-    This script runs the service in an application modeler terminal session and automatically starts the SAP Fiori application in a new browser session.
+    This script runs the service in a terminal session of the application modeler and automatically starts the SAP Fiori application in a new browser session.
 
 3. You can now see the application with the generated columns. Choose **Go**.
 
@@ -143,7 +143,7 @@ Instead of using `cds watch` command in the terminal to start the service, you w
 
 [OPTION BEGIN [Java]]
 
-1. While you are in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
+1. While you're in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
 
 2. Navigate to the **srv** folder.
 
@@ -166,11 +166,11 @@ Instead of using `cds watch` command in the terminal to start the service, you w
 
     <!-- border; size:540px --> ![Open in a new tab](./open-new-tab.png)
 
-6. You'll see the generic `index.html` page:
+6. You see the generic `index.html` page:
 
     <!-- border; size:540px --> ![index.html](./index-java.png)
 
-> You might need to stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it again with the `mvn cds:watch` command.
+> Stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it again with the `mvn cds:watch` command.
 
 [OPTION END]
 
@@ -178,7 +178,7 @@ Instead of using `cds watch` command in the terminal to start the service, you w
 
 ### Configure the List View Page
 
-In this section, you'll modify the List View Page of the UI with the SAP Fiori page editor.
+In this section, you modify the List View Page of the UI with the SAP Fiori page editor.
 
 #### Add filter fields
 
@@ -186,7 +186,7 @@ In this section, you'll modify the List View Page of the UI with the SAP Fiori p
 
     <!-- border; size:540px --> ![Page Map](./PageMap.png)
 
-    The page map of the **incidents** application opens in a new tab within SAP Business Application Studio. You will see the properties on the right side of the page map. You can edit these properties to update the UI of the application.
+    The page map of the **incidents** application opens in a new tab within SAP Business Application Studio. You see the properties on the right side of the page map. You can edit these properties to update the UI of the application.
 
     <!-- border; size:540px --> ![Page Map properties](./PageMap-properties.png)
 
@@ -206,15 +206,15 @@ In this section, you'll modify the List View Page of the UI with the SAP Fiori p
 4. In the **Add Filter Fields** popup:
 
     - Select the **status_code** and **urgency_code** checkboxes in the **Filter Field** dropdown menu.
-    - Choose **Add**. Your application will be updated to show the new filters.
+    - Choose **Add**. Your application is updated to show the new filters.
 
     <!-- border; size:540px --> ![New Filters Added](./ls5.png)
 
-    > This is how you define which properties are exposed as search fields in the header bar above the list.
+    > This way you define which properties are exposed as search fields in the header bar above the list.
 
 #### Edit filter fields
 
-The filter labels are text strings. It's a good idea to update them so they are compliant with internationalization standards (i18n).
+The filter labels are text strings. It's a good idea to update them so they're compliant with internationalization standards (i18n).
 
 1. Change the **urgency_code** filter label. In the **Label** field, change the value to **Urgency**. Press <kbd>Enter</kbd> to confirm the change.
 
@@ -258,15 +258,15 @@ The filter labels are text strings. It's a good idea to update them so they are 
 
     <!-- border; size:540px --> ![Add Basic Columns popup](./add-basic-columns-popup.png)
 
-14. Select the **name** column and choose **^** to move the column up just under the **Title** column.
+14. Select the **name** column and choose **^** to move up the column just under the **Title** column.
 
     <!-- border; size:540px --> ![Reorder Columns](./reorder-columns.png)
 
 15. Choose the **Title** column, choose the **Globe** icon in the **Label** field to generate a translatable text key, and apply the changes.
 
-    > The filter labels are text strings. It's a good idea to update them so they are compliant with internationalization standards (i18n).
+    > The filter labels are text strings. It's a good idea to update them so they're compliant with internationalization standards (i18n).
 
-    > Learn more about how internationalization works for the backend part in [Where to Place Text Bundles?](https://cap.cloud.sap/docs/guides/i18n#where-to-place-text-bundles) in the CAP documentation.
+    > Learn more about how internationalization works for the back end part in [Where to Place Text Bundles?](https://cap.cloud.sap/docs/guides/i18n#where-to-place-text-bundles) in the CAP documentation.
 
 5. For each of the **name**, **Description (status/descr)**, and **Description (urgency/descr)** columns:
 
@@ -278,7 +278,7 @@ The filter labels are text strings. It's a good idea to update them so they are 
 
 #### Configure tables
 
-1. Choose **Table** and in the **Initial Load** dropdown menu, select **Enabled** to load the data automatically.
+1. Choose **Table** and, in the **Initial Load** dropdown menu, select **Enabled** to load the data automatically.
 
     <!-- border; size:540px --> ![Enable Data Auto Load](./ls8.png)
 
@@ -292,7 +292,7 @@ The filter labels are text strings. It's a good idea to update them so they are 
 
 #### Check the result
 
-1. The list page of the Incident Management application should look like this:
+1. The list page of the Incident Management application looks like this:
 
     <!-- border; size:540px --> ![Incident Management App's List Page](./IncidentsUI.png)
 
@@ -301,15 +301,15 @@ The filter labels are text strings. It's a good idea to update them so they are 
     
     <!-- Mind that with the Java version a heading Incidents is missing over the table with the created incidents. This is present for the Node.js version -->
 
-21. Navigate back to the page editor and choose **Page Map** in the top left. This takes you back to the overview of the **incidents** application.
+21. Navigate back to the page editor and choose **Page Map** in the top left. This action takes you back to the overview of the **incidents** application.
 
 ### Configure the Incident Object Page
 
-In this section, you'll modify the Incident Object Page of the UI with the SAP Fiori page editor.
+In this section, you modify the Incident Object Page of the UI with the SAP Fiori page editor.
 
 #### Edit header
 
-1. Make sure the SAP Fiori page editor is open. If you closed it, choose the **Open Page Map** option in the **Application Info - incidents** tab.
+1. Make sure that the SAP Fiori page editor is open. If you closed it, choose the **Open Page Map** option in the **Application Info - incidents** tab.
 
     > To open the **Application Info - incidents** tab: 
     >
@@ -408,7 +408,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
     > If there are already some columns in the result list, then delete them and keep only the columns **name** and **email**.
 
-7. Navigate to **Sections**, drag the **General Information** and drop it in the **Overview** &rarr; **Subsections** node.
+7. Navigate to **Sections**, drag the **General Information**, and drop it in the **Overview** &rarr; **Subsections** node.
 
     <!-- border; size:540px --> ![Customer properties update](./fiori5.png)
 
@@ -488,7 +488,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
     <!-- border; size:540px --> ![Update column labels](./obj93.png)
 
-#### Configure table and check the result
+#### Configure the table and check the result
 
 1. For **Table**, in the **Type** dropdown menu, select **ResponsiveTable** to make the table responsive.
 
@@ -507,7 +507,7 @@ In this section, you'll modify the Incident Object Page of the UI with the SAP F
 
 ### Enable draft with `@odata.draft.enabled`
 
-SAP Fiori supports editing business entities with draft states stored on the server, so users can interrupt editing and continue later on, possibly from different places and devices. CAP, as well as SAP Fiori elements, provides out-of-the-box support for drafts. We recommend that you always use draft when your SAP Fiori application needs data input by end users.
+SAP Fiori supports editing business entities with draft states stored on the server, so users can interrupt editing and continue later on, possibly from different places and devices. CAP, as well as SAP Fiori elements, provides out-of-the-box support for drafts. We recommend that you always use draft when your SAP Fiori application needs data input by users.
 
 >- For more details, see the SAP Fiori Design Guidelines for [Draft Handling](https://experience.sap.com/fiori-design-web/draft-handling/).
 >- Read more about [Draft Support](https://cap.cloud.sap/docs/advanced/fiori#draft-support) in the CAP documentation.
@@ -530,7 +530,7 @@ Enabling a draft for an entity allows the users to edit the entities. To enable 
 
     <!-- border; size:540px --> ![Draft incident with empty fields](./draft-incident-empty.png)
 
-4. Go back to the list view page without creating the incident. You should be able to see the incident draft there with the empty fields.
+4. Go back to the list view page without creating the incident. You see the incident draft there with the empty fields.
 
     <!-- border; size:540px --> ![List view page with draft incident](./draft-incident-list-view-page.png)
 
