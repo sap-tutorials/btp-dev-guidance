@@ -13,15 +13,15 @@ author_profile: https://github.com/slavipande
 
 ## You will learn
 
-- How to initialize a repository in SAP Business Application Studio
-- How to set up your CI/CD pipeline
+- How to initialize a repository in SAP Business Application Studio.
+- How to set up your CI/CD pipeline.
 
 ## Prerequisites
 
-- You have prepared your application for deployment in SAP BTP, Cloud Foundry runtime. Follow the steps in the [Deploy in SAP BTP, Cloud Foundry Runtime](deploy-to-cf) tutorial that is part of the [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) tutorial group.
-- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and make use of the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You've prepared your application for deployment in SAP BTP, Cloud Foundry runtime. Follow the steps in the [Deploy in SAP BTP, Cloud Foundry Runtime](deploy-to-cf) tutorial that is part of the [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) tutorial group.
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
 - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
-- You are an administrator of the global account in SAP BTP.
+- You're an administrator of the global account in SAP BTP.
 - You have a subaccount in SAP BTP to deploy the services and applications.
 - You have one of the following browsers that are supported for working in SAP Business Application Studio:
     - Mozilla Firefox
@@ -32,11 +32,11 @@ author_profile: https://github.com/slavipande
 
 ### Create a repository
 
-To be able to perform the steps for setting up a CI/CD pipeline, you will need a public repository. Currently, SAP Continuous Integration and Delivery supports [GitHub](https://github.com/) and [Bitbucket](https://bitbucket.org/) repositories.
+To be able to perform the steps for setting up a CI/CD pipeline, you need a public repository. Currently, SAP Continuous Integration and Delivery supports [GitHub](https://github.com/) and [Bitbucket](https://bitbucket.org/) repositories.
 
-For real application development, you need to consider the right place for your repository, of course.
+For real application development, you need to consider the right place for your repository.
 
-In this example, we'll be creating a repository on GitHub. You'll need a [GitHub](https://github.com/) account for this step. Go ahead and create one if you don't have it yet.
+In this example, we're creating a repository on GitHub. You need a [GitHub](https://github.com/) account for this step. Go ahead and create one if you don't have it yet.
 
 1. Create a new GitHub repository in your GitHub account.
 
@@ -46,7 +46,7 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 
     <!-- border; size:540px --> ![Create repository](./create-repo.png)
 
-3. You'll be directed to the **Quick Setup** page of your new repository. Make sure to copy the URL of the repository as you'll need it in the next steps.
+3. You're directed to the **Quick Setup** page of your new repository. Make sure to copy the URL of the repository as you'll need it in the next steps.
 
     <!-- border; size:540px --> ![Quick Setup](./quick-setup.png)
 
@@ -72,11 +72,11 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 
     <!-- border; size:540px --> ![Provide remote name](./provide-remote-name.png)
 
-6. Stage your changes, add a commit message and choose **Publish Branch**.
+6. Stage your changes, add a commit message, and choose **Publish Branch**.
 
     <!-- border; size:540px --> ![Publish branch](./publish-branch.png)
 
-7. Provide your GitHub username and password when prompted. When the changes are pushed, you'll be able to see your project in your GitHub repository.
+7. Provide your GitHub username and password when prompted. When the changes are pushed, you see your project in your GitHub repository.
 
 
 ### Enable SAP Continuous Integration and Delivery Service
@@ -116,7 +116,7 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 
     You've assigned the **CICD Service Administrator** role collection to your user.
 
-> You might need to log out and log back in to make sure your new role collection is taken into account.
+> Log out and log back in to make sure your new role collection is considered.
     
 > See [Initial Setup](https://help.sap.com/docs/CONTINUOUS_DELIVERY/99c72101f7ee40d0b2deb4df72ba1ad3/719acaf61e4b4bf0a496483155c52570.html) for more details on how to enable the service.
 
@@ -145,11 +145,11 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
     - Enter your GitHub personal access token in the **Password** field.
     - Choose **Create**. 
 
-    > See [Create a Credential for a Private GitHub Repository](https://help.sap.com/docs/continuous-integration-and-delivery/sap-continuous-integration-and-delivery/create-credential-for-private-github-repository?language=en-US) for instructions how to create a GitHub personal access token if you don't have one.
+    > See [Create a Credential for a Private GitHub Repository](https://help.sap.com/docs/continuous-integration-and-delivery/sap-continuous-integration-and-delivery/create-credential-for-private-github-repository?language=en-US) for instructions on how to create a GitHub personal access token if you don't have one.
 
     <!-- border; size:540px --> ![Create GitHub credential](./create-github-credential.png)
 
-3. Choose the icon to add a new credential again and create a credential for Cloud Foundry.
+3. Choose the icon to add a new credential again and create a credential for Cloud Foundry:
 
     - Enter **cf** in the **Credential Name** field.
     - Choose **Basic Authentication** from the dropdown in the **Type** field.
@@ -201,12 +201,12 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 
     - Enter **webhook** in the **Credentials Name** field.
     - Click **Generate** next to the **Secret** field to create a secret.
-    - Copy the generated secret from the **Secret** field and save it. You'll need it in **Step 7: Create a GitHub webhook**.
+    - Copy the generated secret from the **Secret** field and save it. You need it in **Step 7: Create a GitHub webhook**.
     - Choose **Create**. 
 
     <!-- border; size:540px --> ![Create webhook](./create-webhook.png)
 
-4. Back in the **Add Repository** popup, choose **Add** to complete the addition of a repository.
+4. Go back in the **Add Repository** popup and choose **Add** to complete the addition of a repository.
 
     <!-- border; size:540px --> ![Complete repo addition](./complete-repo-add.png)
 
@@ -288,7 +288,7 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 
     - Paste the **incident-management** repository's payload URL that you copied from the **Webhook Creation** popup in the **Payload URL** field.
     - Select **application/json** from the dropdown in the **Content type** field. 
-    - Paste the secret you created in **Step 6: Add a CI/CD job** in the **Secret** field.
+    - Paste the secret that you created in **Step 6: Add a CI/CD job** in the **Secret** field.
     - Under **Which events would you like to trigger this webhook**, select **Just the push event**. 
     - Choose **Add webhook**.
 
@@ -302,7 +302,7 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 
     <!-- border; size:540px --> ![Run job](./run-job.png)
 
-3. Verify that a new tile appears in the Builds view. This tile should be marked as running.
+3. Verify that a new tile appears in the **Builds** view. This tile is marked as running.
 
     <!-- border; size:540px --> ![Build running](./build-running.png)
 
