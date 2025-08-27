@@ -17,13 +17,13 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-- You have got the Business Partner API from SAP S/4HANA Cloud and have extended the functionality of the Incident Management application. Follow the steps in the [Get the Business Partner API and Extend the Incident Management Application](remote-service-extend) tutorial.
+- You've got the Business Partner API from SAP S/4HANA Cloud and have extended the functionality of the Incident Management application. Follow the steps in the [Get the Business Partner API and Extend the Incident Management Application](remote-service-extend) tutorial.
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
 ### Create mock data for the new entities
 
-Since you already have an SQLite in-memory database that was automatically created in the previous step, let's now fill it in with some test data.
+Since you already have a SQLite in-memory database that was automatically created in the previous step, let's now fill it in with some test data.
 
 1. Navigate to the Incident Management application project and create a new folder **data** in the **srv/external** folder.
 
@@ -77,7 +77,7 @@ Since you already have an SQLite in-memory database that was automatically creat
     cds mock API_BUSINESS_PARTNER
     ```
 
-3. In the terminal, you should see the following output:
+3. In the terminal, you see the following output:
 
     ```cds
     [cds] - connect using bindings from: { registry: '~/.cds-services.json' }
@@ -95,7 +95,7 @@ Since you already have an SQLite in-memory database that was automatically creat
 
     > If the API_BUSINESS_PARTNER doesn't show up, remove the **.cds-services.json** file that resides in the user root folder, for example, **/home/user/.cds-services.json**.
 
-4. Open a new terminal and run `cds watch`. This will start the application connected to the running mock server.
+4. Open a new terminal and run `cds watch`. This command starts the application connected to the running mock server.
 
 5. Open a browser and open the server URL: `http://localhost:4004`.
 
@@ -109,7 +109,7 @@ Since you already have an SQLite in-memory database that was automatically creat
 
     <!-- border; size:540px --> ![Incident Management tile on the launchpage](./incident-management-tile.png)
 
-7. When you are prompted to authenticate, use the following credentials:
+7. When you're prompted to authenticate, use the following credentials:
 
     - Username: `alice`
     - Password: Empty / No Password
@@ -132,4 +132,4 @@ Since you already have an SQLite in-memory database that was automatically creat
 
     To test the scenario, the value help for customers loads data from the mock server while creating a new incident.
 
-By using a local mock server, you can easily test your implementation in a local environment. You find more details at [Local Mocking](https://cap.cloud.sap/docs/guides/using-services#local-mocking) in the CAP documentation.
+By using a local mock server, you can easily test your implementation in a local environment. Find more details at [Local Mocking](https://cap.cloud.sap/docs/guides/using-services#local-mocking) in the CAP documentation.

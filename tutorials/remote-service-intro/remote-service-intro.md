@@ -17,26 +17,26 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-- You have set up the Incident Management sample application. You can choose from two alternative options:
-    - Follow the tutorials in the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) group to develop the application from scratch. 
+- You've set up the Incident Management sample application. You can choose from two alternative options:
+    - Follow the tutorials in the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) group to develop the application from the start. 
     - Go to the Incident Management application GitHub repository directly and clone the application without going through the application development steps. See [Incident Management](https://github.com/cap-js/incidents-app/tree/beginner-tutorials).
-- You have deployed the Incident Management sample application in the SAP BTP, Cloud Foundry runtime or in the SAP BTP, Kyma runtime. To deploy the Incident Management sample application in the SAP BTP, Cloud Foundry runtime, follow the tutorials in the [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) group of tutorials. To deploy the Incident Management sample application in the SAP BTP, Kyma runtime, follow the tutorials in the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) group of tutorials.
+- You've deployed the Incident Management sample application in the SAP BTP, Cloud Foundry runtime or in the SAP BTP, Kyma runtime. To deploy the Incident Management sample application in the SAP BTP, Cloud Foundry runtime, follow the tutorials in the [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) group of tutorials. To deploy the Incident Management sample application in the SAP BTP, Kyma runtime, follow the tutorials in the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) group of tutorials.
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
 ### Overview
 
-In this tutorial, you will integrate the SAP S/4HANA Cloud Business Partner API to the Incident Management application.
+In this tutorial, you integrate the SAP S/4HANA Cloud Business Partner API to the Incident Management application.
 
-The Incident Management application helps call center support representatives process and manage customer incidents. A support representative (processor) receives a phone call from an existing customer and creates a new incident on behalf of the customer.
+The Incident Management application helps support representatives process and manage customer incidents. A support representative (processor) receives a phone call from an existing customer and creates a new incident on behalf of the customer.
 
-When the processor creates a new incident, they have to assign the incident to the respective customer. The value help of the **Customer** field provides the option to choose a customer from a list of customers. The Incident Management application fetches the list of customers from the SAP S/4HANA Cloud system. For this purpose, you will use the SAP S/4HANA Business Partner API.
+When the processor creates a new incident, they have to assign the incident to the respective customer. The value help of the **Customer** field provides the option to choose a customer from a list of customers. The Incident Management application fetches the list of customers from the SAP S/4HANA Cloud system. For this purpose, you use the SAP S/4HANA Business Partner API.
 
 <!-- border; size:540px --> ![Solution diagram](tutorials/remote-service-intro/Solution-Diagram-RS.png)
 
 ### Benefit from a sample application
 
-There is a sample application called Incident Management that you can test and play with. First, you go through the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) group of tutorials based on the Incident Management application step by step and explore the source code and the configuration tasks.
+There's a sample application called Incident Management that you can test and play with. First, you go through the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) group of tutorials based on the Incident Management application step by step and explore the source code and the configuration tasks.
 
 Alternatively, you can go to the Incident Management application GitHub repository directly and clone the application without going through the application development steps. See [Incident Management](https://github.com/cap-js/incidents-app/tree/beginner-tutorials).
 
@@ -46,9 +46,9 @@ Then, you go through the following tutorials to extend the Incident Management a
 
 CAP is a framework of languages, libraries, and tools for building enterprise-grade services and applications. It guides developers along proven best practices and a great wealth of out-of-the-box solutions to recurring tasks.
 
-Instead of delving into overly-technical disciplines, CAP lets you focus on your domain. This accelerates the development process and safeguards investments in a world of rapidly changing cloud technologies.
+Instead of delving into overly technical disciplines, CAP lets you focus on your domain. This approach accelerates the development process and safeguards investments in a world of rapidly changing cloud technologies.
 
-The CAP framework features a mix of proven and broadly-adopted open-source and SAP technologies, as highlighted in the following figure.
+The CAP framework features a mix of proven and broadly adopted open-source and SAP technologies, as highlighted in the following figure.
 
 ![CAP Overview](cap_overview.png)
 
@@ -61,7 +61,7 @@ On top of open-source technologies, CAP adds:
 
 SAP BTP is an integrated offering comprised of four technology portfolios: database and data management, application development and integration, analytics, and intelligent technologies. SAP BTP is built on a multi-cloud foundation, which lets you choose from different infrastructures and runtimes. SAP BTP is multilingual, with support for most major languages and support for development, testing, and production systems both inside an organization and to the larger public.
 
-SAP BTP is also constantly evolving. SAP continuously updates the services it provides, the platforms that run the custom code, and the infrastructure. This allows developers to focus on the custom code, and not to worry about hardware maintenance or software upgrades. SAP BTP offers you the ability to turn data into business value, compose end-to-end business processes, and build and extend SAP solutions and applications quickly.
+SAP BTP is also constantly evolving. SAP continuously updates the services that it provides, the platforms that run the custom code, and the infrastructure. This maintenance allows developers to focus on the custom code, and not to worry about hardware maintenance or software upgrades. SAP BTP offers you the ability to turn data into business value, compose end-to-end business processes, and build and extend SAP solutions and applications quickly.
 
 The central point of entry to the platform is the SAP BTP cockpit, where you can access your accounts and applications and manage all activities associated with them.
 
@@ -75,4 +75,4 @@ Some services used in these tutorials that are part of the free tier model for S
 
 The free tier model includes free service plans limited in scope and capacity for many services within SAP BTP. To learn more about and how to access free service plans, see [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans).
 
-Services that are not part of the free tier model for SAP BTP use the regular service plans.
+Services that aren't part of the free tier model for SAP BTP use the regular service plans.

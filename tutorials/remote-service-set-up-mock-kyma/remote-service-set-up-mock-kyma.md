@@ -1,6 +1,6 @@
 ---
 title: Install a Mock Server in the SAP BTP, Kyma Runtime
-description: This tutorial shows you how to install a mock server in the SAP BTP, Kyma runtime using Visual Stiduo Code and how to create a destination to the mock server in your SAP BTP subaccount.
+description: This tutorial shows you how to install a mock server in the SAP BTP, Kyma runtime using Visual Studio Code and how to create a destination to the mock server in your SAP BTP subaccount.
 parser: v2
 auto_validation: true
 time: 45
@@ -17,16 +17,16 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
-- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and make use of the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
 - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
-- You are an administrator of the global account in SAP BTP.
+- You're an administrator of the global account in SAP BTP.
 - You have a subaccount in SAP BTP to deploy the services and applications.
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
 ### Use a mock server instead of an SAP S/4HANA Cloud tenant
 
-If you don't have access to an SAP backend system (SAP ECC, SAP S/4HANA Cloud or an SAP on-premise system) but still need OData services with some data, you can use this [mock server application](https://github.com/SAP-samples/cloud-extension-ecc-business-process/blob/mock/README.md). It contains entities of SAP OData services with sample data.
+If you don't have access to an SAP back end system (SAP ECC, SAP S/4HANA Cloud or an SAP on-premise system) but still need OData services with some data, you can use this [mock server application](https://github.com/SAP-samples/cloud-extension-ecc-business-process/blob/mock/README.md). It contains entities of SAP OData services with sample data.
 
 You need to:
 
@@ -62,7 +62,7 @@ You need to:
 >
 >- Make sure you're logged in to your container registry.
 >
->- If you're using any device with a non-x86 processor (e.g. MacBook M1/M2) you need to instruct Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable using the command `export DOCKER_DEFAULT_PLATFORM=linux/amd64`. Check [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables) for more info.
+>- If you're using any device with a non-x86 processor (for example, MacBook M1/M2), you need to instruct Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable using the command `export DOCKER_DEFAULT_PLATFORM=linux/amd64`. Check [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables) for more info.
 
 5. Create the productive CAP build for the mock server application:
 
@@ -76,7 +76,7 @@ You need to:
     pack build <your-container-registry>/mockserver-srv:<image version> --path gen/srv --builder paketobuildpacks/builder-jammy-base --publish
     ```
 
-    > Make sure to replace `<your-container-registry>` with your docker server URL and keep in mind that `<image version>` should be a string. 
+    > Make sure to replace `<your-container-registry>` with your docker server URL and keep in mind that `<image version>` is a string. 
 
     > Looking for your docker server URL?
     
@@ -95,9 +95,9 @@ You need to:
     cds add helm --y
     ```
 
-    CAP provides a configurable Helm chart for Node.js applications. As a result from running the command, you'll see a newly-created **chart** folder in your project. The **chart** folder holds the helm configuration, including the **values.yaml** file where you'll add your container image settings later on.
+    CAP provides a configurable Helm chart for Node.js applications. As a result from running the command, you see a newly created **chart** folder in your project. The **chart** folder holds the helm configuration, including the **values.yaml** file where you add your container image settings later on.
 
-2. Make changes to the **chart/values.yaml** file:
+2. Change the **chart/values.yaml** file:
 
     1. Remove the lines `messaging:` and `serviceInstanceName: event-mesh` from the `srv.bindings` section:
 
@@ -133,7 +133,7 @@ You need to:
                 -o jsonpath='{.spec.servers[0].hosts[0]}'
         ```
 
-        Result should look like this:
+        The result looks like this:
 
         ```bash
         *.<xyz123>.kyma.ondemand.com
@@ -141,7 +141,7 @@ You need to:
 
         > `<xyz123>` is a placeholder for a string of characters that's unique for your cluster.
 
-    5. Add the result without the leading `*.` in the `domain` property to the **chart/values.yaml** file so that the URL of your CAP service can be generated:
+    5. In the **chart/values.yaml** file, add the result without the leading `*.` in the `domain` property so that the URL of your CAP service can be generated:
 
         ```yaml[2]
         global:
@@ -176,7 +176,7 @@ You need to:
     helm upgrade --install mock ./gen/chart -n incident-management
     ```
 
-    > The mock server must be deployed in the same namespace as your application. If you've followed the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) group of tutorial, you should have created a namespace **incident-management** already. In case you haven't created a namespace yet, run the following command to create it now:
+    > The mock server must be deployed in the same namespace as your application. If you've followed the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) group of tutorial, you've created a namespace **incident-management** already. In case you haven't created a namespace yet, run the following command to create it now:
     
     > ```bash
     > kubectl create namespace incident-management
@@ -198,7 +198,7 @@ You need to:
 
 ### Create a destination to the mock server
 
-3. Go back to the SAP BTP cockpit, navigate to your subaccount overview and choose **Connectivity** &rarr; **Destination**. Then, choose **Create Destination**.
+3. Go back to the SAP BTP cockpit, navigate to your subaccount overview, and choose **Connectivity** &rarr; **Destination**. Then, choose **Create Destination**.
 
 1. Enter the following values:
 
@@ -212,13 +212,13 @@ You need to:
 
 3. Save your settings.
 
-4. Choose **Check Connection**. You should get a `200 OK` message.
+4. Choose **Check Connection**. You get a `200 OK` message.
 
     <!-- border; size:540px --> ![Destination Configuration](./destination-configuration.png)
 
 ### Test the mock server
 
-1. Paste the application route you have copied in the address bar of the browser.
+1. Paste the application route that you've copied in the address bar of the browser.
 
 2. Verify that there are a few API endpoints that display data.
 
