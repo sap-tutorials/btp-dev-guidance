@@ -14,14 +14,14 @@ author_profile: https://github.com/slavipande
 ## You will learn
 
 - How to initialize a repository in VS Code.
-- How to set up your CI/CD pipeline
+- How to set up your CI/CD pipeline.
 
 ## Prerequisites
 
-- You have prepared your application for deployment in SAP BTP, Kyma runtime. Follow the steps in the [Deploy in SAP BTP, Kyma Runtime](deploy-to-kyma) tutorial that is part of the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) tutorial group.
-- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and make use of the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You've prepared your application for deployment in SAP BTP, Kyma runtime. Follow the steps in the [Deploy in SAP BTP, Kyma Runtime](deploy-to-kyma) tutorial that is part of the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) tutorial group.
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
 - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
-- You are an administrator of the global account in SAP BTP.
+- You're an administrator of the global account in SAP BTP.
 - You have a subaccount in SAP BTP to deploy the services and applications.
 - You have one of the following browsers that are supported for working in SAP Business Application Studio:
     - Mozilla Firefox
@@ -32,11 +32,11 @@ author_profile: https://github.com/slavipande
 
 ### Create a repository
 
-To be able to perform the steps for setting up a CI/CD pipeline, you will need a public repository. Currently, SAP Continuous Integration and Delivery supports [GitHub](https://github.com/) and [Bitbucket](https://bitbucket.org/) repositories.
+To be able to perform the steps for setting up a CI/CD pipeline, you need a public repository. Currently, SAP Continuous Integration and Delivery supports [GitHub](https://github.com/) and [Bitbucket](https://bitbucket.org/) repositories.
 
-For real application development, you need to consider the right place for your repository, of course.
+For real application development, you need to consider the right place for your repository.
 
-In this example, we'll be creating a repository on GitHub. You'll need a [GitHub](https://github.com/) account for this step. Go ahead and create one if you don't have it yet.
+In this example, we're creating a repository on GitHub. You need a [GitHub](https://github.com/) account for this step. Go ahead and create one if you don't have it yet.
 
 1. Create a new GitHub repository in your GitHub account.
 
@@ -46,7 +46,7 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 
     <!-- border; size:540px --> ![Create repository](./create-repo.png)
 
-3. You'll be directed to the **Quick Setup** page of your new repository. Make sure to copy the URL of the repository as you'll need it in the next steps.
+3. You're directed to the **Quick Setup** page of your new repository. Make sure to copy the URL of the repository as you'll need it in the next steps.
 
     <!-- border; size:540px --> ![Quick Setup](./quick-setup.png)
 
@@ -67,7 +67,7 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
     mta.yaml
     ```
     
-    > If **.gitignore** doesn't exist, create it and paste the code snippet above in the newly-created file.
+    > If **.gitignore** doesn't exist, create it and paste the preceding code snippet in the newly created file.
 
 3. In VS Code, navigate to **Source Control** on the left and choose **Initialize Repository**.
 
@@ -85,11 +85,11 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 
     <!-- border; size:540px --> ![Provide remote name](./provide-remote-name.png)
 
-7. Stage your changes, add a commit message and choose **Publish Branch**.
+7. Stage your changes, add a commit message, and choose **Publish Branch**.
 
     <!-- border; size:540px --> ![Publish branch](./publish-branch.png)
 
-8. Provide your GitHub username and password when prompted. When the changes are pushed, you'll be able to see your project in your GitHub repository.
+8. Provide your GitHub username and password when prompted. When the changes are pushed, you see your project in your GitHub repository.
 [OPTION END]
 
 [OPTION BEGIN [Java]]
@@ -105,7 +105,7 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
     mta.yaml
     ```
     
-    > If **.gitignore** doesn't exist, create it and paste the code snippet above in the newly-created file.
+    > If **.gitignore** doesn't exist, create it and paste the preceding code snippet in the newly created file.
 
 3. In VS Code, navigate to **Source Control** on the left and choose **Initialize Repository**.
 
@@ -123,11 +123,11 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 
     <!-- border; size:540px --> ![Provide remote name](./provide-remote-name.png)
 
-7. Stage your changes, add a commit message and choose **Publish Branch**.
+7. Stage your changes, add a commit message, and choose **Publish Branch**.
 
     <!-- border; size:540px --> ![Publish branch](./publish-branch.png)
 
-8. Provide your GitHub username and password when prompted. When the changes are pushed, you'll be able to see your project in your GitHub repository.
+8. Provide your GitHub username and password when prompted. When the changes are pushed, you see your project in your GitHub repository.
 [OPTION END]
 
 ### Enable SAP Continuous Integration and Delivery service
@@ -149,7 +149,7 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 
 5. In your SAP BTP subaccount, choose **Security** &rarr; **Role Collections** in the left-hand pane.
 
-6. Choose role collection **CICD Service Administrator**.
+6. Choose the role collection **CICD Service Administrator**.
 
 7.  Choose **Edit**.
 
@@ -165,16 +165,16 @@ In this example, we'll be creating a repository on GitHub. You'll need a [GitHub
 
     You've assigned the **CICD Service Administrator** role collection to your user.
 
-> You might need to log out and log back in to make sure your new role collection is taken into account.
+> Log out and log back in to make sure your new role collection is considered.
     
 > See [Initial Setup](https://help.sap.com/docs/CONTINUOUS_DELIVERY/99c72101f7ee40d0b2deb4df72ba1ad3/719acaf61e4b4bf0a496483155c52570.html) for more details on how to enable the service.
  
 
 ### Create a Service Account
 
-In order to run the pipeline using the SAP Continuous Integration and Delivery service, you need to create a service account. This is a non-human account that provides a distinct identity in your Kyma cluster. The service account will authenticate your CI/CD pipeline to access your Kyma cluster. See [Service Accounts](https://kubernetes.io/docs/concepts/security/service-accounts/).
+To run the pipeline using the SAP Continuous Integration and Delivery service, you need to create a service account. The service account is a non-human account that provides a distinct identity in your Kyma cluster. The service account authenticates your CI/CD pipeline to access your Kyma cluster. See [Service Accounts](https://kubernetes.io/docs/concepts/security/service-accounts/).
 
-1. Navigate to your subaccount and choose **Link to dashboard** under the **Kyma Environment** tab to open Kyma dashboard.
+1. Navigate to your subaccount and choose **Link to dashboard** under the **Kyma Environment** tab to open the Kyma dashboard.
 
       <!-- border; size:540px --> ![Open Kyma console](./kyma-console.png)
 
@@ -202,9 +202,9 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
 
     <!-- border; size:540px --> ![Generate token request](./generate-token-request.png)
 
-    This will generate a set of configurations that represent the **kubeconfig** file of the service account.
+    This action generates a set of configurations that represent the **kubeconfig** file of the service account.
 
-8. Choose a longer period from the dropdown in the **Expiration seconds** field and copy the **TokenRequest** value. You'll need it in the steps below. 
+8. Choose a longer period from the dropdown in the **Expiration seconds** field and copy the **TokenRequest** value. You need it following in the steps. 
 
     <!-- border; size:540px --> ![Copy token request](./copy-token-request.png)
 
@@ -250,7 +250,7 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
     - Enter **github** in the **Credential Name** field.
     - Select **Basic Authentication** from the dropdown in the **Type** field.
     - Enter your GitHub user name in the **Username** field.
-    - Enter your GitHub password (or GitHub access token if you have created one) in the **Password** field.
+    - Enter your GitHub password (or GitHub access token if you've created one) in the **Password** field.
     - Choose **Create**. 
 
     <!-- border; size:540px --> ![Create GitHub credential](./create-github-credential.png)
@@ -259,7 +259,7 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
 
     - Enter **kube-config** in the **Credentials Name** field.
     - Select **Kubernetes Configuration** from the dropdown in the **Type** field.
-    - Paste the **TokenRequest** value that you copied in Step 4 above in the **Content** field.
+    - Paste the **TokenRequest** value that you copied earlier in Step 4 in the **Content** field.
     - Choose **Create**.
 
     <!-- border; size:540px --> ![Create kube-config credential](./create-kube-config-credential.png)
@@ -276,17 +276,17 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
 
     >Here's how to get your container registry credentials in the required format:
     >
-    >1. Run `docker --config /tmp login docker.io` in a terminal to login to your container registry.
+    >1. Run `docker --config /tmp login docker.io` in a terminal to log in to your container registry.
     >
-    >1. Run `cat /tmp/config.json` to print your container registry credentials. This is how the output should look like this:
+    >1. Run `cat /tmp/config.json` to print your container registry credentials. The output looks like this:
     >
     >       ![Container registry credentials](./container-registry-credentials-print1.png)
     >
     >2. Open the `/tmp/config.json` in a text editor and delete the `credsStore` key-value pair. 
     >
-    >3. Run the `docker --config /tmp login docker.io` command and provide your container registry login credentials.
+    >3. Run the `docker --config /tmp login docker.io` command and provide your login credentials for your container registry.
     >
-    >4. Print your container registry credentials again with `cat /tmp/config.json`. This is how the output should look like now:
+    >4. Print your container registry credentials again with `cat /tmp/config.json`. The output look like this now:
     >
     >       ![Container registry credentials](./container-registry-credentials-print2.png)
 
@@ -436,7 +436,7 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
 
 7. Enter **cds-build** in the **Script** field.
 
-8. In the **CNB Build** section, enter the URL of your container registry in the **Container Registry URL** field (for example, https://index.docker.io if you are using Docker Hub).
+8. In the **CNB Build** section, enter the URL of your container registry in the **Container Registry URL** field (for example, https://index.docker.io if you're using Docker Hub).
 
 9. Open the value help for the **Container Registry Credential** field and choose **container-registry-credentials**.
 
@@ -532,7 +532,7 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
 
 6. Select **Java 21** from the dropdown in the **Build Tool Version** field. 
 
-7. In the **CNB Build** section, enter the URL of your container registry in the **Container Registry URL** field (for example, https://index.docker.io if you are using Docker Hub).
+7. In the **CNB Build** section, enter the URL of your container registry in the **Container Registry URL** field (for example, https://index.docker.io if you're using Docker Hub).
 
 8. Open the value help for the **Container Registry Credential** field and choose **container-registry-credentials**.
 
@@ -570,7 +570,7 @@ In order to run the pipeline using the SAP Continuous Integration and Delivery s
 
     <!-- border; size:540px --> ![Run job](./run-job.png)
 
-3. Verify that a new tile appears in the Builds view. This tile should be marked as running.
+3. Verify that a new tile appears in the **Builds** view. This tile is marked as running.
 
     <!-- border; size:540px --> ![Build running](./build-running.png)
 

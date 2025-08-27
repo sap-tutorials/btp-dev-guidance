@@ -13,19 +13,19 @@ author_profile: https://github.com/slavipande
 
 ## You will learn
 
-- How to subscribe to SAP Build Work Zone, standard edition
-- How to assign the SAP Build Work Zone, standard edition role collection to your user
-- How to integrate your application with SAP Build Work Zone, standard edition
+- How to subscribe to SAP Build Work Zone, standard edition.
+- How to assign the SAP Build Work Zone, standard edition role collection to your user.
+- How to integrate your application with SAP Build Work Zone, standard edition.
 
 ## Prerequisites
 
-- You have created a role collection and assigned it to a user. Follow the steps in the [Assign the User Roles](user-role-assignment) tutorial that is part of the [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) tutorial group.
-- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and make use of the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You've created a role collection and assigned it to a user. Follow the steps in the [Assign the User Roles](user-role-assignment) tutorial that is part of the [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) tutorial group.
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
 - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
-- You are an administrator of the global account in SAP BTP.
+- You're an administrator of the global account in SAP BTP.
 - You have a subaccount in SAP BTP to deploy the services and applications.
 - You have a tenant of SAP Cloud Identity Services. See [Get Your Tenant](https://help.sap.com/docs/cloud-identity-services/cloud-identity-services/get-your-tenant) for details how to get a tenant of SAP Cloud Identity Services if you don't have one yet.
-- You have established trust between your tenant of SAP Cloud Identity Services and your SAP BTP account. This will allow you to use your SAP Cloud Identity Services tenant as an identity provider or a proxy to your own identity provider hosting your business users. See [Establish Trust and Federation Between SAP Authorization and Trust Management Service and SAP Cloud Identity Services](https://help.sap.com/docs/btp/sap-business-technology-platform/establish-trust-and-federation-between-uaa-and-identity-authentication).
+- You've established trust between your tenant of SAP Cloud Identity Services and your SAP BTP account. This established trust allows you to use your SAP Cloud Identity Services tenant as an identity provider or a proxy to your own identity provider hosting your business users. See [Establish Trust and Federation Between SAP Authorization and Trust Management Service and SAP Cloud Identity Services](https://help.sap.com/docs/btp/sap-business-technology-platform/establish-trust-and-federation-between-uaa-and-identity-authentication).
 - You have one of the following browsers that are supported for working in SAP Business Application Studio:
     - Mozilla Firefox
     - Google Chrome
@@ -63,7 +63,7 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
     You've assigned the **Launchpad_Admin** role collection to your user.
 
-> You might need to log out and log back in to make sure your new role collection is taken into account.
+> Log out and log back in to make sure your new role collection is considered.
 
 > See section [Initial Setup](https://help.sap.com/viewer/8c8e1958338140699bd4811b37b82ece/Cloud/en-US/fd79b232967545569d1ae4d8f691016b.html) in the SAP Build Work Zone, standard edition's documentation for more details.
 
@@ -98,13 +98,13 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
     <!-- border; size:540px --> ![WorkZone2](./integrate_launchpad_2.png)
 
-7. In the items table, set checkmark for the app **Incidents** and choose the button **Add**.
+7. In the items table, set the checkmark for the app **Incidents** and choose the button **Add**.
 
     <!-- border; size:540px --> ![WorkZone3](./integrate_launchpad_3.png)
 
 #### Create a group
 
-1. Go back to the **Content Manager**, choose **Create** &rarr; **Group**.
+1. Go back to the **Content Manager** and choose **Create** &rarr; **Group**.
 
     <!-- border; size:540px --> ![WorkZone4](./integrate_launchpad_4.png)
 
@@ -136,7 +136,7 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
     <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_71.png)
 
-18. Now, you are forwarded to your created site.
+18. Now, you're forwarded to your created site.
 
 [OPTION END]
 
@@ -207,7 +207,7 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 
     3. Delete `backendDestinations:` and its properties.
 
-    4. Under `env`, add the following:.
+    4. Under `env`, add the following:
 
         ```yaml[2-3]
           env:
@@ -325,7 +325,7 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
         --publish
     ```
 
-    > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` should be a string. 
+    > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` is a string. 
     
     > Looking for your docker server URL?
     
@@ -351,13 +351,13 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
     --set-file xsuaa.jsonParameters=xs-security.json
     ```
 
-    > With the ***helm upgrade --install*** command you can install a new chart as well as upgrade an existing chart.
+    > With the ***helm upgrade --install*** command, you can install a new chart as well as upgrade an existing chart.
 
 #### Create destinations
 
-When the application is successfully deployed, you have to configure design and runtime destinations. This enables SAP Build Work Zone, standard edition to configure sites with the application configurations like groups, roles, categories, and so on.
+When the application is successfully deployed, you have to configure design and runtime destinations. Design and runtime destinations enable SAP Build Work Zone, standard edition to configure sites with the application configurations like groups, roles, categories, and so on.
 
-1. Create runtime destination:
+1. Create a runtime destination:
 
     1. Navigate to your subaccount and choose **Connectivity** &rarr; **Destinations** on the left.
 
@@ -381,7 +381,7 @@ When the application is successfully deployed, you have to configure design and 
 
           <!-- border; size:540px --> ![Destination incident-management-rt Configuration](./destination-rt-configuration.png)
 
-    4. Choose **Check Connection**. You should get a message `Connection to "incident-management-rt" established. Response returned: "400: Bad Request"`.
+    4. Choose **Check Connection**. You get a message `Connection to "incident-management-rt" established. Response returned: "400: Bad Request"`.
 
 
 2. Create a service binding in your Kyma cluster:
@@ -413,7 +413,7 @@ When the application is successfully deployed, you have to configure design and 
 
           <!-- border; size:540px --> ![Decode Secret](./decode-secret.png) 
     
-    6. Keep the decoded details at hand, you will need them in the next step.
+    6. Keep the decoded details at hand, you need them in the next step.
 
 
 2. Create design-time destination:
@@ -456,7 +456,7 @@ When the application is successfully deployed, you have to configure design and 
 
     3. Save your settings.
 
-    4. Choose **Check Connection**. You should get a message `Connection to "incident-management_cdm" established. Response returned: "401: Unauthorized"`.
+    4. Choose **Check Connection**. You get a message `Connection to "incident-management_cdm" established. Response returned: "401: Unauthorized"`.
 
         <!-- border; size:540px --> ![Destination incident-management_cdm_ Configuration](./destination-cdm-configuration.png)
 
@@ -498,11 +498,11 @@ When the application is successfully deployed, you have to configure design and 
 
     <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_7.png)
 
-17. In the **Site Name** field enter **Incident Management Site** and choose **Create**.
+17. In the **Site Name** field, enter **Incident Management Site** and choose **Create**.
 
     <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_71.png)
 
-18. When you are forwarded to your created site, choose **Role Assignments** and then choose **Edit**.
+18. When you're forwarded to your created site, choose **Role Assignments** and then choose **Edit**.
 
     <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_72.png)
 
@@ -512,7 +512,7 @@ When the application is successfully deployed, you have to configure design and 
 
 #### Assign CDM role collection
 
-You need to assign your user to the **~cdm_defaultRole** role collection, so you are able to see the application tile when accessing the **Incident Management Site** in SAP Build Work Zone, standard edition later on.
+You need to assign your user to the **~cdm_defaultRole** role collection, so you're able to see the application tile when accessing the **Incident Management Site** in SAP Build Work Zone, standard edition later on.
 
 1. Open your subaccount and navigate to **Security** &rarr; **Users**.
 
@@ -524,7 +524,7 @@ You need to assign your user to the **~cdm_defaultRole** role collection, so you
 
     You've assigned the **~cdm_defaultRole** role collection to your user.
 
-> You might need to log out and log in again to make sure your new role collection is taken into account.
+> Log out and log in again to make sure your new role collection is considered.
 
 [OPTION END]
 
@@ -542,10 +542,10 @@ You need to assign your user to the **~cdm_defaultRole** role collection, so you
 
     <!-- border; size:540px --> ![WorkZone10](./integrate_launchpad_10.png)
 
-    You should be able to see the list report page.
+    You see the list report page.
 
     <!-- border; size:540px --> ![WorkZone11](./integrate_launchpad_11.png)
 
 ### Summary
 
-Congratulations! You now have finished the development of your application and you have integrated SAP Build Work Zone, standard edition to have one central entry point to show all of your SAP BTP applications.
+Congratulations! You now have finished the development of your application and you've integrated SAP Build Work Zone, standard edition to have one central entry point to show all of your SAP BTP applications.

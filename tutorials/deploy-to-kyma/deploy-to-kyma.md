@@ -14,23 +14,23 @@ author_profile: https://github.com/slavipande
 
 ## You will learn
 
-- How to deploy your CAP application in SAP BTP, Kyma runtime
+- How to deploy your CAP application in SAP BTP, Kyma runtime.
 
 ## Prerequisites
 
-- You have configured the respective entitlements, enabled the Kyma runtime in your subaccount, and created an SAP HANA Cloud service instance in the SAP BTP cockpit. Follow the steps in the [Prepare for Deployment in the SAP BTP, Kyma Runtime](prepare-btp-kyma) tutorial that is part of the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) tutorial group.
-- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and make use of the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You've configured the respective entitlements, enabled the Kyma runtime in your subaccount, and created an SAP HANA Cloud service instance in the SAP BTP cockpit. Follow the steps in the [Prepare for Deployment in the SAP BTP, Kyma Runtime](prepare-btp-kyma) tutorial that is part of the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) tutorial group.
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
 - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
-- You are an administrator of the global account in SAP BTP.
+- You're an administrator of the global account in SAP BTP.
 - You have a subaccount in SAP BTP to deploy the services and applications.
 - You have a tenant of SAP Cloud Identity Services. See [Get Your Tenant](https://help.sap.com/docs/cloud-identity-services/cloud-identity-services/get-your-tenant) for details how to get a tenant of SAP Cloud Identity Services if you don't have one yet.
-- You have established trust between your tenant of SAP Cloud Identity Services and your SAP BTP account. This will allow you to use your SAP Cloud Identity Services tenant as an identity provider or a proxy to your own identity provider hosting your business users. See [Establish Trust and Federation Between SAP Authorization and Trust Management Service and SAP Cloud Identity Services](https://help.sap.com/docs/btp/sap-business-technology-platform/establish-trust-and-federation-between-uaa-and-identity-authentication).
+- You've established trust between your tenant of SAP Cloud Identity Services and your SAP BTP account. This established trust allows you to use your SAP Cloud Identity Services tenant as an identity provider or a proxy to your own identity provider hosting your business users. See [Establish Trust and Federation Between SAP Authorization and Trust Management Service and SAP Cloud Identity Services](https://help.sap.com/docs/btp/sap-business-technology-platform/establish-trust-and-federation-between-uaa-and-identity-authentication).
 - You have one of the following browsers that are supported for working in SAP Business Application Studio:
     - Mozilla Firefox
     - Google Chrome
     - Microsoft Edge
- - For Windows, you'll need Chocolatey. This is a package manager that will speed up and ease installation of the tools in this tutorial. See how to install Chocolatey in [Setup/Install](https://docs.chocolatey.org/en-us/choco/setup).
- - You have prepared a container registry and you've logged in to the container registry through your CLI. A container registry is a repo where you can push your Docker images. SAP BTP doesn't currently provide a container registry. You can use any container registry offering as long as it can be reached from public Internet.
+ - For Windows, you need Chocolatey. Chocolatey is a package manager that speeds up and eases installation of the tools in this tutorial. See how to install Chocolatey in [Setup/Install](https://docs.chocolatey.org/en-us/choco/setup).
+ - You've prepared a container registry and you've logged in to the container registry through your CLI. A container registry is a repo where you can push your Docker images. SAP BTP doesn't currently provide a container registry. You can use any container registry offering as long as it can be reached from the public Internet.
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
@@ -38,7 +38,7 @@ author_profile: https://github.com/slavipande
 
 SAP BTP, Kyma runtime is a cloud-native application runtime that combines the power of Kubernetes with a set of best-in-class tools and open-source components that empower you to develop, run, and operate secure and scalable cloud-native applications. Detailed information is available at [Kyma Environment](https://help.sap.com/docs/btp/sap-business-technology-platform/kyma-environment).
 
-The Kyma runtime for SAP BTP's files are provided as a container image. In addition, since the containers run on Kubernetes, their configuration is described by Kubernetes resources.
+The files of the SAP BTP, Kyma runtime are provided as a container image. In addition, since the containers run on Kubernetes, their configuration is described by Kubernetes resources.
 
 Hence, you need two kinds of artifacts to run applications on Kubernetes:
 
@@ -58,7 +58,7 @@ brew install kubectl
 ```Shell/Bash
 kubectl version --client
 ```
-You should see a version number.
+You see a version number.
 [OPTION END]
 
 [OPTION BEGIN [Windows]]
@@ -72,7 +72,7 @@ choco install kubernetes-cli
 ```Shell/Bash
 kubectl version --client
 ```
-You should see something like:
+You see something like:
 `Client Version: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.3", GitCommit:"1e11e4a2108024935ecfcb2912226cedeafd99df", GitTreeState:"clean", BuildDate:"2020-10-14T12:50:19Z", GoVersion:"go1.15.2", Compiler:"gc", Platform:"windows/amd64"}`
 [OPTION END]
 
@@ -144,7 +144,7 @@ There's a multitude of options to install helm. You can see the full list at [In
 
 You can install helm using chocolatey.
 
-1. To install helm run the following command:
+1. To install helm, run the following command:
 ```Shell/Bash
 choco install kubernetes-helm
 ```
@@ -152,7 +152,7 @@ choco install kubernetes-helm
 ```Shell/Bash
 helm version
 ```
-You should see something like `version.BuildInfo{Version:"v3.8.0", GitCommit:"d14138609b01886f544b2025f5000351c9eb092e", GitTreeState:"clean", GoVersion:"go1.17.5"}`.
+You see something like `version.BuildInfo{Version:"v3.8.0", GitCommit:"d14138609b01886f544b2025f5000351c9eb092e", GitTreeState:"clean", GoVersion:"go1.17.5"}`.
 [OPTION END]
 
 
@@ -194,7 +194,7 @@ Follow the instructions to install the [pack CLI](https://buildpacks.io/docs/too
 
 [OPTION BEGIN [Docker Desktop]]
 
-Kyma runs on containers. Hence, for this tutorial, you'll need an application that enables you to manage (build, push, pull, and run) container images on your desktop and a docker-compatible command line interface. We provide two examples below - Docker Desktop and Rancher Desktop. You can pick one of them or any other app suitable for the purpose.
+Kyma runs on containers. Hence, for this tutorial, you need an application that enables you to manage (build, push, pull, and run) container images on your desktop and a docker-compatible command-line interface. We provide two examples - Docker Desktop and Rancher Desktop. You can pick one of them or any other app suitable for the purpose.
 
 
 * **macOS**: Download the installer from [Install Docker Desktop on Mac](https://docs.docker.com/desktop/mac/install/) and follow the instructions to install and set up Docker Desktop.
@@ -204,7 +204,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 [OPTION END]
 [OPTION BEGIN [Rancher Desktop]]
 
-Kyma runs on containers. Hence, for this tutorial, you'll need an application that enables you to manage (build, push, pull, and run) container images on your desktop and a docker-compatible command line interface. We provide two examples below - Docker Desktop and Rancher Desktop. You can pick one of them or any other app suitable for the purpose.
+Kyma runs on containers. Hence, for this tutorial, you need an application that enables you to manage (build, push, pull, and run) container images on your desktop and a docker-compatible command-line interface. We provide two examples - Docker Desktop and Rancher Desktop. You can pick one of them or any other app suitable for the purpose.
 
 
 * **macOS**:
@@ -235,7 +235,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
 ### Download and set up the project locally
 
-1. Skip this step if you cloned the application from the [Incident Management application GitHub repository](https://github.com/cap-js/incidents-app/tree/beginner-tutorials) without going through the application development steps. Perform this step only in case you have developed the application from scratch following the tutorials in the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) group.
+1. Skip this step if you cloned the application from the [Incident Management application GitHub repository](https://github.com/cap-js/incidents-app/tree/beginner-tutorials) without going through the application development steps. Perform this step only in case you've developed the application from the start following the tutorials in the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) group.
 
     1. In SAP Business Application Studio, choose the icon to download dev space content.
 
@@ -246,7 +246,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
     2. Extract the **incident-management** folder from the downloaded archive.
 
 
-3. Open a command line window in the folder where your application resides (for example, **incident-management** if developed from scratch or **incidents-app** if cloned from GitHub) and run the following command to open the project in VS Code:
+3. Open a command-line window in the folder where your application resides (for example, **incident-management** if developed from the start or **incidents-app** if cloned from GitHub) and run the following command to open the project in VS Code:
 
     ```bash
     code .
@@ -257,7 +257,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 [OPTION BEGIN [Node.js]]
 >- Make sure you're logged in to your container registry.
 >
->- If you're using any device with a non-x86 processor (e.g. MacBook M1/M2) you need to instruct Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable using the command `export DOCKER_DEFAULT_PLATFORM=linux/amd64`. Check [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables) for more info.
+>- If you're using any device with a non-x86 processor (for example, MacBook M1/M2), you need to instruct Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable using the command `export DOCKER_DEFAULT_PLATFORM=linux/amd64`. Check [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables) for more info.
  
 #### Build the CAP Node.js and the database image
 
@@ -273,7 +273,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
     npm install
     ```
 
-    This will install required dependencies and update the **package-lock.json** file of your project.
+    This command installs the required dependencies and updates the **package-lock.json** file of your project.
 
 3. Create the productive CAP build for your application: 
 
@@ -292,7 +292,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
         --publish
     ```
 
-    > Make sure to replace `<your-container-registry>` with your docker server URL and keep in mind that `<image version>` should be a string. 
+    > Make sure to replace `<your-container-registry>` with your docker server URL and keep in mind that `<image version>` is a string. 
 
     > Looking for your docker server URL?
     
@@ -315,7 +315,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
         --publish
     ```
     
-    > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` should be a string. 
+    > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` is a string. 
 
     > Looking for your docker server URL?
     
@@ -369,7 +369,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
     }
     ```
 
-    > In case the **xs-app.json** already exists, replace its content with the snippet above.
+    > In case the **xs-app.json** already exists, replace its content with the preceding snippet.
 
 4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter.
 
@@ -398,7 +398,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
     }
     ```
 
-    This is needed as the dataSource URIs must be relative to the base URL, which means there is no need for a slash as the first character.
+    Removing the leading `/` is needed as the dataSource URIs must be relative to the base URL, which means there's no need for a slash as the first character.
 
     Check [Accessing Business Service UI](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL) for more information.
 
@@ -475,7 +475,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
     npm install && npm run package
     ```
 
-    This will build and copy the archive **nsincidents.zip** inside the **ui-resources/resources** folder.
+    This command builds and copies the archive **nsincidents.zip** inside the **ui-resources/resources** folder.
 
 9.  In the VS Code terminal, navigate back to the root folder of your project:
 
@@ -492,7 +492,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
         --publish
     ```
 
-    > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` should be a string. 
+    > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` is a string. 
     
     > Looking for your docker server URL?
     
@@ -509,7 +509,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
 
 >- Make sure you're logged in to your container registry.
 >
->- If you're using any device with a non-x86 processor (e.g. MacBook M1/M2) you need to instruct Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable using the command `export DOCKER_DEFAULT_PLATFORM=linux/amd64`. Check [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables) for more info.
+>- If you're using any device with a non-x86 processor (for example, MacBook M1/M2), you need to instruct Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable using the command `export DOCKER_DEFAULT_PLATFORM=linux/amd64`. Check [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables) for more info.
  
 #### Build the CAP Java and the database image
 
@@ -519,7 +519,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
     npm install
     ```
 
-    This will install required dependencies and update the **package-lock.json** file of your project.
+    This command installs the required dependencies and updates the **package-lock.json** file of your project.
 
 2. Create the productive CAP build for your application:
 
@@ -554,7 +554,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
         --publish
     ```
 
-    > Make sure to replace `<your-container-registry>` with your docker server URL and keep in mind that `<image version>` should be a string. 
+    > Make sure to replace `<your-container-registry>` with your docker server URL and keep in mind that `<image version>` is a string. 
 
     > Looking for your docker server URL?
     
@@ -578,7 +578,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
         --publish
     ```
     
-    > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` should be a string. 
+    > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` is a string. 
 
     > Looking for your docker server URL?
     
@@ -632,7 +632,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
     }
     ```
 
-    > In case the **xs-app.json** already exists, replace its content with the snippet above.
+    > In case the **xs-app.json** already exists, replace its content with the preceding snippet.
 
 4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter.
 
@@ -661,7 +661,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
     }
     ```
 
-    This is needed as the dataSource URIs must be relative to the base URL, which means there is no need for a slash as the first character.
+    Removing the leading `/` is needed as the dataSource URIs must be relative to the base URL, which means there's no need for a slash as the first character.
 
     Check [Accessing Business Service UI](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL) for more information.
 
@@ -704,7 +704,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
     npm install && npm run package
     ```
 
-    This will build and copy the archive **nsincidents.zip** inside the **ui-resources/resources** folder.
+    This command builds and copies the archive **nsincidents.zip** inside the **ui-resources/resources** folder.
 
 8.  In the VS Code terminal, navigate back to the root folder of your project:
 
@@ -721,7 +721,7 @@ Kyma runs on containers. Hence, for this tutorial, you'll need an application th
         --publish
     ```
 
-    > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` should be a string. 
+    > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` is a string. 
     
     > Looking for your docker server URL?
     
@@ -745,7 +745,7 @@ CAP provides a configurable Helm chart for Node.js applications.
     cds add helm --y
     ```
 
-    As a result, you'll see a newly-created **chart** folder in your project. The **chart** folder holds the helm configuration, including the **values.yaml** file where you'll add your container image settings later on.
+    As a result, you see a newly created **chart** folder in your project. The **chart** folder holds the helm configuration, including the **values.yaml** file where you add your container image settings later on.
 
 2. Add your container image settings to your **chart/values.yaml** file:
 
@@ -759,9 +759,9 @@ CAP provides a configurable Helm chart for Node.js applications.
         tag: <image-version>
     ```
 
-    > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` should be a string. 
+    > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` is a string. 
 
-    > If you'd like to overwrite the global image version, you can add a tag for each image. Here's an example:
+    > If you want to overwrite the global image version, you can add a tag for each image. Here's an example:
     >
     > ```yaml[4]
     > srv:
@@ -777,7 +777,7 @@ CAP provides a configurable Helm chart for Node.js applications.
             -o jsonpath='{.spec.servers[0].hosts[0]}'
     ```
 
-    Result should look like this:
+    The result looks like this:
 
     ```bash
     *.<xyz123>.kyma.ondemand.com
@@ -809,11 +809,11 @@ CAP provides a configurable Helm chart for Node.js applications.
     kubectl label namespace incident-management istio-injection=enabled
     ```
 
-3. Make sure your SAP HANA Cloud instance is running. Free tier HANA instances are stopped overnight.
+3. Make sure that your SAP HANA Cloud instance is running. Free tier HANA instances are stopped overnight.
 
-    > Your SAP HANA Cloud service instance will be automatically stopped overnight, according to the server region time zone. That means you need to restart your instance every day before you start working with it.
+    > Your SAP HANA Cloud service instance is automatically stopped overnight, according to the time zone of the region where the server is located. That means you need to restart your instance every day before you start working with it.
     >
-    > You can either use SAP BTP cockpit or the terminal in the SAP Business Application Studio to restart the stopped instance:
+    > You can either use the SAP BTP cockpit or the terminal in the SAP Business Application Studio to restart the stopped instance:
     >
     > ```bash
     > cf update-service incident-management -c '{"data":{"serviceStopped":false}}'
@@ -826,11 +826,11 @@ CAP provides a configurable Helm chart for Node.js applications.
     --set-file xsuaa.jsonParameters=xs-security.json
     ```
 
-    This installs the Helm chart from the **chart** folder with the release name **incident-management** in the namespace **incident-management**.
+    This command installs the Helm chart from the **chart** folder with the release name **incident-management** in the namespace **incident-management**.
 
-    > With the ***helm upgrade --install*** command you can install a new chart as well as upgrade an existing chart.
+    > With the ***helm upgrade --install*** command, you can install a new chart as well as upgrade an existing chart.
 
-    The outcome of installation looks like this:
+    The outcome of the installation looks like this:
 
     <!-- border; size:540px --> ![Deployed app](./deployedapp.png)
 
@@ -846,7 +846,7 @@ CAP provides a configurable Helm chart for Node.js applications.
 
 <!-- border; size:540px  ![401 error](./401-error.png) -->
 
-In the next tutorial, you will access your UIs from SAP Build Work Zone, standard edition. The SAP Build Work Zone, standard edition will trigger the authentication flow to provide the required token to access the service.
+In the next tutorial, you can access your UIs from SAP Build Work Zone, standard edition. The SAP Build Work Zone, standard edition triggers the authentication flow to provide the required token to access the service.
 
 [OPTION END]
 [OPTION BEGIN [Java]]
@@ -864,11 +864,11 @@ In the next tutorial, you will access your UIs from SAP Build Work Zone, standar
     kubectl label namespace incident-management istio-injection=enabled
     ```
 
-3. Make sure your SAP HANA Cloud instance is running. Free tier HANA instances are stopped overnight.
+3. Make sure that your SAP HANA Cloud instance is running. Free tier HANA instances are stopped overnight.
 
-    > Your SAP HANA Cloud service instance will be automatically stopped overnight, according to the server region time zone. That means you need to restart your instance every day before you start working with it.
+    > Your SAP HANA Cloud service instance is automatically stopped overnight, according to the time zone of the region where the server is located. That means you need to restart your instance every day before you start working with it.
     >
-    > You can either use SAP BTP cockpit or the terminal in the SAP Business Application Studio to restart the stopped instance:
+    > You can either use the SAP BTP cockpit or the terminal in the SAP Business Application Studio to restart the stopped instance:
     >
     > ```bash
     > cf update-service incident-management -c '{"data":{"serviceStopped":false}}'
@@ -883,9 +883,9 @@ In the next tutorial, you will access your UIs from SAP Build Work Zone, standar
 
     This installs the Helm chart from the **chart** folder with the release name **incident-management** in the namespace **incident-management**.
 
-    > With the ***helm upgrade --install*** command you can install a new chart as well as upgrade an existing chart.
+    > With the ***helm upgrade --install*** command, you can install a new chart as well as upgrade an existing chart.
 
-    The outcome of installation looks like this:
+    The outcome of the installation looks like this:
 
     <!-- border; size:540px --> ![Deployed app](./deployedapp.png)
 
@@ -901,5 +901,5 @@ In the next tutorial, you will access your UIs from SAP Build Work Zone, standar
 
 <!-- border; size:540px  ![401 error](./401-error.png) -->
 
-In the next tutorial, you will access your UIs from SAP Build Work Zone, standard edition. The SAP Build Work Zone, standard edition will trigger the authentication flow to provide the required token to access the service.
+In the next tutorial, you can access your UIs from SAP Build Work Zone, standard edition. The SAP Build Work Zone, standard edition triggers the authentication flow to provide the required token to access the service.
 [OPTION END]
