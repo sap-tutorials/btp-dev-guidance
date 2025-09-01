@@ -60,11 +60,11 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
     1. In the project explorer, right-click on the project's root folder and choose **Upload...**
     2. Select the **API_BUSINESS_PARTNER.edmx** file and upload it to your project folder.
 
-      > If you're using VS Code instead of SAP Business Application Studio:
-      >
-      > 1. Skip the previous steps.
-      > 2. Paste the already downloaded **API_BUSINESS_PARTNER.edmx** file in your project root folder.
-      > 3. Proceed with the following steps.
+        > If you're using VS Code instead of SAP Business Application Studio:
+        >
+        > 1. Skip the previous steps.
+        > 2. Paste the already downloaded **API_BUSINESS_PARTNER.edmx** file in your project root folder.
+        > 3. Proceed with the following steps.
 
     3. In the terminal, run the following command:
 
@@ -74,18 +74,18 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
 
     4. You can find the generated files in the **srv/external** folder.
 
-5. Open **srv/external/API_BUSINESS_PARTNER.cds**. Search for **entity API_BUSINESS_PARTNER.A_BusinessPartner**. Scroll down to the **to_BusinessPartnerAddress** section and replace it with the following excerpt:
+5. Open **srv/external/API_BUSINESS_PARTNER.cds**. Search for **entity A_BusinessPartner**. Scroll down to the **to_BusinessPartnerAddress** section and replace it with the following excerpt:
 
     ```CDS
-    to_BusinessPartnerAddress : Composition of many API_BUSINESS_PARTNER.A_BusinessPartnerAddress on to_BusinessPartnerAddress.BusinessPartner = BusinessPartner;
+    to_BusinessPartnerAddress : Composition of many A_BusinessPartnerAddress on to_BusinessPartnerAddress.BusinessPartner = BusinessPartner;
     ```
 
-6. Search for **entity API_BUSINESS_PARTNER.A_BusinessPartnerAddress**. Replace the associations for e-mail address and phone number with the following excerpt:
+6. Search for **entity A_BusinessPartnerAddress**. Replace the associations for e-mail address and phone number with the following excerpt:
 
     ```CDS
-    to_EmailAddress : Composition of many API_BUSINESS_PARTNER.A_AddressEmailAddress on to_EmailAddress.AddressID = AddressID;
+    to_EmailAddress : Composition of many A_AddressEmailAddress on to_EmailAddress.AddressID = AddressID;
 
-    to_PhoneNumber : Composition of many API_BUSINESS_PARTNER.A_AddressPhoneNumber on to_PhoneNumber.AddressID = AddressID;
+    to_PhoneNumber : Composition of many A_AddressPhoneNumber on to_PhoneNumber.AddressID = AddressID;
     ```
 
 7. In the **srv** folder, create a new file **remote.cds** and paste the following code in it:
@@ -199,7 +199,7 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
         > - maps the result to include only the necessary fields 
         > - sets the `$count` property
 
-    5.  Add a custom handler for CREATE and UPDATE of incidents. Add this code snippet to the **init()** method:
+    5.  Add a custom handler for CREATE and UPDATE of incidents. Add these code lines to the **init()** method:
 
         ```js[5-7]
         async init() {
