@@ -13,14 +13,14 @@ author_profile: https://github.com/slavipande
 
 ## You will learn
 
-- How to create a CAP project 
-- How to add a domain model
-- How to create services
-- How to add data to your database
+- How to create a CAP project. 
+- How to add a domain model.
+- How to create services.
+- How to add data to your database.
 
 ## Prerequisites
 
-You have configured the SAP Business Application Studio. Follow the steps in the [Set Up SAP Business Application Studio for Development](set-up-bas) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
+You've configured the SAP Business Application Studio. Follow the steps in the [Set Up SAP Business Application Studio for Development](set-up-bas) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
@@ -45,7 +45,7 @@ You have configured the SAP Business Application Studio. Follow the steps in the
     cd projects
     ```
 
-    > Your main interaction will be through the `cds` command. It is used to build, run, and debug your CAP application. Besides that, you can also use `cds` to enrich your application with additional capabilities such as messaging, multitenancy, or cloud integration. You can learn more about the tool's capabilities in [Command Line Interface (CLI)](https://cap.cloud.sap/docs/tools/cds-cli).
+    > Your main interaction is through the `cds` command. It's used to build, run, and debug your CAP application. You can also use `cds` to enrich your application with additional capabilities such as messaging, multitenancy, or cloud integration. You can learn more about the tool's capabilities in [Command Line Interface (CLI)](https://cap.cloud.sap/docs/tools/cds-cli).
 
 4. Create a new project using [`cds init`](https://cap.cloud.sap/docs/tools/cds-cli#cds-init).
 
@@ -62,7 +62,7 @@ You have configured the SAP Business Application Studio. Follow the steps in the
 
     > You can also use the **Cmd+Shift+E** (macOS) or **Ctrl+Shift+E** (Windows/Linux) key combination to quickly navigate to the **Explorer**.
   
-6. While you are in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
+6. While you're in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
 
 7. Install dependencies with the following command:
 
@@ -78,7 +78,7 @@ You have configured the SAP Business Application Studio. Follow the steps in the
 
     The CAP server serves all the CAP sources from your project. It also "watches" all the files in your projects and conveniently restarts whenever you save a file. Changes you've made are immediately served without you having to run the command again. In this newly created project the CAP server tells you that there are no models or service definitions yet that it can serve.
 
-    This is the output you should get:
+    Here is the output that you get:
 
     ```bash
     cds serve all --with-mocks --in-memory?
@@ -108,7 +108,7 @@ You have configured the SAP Business Application Studio. Follow the steps in the
     cd projects
     ```
 
-    > Your main interaction will be through the `cds` command. It is used to build, run, and debug your CAP application. Besides that, you can also use `cds` to enrich your application with additional capabilities such as messaging, multitenancy, or cloud integration. You can learn more about the tool's capabilities in [Command Line Interface (CLI)](https://cap.cloud.sap/docs/tools/cds-cli).
+    > Your main interaction is through the `cds` command. It's used to build, run, and debug your CAP application. You can also use `cds` to enrich your application with additional capabilities such as messaging, multitenancy, or cloud integration. You can learn more about the tool's capabilities in [Command Line Interface (CLI)](https://cap.cloud.sap/docs/tools/cds-cli).
 
 4. Create a new project using [`cds init`](https://cap.cloud.sap/docs/tools/cds-cli#cds-init).
 
@@ -124,7 +124,7 @@ You have configured the SAP Business Application Studio. Follow the steps in the
 
     > You can also use the **Cmd+Shift+E** (macOS) or **Ctrl+Shift+E** (Windows/Linux) key combination to quickly navigate to the **Explorer**.
   
-6. While you are in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
+6. While you're in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
 
 7. Navigate to the **srv** folder.
 
@@ -142,7 +142,7 @@ You have configured the SAP Business Application Studio. Follow the steps in the
 
     The CAP server serves all the CAP sources from your project. It also "watches" all the files in your projects and conveniently restarts whenever you save a file. Changes you've made are immediately served without you having to run the command again. In this newly created project the CAP server tells you that there are no models or service definitions yet that it can serve.
 
-    This is the output you should get:
+    Here is the output that you get:
 
     ```bash
     [INFO] Scanning for projects...
@@ -169,7 +169,7 @@ You have configured the SAP Business Application Studio. Follow the steps in the
 
     no CDS model found for [java] build task [/home/user/projects/incident-management/srv] - nothing to be done
     ```
-    The CAP server also prints a message `BUILD FAILURE` stating that the build has failed. After this message, the CAP server waits for any changes on the filesystem to then tries a rebuild. So, let's go on and add a domain model.
+    The CAP server also prints a message `BUILD FAILURE` stating that the build has failed. After this message, the CAP server waits for any changes on the filesystem and tries a rebuild. So, let's go on and add a domain model.
 
 [OPTION END]
 
@@ -206,7 +206,7 @@ You have configured the SAP Business Application Studio. Follow the steps in the
     key ID        : String;
     firstName     : String;
     lastName      : String;
-    name          : String = firstName ||' '|| lastName;
+    name          : String = trim(firstName ||' '|| lastName);
     email         : EMailAddress;
     phone         : PhoneNumber;
     incidents     : Association to many Incidents on incidents.customer = $self;
@@ -252,7 +252,7 @@ You have configured the SAP Business Application Studio. Follow the steps in the
 > 
 > The `Incidents` entity represents incidents created by customers, with fields for customer, title, urgency, status, and a composition of many conversations. Each conversation has an ID, timestamp, author, and message.
 >
-> The `Customers` entity represents customers who can create support incidents. It includes fields for ID, first name, last name, email, phone, credit card number, and a composition of many addresses. The name field is calculated from the `firstName` and `lastName` fields. Elements can be specified with a calculation expression, in which you can refer to other elements of the same entity. These calculated elements are used for convenience. For more information, see [Calculated Elements](https://cap.cloud.sap/docs/cds/cdl#calculated-elements).
+> The `Customers` entity represents customers who can create support incidents. It includes fields for ID, first name, last name, e-mail, phone, credit card number, and a composition of many addresses. The name field is calculated from the `firstName` and `lastName` fields. Elements can be specified with a calculation expression, in which you can refer to other elements of the same entity. These calculated elements are used for convenience. For more information, see [Calculated Elements](https://cap.cloud.sap/docs/cds/cdl#calculated-elements).
 > 
 > The `Addresses` entity represents the addresses of customers, with fields for customer, city, postcode, and street address.
 > 
@@ -265,7 +265,7 @@ You have configured the SAP Business Application Studio. Follow the steps in the
 
 [OPTION BEGIN [Node.js]]
 
-As soon as you paste the code in your newly-created file, the CAP server that is still running reacts immediately with a new output:
+As soon as you paste the code in your newly created file, the CAP server that is still running reacts immediately with a new output:
 
 ```bash
 [cds] - loaded model from 2 file(s):
@@ -278,7 +278,7 @@ As soon as you paste the code in your newly-created file, the CAP server that is
 /> successfully deployed to in-memory database.  
 ```
 
-This means that the CAP server detected the changes in **schema.cds** and automatically created an in-memory SQLite database when restarting the server process. However, the CAP server also prints this message:
+This output means that the CAP server detected the changes in **schema.cds** and automatically created an in-memory SQLite database when restarting the server process. However, the CAP server also prints this message:
 
 ```bash
 No service definitions found in loaded models.
@@ -295,7 +295,7 @@ At this stage, the CAP server that is still running detects the changes in **sch
 
 ### Create services
 
-It's a good practice in CAP to create [single-purposed services](https://cap.cloud.sap/docs/guides/providing-services#single-purposed-services). Hence, let's define a `ProcessorService` for support engineers to process incidents created by customers and an `AdminService` for administrators to perform admin activities such as analysing audit logs.
+It's a good practice in CAP to create [single-purposed services](https://cap.cloud.sap/docs/guides/providing-services#single-purposed-services). Therefore, let's define a `ProcessorService` that support engineers use to process incidents created by customers. Let's also define an `AdminService` that administrators use to perform admin activities such as analyzing audit logs.
 
 To create the services' definition:
 
@@ -338,11 +338,11 @@ This time, the CAP server reacted with additional output:
 [cds] - [ terminate with ^C ]
 ```
 
-As you can see in the log output, the new file created two generic service providers: `ProcessorService` that serves requests on the `/odata/v4/processor` endpoint and `AdminService` that serves requests on the `/odata/v4/admin` endpoint. If you open the link `http://localhost:4004` from SAP Business Application Studio in your browser, you'll see the generic `index.html` page:
+As you can see in the log output, the new file created two generic service providers: `ProcessorService` that serves requests on the `/odata/v4/processor` endpoint and `AdminService` that serves requests on the `/odata/v4/admin` endpoint. If you open the link `http://localhost:4004` from SAP Business Application Studio in your browser, you see the generic `index.html` page:
 
 <!-- border; size:540px --> ![index.html](./index.png)
 
-You may have to stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it again with the `cds watch` command.
+You have to stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it again with the `cds watch` command.
 
 [OPTION END]
 
@@ -413,11 +413,11 @@ You may have to stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and star
 
     <!-- border; size:540px --> ![Open in a new tab](./open-new-tab.png)
 
-3. You'll see the generic `index.html` page:
+3. You see the generic `index.html` page:
 
     <!-- border; size:540px --> ![index.html](./index-java.png)
 
-> You might need to stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it again with the `mvn cds:watch` command.
+> You need to stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it again with the `mvn cds:watch` command.
 
 [OPTION END]
 
@@ -448,24 +448,24 @@ Since we already have an SQLite in-memory database that was automatically create
     ```
 
 
-    You can find the generated CSV templates within the **db** folder, in a newly-created **data** folder.
+    You can find the generated CSV templates within the **db** folder, in a newly created **data** folder.
      
 ### Fill in the test data
 
 > **Important consideration for test data**
 >
-> In the previous step, you added several CSV files with test data. These files are required to pre-fill the SQLite memory with data for local testing. **This is most suitable for development environments, where schema changes are very frequent and broad.** 
+> In the previous step, you added several CSV files with test data. These files are required to pre-fill the SQLite memory with data for local testing. **Test data is most suitable for development environments, where schema changes are frequent and broad.** 
 > 
-> When you redeploy your database, it will always delete all tables and views and create them from scratch. This behaviour is known as drop-create.
+> When you redeploy your database, it deletes all tables and views and create them again. This behavior is known as drop-create.
 >
 > - **Test files should never be deployed to an SAP HANA production database as table data.**
 >
 >       In such cases, changing a data file can cause the deletion of all files of affected database tables, even if the data files for the affected tables have been removed before. SAP HANA remembers all data files that have ever been deployed to the tables and might restore them. 
 >
->       **Only master data files should be delivered in this way.** Master data files are files, which are defined by the application developer and can't be changed by the application. Examples for master data include country codes, status codes and criticality, and urgency codes and descriptions.
+>       **Only master data files are be delivered in this way.** Master data files are files, which are defined by the application developer and can't be changed by the application. Examples for master data include country codes, status codes and criticality, and urgency codes and descriptions.
 >
 >       **Delivering files for tables with customer data will cause data loss in productive scenarios!** See section [Providing Initial Data](https://cap.cloud.sap/docs/guides/databases#providing-initial-data) in the CAP documentation for more details.
-> - **Drop-create is most appropriate for development. However, drop-create isn't suitable for database upgrades in production**, as all customer data would be lost. To avoid this, `cds deploy` also supports automatic schema evolution. See section [Schema Evolution](https://cap.cloud.sap/docs/guides/databases-sqlite#schema-evolution).
+> - **Drop-create is most appropriate for development. However, drop-create isn't suitable for database upgrades in production**, as all customer data is lost. To avoid data loss, `cds deploy` also supports automatic schema evolution. See section [Schema Evolution](https://cap.cloud.sap/docs/guides/databases-sqlite#schema-evolution).
 
 
 Replace the respective generated CSV templates with the following content:
@@ -511,25 +511,25 @@ Replace the respective generated CSV templates with the following content:
 - `db/data/sap.capire.incidents-Status.csv`:
 
     ```csv
-    code;descr;criticality
-    N;New;3
-    A;Assigned;2
-    I;In Process;2
-    H;On Hold;3
-    R;Resolved;2
-    C;Closed;4
+    code,descr,criticality
+    N,New,3
+    A,Assigned,2
+    I,In Process,2
+    H,On Hold,3
+    R,Resolved,2
+    C,Closed,4
     ```
 
 - `db/data/sap.capire.incidents-Urgency.csv`:
 
     ```csv
-    code;descr
-    H;High
-    M;Medium
-    L;Low
+    code,descr
+    H,High
+    M,Medium
+    L,Low
     ```
 
-    > Notice that `cds add data` created eight files, while we're adding data to just six of them. We're leaving the files `sap.capire.incidents-Status.texts.csv` and `sap.capire.incidents-Urgency.texts.csv` empty because they hold translated text that will be filled once the application is localized and translations are created.
+    > Notice that `cds add data` created eight files, while we're adding data to just six of them. We're leaving the files `sap.capire.incidents-Status.texts.csv` and `sap.capire.incidents-Urgency.texts.csv` empty because they hold translated text that are filled once the application is localized and translations are created.
 
 Upon detecting these new files, the CAP server prints a message stating that the content of the files has been filled into the database automatically:
 
@@ -547,7 +547,7 @@ Upon detecting these new files, the CAP server prints a message stating that the
   > init from db\data\sap.capire.incidents-Urgency.texts.csv 
 /> successfully deployed to in-memory database.
 ```
-> Make sure your CAP server is still running. You can start it with `cds watch`.
+> Make sure that your CAP server is still running. You can start it with `cds watch`.
 
 Now that the database is filled with some initial data, you can send complex OData queries served by the built-in generic service providers. With the generic `index.html` page opened in your browser, paste the following queries at the end of the current URL and check the result:
 
@@ -574,7 +574,7 @@ Now that the database is filled with some initial data, you can send complex ODa
 2024-12-06T14:12:46.249Z  INFO 10998 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
 2024-12-06T14:12:46.250Z  INFO 10998 --- [  restartedMain] c.incident_management.Application        : Started Application in 0.211 seconds (process running for 617.577)
 ```
-> Make sure your CAP server is still running. You can start it with `mvn cds:watch`.
+> Make sure that your CAP server is still running. You can start it with `mvn cds:watch`.
 
 Now that the database is filled with some initial data, you can send complex OData queries served by the built-in generic service providers. With the generic `index.html` page opened in your browser, paste the following queries at the end of the current URL and check the result:
 
@@ -588,11 +588,11 @@ Now that the database is filled with some initial data, you can send complex ODa
 
 [OPTION END]
 
-> When you revisit the **Incidents** or the **Customers** endpoint, you might see something like this instead of the nicely formatted output from above.
+> When you revisit the **Incidents** or the **Customers** endpoint, you see unformatted data instead of the nicely formatted output from above.
 >
 > ![No JSON Viewer](./incidents-unformatted.png)
 >
-> However, this doesn't mean you've made a mistake in the tutorial. Rather, this is the correct output without any formatting. If you'd like to see a formatted output in your browser, you can add an extension to your browser. Here are a few exemplary JSON formatters for different browsers:
+> However, unformatted data doesn't mean you've made a mistake in the tutorial. Rather, this is the correct output without any formatting. If you'd like to see a formatted output in your browser, you can add an extension to your browser. Here are a few exemplary JSON formatters for different browsers:
 >
 > - [Chrome](https://chrome.google.com/webstore/detail/jsonvue/chklaanhfefbnpoihckbnefhakgolnmc)
 > - [Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/jsonview/kmpfgkgaimakokfhgdahhiaaiidiphco)

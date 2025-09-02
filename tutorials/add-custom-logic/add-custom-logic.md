@@ -13,12 +13,12 @@ author_profile: https://github.com/slavipande
 
 ## You will learn
 
-- How to add custom code that changes the value of the **urgency** property
-- How CAP automatically treats the JavaScript/Java file that you add as a handler
+- How to add custom code that changes the value of the **urgency** property.
+- How CAP automatically treats the JavaScript/Java file that you add as a handler.
 
 ## Prerequisites
 
-You have implemented the user interface of your application. Follow the steps in the [Add SAP Fiori Elements UIs](add-fiori-elements-uis) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
+You've implemented the user interface of your application. Follow the steps in the [Add SAP Fiori Elements UIs](add-fiori-elements-uis) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
@@ -51,27 +51,20 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
       }
 
       changeUrgencyDueToSubject(data) {
-        if (data) {
-          const incidents = Array.isArray(data) ? data : [data];
-          incidents.forEach((incident) => {
-            if (incident.title?.toLowerCase().includes("urgent")) {
-              incident.urgency = { code: "H", descr: "High" };
-            }
-          });
-        }
+        let urgent = data.title?.match(/urgent/i)
+        if (urgent) data.urgency_code = 'H'
       }
 
       /** Custom Validation */
       async onUpdate (req) {
-        const { status_code } = await SELECT.one(req.subject, i => i.status_code).where({ID: req.data.ID})
-        if (status_code === 'C')
-          return req.reject(`Can't modify a closed incident`)
+        let closed = await SELECT.one(1) .from (req.subject) .where `status.code = 'C'`
+        if (closed) req.reject `Can't modify a closed incident!`
       }
     }
     module.exports = { ProcessorService }
     ```
 
-3. Make sure the SAP Fiori application is running. If you closed it, choose the **Preview Application** option in the **Application Info - incidents** tab and select the **watch-incidents** npm script.
+3. Make sure that the SAP Fiori application is running. If you closed it, choose the **Preview Application** option in the **Application Info - incidents** tab and select the **watch-incidents** npm script.
 
     > To open the **Application Info - incidents** tab: 
     >
@@ -83,7 +76,7 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
 
     <!-- border; size:540px --> ![Create new incident](./create-new-incident.png)
     
-    You'll see that the value in the **Urgency** field is automatically set to **high**.
+    You see that the value in the **Urgency** field is automatically set to **high**.
 
     <!-- border; size:540px --> ![Fiori Elements Work List](./incidentapp.png)
 
@@ -98,7 +91,7 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
 
     > Make sure the **IncidentManagement** dev space is in status **RUNNING**.
 
-2. Create a new folder **handler** in the **srv/src/main/java/customer/incident_managеment** folder of your project. If **srv/src/main/java/customer/incident_managеment** does not exist, create it.
+2. Create a new folder **handler** in the **srv/src/main/java/customer/incident_managеment** folder of your project. If **srv/src/main/java/customer/incident_managеment** doesn't exist, create it.
 
 3. In the **handler** folder, create a new file **ProcessorServiceHandler.java**.
 
@@ -158,14 +151,14 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
     }
     ```
 
-3. Make sure the SAP Fiori application is running. If you closed it, navigate to the **srv** folder in the terminal and run `mvn cds:watch`.
+3. Make sure that the SAP Fiori application is running. If you closed it, navigate to the **srv** folder in the terminal and run `mvn cds:watch`.
 
 
 4. Create a new incident with the word **urgent** in its title and with the urgency set to **Medium**. 
 
     <!-- border; size:540px --> ![Create new incident](./create-new-incident.png)
     
-    You'll see that the value in the **Urgency** field is automatically set to **High**.
+    You see that the value in the **Urgency** field is automatically set to **High**.
 
     <!-- border; size:540px --> ![Fiori Elements Work List](./incidentapp.png)
 
@@ -175,15 +168,15 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
 
 [OPTION BEGIN [Node.js]]
 
-Because your file is called **services.js** and has the same name as your application definition file **services.cds**, CAP automatically treats it as a handler file for the application defined in there. CAP exposes several [events](https://cap.cloud.sap/docs/node.js/events) and you can easily write handlers like the one mentioned above.
+Because your file is called **services.js** and has the same name as your application definition file **services.cds**, CAP automatically treats it as a handler file for the application defined in there. CAP exposes several [events](https://cap.cloud.sap/docs/node.js/events) and you can easily write handlers like the one mentioned earlier.
 
 [OPTION END]
 
 [OPTION BEGIN [Java]]
 
-Because the Java class containing the custom code is annotated with `@ServiceName(ProcessorService_.CDS_NAME)`, CAP knows that any handler methods in the class will be registered for events on entities defined in the **srv/services.cds** file.
+Because the Java class containing the custom code is annotated with `@ServiceName(ProcessorService_.CDS_NAME)`, CAP knows that any handler methods in the class are registered for events on entities defined in the **srv/services.cds** file.
 
-The handler method itself is annotated with `@Before(event = CqnService.EVENT_CREATE, entity = Incidents_.CDS_NAME)`. This means that the method will be called before each **CREATE** event on the entity Incidents. CAP exposes several [events](https://cap.cloud.sap/docs/java/event-handlers/#phases) and you can easily write [handlers](https://cap.cloud.sap/docs/java/event-handlers/#handlerclasses) like the one mentioned above.
+The handler method itself is annotated with `@Before(event = CqnService.EVENT_CREATE, entity = Incidents_.CDS_NAME)`. This annotation means that the method is called before each **CREATE** event on the entity Incidents. CAP exposes several [events](https://cap.cloud.sap/docs/java/event-handlers/#phases) and you can easily write [handlers](https://cap.cloud.sap/docs/java/event-handlers/#handlerclasses) like the one mentioned earlier.
 
 [OPTION END]
 
