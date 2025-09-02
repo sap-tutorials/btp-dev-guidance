@@ -13,15 +13,15 @@ author_profile: https://github.com/slavipande
 ## You will learn
 
 - How to connect to your SAP S/4HANA Cloud system.
-- How to extend the existing Helm chart with the settings for SAP S/4HANA Cloud extension service.
+- How to extend the existing Helm chart with the settings for the SAP S/4HANA Cloud extension service.
 - How to test the application with your SAP S/4HANA Cloud system.
 
 ## Prerequisites
 
-- You have set up the connection to an SAP S/4HANA Cloud system. Follow the steps in the [Configure Connectivity Between SAP S/4HANA Cloud and SAP Business Technology Platform](remote-service-configure-connectivity) tutorial that is part of the [Consume Remote Services from S/4HANA Cloud in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in SAP BTP, Kyma Runtime](https://developers.sap.com/group.kyma-cap-consume-s4-services.html) tutorial group. 
-- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and make use of the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You've set up the connection to an SAP S/4HANA Cloud system. Follow the steps in the [Configure Connectivity Between SAP S/4HANA Cloud and SAP Business Technology Platform](remote-service-configure-connectivity) tutorial that is part of the [Consume Remote Services from SAP S/4HANA Cloud in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in SAP BTP, Kyma Runtime](https://developers.sap.com/group.kyma-cap-consume-s4-services.html) tutorial group. 
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
 - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
-- You are an administrator of the global account in SAP BTP.
+- You're an administrator of the global account in SAP BTP.
 - You have a subaccount in SAP BTP to deploy the services and applications.
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
@@ -90,7 +90,7 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
     ```
 
      - For **systemName**, enter the name of your registered SAP S/4HANA Cloud system. For example, `SAP S/4HANA DEV System`.
-     - For **communicationArrangementName**, enter a name for the communication arrangement that will be created for the SAP S/4HANA Cloud tenant. For example, `INCIDENT_MANAGEMENT_0008`.
+     - For **communicationArrangementName**, enter a name for the communication arrangement that is created for the SAP S/4HANA Cloud tenant. For example, `INCIDENT_MANAGEMENT_0008`.
 
 
     > For more information, see [Communication Arrangement JSON/YAML File - Properties](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/553a4c6b98be4c1ba7d1dfa0e9df8669.html).
@@ -135,7 +135,7 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
 >
 >- Make sure you're logged in to your container registry.
 >
->- If you're using any device with a non-x86 processor (e.g. MacBook M1/M2) you need to instruct Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable using the command `export DOCKER_DEFAULT_PLATFORM=linux/amd64`. Check [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables) for more info.
+>- If you're using any device with a non-x86 processor (for example, MacBook M1/M2), you need to instruct Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable using the command `export DOCKER_DEFAULT_PLATFORM=linux/amd64`. Check [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables) for more info.
 
 
 1. Create the productive CAP build for your application: 
@@ -157,7 +157,7 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
 
     >- Make sure to replace `<your-container-registry>` with your docker server URL. 
     > 
-    >- Keep in mind that `<new-image-version>` should be a string that is different from the string defined in [Deploy in SAP BTP, Kyma Runtime](deploy-to-kyma) to reflect the changes in the Incident Management app. 
+    >- Keep in mind that `<new-image-version>` is a string that’s different from the string defined in [Deploy in SAP BTP, Kyma Runtime](deploy-to-kyma) to reflect the changes in the Incident Management app. 
 
     > Looking for your docker server URL?
     
@@ -178,7 +178,7 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
     npm install && npm run package
     ```
 
-    This will build and copy the archive **nsincidents.zip** inside the **ui-resources/resources** folder.
+    This command builds and copies the archive **nsincidents.zip** inside the **ui-resources/resources** folder.
 
 8. In the VS Code terminal, navigate back to the root folder of your project:
 
@@ -197,7 +197,7 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
 
     >- Make sure to replace `<your-container-registry>` with your docker server URL. 
     > 
-    >- Keep in mind that `<new-image-version>` should be a string that is different from the string defined in [Deploy in SAP BTP, Kyma Runtime](deploy-to-kyma) to reflect the changes in the Incident Management app.  
+    >- Keep in mind that `<new-image-version>` is a string that’s different from the string defined in [Deploy in SAP BTP, Kyma Runtime](deploy-to-kyma) to reflect the changes in the Incident Management app.  
     
     > Looking for your docker server URL?
     
@@ -209,7 +209,7 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
 
     > In case you're using Docker Hub as your container registry, replace the placeholder `<your-container-registry>` with your Docker Hub user ID.
 
-You haven't made any changes to the database image so you don't need to build it again.
+Since the database image is unchanged, you don't need to build it again.
 
 
 ### Deploy the Incident Management application
@@ -226,7 +226,7 @@ You haven't made any changes to the database image so you don't need to build it
         tag: <image-version>
     ```
 
-    > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` should be a string. 
+    > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` is a string. 
 
 
 2. Overwrite the global image version for the CAP Node.js image and for the UI deployer image:
@@ -250,11 +250,11 @@ You haven't made any changes to the database image so you don't need to build it
     cds build --production
     ```
 
-4. Make sure your SAP HANA Cloud instance is running. Free tier HANA instances are stopped overnight.
+4. Make sure that your SAP HANA Cloud instance is running. Free tier HANA instances are stopped overnight.
 
-    > Your SAP HANA Cloud service instance will be automatically stopped overnight, according to the server region time zone. That means you need to restart your instance every day before you start working with it.
+    > Your SAP HANA Cloud service instance is automatically stopped overnight, according to the time zone of the region where the server is located. That means you need to restart your instance every day before you start working with it.
     >
-    > You can either use SAP BTP cockpit or the terminal in the SAP Business Application Studio to restart the stopped instance:
+    > You can either use the SAP BTP cockpit or the terminal in the SAP Business Application Studio to restart the stopped instance:
     >
     > ```bash
     > cf update-service incident-management -c '{"data":{"serviceStopped":false}}'
@@ -267,12 +267,12 @@ You haven't made any changes to the database image so you don't need to build it
    --set-file xsuaa.jsonParameters=xs-security.json --set-file s4-hana-cloud.jsonParameters=bupa.json
     ```
 
-    This installs the Helm chart from the **chart** folder with the release name **incident-management** in the namespace **incident-management**.
+    This command installs the Helm chart with the release name **incident-management** in the namespace **incident-management**.
 
 
 ### Test the Incident Management application
 
-When creating new entries in the Incident Management application, you should be able to see all values from your SAP S/4HANA Cloud system in the value help of the **Customer** field.
+When creating new entries in the Incident Management application, you see all values from your SAP S/4HANA Cloud system in the value help of the **Customer** field.
 
 > Before you continue with this step, don’t forget to perform the steps from the tutorials [Assign the User Roles](https://developers.sap.com/tutorials/user-role-assignment.html) and [Integrate Your Application with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/integrate-with-work-zone.html).
 

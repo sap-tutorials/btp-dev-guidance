@@ -13,13 +13,13 @@ author_profile: https://github.com/slavipande
 
 ## You will learn
 
-- How to add dependencies
-- How to add tests
-- How to test the application
+- How to add dependencies.
+- How to add tests.
+- How to test the application.
 
 ## Prerequisites
 
-You have configured the access to your application. Follow the steps in the [Add Authorization](add-authorization) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
+You've configured the access to your application. Follow the steps in the [Add Authorization](add-authorization) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
@@ -205,7 +205,7 @@ You have configured the access to your application. Follow the steps in the [Add
     })
     ```
 
-    > With this code, you have added test cases in the application.
+    > With this code, you've added test cases in the application.
 
 [OPTION END]
 
@@ -397,7 +397,7 @@ You have configured the access to your application. Follow the steps in the [Add
     }
     ```
 
-    > With this code, you have added test cases in the application.
+    > With this code snippet, you've added test cases in the application.
 
 [OPTION END]
 
@@ -406,7 +406,7 @@ You have configured the access to your application. Follow the steps in the [Add
 
 [OPTION BEGIN [Node.js]]
 
-1. Open the **package.json** file and add the `"test": "npx jest tests/test.js"` line inside the `scripts` section. This adds a command to start the tests.
+1. Open the **package.json** file and add the `"test": "npx jest tests/test.js"` line inside the `scripts` section. This line adds a command to start the tests.
 
     ```json
     {
@@ -441,7 +441,7 @@ You have configured the access to your application. Follow the steps in the [Add
     npm run test
     ```
 
-3. When all the test cases pass, the output should look like this:
+3. When all the test cases pass, the output looks like this:
 
     ```bash
     PASS  tests/test.js
@@ -483,7 +483,7 @@ You have configured the access to your application. Follow the steps in the [Add
     mvn verify
     ```
 
-3. When all the test cases pass, the output should look like this:
+3. When all the test cases pass, the output looks like this:
 
     ```bash
     [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.28 s -- in com.sap.cap.incident_management.IncidentsODataTests

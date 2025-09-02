@@ -18,22 +18,22 @@ author_profile: https://github.com/slavipande
 
 ## Prerequisites
 
- - You have tested the extended Incident Management application with the Business Partner API. Follow the steps in the [Test the Extended Incident Management Application with the Business Partner API](remote-service-run-dev-test) tutorial that is part of the [Consume Remote Services from S/4HANA Cloud in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.sap-s4hana-consume-remote-services.html) tutorial group.
+ - You've tested the extended Incident Management application with the Business Partner API. Follow the steps in the [Test the Extended Incident Management Application with the Business Partner API](remote-service-run-dev-test) tutorial that is part of the [Consume Remote Services from SAP S/4HANA Cloud in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.sap-s4hana-consume-remote-services.html) tutorial group.
  - On SAP BTP side:
-     - You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and make use of the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+     - You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
      - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
      - You must be an administrator of the SAP BTP global account where you want to register your SAP S/4HANA Cloud system.
      - You have a subaccount in SAP BTP to deploy the services and applications.
  - On SAP S/4HANA Cloud side:
     - You have a dedicated SAP S/4HANA Cloud tenant.
     - You must be an administrator of the SAP S/4HANA Cloud system.
-    - You need to connect this system to your SAP BTP global account, if you'd like to build extension applications for your SAP S/4HANA Cloud system.
+    - You need to connect this system to your SAP BTP global account, if you want to build extension applications for your SAP S/4HANA Cloud system.
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
 ### Add a system to your SAP BTP account
 
-1. In **SAP BTP cockpit**, open your global account and choose **System Landscape**.
+1. In the SAP BTP cockpit, open your global account and choose **System Landscape**.
 
 2. In the **System Landscape** screen, choose **Systems** and then **Add System**.
 
@@ -41,7 +41,7 @@ author_profile: https://github.com/slavipande
 
 3. In the **Add System** dialog box, enter a name for the SAP S/4HANA Cloud system you want to connect.
 
-    > Use a name that uniquely identifies this system. For example, **SAP S/4HANA DEV System**.
+    > Use a name that uniquely identifies this system. For example, use the name **SAP S/4HANA DEV System**.
 
 4. Select **SAP S/4HANA Cloud** from the dropdown in the **Type** field and choose **Add**. 
 
@@ -53,7 +53,7 @@ author_profile: https://github.com/slavipande
 
      SAP BTP generates an integration token so the SAP S/4HANA Cloud system administrator can configure integration with SAP BTP from your SAP S/4HANA Cloud system. 
 
-9. Copy the generated token and close the dialog box. You will need the token in the following procedure.
+9. Copy the generated token and close the dialog box. You need the token in the following procedure.
 
      <!-- border; size:540px --> ![Copy token](./copy-token.png)
 
@@ -77,14 +77,14 @@ author_profile: https://github.com/slavipande
 
      <!-- border; size:540px --> ![Paste integration token](./paste-token.png)
 
-    > Use the same name that you entered in SAP BTP cockpit when you generated the token. For example, **SAP S/4HANA DEV System**.
+    > Use the same name that you entered in the SAP BTP cockpit when you generated the token. For example, use the name **SAP S/4HANA DEV System**.
      
 
-6. Choose **Yes** to approve the creation, and wait until the status displayed for your newly registered system switches to **Enabled** – it’s possible that you would need to refresh your page.
+6. Choose **Yes** to approve the creation, and wait until the status displayed for your newly registered system switches to **Enabled**. Refresh your page.
 
      <!-- border; size:540px --> ![Extension enabled](./extension-enabled.png)
 
-     At the same time, you will see the system status updated to **Registered** on the SAP BTP side. You might need to refresh the page for the satus to be updated.
+     At the same time, you see the system status updated to **Registered** on the SAP BTP side. Refresh the page for the status to be updated.
 
      <!-- border; size:540px --> ![System registered](./system-registered.png)
 
@@ -94,7 +94,7 @@ For more details about registering an SAP S/4HANA Cloud system, see [Register an
 
 ### Set up entitlements for your SAP BTP subaccount
 
-After you have connected the SAP S/4HANA Cloud system to SAP BTP (with status **Enabled** in your SAP S/4HANA Cloud tenant), you need to configure entitlements to make this system accessible in the SAP BTP subaccount in which you want to build your extension application. You configure the entitlements and assign the corresponding quota and service plans to the subaccount in which the extension application will reside.
+You've connected the SAP S/4HANA Cloud system to SAP BTP (with status **Enabled** in your SAP S/4HANA Cloud tenant). You need to configure entitlements to make this system accessible in the SAP BTP subaccount in which you want to build your extension application. You configure the entitlements and assign the corresponding quota and service plans to the subaccount in which the extension application resides.
 
 1. Enter your **Global Account**.
 
@@ -116,7 +116,7 @@ After you have connected the SAP S/4HANA Cloud system to SAP BTP (with status **
 
 8. Select **api-access** service plan.
 
-9. Choose **Add 1 Service Plans** to add these entitlements for the SAP S/4HANA Cloud Extensibility service for your SAP S/4HANA Cloud system registered to your subaccount.
+9. Choose **Add 1 Service Plans** to add the service plan of the SAP S/4HANA Cloud Extensibility service.
 
      <!-- border; size:540px --> ![Add SAP S/4HANA Cloud Extensibility service plan](./add-s4hana-extensibility.png)
 

@@ -1,6 +1,6 @@
 ---
 title: Prepare for Production
-description: As you have followed the tutorials for the Incident Management application, you’ve developed an application with an in-memory database and basic authentication. To have such an application on production, you need to make the respective configurations.
+description: As you've followed the tutorials for the Incident Management application, you’ve developed an application with an in-memory database and basic authentication. To have such an application on production, you need to make the respective configurations.
 keywords: cap 
 parser: v2
 auto_validation: true
@@ -13,12 +13,12 @@ author_profile: https://github.com/slavipande
 
 ## You will learn
 
-- How to configure SAP HANA Cloud in your project
-- How to configure SAP Authorization and Trust Management service in your project
+- How to configure SAP HANA Cloud in your project.
+- How to configure the SAP Authorization and Trust Management service in your project.
 
 ## Prerequisites
 
-You have added test cases in your application. Follow the steps in the [Add Test Cases](add-test-cases) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
+You've added test cases in your application. Follow the steps in the [Add Test Cases](add-test-cases) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
@@ -69,7 +69,7 @@ You have added test cases in your application. Follow the steps in the [Add Test
     > - [Using Databases](https://cap.cloud.sap/docs/guides/databases#get-hana)
     > - [CAP Configuration](https://cap.cloud.sap/docs/node.js/cds-env)
     >
-    > By default, these are the available profiles: 
+    > By default, these profiles are available: 
     >
     > - For local testing: **development**
     > - For hybrid testing: **hybrid**
@@ -130,7 +130,7 @@ You have added test cases in your application. Follow the steps in the [Add Test
     > - [Using Databases](https://cap.cloud.sap/docs/guides/databases#get-hana)
     > - [CAP Configuration](https://cap.cloud.sap/docs/node.js/cds-env)
     >
-    > By default, these are the available profiles: 
+    > By default, these profiles are available: 
     >
     > - For local testing: **development**
     > - For hybrid testing: **hybrid**
@@ -177,11 +177,11 @@ You have added test cases in your application. Follow the steps in the [Add Test
 
     <!-- border; size:540px --> ![Open in a new tab](./open-new-tab.png)
 
-3. You'll see the generic `index.html` page:
+3. You see the generic `index.html` page:
 
     <!-- border; size:540px --> ![index.html](./index-java.jpg)
 
-> You might need to stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it again with the `mvn cds:watch` command.
+> Stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it again with the `mvn cds:watch` command.
 
 [OPTION END]
 
@@ -247,7 +247,7 @@ You have added test cases in your application. Follow the steps in the [Add Test
     annotate AdminService with @(requires: 'admin');
     ```
     
-    This is now translated into scopes and role templates for the SAP Authorization and Trust Management service. Hence, a scope and a role template are created in the **xs-security.json** file for the **support** role and for the **admin** role:
+    These authorizations are now translated into scopes and role templates for the SAP Authorization and Trust Management service. Hence, a scope and a role template are created in the **xs-security.json** file for the **support** role and for the **admin** role:
 
     ```json
     {
@@ -323,7 +323,7 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
     annotate AdminService with @(requires: 'admin');
     ```
     
-    This is now translated into scopes and role templates for the SAP Authorization and Trust Management service. Hence, a scope and a role template are created in the **xs-security.json** file for the **support** role and for the **admin** role:
+    These authorizations are now translated into scopes and role templates for the SAP Authorization and Trust Management service. Hence, a scope and a role template are created in the **xs-security.json** file for the **support** role and for the **admin** role:
 
     ```json
     {
@@ -434,7 +434,7 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
     }
     ```
 
-2. Check the newly-created file **ui5-deploy.yaml** in the folder **app/incidents/**.
+2. Check the newly created file **ui5-deploy.yaml** in the folder **app/incidents/**.
 
     ```yaml
     # yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
@@ -520,11 +520,11 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
     }
     ```
 
-    This is needed as the dataSource URIs must be relative to the base URL, which means there is no need for a slash as the first character.
+    Removing the leading `/` is needed as the dataSource URIs must be relative to the base URL, which means there's no need for a slash as the first character.
 
     Check [Accessing Business Service UI](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL) for more information.
 
-5. Make sure that the line `"welcomeFile": "/index.html"` in the following snippet is added to the **app/incidents/xs-app.json** file. Add if it is missing. 
+5. Make sure that the line `"welcomeFile": "/index.html"` in the following snippet is added to the **app/incidents/xs-app.json** file. Add if it's missing. 
 
     ```json
     {
@@ -564,7 +564,7 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
     cds add workzone
     ```
 
-    You should see the following output in the terminal:
+    You see the following output in the terminal:
 
     ```bash
     Adding feature 'destination'...
@@ -600,7 +600,7 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
     }
     ```
 
-    This is needed as the dataSource URIs must be relative to the base URL, which means there is no need for a slash as the first character.
+    Removing the leading `/` is needed as the dataSource URIs must be relative to the base URL, which means there's no need for a slash as the first character.
 
     Check [Accessing Business Service UI](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL) for more information.
 
@@ -627,7 +627,7 @@ To validate that everything is prepared as expected, run a test build. Navigate 
 ```bash
 cds build --production
 ```
-You should get an output like:
+You get an output like:
 
 ```bash
 [cds] - build completed in 511 ms
@@ -642,7 +642,7 @@ To validate that everything is prepared as expected, run a test build. Navigate 
 ```bash
 mvn clean package
 ```
-You should get an output like:
+You get an output like:
 
 ```bash
 [INFO] ------------------------------------------------------------------------
@@ -654,3 +654,9 @@ You should get an output like:
 ```
 
 [OPTION END]
+
+### Deployment Options
+
+Now that you've prepared your CAP application for deployment, you can choose from the following deployment options:
+- Follow the tutorials in the [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) group to deploy the application in the SAP BTP, Cloud Foundry runtime.
+- Follow the tutorials in the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) group to deploy the application in the SAP BTP, Kyma runtime.
