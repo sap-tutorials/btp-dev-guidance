@@ -206,7 +206,7 @@ You've configured the SAP Business Application Studio. Follow the steps in the [
     key ID        : String;
     firstName     : String;
     lastName      : String;
-    name          : String = firstName ||' '|| lastName;
+    name          : String = trim(firstName ||' '|| lastName);
     email         : EMailAddress;
     phone         : PhoneNumber;
     incidents     : Association to many Incidents on incidents.customer = $self;

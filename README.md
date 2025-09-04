@@ -55,14 +55,14 @@ The guidance is divided into several groups of tutorials when published on the [
 
 - [Consume Remote Services from a Mock Server in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy to SAP BTP, Cloud Foundry Runtime](). This group includes the following tutorials:
     - [Introduction to Remote Service Connectivity](https://developers.sap.com/tutorials/remote-service-intro.html) 
-    - [Get the Business Partner API and Extend the Incident Management Application](https://developers.sap.com/tutorials/remote-service-extend-cf.html)
+    - [Get the Business Partner API and Extend the Incident Management Application](https://developers.sap.com/tutorials/remote-service-extend.html)
     - [Test the Extended Incident Management Application with the Business Partner API](https://developers.sap.com/tutorials/remote-service-run-dev-test.html)
     - [Install a Mock Server in the SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/tutorials/remote-service-set-up-mock-cf.html)
     - [Deploy and Run the Incident Management Application in the SAP BTP, Cloud Foundry Runtime with a Mock Server](https://developers.sap.com/tutorials/remote-service-deploy-with-mock-cf.html)
 
 - [Consume Remote Services from S/4HANA Cloud in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy to SAP BTP, Cloud Foundry Runtime]() This group includes the following tutorials:
     - [Introduction to Remote Service Connectivity](https://developers.sap.com/tutorials/remote-service-intro.html) 
-    - [Get the Business Partner API and Extend the Incident Management Application](https://developers.sap.com/tutorials/remote-service-extend-cf.html)
+    - [Get the Business Partner API and Extend the Incident Management Application](https://developers.sap.com/tutorials/remote-service-extend.html)
     - [Test the Extended Incident Management Application with the Business Partner API](https://developers.sap.com/tutorials/remote-service-run-dev-test.html)
     - [Configure Connectivity Between SAP S/4HANA Cloud and SAP Business Technology Platform](https://developers.sap.com/tutorials/remote-service-configure-connectivity.html)
     - [Deploy and Run the Application on Cloud Foundry with SAP S/4HANA Cloud Backend](https://developers.sap.com/tutorials/remote-service-deploy-to-cf.html)
