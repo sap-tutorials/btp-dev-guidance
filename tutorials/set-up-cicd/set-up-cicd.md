@@ -226,23 +226,6 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
     <!-- border; size:540px --> ![Configure stages](./configure-stages.png)
 
-[OPTION END]
-
-[OPTION BEGIN [Java]]
-
-1. Back in the **General Information** tab, enter **main** in the **Branch** field.
-
-2. Select **Cloud Foundry Environment** from the dropdown in the **Pipeline** field.
-
-    <!-- border; size:540px --> ![Configure pipeline](./configure-pipeline.png)
-
-3. In the **Stages** section, select **mta** from the dropdown in the **Build Tool** field.
-
-4. Select the latest Java and Node version from the dropdown in the **Build Tool Version** field. 
-
-    <!-- border; size:540px --> ![Configure stages](./configure-stages-java.png)
-
-[OPTION END]
 
 #### Add unit tests and configure release
 
@@ -267,6 +250,43 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
     - Choose **Create**.
 
     <!-- border; size:540px --> ![Configure release](./configure-release.png)
+
+[OPTION END]
+
+[OPTION BEGIN [Java]]
+
+1. Back in the **General Information** tab, enter **main** in the **Branch** field.
+
+2. Select **Cloud Foundry Environment** from the dropdown in the **Pipeline** field.
+
+    <!-- border; size:540px --> ![Configure pipeline](./configure-pipeline.png)
+
+3. In the **Stages** section, select **mta** from the dropdown in the **Build Tool** field.
+
+4. Select the latest Java and Node version from the dropdown in the **Build Tool Version** field. 
+
+    <!-- border; size:540px --> ![Configure stages](./configure-stages-java.png)
+
+#### Configure release
+
+3. In the **Release** section, switch the toggle **Deploy to Cloud Foundry Space** to **ON**. 
+
+4. Provide the required information for your account and complete the job creation:
+
+    - Enter the URL of your API endpoint in the **API Endpoint** field.
+    - Enter the name of your Cloud Foundry organisation in the **Org Name** field.
+    - Enter the name of your development space in the **Space** field.
+
+        > You can get the values from your subaccount's **Overview** page in the SAP BTP cockpit.
+
+    - Select **standard** from the dropdown in the **Deploy Type** field.
+    - Open the value help in the **Credentials** field and choose the credential **cf** that you created in **Step 5: Add credentials**.
+    - Choose **Create**.
+
+    <!-- border; size:540px --> ![Configure release](./configure-release.png)
+
+[OPTION END]
+
 
 ### Create a GitHub webhook
 
