@@ -220,13 +220,13 @@ The filter labels are text strings. It's a good idea to update them so they're c
 
     <!-- border; size:540px --> ![Update filter label](./update-filter-label.png)
 
-2. Choose the **Globe** icon to generate a translatable text key and choose **Apply**.
+2. Choose the **Globe** icon to generate a translatable text key and choose **Substitute**.
 
     <!-- border; size:540px --> ![Generate Translatable Text Key](./ls10.png)
 
 3. Choose the **status_code** filter. In the **Label** field, change the value to **Status**. Press <kbd>Enter</kbd> to confirm the change.
 
-4. Choose the **Globe** icon to generate a translatable text key and choose **Apply**.
+4. Choose the **Globe** icon to generate a translatable text key and choose **Substitute**.
 
 5. For both the **Urgency** and **Status** filters, in the **Display Type** dropdown menu, select **Value Help**. A popup shows up. 
 
@@ -258,11 +258,11 @@ The filter labels are text strings. It's a good idea to update them so they're c
 
     <!-- border; size:540px --> ![Add Basic Columns popup](./add-basic-columns-popup.png)
 
-14. Select the **name** column and choose **^** to move up the column just under the **Title** column.
+14. Move the **name** column just under the **Title** column.
 
     <!-- border; size:540px --> ![Reorder Columns](./reorder-columns.png)
 
-15. Choose the **Title** column, choose the **Globe** icon in the **Label** field to generate a translatable text key, and apply the changes.
+15. Choose the **Title** column, choose the **Globe** icon in the **Label** field to generate a translatable text key.
 
     > The filter labels are text strings. It's a good idea to update them so they're compliant with internationalization standards (i18n).
 
@@ -350,7 +350,7 @@ In this section, you modify the Incident Object Page of the UI with the SAP Fior
 9. In the **Add Group Section** popup:
 
     - Enter **Overview** in the **Label** field.
-    - Choose the **Globe** icon to generate a translatable text key. 
+    - Choose the **Globe** icon to generate a translatable text key and choose **Substitute**. 
     - Choose **Add**.
 
     <!-- border; size:540px --> ![Add Overview Section](./obj5.png)
@@ -367,7 +367,7 @@ In this section, you modify the Incident Object Page of the UI with the SAP Fior
 10. In the **Add Form Section** popup:
 
     - Enter **Details** in the **Label** field.
-    - Choose the **Globe** icon to generate a translatable text key. 
+    - Choose the **Globe** icon to generate a translatable text key and choose **Substitute**. 
     - Choose **Add**.
 
     <!-- border; size:540px --> ![Add Details Subsection](./obj52.png)
