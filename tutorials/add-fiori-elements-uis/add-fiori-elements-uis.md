@@ -59,11 +59,11 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
 
 5. In the **Data Source and Service Selection** step:
 
-    - In the **Data source** dropdown menu, select **Use a Local CAP Project**.
+    - In the **Data Source** dropdown menu, select **Use a Local CAP Project**.
 
-    - In the **Choose your CAP project** dropdown menu, select the **incident-management** project.
+    - In the **Choose a CAP project** dropdown menu, select the **incident-management** project.
 
-    - In the **OData service** dropdown menu, select the **ProcessorService (Node.js)** (or **ProcessorService (Java)** if you're developing a CAP Java application).
+    - In the **OData Service** dropdown menu, select the **ProcessorService (Node.js)** (or **ProcessorService (Java)** if you're developing a CAP Java application).
     
     - Choose **Next**.
 
@@ -71,9 +71,9 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
 
 6. In the **Entity Selection** step:
 
-    - In the **Main entity** dropdown menu, select **Incidents**.
+    - In the **Main Entity** dropdown menu, select **Incidents**.
 
-    - Leave the **Navigation entity** value as **None**, and then select **Yes** to add table columns automatically.
+    - Leave the **Navigation Entity** value as **None**, and then select **Yes** to add table columns automatically.
 
     - In the **Table Type** dropdown menu, select **Responsive**.
     
@@ -83,11 +83,11 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
 
 7. In the **Project Attributes** step:
 
-    - In the **Module name** field, enter **incidents**.
+    - In the **Module Name** field, enter **incidents**.
 
-    - In the **Application title** field, enter **Incident-Management**.
+    - In the **Application Title** field, enter **Incident-Management**.
 
-    - In the **Application namespace** field, enter **ns**.
+    - In the **Application Namespace** field, enter **ns**.
 
     - Leave the default values for all the other settings and choose **Finish**.
 
@@ -461,7 +461,7 @@ In this section, you modify the Incident Object Page of the UI with the SAP Fior
 
     - Enter **Conversation** in the **Label** field.
     - Choose the **Globe** icon to generate a translatable text key. 
-    - Select **conversation** in the **Source Value** dropdown menu and choose **Add**.
+    - Select **conversation** in the **Value Source** dropdown menu and choose **Add**.
 
     <!-- border; size:540px --> ![Add Conversation Label](./obj9.png)
 
