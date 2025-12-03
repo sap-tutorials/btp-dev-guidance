@@ -189,9 +189,9 @@ The creation of the database instance can take some minutes to complete.
 
 You need the SAP BTP Operator module to map your SAP HANA Cloud service instance to the Kyma cluster. The module is added by default when you enable the SAP BTP, Kyma runtime. Follow these steps to make sure it's enabled:
 
-1. Navigate to your subaccount and choose **Link to dashboard** under the **Kyma Environment** tab.
+1. Navigate to your subaccount and choose **Dashboard URL** under the **Kyma Environment** tab.
 
-      <!-- border; size:540px --> ![Open Kyma console](./kyma-console.png)
+      <!-- border; size:540px --> ![Open Kyma dashboard](./kyma-console.png)
 
 2. Choose **Modify Modules**.
 
