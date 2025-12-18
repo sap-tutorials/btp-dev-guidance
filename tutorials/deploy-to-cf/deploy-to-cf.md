@@ -55,7 +55,7 @@ For more information about the Cloud Foundry environment, see [Cloud Foundry Env
 
     > You can find the API endpoint in the **Overview** section of your subaccount in the SAP BTP cockpit.
 
-3. Run the following command to deploy the generated archive to the SAP BTP, Cloud Foundry runtime:
+3. Run the following command to deploy your application to the SAP BTP, Cloud Foundry runtime:
 
     ```bash
     cds up 
