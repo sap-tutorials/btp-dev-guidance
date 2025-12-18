@@ -386,9 +386,9 @@ When the application is successfully deployed, you have to configure design and 
 
 2. Create a service binding in your Kyma cluster:
 
-    1. Navigate to your subaccount and choose **Link to dashboard** under the **Kyma Environment** tab to open the Kyma Console.
+    1. Navigate to your subaccount and choose **Dashboard URL** under the **Kyma Environment** tab to open Kyma dashboard.
 
-          <!-- border; size:540px --> ![Open Kyma console](./kyma-console.png)
+          <!-- border; size:540px --> ![Open Kyma dashboard](./kyma-console.png)
 
     2. Choose **Namespaces** on the left and choose **incident-management**.
 
