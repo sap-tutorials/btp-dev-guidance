@@ -643,4 +643,4 @@ You need to assign your user to the **~cdm_defaultRole** role collection, so you
 
 ### Summary
 
-Congratulations! You now have finished the development of your application and you've integrated SAP Build Work Zone, standard edition to have one central entry point to show all of your SAP BTP applications.
+Congratulations! You have finished the development of your application and you've integrated SAP Build Work Zone, standard edition to have one central entry point to show all of your SAP BTP applications.
