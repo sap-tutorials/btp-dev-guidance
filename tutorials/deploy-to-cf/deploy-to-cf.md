@@ -14,7 +14,7 @@ author_profile: https://github.com/slavipande
 
 ## You will learn
 
-- How to deploy your CAP application as a multi-target application (MTA)
+- How to deploy your CAP application as a multi-target application (MTA) 
 
 ## Prerequisites
 
