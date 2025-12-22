@@ -174,11 +174,7 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 To run the pipeline using the SAP Continuous Integration and Delivery service, you need to create a service account. The service account is a non-human account that provides a distinct identity in your Kyma cluster. The service account authenticates your CI/CD pipeline to access your Kyma cluster. See [Service Accounts](https://kubernetes.io/docs/concepts/security/service-accounts/).
 
-<<<<<<< Updated upstream
-1. Navigate to your subaccount and choose **Link to dashboard** under the **Kyma Environment** tab to open the Kyma dashboard.
-=======
 1. Navigate to your subaccount and choose **Dashboard URL** under the **Kyma Environment** tab to open Kyma dashboard.
->>>>>>> Stashed changes
 
       <!-- border; size:540px --> ![Open Kyma dashboard](./kyma-console.png)
 
