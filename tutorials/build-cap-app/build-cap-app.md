@@ -50,7 +50,7 @@ You've configured the SAP Business Application Studio. Follow the steps in the [
 4. Create a new project using [`cds init`](https://cap.cloud.sap/docs/tools/cds-cli#cds-init).
 
     ```bash
-    cds init incident-management
+    cds init --add nodejs incident-management
     ```
 
     > This command creates a folder **incident-management** with your newly created CAP project.
@@ -423,7 +423,7 @@ You have to stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it
 
 ### Generate comma-separated values (CSV) templates
 
-Since we already have an SQLite in-memory database that was automatically created in the previous step, let's now fill it with some test data.
+Since we already have an SQLite in-memory database that was automatically created in the previous step, let's now fill it with initial data.
 
 1. Run the following command in the **incident-management** root folder of your project:
 
@@ -450,22 +450,11 @@ Since we already have an SQLite in-memory database that was automatically create
 
     You can find the generated CSV templates within the **db** folder, in a newly created **data** folder.
      
-### Fill in the test data
+### Fill in the initial data
 
-> **Important consideration for test data**
+> **Important distinction between initial data and test data**
 >
-> In the previous step, you added several CSV files with test data. These files are required to pre-fill the SQLite memory with data for local testing. **Test data is most suitable for development environments, where schema changes are frequent and broad.** 
-> 
-> When you redeploy your database, it deletes all tables and views and create them again. This behavior is known as drop-create.
->
-> - **Test files should never be deployed to an SAP HANA production database as table data.**
->
->       In such cases, changing a data file can cause the deletion of all files of affected database tables, even if the data files for the affected tables have been removed before. SAP HANA remembers all data files that have ever been deployed to the tables and might restore them. 
->
->       **Only master data files are be delivered in this way.** Master data files are files, which are defined by the application developer and can't be changed by the application. Examples for master data include country codes, status codes and criticality, and urgency codes and descriptions.
->
->       **Delivering files for tables with customer data will cause data loss in productive scenarios!** See section [Providing Initial Data](https://cap.cloud.sap/docs/guides/databases#providing-initial-data) in the CAP documentation for more details.
-> - **Drop-create is most appropriate for development. However, drop-create isn't suitable for database upgrades in production**, as all customer data is lost. To avoid data loss, `cds deploy` also supports automatic schema evolution. See section [Schema Evolution](https://cap.cloud.sap/docs/guides/databases-sqlite#schema-evolution).
+> You need to distinguish between (real) initial data meant for production (configuration, code lists) and test data meant for development and testing purposes only. For more information, see [Initial vs Test Data](https://pages.github.tools.sap/cap/docs/guides/databases/initial-data#initial-vs-test-data).
 
 
 Replace the respective generated CSV templates with the following content:
