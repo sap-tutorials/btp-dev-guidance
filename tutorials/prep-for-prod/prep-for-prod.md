@@ -375,7 +375,7 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
     cds add workzone-standard
     ```
 
-2. Make sure that the lines `"destinations": true`, `"html5-runtime": true`, and `"workzone": true` have been added to the **package.json** file:
+2. Make sure that the lines `"destinations": true`, `"html5-repo": true`, and `"workzone": true` have been added to the **package.json** file:
     
     ```json
     {
@@ -391,7 +391,7 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
             ...
           },
           "destinations": true,
-          "html5-runtime": true,
+          "html5-repo": true,
           "workzone": true
         }
       ...
@@ -658,5 +658,6 @@ You get an output like:
 ### Deployment Options
 
 Now that you've prepared your CAP application for deployment, you can choose from the following deployment options:
+
 - Follow the tutorials in the [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) group to deploy the application in the SAP BTP, Cloud Foundry runtime.
 - Follow the tutorials in the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) group to deploy the application in the SAP BTP, Kyma runtime.
