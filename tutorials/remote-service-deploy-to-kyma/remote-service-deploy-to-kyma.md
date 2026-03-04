@@ -6,8 +6,8 @@ auto_validation: true
 time: 45
 tags: [ tutorial>intermediate, tutorial>license, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform]
 primary_tag: software-product-function>sap-cloud-application-programming-model
-author_name: Svetoslav Pandeliev
-author_profile: https://github.com/slavipande
+author_name: Grzegorz Karaluch
+author_profile: https://github.com/grego952
 ---
 
 ## You will learn
