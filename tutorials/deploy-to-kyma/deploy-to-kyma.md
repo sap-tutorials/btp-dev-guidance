@@ -271,25 +271,45 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
     cds add workzone
     ```
 
-3. Run the following command to get the domain name of your Kyma cluster:
-
-    ```bash
-    kubectl get gateway -n kyma-system kyma-gateway \
-            -o jsonpath='{.spec.servers[0].hosts[0]}'
-    ```
-
-    The result looks like this:
-
-    ```bash
-    *.<xyz123>.kyma.ondemand.com
-    ```
-
-    > `<xyz123>` is a placeholder for a string of characters that's unique for your cluster.
-
-4. Provide a Helm chart:
+3. Provide a Helm chart:
 
     ```bash
     cds add kyma
+    ```
+
+4. Configure `containerize.yaml` at the root of your project:
+
+    > **Note:** Set `BP_NODE_VERSION: "20"` to pin Node.js to version 20 LTS. Without it, the Paketo buildpack selects Node.js 26, which requires `libatomic.so.1` — a library not present in the `paketobuildpacks/run-jammy-base` runtime image, causing the container to crash on startup.
+
+    ```yaml
+    _schema-version: '1.0'
+    repository: <your-dockerhub-username>
+    tag: <image-version>
+    modules:
+      - name: incident-management-srv
+        build-parameters:
+          buildpack:
+            type: nodejs
+            builder: builder-jammy-base
+            path: gen/srv
+            env:
+              BP_NODE_VERSION: "20"
+      - name: incident-management-hana-deployer
+        build-parameters:
+          buildpack:
+            type: nodejs
+            builder: builder-jammy-base
+            path: gen/db
+            env:
+              BP_NODE_VERSION: "20"
+      - name: incident-management-html5-deployer
+        build-parameters:
+          buildpack:
+            type: nodejs
+            builder: builder-jammy-base
+            path: app/html5-deployer
+            env:
+              BP_NODE_VERSION: "20"
     ```
 
 [OPTION END]
@@ -311,30 +331,15 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
     cds add workzone
     ```
 
-3. Run the following command to get the domain name of your Kyma cluster:
-
-    ```bash
-    kubectl get gateway -n kyma-system kyma-gateway \
-            -o jsonpath='{.spec.servers[0].hosts[0]}'
-    ```
-
-    The result looks like this:
-
-    ```bash
-    *.<xyz123>.kyma.ondemand.com
-    ```
-
-    > `<xyz123>` is a placeholder for a string of characters that's unique for your cluster.
-
-4. Provide a Helm chart:
+3. Provide a Helm chart:
 
     ```bash
     cds add kyma
     ```
 
-    Provide your container registry and the domain name when prompted.
+    Provide your container registry name when prompted.
 
-5. In the VS Code terminal, navigate to the **app/incidents** folder and run the following command:
+4. In the VS Code terminal, navigate to the **app/incidents** folder and run the following command:
 
     ```bash
     npm install && npm run build
@@ -343,70 +348,6 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
 [OPTION END]
 
 ### Deploy the application
-
-[OPTION BEGIN [Node.js]]
-1. Run the following command to create a namespace:
-
-    ```bash
-    kubectl create namespace incident-management
-    kubectl label namespace incident-management istio-injection=enabled
-    ```
-
-2. Run the following command to get the domain name of your Kyma cluster:
-
-    ```bash
-    kubectl get gateway -n kyma-system kyma-gateway \
-            -o jsonpath='{.spec.servers[0].hosts[0]}'
-    ```
-
-    The result looks like this:
-
-    ```bash
-    *.<xyz123>.kyma.ondemand.com
-    ```
-
-    > `<xyz123>` is a placeholder for a string of characters that's unique for your cluster.
-
-3. Make sure that your SAP HANA Cloud instance is running. Free tier HANA instances are stopped overnight.
-
-    > Your SAP HANA Cloud service instance is automatically stopped overnight, according to the time zone of the region where the server is located. That means you need to restart your instance every day before you start working with it.
-    >
-    > You can either use the SAP BTP cockpit or the terminal in the SAP Business Application Studio to restart the stopped instance:
-    >
-    > ```bash
-    > cf update-service incident-management -c '{"data":{"serviceStopped":false}}'
-    > ```
-
-4. Deploy using the `cds up` command:
-
-    ```bash
-    cds up -2 k8s --namespace incident-management
-    ```
-
-5. You may be asked to create your Docker imagePullSecret. If so, follow the provided instructions.
-
-    The `cds up -2 k8s --namespace incident-management` command installs the Helm chart from the **chart** folder with the release name **incident-management** in the namespace **incident-management**.
-
-    The outcome of the installation looks like this:
-
-    <!-- border; size:540px --> ![Deployed app](./deployedapp.png)
-
-<!-- 6. Enter the route displayed for **srv** in your browser. -->
-
-<!-- border; size:540px ![Depoyed app route](./deployedapp-route.png) -->
-
-<!--     You see the CAP start page: -->
-
-<!-- border; size:540px ![CAP start page](./cap-start-page.png) --> 
-
-<!-- 4. When you choose the **Incidents** service entity, you will see an error message.  -->
-
-<!-- border; size:540px  ![401 error](./401-error.png) -->
-
-In the next tutorial, you can access your UIs from SAP Build Work Zone, standard edition. The SAP Build Work Zone, standard edition triggers the authentication flow to provide the required token to access the service.
-
-[OPTION END]
-[OPTION BEGIN [Java]]
 
 1. Run the following command to create a namespace:
 
@@ -431,8 +372,6 @@ In the next tutorial, you can access your UIs from SAP Build Work Zone, standard
     cds up -2 k8s --namespace incident-management
     ```
 
-    > If you experience the `TypeError: Cannot read properties of undefined (reading 'global')` error, run the `cds up` once again.
-
 4. You may be asked to create your Docker imagePullSecret. If so, follow the provided instructions.
 
     The `cds up -2 k8s --namespace incident-management` command installs the Helm chart from the **chart** folder with the release name **incident-management** in the namespace **incident-management**.
@@ -454,4 +393,3 @@ In the next tutorial, you can access your UIs from SAP Build Work Zone, standard
 <!-- border; size:540px  ![401 error](./401-error.png) -->
 
 In the next tutorial, you can access your UIs from SAP Build Work Zone, standard edition. The SAP Build Work Zone, standard edition triggers the authentication flow to provide the required token to access the service.
-[OPTION END]
