@@ -32,7 +32,7 @@ By following one of the [SAP Fiori elements floorplans](https://sapui5.hana.onde
 - Get future-proof UX consistency.
 - Get enterprise readiness.
 
-To learn more about each of these points, see [Why Use SAP Fiori Elements?](https://sapui5.hana.ondemand.com/#/topic/0a5377076f4e4ccba055a9072befadbd).
+To learn more about each of these points, see [Developing Apps with Modern Concepts: Guidance for Developers](https://ui5.sap.com/#/topic/4cb54eb25b7e4df794c05268e83c22b4).
 
 ### Generate the UI with an SAP Fiori Elements template
 
