@@ -32,7 +32,7 @@ By following one of the [SAP Fiori elements floorplans](https://sapui5.hana.onde
 - Get future-proof UX consistency.
 - Get enterprise readiness.
 
-To learn more about each of these points, see [Why Use SAP Fiori Elements?](https://sapui5.hana.ondemand.com/#/topic/0a5377076f4e4ccba055a9072befadbd).
+To learn more about each of these points, see [Developing Apps with Modern Concepts: Guidance for Developers](https://ui5.sap.com/#/topic/4cb54eb25b7e4df794c05268e83c22b4).
 
 ### Generate the UI with an SAP Fiori Elements template
 
@@ -266,7 +266,7 @@ The filter labels are text strings. It's a good idea to update them so they're c
 
     > The filter labels are text strings. It's a good idea to update them so they're compliant with internationalization standards (i18n).
 
-    > Learn more about how internationalization works for the back end part in [Where to Place Text Bundles?](https://cap.cloud.sap/docs/guides/i18n#where-to-place-text-bundles) in the CAP documentation.
+    > Learn more about how internationalization works for the back end part in [Where to Place Text Bundles?](https://cap.cloud.sap/docs/guides/uis/i18n#where-to-place-text-bundles) in the CAP documentation.
 
 5. For each of the **name**, **Description (status/descr)**, and **Description (urgency/descr)** columns:
 
@@ -509,8 +509,8 @@ In this section, you modify the Incident Object Page of the UI with the SAP Fior
 
 SAP Fiori supports editing business entities with draft states stored on the server, so users can interrupt editing and continue later on, possibly from different places and devices. CAP, as well as SAP Fiori elements, provides out-of-the-box support for drafts. We recommend that you always use draft when your SAP Fiori application needs data input by users.
 
->- For more details, see the SAP Fiori Design Guidelines for [Draft Handling](https://experience.sap.com/fiori-design-web/draft-handling/).
->- Read more about [Draft Support](https://cap.cloud.sap/docs/advanced/fiori#draft-support) in the CAP documentation.
+>- For more details, see the SAP Fiori Design Guidelines for [Draft Handling](https://www.sap.com/design-system/fiori-design-web/v1-148/foundations/best-practices/global-patterns/object-handling/draft-handling).
+>- Read more about [Draft Support](https://cap.cloud.sap/docs/guides/uis/fiori#fiori-draft-support) in the CAP documentation.
 
 Enabling a draft for an entity allows the users to edit the entities. To enable a draft for an entity exposed by a service, follow these steps:
 
