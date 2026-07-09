@@ -1,0 +1,10 @@
+version = 1
+SPDX-PackageName = "Tutorials"
+SPDX-PackageSupplier = "Svetoslav Pandeliev (s.pandeliev@sap.com@sap.com)"
+SPDX-PackageDownloadLocation = "https://github.com/sap-tutorials/btp-dev-guidance"
+
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2025 SAP SE or an SAP affiliate company and https://github.com/sap-tutorials/btp-dev-guidance contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
