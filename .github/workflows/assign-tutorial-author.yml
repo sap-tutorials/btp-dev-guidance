@@ -12,6 +12,8 @@ on:
 jobs:
   assign-author:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
 
     # Only run when the added label matches the "tutorial:*" pattern
     if: startsWith(github.event.label.name, 'tutorial:')
