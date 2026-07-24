@@ -22,7 +22,9 @@ author_profile: https://github.com/slavipande
 
 You've added a launch page for local testing to your application. Follow the steps in the [Use a Local Launch Page](use-local-launch-page) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
-> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
+> **OUT OF MAINTENANCE**
+>
+> This tutorial is no longer maintained. For an up-to-date version and support with any issues, refer to the [Develop a Full-Stack CAP Application Following the SAP BTP Developer's Guide](https://discovery-center.cloud.sap/missiondetail/4327/4608/) mission in the [SAP Discovery Center](https://discovery-center.cloud.sap/).
 
 ### Add CAP role restrictions to entities
 

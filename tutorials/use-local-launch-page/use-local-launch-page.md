@@ -20,7 +20,9 @@ author_profile: https://github.com/slavipande
 
 You've added business logic to your application. Follow the steps in the [Add Custom Logic](add-custom-logic) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
-> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
+> **OUT OF MAINTENANCE**
+>
+> This tutorial is no longer maintained. For an up-to-date version and support with any issues, refer to the [Develop a Full-Stack CAP Application Following the SAP BTP Developer's Guide](https://discovery-center.cloud.sap/missiondetail/4327/4608/) mission in the [SAP Discovery Center](https://discovery-center.cloud.sap/).
 
 ### Overview
 
@@ -34,7 +36,9 @@ In the current implementation, you can open the **Incident Management** applicat
 
     > Make sure the **IncidentManagement** dev space is in status **RUNNING**.
 
-2. Create a new **launchpage.html** file in the **app** folder of the **INCIDENT-MANAGEMENT** application.
+2. Navigate to the **app** folder of the **INCIDENT-MANAGEMENT** application and create a new **launchpage.html** file. 
+
+    > Make sure to place the new **launchpage.html** file in the **app** folder and not in any subfolders.
 
 3. Copy the following content to the **launchpage.html** file:
 
@@ -89,7 +93,7 @@ In the current implementation, you can open the **Incident Management** applicat
 
 3. Make sure that the SAP Fiori application is running.
 
-3. Go to the tab of the opened SAP Fiori application in your browser and replace **/incidents/webapp/index.html?sap-ui-xx-viewCache=false** with **/launchpage.html#Shell-home** in the URL.
+3. Go to the tab of the opened SAP Fiori application in your browser and replace **/ns.incidents/index.html?sap-ui-xx-viewCache=false** with **/launchpage.html#Shell-home** in the URL.
 
     > You now see a tile of the **Incident Management** application on the launch page.
 

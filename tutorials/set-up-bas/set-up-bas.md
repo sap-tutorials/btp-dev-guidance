@@ -26,7 +26,9 @@ author_profile: https://github.com/slavipande
     - Google Chrome
     - Microsoft Edge
 
-> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
+> **OUT OF MAINTENANCE**
+>
+> This tutorial is no longer maintained. For an up-to-date version and support with any issues, refer to the [Develop a Full-Stack CAP Application Following the SAP BTP Developer’s Guide](https://discovery-center.cloud.sap/missiondetail/4327/4608/) mission in the [SAP Discovery Center](https://discovery-center.cloud.sap/).
 
 ### Configure entitlements for SAP Business Application Studio
 

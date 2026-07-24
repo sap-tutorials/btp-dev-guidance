@@ -19,7 +19,9 @@ author_profile: https://github.com/slavipande
 
 - You've got the Business Partner API from SAP S/4HANA Cloud and have extended the functionality of the Incident Management application. Follow the steps in the [Get the Business Partner API and Extend the Incident Management Application](remote-service-extend) tutorial.
 
-> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
+> **OUT OF MAINTENANCE**
+>
+> This tutorial is no longer maintained. For an up-to-date version and support with any issues, refer to the [Develop a Side-by-Side CAP-Based Extension Application Following the SAP BTP Developer's Guide](https://discovery-center.cloud.sap/missiondetail/4426/4712/?tab=overview) mission in the [SAP Discovery Center](https://discovery-center.cloud.sap/).
 
 ### Create mock data for the new entities
 

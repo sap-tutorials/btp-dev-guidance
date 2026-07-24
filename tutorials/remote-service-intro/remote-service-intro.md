@@ -22,7 +22,9 @@ author_profile: https://github.com/slavipande
     - Go to the Incident Management application GitHub repository directly and clone the application without going through the application development steps. See [Incident Management](https://github.com/cap-js/incidents-app/tree/beginner-tutorials).
 - You've deployed the Incident Management sample application in the SAP BTP, Cloud Foundry runtime or in the SAP BTP, Kyma runtime. To deploy the Incident Management sample application in the SAP BTP, Cloud Foundry runtime, follow the tutorials in the [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) group of tutorials. To deploy the Incident Management sample application in the SAP BTP, Kyma runtime, follow the tutorials in the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) group of tutorials.
 
-> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
+> **OUT OF MAINTENANCE**
+>
+> This tutorial is no longer maintained. For an up-to-date version and support with any issues, refer to the [Develop a Side-by-Side CAP-Based Extension Application Following the SAP BTP Developer's Guide](https://discovery-center.cloud.sap/missiondetail/4426/4712/?tab=overview) mission in the [SAP Discovery Center](https://discovery-center.cloud.sap/).
 
 ### Overview
 

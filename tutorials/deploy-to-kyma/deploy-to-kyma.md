@@ -235,7 +235,7 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
 
 ### Download and set up the project locally
 
-1. Skip this step if you cloned the application from the [Incident Management application GitHub repository](https://github.com/cap-js/incidents-app/tree/beginner-tutorials) without going through the application development steps. Perform this step only in case you've developed the application from the start following the tutorials in the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) group.
+1. Skip this step if you cloned the application from the [Incident Management application GitHub repository](https://github.com/cap-js/incidents-app/tree/beginner-tutorials) without going through the application development steps. Perform this step only in case you’ve developed the application from the start following the [Develop a Full-Stack CAP Application Following the SAP BTP Developer’s Guide](https://discovery-center.cloud.sap/missiondetail/4327/4608/) mission in the SAP Discovery Center.
 
     1. In SAP Business Application Studio, choose the icon to download dev space content.
 

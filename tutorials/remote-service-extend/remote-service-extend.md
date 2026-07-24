@@ -19,7 +19,9 @@ author_profile: https://github.com/slavipande
 
 - You've set up the Incident Management sample application. See [Introduction to Remote Service Connectivity](remote-service-intro).
 
-> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
+> **OUT OF MAINTENANCE**
+>
+> This tutorial is no longer maintained. For an up-to-date version and support with any issues, refer to the [Develop a Side-by-Side CAP-Based Extension Application Following the SAP BTP Developer's Guide](https://discovery-center.cloud.sap/missiondetail/4426/4712/?tab=overview) mission in the [SAP Discovery Center](https://discovery-center.cloud.sap/).
 
 ### Get the Business Partner API
 
@@ -223,7 +225,7 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
 
     6. Add the custom handler implementation after the **init()** method:
 
-        ```js[12-43]
+        ```js[12-42]
         async init() {
           this.before("UPDATE", "Incidents", (req) => this.onUpdate(req));
           this.after("READ", "Incidents", (data) => this.changeUrgencyDueToSubject(data));
@@ -242,7 +244,6 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
           const { BusinessPartner } = this.remoteService.entities;
           if (newCustomerId && newCustomerId !== "") {
             console.log('>> CREATE or UPDATE customer!');
-
             // Expands are required as the runtime does not support path expressions for remote services
             const customer = await this.S4bupa.run(SELECT.one(BusinessPartner, bp => {
               bp('*');
