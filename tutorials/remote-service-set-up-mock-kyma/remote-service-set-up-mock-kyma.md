@@ -26,8 +26,6 @@ author_profile: https://github.com/grego952
 >
 > This tutorial is no longer maintained. For an up-to-date version and support with any issues, refer to the [Develop a Side-by-Side CAP-Based Extension Application Following the SAP BTP Developer's Guide](https://discovery-center.cloud.sap/missiondetail/4426/4712/?tab=overview) mission in the [SAP Discovery Center](https://discovery-center.cloud.sap/).
 
-> This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
-
 ### Use a mock server instead of an SAP S/4HANA Cloud tenant
 
 If you don't have access to an SAP back end system (SAP ECC, SAP S/4HANA Cloud or an SAP on-premise system) but still need OData services with some data, you can use this [mock server application](https://github.com/SAP-samples/cloud-extension-ecc-business-process/blob/mock/README.md). It contains entities of SAP OData services with sample data.
