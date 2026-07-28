@@ -31,17 +31,34 @@ author_profile: https://github.com/grego952
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
+### Create a role collection and add role
+
+1. Open the SAP BTP cockpit and navigate to your subaccount.
+
+2. Choose **Security** &rarr; **Role Collections**, and then choose **Create**.
+
+3. In the **Create Role Collection** popup, enter **Incident Management Support** in the **Name** field and choose **Create**.
+
+4. Choose the role collection **Incident Management Support** from the list of role collections and choose **Edit**.
+
+5. Open the value help in the **Role Name** field.
+
+6. Search for the role **support**, select it, and choose **Add**.
+
+7. Choose **Save**.
+
 ### Assign a role collection to a user
 
 
-1. Choose **Security** &rarr; **Users**, and then choose a user from the list. 
+1. Choose **Security** &rarr; **Users**, and then choose a user from the list.
 
 2. Under **Role Collections** on the right, choose **Assign Role Collection**.
 
-      <!-- border; size:540px --> ![role collection](./rolecollection1.png)
+3. In the **Assign Role Collection** dialog, select the **Incident Management Support** role collection and choose **Assign Role Collection**.
 
-      The role collections **admin** and **support** are automatically generated during deployment.
+      You have assigned the **Incident Management Support** role collection to your user.
 
+<<<<<<< Updated upstream
 2. In the **Assign Role Collection** dialog, select the **support** role collection and choose **Assign Role Collection**.
 
       <!-- border; size:540px --> ![role collection](./rolecollection11.png)
@@ -49,3 +66,6 @@ author_profile: https://github.com/grego952
       You've assigned the role collection to your user.
 
 > Log out and log back in to make sure your new role collection is considered.
+=======
+> You might need to log out and log back in to make sure your new role collection is taken into account.
+>>>>>>> Stashed changes
