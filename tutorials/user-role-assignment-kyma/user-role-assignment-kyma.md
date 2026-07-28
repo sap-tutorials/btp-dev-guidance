@@ -58,7 +58,6 @@ author_profile: https://github.com/grego952
 
       You have assigned the **Incident Management Support** role collection to your user.
 
-<<<<<<< Updated upstream
 2. In the **Assign Role Collection** dialog, select the **support** role collection and choose **Assign Role Collection**.
 
       <!-- border; size:540px --> ![role collection](./rolecollection11.png)
@@ -66,6 +65,3 @@ author_profile: https://github.com/grego952
       You've assigned the role collection to your user.
 
 > Log out and log back in to make sure your new role collection is considered.
-=======
-> You might need to log out and log back in to make sure your new role collection is taken into account.
->>>>>>> Stashed changes
