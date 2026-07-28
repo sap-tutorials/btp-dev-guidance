@@ -42,7 +42,7 @@ author_profile: https://github.com/grego952
 
       The role collections **admin** and **support** are automatically generated during deployment.
 
-2. In the **Assign Role Collection** dialog, select the **support** role collection and choose **Assign Role Collection**.
+2. In the **Assign Role Collection** dialog, select the **Incident Management Support** role collection and choose **Assign Role Collection**.
 
       <!-- border; size:540px --> ![role collection](./rolecollection11.png)
 
