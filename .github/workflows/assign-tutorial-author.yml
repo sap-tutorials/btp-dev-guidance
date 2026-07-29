@@ -1,22 +1,19 @@
 name: Assign Tutorial Author to Issue
 
-# Triggers when a label is added to an issue.
-# The existing label-issues.yml workflow auto-applies a "tutorial:<slug>"
-# label when a new issue is opened, which in turn fires this workflow.
+# Triggers when a new issue is opened.
+# Extracts the tutorial slug directly from the developers.sap.com URL in the issue body,
+# so this workflow has no dependency on the label-issues.yml workflow.
 
 on:
   issues:
     types:
-      - labeled
+      - opened
 
 jobs:
   assign-author:
     runs-on: ubuntu-latest
     permissions:
       issues: write
-
-    # Only run when the added label matches the "tutorial:*" pattern
-    if: startsWith(github.event.label.name, 'tutorial:')
 
     steps:
       - name: Check out repository
@@ -27,14 +24,21 @@ jobs:
       - name: Resolve tutorial author and assign to issue
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          LABEL_NAME: ${{ github.event.label.name }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
           REPO: ${{ github.repository }}
         run: |
           set -e
 
-          # Extract slug from label, e.g. "tutorial:btp-app-logging" -> "btp-app-logging"
-          SLUG="${LABEL_NAME#tutorial:}"
+          # Extract slug from the developers.sap.com tutorial URL in the issue body
+          # e.g. "https://developers.sap.com/tutorials/deploy-to-kyma.html" -> "deploy-to-kyma"
+          SLUG=$(echo "$ISSUE_BODY" | grep -oP '(?<=developers\.sap\.com/tutorials/)[^./]+' | head -1)
+
+          if [ -z "$SLUG" ]; then
+            echo "No developers.sap.com tutorial URL found in issue body — skipping assignment."
+            exit 0
+          fi
+
           echo "Tutorial slug: $SLUG"
 
           TUTORIAL_FILE="tutorials/${SLUG}/${SLUG}.md"
