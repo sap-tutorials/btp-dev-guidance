@@ -43,13 +43,13 @@ author_profile: https://github.com/slavipande
 
 2. Under **Role Collections** on the right, choose **Assign Role Collection**.
 
-      <!-- border; size:540px --> ![role collection](./rolecollection1.png)
+      ![role collection](./rolecollection1.png)
 
       The role collections **admin** and **support** are automatically generated during deployment.
 
 2. In the **Assign Role Collection** dialog, select the **support** role collection and choose **Assign Role Collection**.
 
-      <!-- border; size:540px --> ![role collection](./rolecollection11.png)
+      ![role collection](./rolecollection11.png)
 
       You've assigned the role collection to your user.
 
