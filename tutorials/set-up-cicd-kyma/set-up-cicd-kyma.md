@@ -44,11 +44,11 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 2. Choose **Create repository**.
 
-    <!-- border; size:540px --> ![Create repository](./create-repo.png)
+    ![Create repository](./create-repo.png)
 
 3. You're directed to the **Quick Setup** page of your new repository. Make sure to copy the URL of the repository as you'll need it in the next steps.
 
-    <!-- border; size:540px --> ![Quick Setup](./quick-setup.png)
+    ![Quick Setup](./quick-setup.png)
 
 ### Initialize a repository in VS Code
 
@@ -57,37 +57,37 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 2. Navigate to the **.gitignore** file in your project's root folder and replace the contents of the file with the following code snippet:
 
-    ```
-    node_modules/
-    package-lock.json
-    gen/
+   ```
+   node_modules/
+   package-lock.json
+   gen/
 
-    *.mtar
-    mta_archives/
-    mta.yaml
-    ```
+   *.mtar
+   mta_archives/
+   mta.yaml
+   ```
     
     > If **.gitignore** doesn't exist, create it and paste the preceding code snippet in the newly created file.
 
 3. In VS Code, navigate to **Source Control** on the left and choose **Initialize Repository**.
 
-    <!-- border; size:540px --> ![Initialize repository](./initialize-repo.png)
+    ![Initialize repository](./initialize-repo.png)
 
 4. Open the three dots menu next to **Source Control** and choose **Remote** &rarr; **Add Remote...**.
 
-    <!-- border; size:540px --> ![Add remote](./add-remote.png)
+    ![Add remote](./add-remote.png)
 
 5. Paste the URL of your repository in the **Provide repository URL** field and press <kbd>Enter<kbd>.
 
-    <!-- border; size:540px --> ![Provide repo URL](./provide-repo-url.png)
+    ![Provide repo URL](./provide-repo-url.png)
 
 6. Provide a remote name and press <kbd>Enter<kbd>.
 
-    <!-- border; size:540px --> ![Provide remote name](./provide-remote-name.png)
+    ![Provide remote name](./provide-remote-name.png)
 
 7. Stage your changes, add a commit message, and choose **Publish Branch**.
 
-    <!-- border; size:540px --> ![Publish branch](./publish-branch.png)
+    ![Publish branch](./publish-branch.png)
 
 8. Provide your GitHub username and password when prompted. When the changes are pushed, you see your project in your GitHub repository.
 [OPTION END]
@@ -97,35 +97,35 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 2. Navigate to the **.gitignore** file in your project's root folder and replace the contents of the file with the following code snippet:
 
-    ```
-    node_modules/
+   ```
+   node_modules/
 
-    *.mtar
-    mta_archives/
-    mta.yaml
-    ```
+   *.mtar
+   mta_archives/
+   mta.yaml
+   ```
     
     > If **.gitignore** doesn't exist, create it and paste the preceding code snippet in the newly created file.
 
 3. In VS Code, navigate to **Source Control** on the left and choose **Initialize Repository**.
 
-    <!-- border; size:540px --> ![Initialize repository](./initialize-repo.png)
+    ![Initialize repository](./initialize-repo.png)
 
 4. Open the three dots menu next to **Source Control** and choose **Remote** &rarr; **Add Remote...**.
 
-    <!-- border; size:540px --> ![Add remote](./add-remote.png)
+    ![Add remote](./add-remote.png)
 
 5. Paste the URL of your repository in the **Provide repository URL** field and press <kbd>Enter<kbd>.
 
-    <!-- border; size:540px --> ![Provide repo URL](./provide-repo-url.png)
+    ![Provide repo URL](./provide-repo-url.png)
 
 6. Provide a remote name and press <kbd>Enter<kbd>.
 
-    <!-- border; size:540px --> ![Provide remote name](./provide-remote-name.png)
+    ![Provide remote name](./provide-remote-name.png)
 
 7. Stage your changes, add a commit message, and choose **Publish Branch**.
 
-    <!-- border; size:540px --> ![Publish branch](./publish-branch.png)
+    ![Publish branch](./publish-branch.png)
 
 8. Provide your GitHub username and password when prompted. When the changes are pushed, you see your project in your GitHub repository.
 [OPTION END]
@@ -137,15 +137,15 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 2. Type **Continuous Integration & Delivery** in the search box and choose **Create**.
 
-    <!-- border; size:540px --> ![Continuous Integration and Delivery create service](./cicd-create-service.png)
+    ![Continuous Integration and Delivery create service](./cicd-create-service.png)
 
 3. In the **New Instance or Subscription** popup select **default** from the **Plan** field.
 
 4. Choose **View Subscription** and wait until the status changes to **Subscribed**.
 
-    <!-- border; size:540px --> ![View subscription](./cicd-view-subscription.png)
+    ![View subscription](./cicd-view-subscription.png)
 
-    <!-- border; size:540px --> ![Status subscribed](./cicd-status-subscribed.png)
+    ![Status subscribed](./cicd-status-subscribed.png)
 
 5. In your SAP BTP subaccount, choose **Security** &rarr; **Role Collections** in the left-hand pane.
 
@@ -153,11 +153,11 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 7.  Choose **Edit**.
 
-    <!-- border; size:540px --> ![Edit role](./cicd-edit-role.png)
+    ![Edit role](./cicd-edit-role.png)
 
 8.  In the **Users** section, enter your user and select the icon to add the user.
 
-    <!-- border; size:540px --> ![Add user](./cicd-add-user.png)
+    ![Add user](./cicd-add-user.png)
 
     > Keep the setting `Default Identity Provider` unless you have a custom identity provider configured.
 
@@ -176,45 +176,45 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
 
 1. Navigate to your subaccount and choose **Dashboard URL** under the **Kyma Environment** tab to open Kyma dashboard.
 
-      <!-- border; size:540px --> ![Open Kyma dashboard](./kyma-console.png)
+      ![Open Kyma dashboard](./kyma-console.png)
 
 2. Choose **Namespaces** &rarr; **Create**.
 
-    <!-- border; size:540px --> ![Create namespace](./create-namespace.png)
+    ![Create namespace](./create-namespace.png)
 
 3. Enter a name for your namespace (for example, **incident-management-namespace**), switch the **Enable Sidecar Injection** toggle **ON**, and choose **Create**.
 
-    <!-- border; size:540px --> ![Create namespace dialog](./create-namespace-dialog.png)
+    ![Create namespace dialog](./create-namespace-dialog.png)
 
 4. Navigate to the namespace **incident-management-namespace** and choose **Configuration** &rarr; **Service Accounts** on the left.
 
-    <!-- border; size:540px --> ![Open namespace](./open-namespace.png)
+    ![Open namespace](./open-namespace.png)
 
 5. Choose **Create**.
 
-    <!-- border; size:540px --> ![Create service account](./create-service-account.png)
+    ![Create service account](./create-service-account.png)
 
 6. Enter a name for the service account (for example, **incident-management-namespace-service-account**) and choose **Create**.
 
-    <!-- border; size:540px --> ![Create Service Account dialog](./create-service-account-dialog.png)
+    ![Create Service Account dialog](./create-service-account-dialog.png)
 
 7. Navigate to the service account **incident-management-namespace-service-account** and choose **Generate TokenRequest**.
 
-    <!-- border; size:540px --> ![Generate token request](./generate-token-request.png)
+    ![Generate token request](./generate-token-request.png)
 
     This action generates a set of configurations that represent the **kubeconfig** file of the service account.
 
 8. Choose a longer period from the dropdown in the **Expiration seconds** field and copy the **TokenRequest** value. You need it following in the steps. 
 
-    <!-- border; size:540px --> ![Copy token request](./copy-token-request.png)
+    ![Copy token request](./copy-token-request.png)
 
 9. Navigate to the **Cluster Details** page and choose **Configuration** &rarr; **Cluster Role Bindings**.
 
-    <!-- border; size:540px --> ![Cluster details](./cluster-details.png)
+    ![Cluster details](./cluster-details.png)
 
 10. Choose **Create**.
 
-    <!-- border; size:540px --> ![Create cluster role binding](./create-cluster-role-binding.png)
+    ![Create cluster role binding](./create-cluster-role-binding.png)
 
 11. In the **Create Cluster Role Binding** dialog:
 
@@ -225,7 +225,7 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
     - Select **incident-management-namespace-service-account** from the dropdown in the **Service Account Name** field.
     - Choose **Create**.
 
-    <!-- border; size:540px --> ![Create cluster role binding dialog](./create-cluster-role-binding-dialog.png)
+    ![Create cluster role binding dialog](./create-cluster-role-binding-dialog.png)
 
 
 ### Access SAP Continuous Integration and Delivery service
@@ -234,7 +234,7 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
 
 2. Choose **Continuous Integration & Delivery**.
 
-    <!-- border; size:540px --> ![CI/CD Go to application](./cicd-goto-app.png)
+    ![CI/CD Go to application](./cicd-goto-app.png)
 
 3. Use your SAP BTP global user name and global password to log in to the application.
 
@@ -243,7 +243,7 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
 
 1. Choose the **Credentials** tab and choose the icon to add a new credential.
 
-    <!-- border; size:540px --> ![Add new credential](./add-credential.png)
+    ![Add new credential](./add-credential.png)
 
 2. Under **Create Credentials** on the right:
 
@@ -253,7 +253,7 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
     - Enter your GitHub password (or GitHub access token if you've created one) in the **Password** field.
     - Choose **Create**. 
 
-    <!-- border; size:540px --> ![Create GitHub credential](./create-github-credential.png)
+    ![Create GitHub credential](./create-github-credential.png)
 
 3. Choose the icon to add a new credential again and create a credential for Kyma.
 
@@ -262,7 +262,7 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
     - Paste the **TokenRequest** value that you copied earlier in Step 4 in the **Content** field.
     - Choose **Create**.
 
-    <!-- border; size:540px --> ![Create kube-config credential](./create-kube-config-credential.png)
+    ![Create kube-config credential](./create-kube-config-credential.png)
 
 4. Choose the icon to add a new credential again and create a credential for your container registry.
 
@@ -271,7 +271,7 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
     - Paste your container registry credentials in the **Content** field, removing the `https://` and `/v1/` from the container registry URL in the `auths` object.
     - Choose **Create**.
 
-    <!-- border; size:540px --> ![Create container registry credential](./create-container-registry-credential.png)
+    ![Create container registry credential](./create-container-registry-credential.png)
 
 
     >Here's how to get your container registry credentials in the required format:
@@ -298,24 +298,24 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
 
 2. Add `"@cap-js/sqlite": "^1"` as a `devDependency` and the script `"cds-build": "npm install --include=dev && cds build --production"` to the **package.json** file:
 
-    ```json
-    {
-        "name": "incident-management",
-        ...
-        "dependencies": {
-            ...
-        },
-        "devDependencies": {
-            "@cap-js/sqlite": "^1",
-            ...
-        },
-        "scripts": {
-            ...
-            "cds-build": "npm install --include=dev && cds build --production"
-        },
-        ...
-    }
-    ```
+   ```json
+   {
+       "name": "incident-management",
+       ...
+       "dependencies": {
+           ...
+       },
+       "devDependencies": {
+           "@cap-js/sqlite": "^1",
+           ...
+       },
+       "scripts": {
+           ...
+           "cds-build": "npm install --include=dev && cds build --production"
+       },
+       ...
+   }
+   ```
 3. In VS Code, choose **Terminal** &rarr; **New Terminal** and run `npm add -D @sap/cds-dk` to add `@sap/cds-dk` as a `devDependency` in the **package.json** file.
 
 4. Make sure to commit and push your changes to the remote repository.
@@ -327,45 +327,45 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
 
 2. Add `"@cap-js/sqlite": "^1"` as a `devDependency` and the script `"cds-build": "npm install --include=dev && cds build --production"` to the **package.json** file:
 
-    ```json
-    {
-        "name": "incident-management",
-        ...
-        "dependencies": {
-            ...
-        },
-        "devDependencies": {
-            "@cap-js/sqlite": "^1",
-            ...
-        },
-        "scripts": {
-            ...
-            "cds-build": "npm install --include=dev && cds build --production"
-        },
-        ...
-    }
-    ```
+   ```json
+   {
+       "name": "incident-management",
+       ...
+       "dependencies": {
+           ...
+       },
+       "devDependencies": {
+           "@cap-js/sqlite": "^1",
+           ...
+       },
+       "scripts": {
+           ...
+           "cds-build": "npm install --include=dev && cds build --production"
+       },
+       ...
+   }
+   ```
 3. In VS Code, choose **Terminal** &rarr; **New Terminal** and run `npm add -D @sap/cds-dk` to add `@sap/cds-dk` as a `devDependency` in the **package.json** file.
    
 4. Navigate to the **db** folder and run the following command:
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 5. Open **db/package.json** and remove the `"build": "npm i && npx cds build .. --for hana --production"` line from `scripts`.
 
-    ```json[6]
-    {
-        "name": "deploy",
-        ...
-        "scripts": {
-          "start": "node node_modules/@sap/hdi-deploy/deploy.js --use-hdb",
-          "build": "npm i && npx cds build .. --for hana --production"
-        },
-        ...
-    }
-    ```
+   ```json[6]
+   {
+       "name": "deploy",
+       ...
+       "scripts": {
+         "start": "node node_modules/@sap/hdi-deploy/deploy.js --use-hdb",
+         "build": "npm i && npx cds build .. --for hana --production"
+       },
+       ...
+   }
+   ```
 
 6. Make sure to commit and push your changes to the remote repository.
 [OPTION END]
@@ -375,7 +375,7 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
 [OPTION BEGIN [Node.js]]
 1. Navigate to the **Jobs** tab and choose the icon to add a new job.
 
-    <!-- border; size:540px --> ![Add new job](./add-job.png)
+    ![Add new job](./add-job.png)
 
 2. Enter **Incident-Management** in the **Job Name** field.
 
@@ -383,11 +383,11 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
 
 1. Open the value help for the **Repository** field. 
 
-    <!-- border; size:540px --> ![Add job name](./job-name.png)
+    ![Add job name](./job-name.png)
 
 2. In the **Select Repository** popup, choose **Add Repository**. A popup opens.
 
-    <!-- border; size:540px --> ![Select Repository popup](./select-repository.png)
+    ![Select Repository popup](./select-repository.png)
 
 3. In the **Add Repository** popup, enter details for the repository you created in **Step 1: Create a repository**:
 
@@ -396,12 +396,12 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
     - Open the value help in the **Credentials** field and choose the credential **github** that you created in **Step 6: Add credentials**. 
     - Remove the **Webhook Event Receiver** section.
 
-    <!-- border; size:540px --> ![Add Repository popup](./add-repository.png)
+    ![Add Repository popup](./add-repository.png)
 
 
 4. Choose **Add** to complete the addition of a repository.
 
-    <!-- border; size:540px --> ![Complete repo addition](./complete-repo-add.png)
+    ![Complete repo addition](./complete-repo-add.png)
 
 #### Configure pipeline and stages
 
@@ -409,7 +409,7 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
 
 2. Select **Kyma Runtime** from the dropdown in the **Pipeline** field.
 
-    <!-- border; size:540px --> ![Configure pipeline](./configure-pipeline.png)
+    ![Configure pipeline](./configure-pipeline.png)
 
 3. In the **Stages** tab, enter **gen/chart** in the **Chart Path** field.
 
@@ -427,7 +427,7 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
     - Enter **app/incidents** in the **Project Subdirectory Path** field.
     - Choose **Add**.
 
-    <!-- border; size:540px --> ![All images](./all-images.png)
+    ![All images](./all-images.png)
 
 
 5. Select **npm** from the dropdown in the **Build Tool** field.
@@ -446,7 +446,7 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
 
 2. Enter **test** in the **npm Script** field.
 
-    <!-- border; size:540px --> ![Add unit tests](./add-unit-tests.png)
+    ![Add unit tests](./add-unit-tests.png)
 
 3. Scroll down to the **Release** section and switch the **Release** toggle **ON**. 
 
@@ -457,7 +457,7 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
     - Enter **incident-management** in the **Helm Release Name** field.
     - Choose **+** to add helm values.
 
-    <!-- border; size:540px --> ![Deploy to Kyma info](./deploy-to-kyma-info.png)
+    ![Deploy to Kyma info](./deploy-to-kyma-info.png)
 
 5. In the **Add Helm Values** dialog:
     - Enter **xsuaa.jsonParameters** in the **Helm Value Path** field.
@@ -465,7 +465,7 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
     - Select **file** from the dropdown in the **Source** field.
     - Choose **OK**.
 
-    <!-- border; size:540px --> ![Add Helm Values](./add-helm-values.png)
+    ![Add Helm Values](./add-helm-values.png)
 
 6. Choose **Create**.
 
@@ -473,7 +473,7 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
 [OPTION BEGIN [Java]]
 1. Navigate to the **Jobs** tab and choose the icon to add a new job.
 
-    <!-- border; size:540px --> ![Add new job](./add-job.png)
+    ![Add new job](./add-job.png)
 
 2. Enter **Incident-Management** in the **Job Name** field.
 
@@ -481,11 +481,11 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
 
 1. Open the value help for the **Repository** field. 
 
-    <!-- border; size:540px --> ![Add job name](./job-name.png)
+    ![Add job name](./job-name.png)
 
 2. In the **Select Repository** popup, choose **Add Repository**. A popup opens.
 
-    <!-- border; size:540px --> ![Select Repository popup](./select-repository.png)
+    ![Select Repository popup](./select-repository.png)
 
 3. In the **Add Repository** popup, enter details for the repository you created in **Step 1: Create a repository**:
 
@@ -494,12 +494,12 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
     - Open the value help in the **Credentials** field and choose the credential **github** that you created in **Step 6: Add credentials**. 
     - Remove the **Webhook Event Receiver** section.
 
-    <!-- border; size:540px --> ![Add Repository popup](./add-repository.png)
+    ![Add Repository popup](./add-repository.png)
 
 
 4. Choose **Add** to complete the addition of a repository.
 
-    <!-- border; size:540px --> ![Complete repo addition](./complete-repo-add.png)
+    ![Complete repo addition](./complete-repo-add.png)
 
 #### Configure pipeline and stages
 
@@ -507,7 +507,7 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
 
 2. Select **Kyma Runtime** from the dropdown in the **Pipeline** field.
 
-    <!-- border; size:540px --> ![Configure pipeline](./configure-pipeline.png)
+    ![Configure pipeline](./configure-pipeline.png)
 
 3. In the **Stages** tab, enter **gen/chart** in the **Chart Path** field.
 
@@ -525,7 +525,7 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
     - Enter **app/incidents** in the **Project Subdirectory Path** field.
     - Choose **Add**.
 
-    <!-- border; size:540px --> ![All images](./all-images.png)
+    ![All images](./all-images.png)
 
 
 5. Select **maven** from the dropdown in the **Build Tool** field.
@@ -549,7 +549,7 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
     - Enter **incident-management** in the **Helm Release Name** field.
     - Choose **+** to add helm values.
 
-    <!-- border; size:540px --> ![Deploy to Kyma info](./deploy-to-kyma-info.png)
+    ![Deploy to Kyma info](./deploy-to-kyma-info.png)
 
 4. In the **Add Helm Values** dialog:
     - Enter **xsuaa.jsonParameters** in the **Helm Value Path** field.
@@ -557,7 +557,7 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
     - Select **file** from the dropdown in the **Source** field.
     - Choose **OK**.
 
-    <!-- border; size:540px --> ![Add Helm Values](./add-helm-values.png)
+    ![Add Helm Values](./add-helm-values.png)
 
 5. Choose **Create**.
 [OPTION END]
@@ -568,13 +568,13 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
 
 2. Choose the **Incident-Management** job and choose **Run**.
 
-    <!-- border; size:540px --> ![Run job](./run-job.png)
+    ![Run job](./run-job.png)
 
 3. Verify that a new tile appears in the **Builds** view. This tile is marked as running.
 
-    <!-- border; size:540px --> ![Build running](./build-running.png)
+    ![Build running](./build-running.png)
 
 4. Wait until the job has finished and verify that the build tile is marked as successful.
 
-    <!-- border; size:540px --> ![Build successful](./build-successful.png)
+    ![Build successful](./build-successful.png)
  

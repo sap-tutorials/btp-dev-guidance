@@ -60,7 +60,7 @@ author_profile: https://github.com/grego952
 
 2. In the **Assign Role Collection** dialog, select the **support** role collection and choose **Assign Role Collection**.
 
-      <!-- border; size:540px --> ![role collection](./rolecollection11.png)
+      ![role collection](./rolecollection11.png)
 
       You've assigned the role collection to your user.
 
