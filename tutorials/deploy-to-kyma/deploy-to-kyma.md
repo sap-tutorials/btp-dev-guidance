@@ -113,11 +113,11 @@ See [Setup](https://github.com/int128/kubelogin#setup) in the kubelogin docs for
 
 1. Choose `KubeconfigURL` under the **Kyma Environment** tab in your subaccount.
 
-    <!-- border; size:540px --> ![Kubeconfig URL](kubeconfigURL.png)
+    ![Kubeconfig URL](kubeconfigURL.png)
 
     A file `kubeconfig.yaml` is downloaded.
 
-    <!-- border; size:540px --> ![Kubeconfig yaml](kubeconfig_yaml.png)
+    ![Kubeconfig yaml](kubeconfig_yaml.png)
 
 2. Copy the `kubeconfig.yaml` file to the `~/.kube/` directory and rename it to `config`. Replace or rename any existing file with the same name.
 
@@ -239,7 +239,7 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
 
     1. In SAP Business Application Studio, choose the icon to download dev space content.
 
-        <!-- border; size:540px --> ![Download dev space content](./downloadproject.png)
+        ![Download dev space content](./downloadproject.png)
 
         > Make sure the **IncidentManagement** dev space is in status **RUNNING**.
 
@@ -248,9 +248,9 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
 
 3. Open a command-line window in the folder where your application resides (for example, **incident-management** if developed from the start or **incidents-app** if cloned from GitHub) and run the following command to open the project in VS Code:
 
-    ```bash
-    code .
-    ```
+   ```bash
+   code .
+   ```
 
 ### Prepare your application
 
@@ -259,58 +259,58 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
 
 1. In VS Code, choose **Terminal** &rarr; **New Terminal** and run the following command:
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
     This command installs the required dependencies and updates the **package-lock.json** file of your project.
 
 2. In your terminal, run the following command:
 
-    ```bash
-    cds add workzone
-    ```
+   ```bash
+   cds add workzone
+   ```
 
 3. Provide a Helm chart:
 
-    ```bash
-    cds add kyma
-    ```
+   ```bash
+   cds add kyma
+   ```
 
 4. Configure `containerize.yaml` at the root of your project:
 
     > **Note:** Set `BP_NODE_VERSION: "20"` to pin Node.js to version 20 LTS. Without it, the Paketo buildpack selects Node.js 26, which requires `libatomic.so.1` — a library not present in the `paketobuildpacks/run-jammy-base` runtime image, causing the container to crash on startup.
 
-    ```yaml
-    _schema-version: '1.0'
-    repository: <your-dockerhub-username>
-    tag: <image-version>
-    modules:
-      - name: incident-management-srv
-        build-parameters:
-          buildpack:
-            type: nodejs
-            builder: builder-jammy-base
-            path: gen/srv
-            env:
-              BP_NODE_VERSION: "20"
-      - name: incident-management-hana-deployer
-        build-parameters:
-          buildpack:
-            type: nodejs
-            builder: builder-jammy-base
-            path: gen/db
-            env:
-              BP_NODE_VERSION: "20"
-      - name: incident-management-html5-deployer
-        build-parameters:
-          buildpack:
-            type: nodejs
-            builder: builder-jammy-base
-            path: app/html5-deployer
-            env:
-              BP_NODE_VERSION: "20"
-    ```
+   ```yaml
+   _schema-version: '1.0'
+   repository: <your-dockerhub-username>
+   tag: <image-version>
+   modules:
+     - name: incident-management-srv
+       build-parameters:
+         buildpack:
+           type: nodejs
+           builder: builder-jammy-base
+           path: gen/srv
+           env:
+             BP_NODE_VERSION: "20"
+     - name: incident-management-hana-deployer
+       build-parameters:
+         buildpack:
+           type: nodejs
+           builder: builder-jammy-base
+           path: gen/db
+           env:
+             BP_NODE_VERSION: "20"
+     - name: incident-management-html5-deployer
+       build-parameters:
+         buildpack:
+           type: nodejs
+           builder: builder-jammy-base
+           path: app/html5-deployer
+           env:
+             BP_NODE_VERSION: "20"
+   ```
 
 [OPTION END]
 [OPTION BEGIN [Java]]
@@ -319,31 +319,31 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
 
 1. In VS Code, choose **Terminal** &rarr; **New Terminal** and run the following command:
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
     This command installs the required dependencies and updates the **package-lock.json** file of your project.
 
 2. Add configuration for the managed App Router: 
 
-    ```bash
-    cds add workzone
-    ```
+   ```bash
+   cds add workzone
+   ```
 
 3. Provide a Helm chart:
 
-    ```bash
-    cds add kyma
-    ```
+   ```bash
+   cds add kyma
+   ```
 
     Provide your container registry name when prompted.
 
 4. In the VS Code terminal, navigate to the **app/incidents** folder and run the following command:
 
-    ```bash
-    npm install && npm run build
-    ```
+   ```bash
+   npm install && npm run build
+   ```
 
 [OPTION END]
 
@@ -351,10 +351,10 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
 
 1. Run the following command to create a namespace:
 
-    ```bash
-    kubectl create namespace incident-management
-    kubectl label namespace incident-management istio-injection=enabled
-    ```
+   ```bash
+   kubectl create namespace incident-management
+   kubectl label namespace incident-management istio-injection=enabled
+   ```
 
 2. Make sure that your SAP HANA Cloud instance is running. Free tier HANA instances are stopped overnight.
 
@@ -368,9 +368,9 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
 
 3. Deploy using the `cds up` command:
 
-    ```bash
-    cds up -2 k8s --namespace incident-management
-    ```
+   ```bash
+   cds up -2 k8s --namespace incident-management
+   ```
 
 4. You may be asked to create your Docker imagePullSecret. If so, follow the provided instructions.
 
@@ -378,7 +378,7 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
 
     The outcome of the installation looks like this:
 
-    <!-- border; size:540px --> ![Deployed app](./deployedapp.png)
+    ![Deployed app](./deployedapp.png)
 
 <!-- 6. Enter the route displayed for **srv** in your browser. -->
 

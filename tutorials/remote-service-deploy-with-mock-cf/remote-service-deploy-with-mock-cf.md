@@ -36,50 +36,50 @@ author_profile: https://github.com/slavipande
 
 1. In SAP Business Application Studio, navigate to the Incident Management application folder and add the `[production]` profile `credentials` (`destination` and `path`) to the settings for **API_BUSINESS_PARTNER** to the **package.json** file:
 
-    ```json
-      "API_BUSINESS_PARTNER": {
-        "kind": "odata", 
-        "model": "srv/external/API_BUSINESS_PARTNER", 
-        "[production]": { 
-          "credentials": { 
-            "destination": "<destination_name>",
-            "path": "odata/v2/api-business-partner"
-          }
-        }
-      }
-    ```
+   ```json
+     "API_BUSINESS_PARTNER": {
+       "kind": "odata", 
+       "model": "srv/external/API_BUSINESS_PARTNER", 
+       "[production]": { 
+         "credentials": { 
+           "destination": "<destination_name>",
+           "path": "odata/v2/api-business-partner"
+         }
+       }
+     }
+   ```
 
     > Replace **<destination_name>** with the name of the destination that you created at **Step 5: Create a destination to the mock server** of [Install a Mock Server in the SAP BTP, Cloud Foundry Runtime](remote-service-set-up-mock-cf).
 
 2. In the **mta.yaml** file, look for the **incident-management-srv** module's **requires** section, and make sure that the line `- name: incident-management-destination` is added:
 
-    ```yaml
-    - name: incident-management-srv
-      type: nodejs
-      path: gen/srv
-      requires:
-      - name: incident-management-auth
-      - name: incident-management-db
-      - name: incident-management-destination
-    ....
-    ```
+   ```yaml
+   - name: incident-management-srv
+     type: nodejs
+     path: gen/srv
+     requires:
+     - name: incident-management-auth
+     - name: incident-management-db
+     - name: incident-management-destination
+   ....
+   ```
 
 4. Log in to your subaccount in SAP BTP:
 
-    ```bash
-    cf api <API-ENDPOINT>
-    cf login
-    cf target -o <ORG> -s <SPACE>
-    ```
+   ```bash
+   cf api <API-ENDPOINT>
+   cf login
+   cf target -o <ORG> -s <SPACE>
+   ```
 
     > You can find the API endpoint in the **Overview** section of your subaccount in the SAP BTP cockpit.
 
 5. Run the following commands to build and deploy your project to the SAP BTP, Cloud Foundry runtime:
 
-    ```bash
-    mbt build
-    cf deploy mta_archives/incident-management_1.0.0.mtar 
-    ```
+   ```bash
+   mbt build
+   cf deploy mta_archives/incident-management_1.0.0.mtar 
+   ```
 
 ### Test the Incident Management application
 
@@ -91,18 +91,18 @@ When creating new entries in the Incident Management application, you see all va
 
 6. Choose the **Incident Management** tile.
 
-    <!-- border; size:540px --> ![Incident Management tile on the launchpage](./incident-management-tile.png)
+    ![Incident Management tile on the launchpage](./incident-management-tile.png)
 
 9. Choose **Create** to start creating a new incident.
   
-    <!-- border; size:540px --> ![Create a new incident](./create-new-incident.png)
+    ![Create a new incident](./create-new-incident.png)
 
 11. Open the value help for the **Customer** field. 
 
-    <!-- border; size:540px --> ![Value help for Customer field](./value-help-customer.png)
+    ![Value help for Customer field](./value-help-customer.png)
 
 12. Verify that customer data is fetched from the mock server. 
 
-    <!-- border; size:540px --> ![Data in value help](./value-help-data.png)
+    ![Data in value help](./value-help-data.png)
 
 Congratulations! You have successfully developed, configured, and deployed the Incident Management application using an external service and a mock server.

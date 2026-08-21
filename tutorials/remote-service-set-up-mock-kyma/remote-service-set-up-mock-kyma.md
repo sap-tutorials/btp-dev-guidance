@@ -42,21 +42,21 @@ You need to:
 
 2. Clone the mock server GitHub repository:
 
-    ```bash
-    git clone -b mock https://github.com/SAP-samples/cloud-extension-ecc-business-process.git
-    ```
+   ```bash
+   git clone -b mock https://github.com/SAP-samples/cloud-extension-ecc-business-process.git
+   ```
 
 3. Navigate to the mock server project:
 
-    ```bash
-    cd cloud-extension-ecc-business-process
-    ```
+   ```bash
+   cd cloud-extension-ecc-business-process
+   ```
 
 4. Open the project in VS Code:
 
-    ```bash
-    code .
-    ```
+   ```bash
+   code .
+   ```
 
 ### Build and deploy the mock server application
 
@@ -68,15 +68,15 @@ You need to:
 
 5. Create the productive CAP build for the mock server application:
 
-    ```bash
-    cds build --production
-    ```
+   ```bash
+   cds build --production
+   ```
 
 6. Build the mock server application image:
 
-    ```bash
-    pack build <your-container-registry>/mockserver-srv:<image version> --path gen/srv --builder paketobuildpacks/builder-jammy-base --publish
-    ```
+   ```bash
+   pack build <your-container-registry>/mockserver-srv:<image version> --path gen/srv --builder paketobuildpacks/builder-jammy-base --publish
+   ```
 
     > Make sure to replace `<your-container-registry>` with your docker server URL and keep in mind that `<image version>` is a string. 
 
@@ -93,9 +93,9 @@ You need to:
 
 1. Add Helm chart: 
 
-    ```bash
-    cds add helm --y
-    ```
+   ```bash
+   cds add helm --y
+   ```
 
     CAP provides a configurable Helm chart for Node.js applications. As a result from running the command, you see a newly created **chart** folder in your project. The **chart** folder holds the helm configuration, including the **values.yaml** file where you add your container image settings later on.
 
@@ -153,30 +153,30 @@ You need to:
 
 1. Open the **chart/Chart.yaml** file and remove the dependency for `event-mesh` (last 3 lines) from it:
 
-    ```yaml
-     dependencies:
-       - name: web-application
-         alias: srv
-         version: ">0.0.0"
-       - name: service-instance
-         alias: destination
-         version: ">0.0.0"
-       - name: service-instance
-         alias: event-mesh
-         version: ">0.0.0"
-    ```
+   ```yaml
+    dependencies:
+      - name: web-application
+        alias: srv
+        version: ">0.0.0"
+      - name: service-instance
+        alias: destination
+        version: ">0.0.0"
+      - name: service-instance
+        alias: event-mesh
+        version: ">0.0.0"
+   ```
 
 1. Update the productive CAP build for your application: 
 
-    ```bash
-    cds build --production
-    ```
+   ```bash
+   cds build --production
+   ```
 
 2. Deploy the mock server in the same namespace as your application (for example, **incident-management**):
 
-    ```bash
-    helm upgrade --install mock ./gen/chart -n incident-management
-    ```
+   ```bash
+   helm upgrade --install mock ./gen/chart -n incident-management
+   ```
 
     > The mock server must be deployed in the same namespace as your application. If you've followed the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) group of tutorial, you've created a namespace **incident-management** already. In case you haven't created a namespace yet, run the following command to create it now:
     
@@ -187,14 +187,14 @@ You need to:
 
 3. Copy the application route (URL) of the mock server from the CLI output:
 
-    ```bash[6]
-    Thank you for installing mockserver version 1.0.0.
+   ```bash[6]
+   Thank you for installing mockserver version 1.0.0.
 
-    The release mock is installed in namespace incident-management.
+   The release mock is installed in namespace incident-management.
 
-    Your services are available at:
-        srv - https://mock-srv-incident-management.<xyz123>.kyma.ondemand.com
-    ```
+   Your services are available at:
+       srv - https://mock-srv-incident-management.<xyz123>.kyma.ondemand.com
+   ```
 
     > `<xyz123>` is a placeholder for a string of characters that's unique for your cluster.
 
@@ -216,7 +216,7 @@ You need to:
 
 4. Choose **Check Connection**. You get a `200 OK` message.
 
-    <!-- border; size:540px --> ![Destination Configuration](./destination-configuration.png)
+    ![Destination Configuration](./destination-configuration.png)
 
 ### Test the mock server
 
@@ -224,4 +224,4 @@ You need to:
 
 2. Verify that there are a few API endpoints that display data.
 
-    <!-- border; size:540px --> ![Mock server endpoints](./mock-server-endpoints.png)
+    ![Mock server endpoints](./mock-server-endpoints.png)

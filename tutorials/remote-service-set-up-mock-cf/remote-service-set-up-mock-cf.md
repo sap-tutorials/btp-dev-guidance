@@ -50,7 +50,7 @@ You need to:
 
 2. Choose the burger menu and choose **Terminal** &rarr; **New Terminal**.
 
-    <!-- border; size:540px --> ![Terminal](./bas-terminal.png)
+    ![Terminal](./bas-terminal.png)
 
 3. Navigate to the **projects** folder:
 
@@ -60,15 +60,15 @@ You need to:
 
 2. Clone the mock server GitHub repository:
 
-    ```bash
-    git clone -b mock https://github.com/SAP-samples/cloud-extension-ecc-business-process.git
-    ```
+   ```bash
+   git clone -b mock https://github.com/SAP-samples/cloud-extension-ecc-business-process.git
+   ```
 
 3. In the menu, choose **File** &rarr; **Open Folder...**.
 
 4. Type `/home/user/projects/` in the field and select `cloud-extension-ecc-business-process`. Choose **OK** to open the project in SAP Business Application Studio.
 
-    <!-- border; size:540px --> ![Choose mock app folder](./choose-mock-folder.png)
+    ![Choose mock app folder](./choose-mock-folder.png)
 
 ### Log in to SAP BTP, Cloud Foundry runtime in SAP Business Application Studio
 
@@ -130,7 +130,7 @@ Now, you need to create a destination to the mock server.
 
 4. Choose **Check Connection**. You get a `200 OK` message.
 
-    <!-- border; size:540px --> ![Destination Configuration](./destination-configuration.png)
+    ![Destination Configuration](./destination-configuration.png)
 
 ### Test the mock server
 
@@ -138,4 +138,4 @@ Now, you need to create a destination to the mock server.
 
 2. Verify that there are a few API endpoints that display data.
 
-    <!-- border; size:540px --> ![Mock server endpoints](./mock-server-endpoints.png)
+    ![Mock server endpoints](./mock-server-endpoints.png)

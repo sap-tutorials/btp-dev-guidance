@@ -39,13 +39,13 @@ author_profile: https://github.com/grego952
 
 3. Search for the **SAP Build Work Zone, standard edition** tile and choose **Create**.
 
-    <!-- border; size:540px --> ![Create SAP Build Work Zone, standard edition](./create_workzone_instance.png)
+    ![Create SAP Build Work Zone, standard edition](./create_workzone_instance.png)
 
 4. Keep the default setting for **Service** and choose **free** for **Plan**.
 
 5. Choose **Create**.
 
-    <!-- border; size:540px --> ![New Instance or Subscription](./new_instance_dialog.png)
+    ![New Instance or Subscription](./new_instance_dialog.png)
 
 You have now subscribed to the SAP Build Work Zone, standard edition.
 
@@ -59,7 +59,7 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 4. Under **Role Collections** on the right, choose **Assign Role Collection** and assign the **Launchpad_Admin** role collection to your user.
 
-    <!-- border; size:540px --> ![Add role](./add_launchpad_admin_role.png)
+    ![Add role](./add_launchpad_admin_role.png)
 
     You've assigned the **Launchpad_Admin** role collection to your user.
 
@@ -80,33 +80,33 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 2. Choose the application **SAP Build Work Zone, standard edition**.
 
-    <!-- border; size:540px --> ![WorkZone0](./integrate_launchpad_0.png)
+    ![WorkZone0](./integrate_launchpad_0.png)
 
 3. In the menu on the left side, choose the icon for **Channel Manager**.
 
 4. Choose the refresh icon to fetch the updated content.
 
-    <!-- border; size:540px --> ![WorkZone1](./integrate_launchpad_1.png)
+    ![WorkZone1](./integrate_launchpad_1.png)
 
 #### Add application to Content Explorer
 
 1. Choose **Content Manager** in the menu on the left and choose the **Content Explorer** button.
 
-    <!-- border; size:540px --> ![WorkZone2](./integrate_launchpad_20.png)
+    ![WorkZone2](./integrate_launchpad_20.png)
 
 6. Select the tile **HTML5 Apps** with your respective subdomain name.
 
-    <!-- border; size:540px --> ![WorkZone2](./integrate_launchpad_2.png)
+    ![WorkZone2](./integrate_launchpad_2.png)
 
 7. In the items table, set the checkmark for the app **Incidents** and choose the button **Add**.
 
-    <!-- border; size:540px --> ![WorkZone3](./integrate_launchpad_3.png)
+    ![WorkZone3](./integrate_launchpad_3.png)
 
 #### Create a group
 
 1. Go back to the **Content Manager** and choose **Create** &rarr; **Group**.
 
-    <!-- border; size:540px --> ![WorkZone4](./integrate_launchpad_4.png)
+    ![WorkZone4](./integrate_launchpad_4.png)
 
 9. Add the title **Incident Management Group**.
 
@@ -114,7 +114,7 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 11. Choose **Save**.
 
-    <!-- border; size:540px --> ![WorkZone5](./integrate_launchpad_5.png)
+    ![WorkZone5](./integrate_launchpad_5.png)
 
 #### Add application to the Everyone role
 
@@ -124,17 +124,17 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 14. Choose **Save**.
 
-    <!-- border; size:540px --> ![WorkZone6](./integrate_launchpad_6.png)
+    ![WorkZone6](./integrate_launchpad_6.png)
 
 #### Create site
 
 1. Navigate to **Site Directory** and choose **Create Site**.
 
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_7.png)
+    ![WorkZone7](./integrate_launchpad_7.png)
 
 17. Enter the site name as **Incident Management Site** and choose **Create**.
 
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_71.png)
+    ![WorkZone7](./integrate_launchpad_71.png)
 
 18. Now, you're forwarded to your created site.
 
@@ -148,36 +148,36 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 
 1. Add the following code snippet to **chart/Chart.yaml** file:
 
-    ```yaml
-    - name: service-instance
-      alias: html5-apps-repo-runtime
-      version: ">0.0.0"
-    ```
+   ```yaml
+   - name: service-instance
+     alias: html5-apps-repo-runtime
+     version: ">0.0.0"
+   ```
 
 2. Run the following command to automate the setup for HTML5 application deployment:
 
-    ```bash
-    cds add html5-repo
-    ```
+   ```bash
+   cds add html5-repo
+   ```
 
 3. Add the following configurations for creating an `html5-apps-repo-runtime` service instance in the **values.yaml** file:
 
-    ```yaml
-    html5-apps-repo-runtime: 
-      serviceOfferingName: html5-apps-repo
-      servicePlanName: app-runtime
-    ```
+   ```yaml
+   html5-apps-repo-runtime: 
+     serviceOfferingName: html5-apps-repo
+     servicePlanName: app-runtime
+   ```
 
 4. Delete the destination configuration from **chart/values.yaml**:
 
-    ```yaml
-    destination:
-      serviceOfferingName: 'destination'
-      servicePlanName: 'lite'
-      parameters:
-        version: '1.0.0'
-        HTML5Runtime_enabled: true
-    ```
+   ```yaml
+   destination:
+     serviceOfferingName: 'destination'
+     servicePlanName: 'lite'
+     parameters:
+       version: '1.0.0'
+       HTML5Runtime_enabled: true
+   ```
 
 
 5. Update the `html5-apps-deployer` section:
@@ -236,94 +236,94 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 
 1. In the **ui-resources/resources** folder, create a new file **cdm.json** and paste the following code snippet in the file:
 
-    ```json
-    [
-        {
-        "_version": "3.0",
-        "identification": {
-            "id": "defaultCatalogId",
-            "title": "{{title}}",
-            "entityType": "catalog"
-        },
-        "payload": {
-            "viz": [
-            {
-                "appId": "ns.incidents",
-                "vizId": "incidents-display"
-            }
-            ]
-        },
-        "texts": [
-            {
-            "locale": "",
-            "textDictionary": {
-                "title": "Default Catalog Title"
-            }
-            }
-        ]
-        },
-        {
-        "_version": "3.0",
-        "identification": {
-            "id": "defaultGroupId",
-            "title": "{{title}}",
-            "entityType": "group"
-        },
-        "payload": {
-            "viz": [
-            {
-                "appId": "ns.incidents",
-                "vizId": "incidents-display"
-            }
-            ]
-        },
-        "texts": [
-            {
-            "locale": "",
-            "textDictionary": {
-                "title": "Business Apps"
-            }
-            }
-        ]
-        },
-        {
-        "_version": "3.0",
-        "identification": {
-            "id": "defaultRole",
-            "entityType": "role",
-            "title": "Default Role"
-        },
-        "payload": {
-            "apps": [
-            {
-                "id": "ns.incidents"
-            }
-            ],
-            "catalogs": [
-            {
-                "id": "defaultCatalogId"
-            }
-            ],
-            "groups": [
-            {
-                "id": "defaultGroupId"
-            }
-            ]
-        }
-        }
-    ]
-    ```
+   ```json
+   [
+       {
+       "_version": "3.0",
+       "identification": {
+           "id": "defaultCatalogId",
+           "title": "{{title}}",
+           "entityType": "catalog"
+       },
+       "payload": {
+           "viz": [
+           {
+               "appId": "ns.incidents",
+               "vizId": "incidents-display"
+           }
+           ]
+       },
+       "texts": [
+           {
+           "locale": "",
+           "textDictionary": {
+               "title": "Default Catalog Title"
+           }
+           }
+       ]
+       },
+       {
+       "_version": "3.0",
+       "identification": {
+           "id": "defaultGroupId",
+           "title": "{{title}}",
+           "entityType": "group"
+       },
+       "payload": {
+           "viz": [
+           {
+               "appId": "ns.incidents",
+               "vizId": "incidents-display"
+           }
+           ]
+       },
+       "texts": [
+           {
+           "locale": "",
+           "textDictionary": {
+               "title": "Business Apps"
+           }
+           }
+       ]
+       },
+       {
+       "_version": "3.0",
+       "identification": {
+           "id": "defaultRole",
+           "entityType": "role",
+           "title": "Default Role"
+       },
+       "payload": {
+           "apps": [
+           {
+               "id": "ns.incidents"
+           }
+           ],
+           "catalogs": [
+           {
+               "id": "defaultCatalogId"
+           }
+           ],
+           "groups": [
+           {
+               "id": "defaultGroupId"
+           }
+           ]
+       }
+       }
+   ]
+   ```
 
 #### Build the images and deploy your application in SAP BTP, Kyma runtime
 
 1. Build the UI deployer image:
 
-    ```bash
-    pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \
-        --path ui-resources \
-        --builder paketobuildpacks/builder-jammy-base \
-        --publish
-    ```
+   ```bash
+   pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \
+       --path ui-resources \
+       --builder paketobuildpacks/builder-jammy-base \
+       --publish
+   ```
 
     > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` is a string. 
     
@@ -340,16 +340,16 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 
 1. Update the productive CAP build for your application: 
 
-    ```bash
-    cds build --production
-    ```
+   ```bash
+   cds build --production
+   ```
 
 3. Deploy using the Helm command:
 
-    ```bash
-    helm upgrade --install incident-management --namespace incident-management ./gen/chart \
-    --set-file xsuaa.jsonParameters=xs-security.json
-    ```
+   ```bash
+   helm upgrade --install incident-management --namespace incident-management ./gen/chart \
+   --set-file xsuaa.jsonParameters=xs-security.json
+   ```
 
     > With the ***helm upgrade --install*** command, you can install a new chart as well as upgrade an existing chart.
 
@@ -363,7 +363,7 @@ When the application is successfully deployed, you have to configure design and 
 
     2. Choose **Create Destination**.
 
-          <!-- border; size:540px --> ![Create Destination](./create-destination.png)
+          ![Create Destination](./create-destination.png)
 
     1. Enter the following values:
 
@@ -379,7 +379,7 @@ When the application is successfully deployed, you have to configure design and 
     
     2. Select the **Use default JDK truststore** checkbox and choose **Save**.
 
-          <!-- border; size:540px --> ![Destination incident-management-rt Configuration](./destination-rt-configuration.png)
+          ![Destination incident-management-rt Configuration](./destination-rt-configuration.png)
 
     4. Choose **Check Connection**. You get a message `Connection to "incident-management-rt" established. Response returned: "400: Bad Request"`.
 
@@ -388,30 +388,30 @@ When the application is successfully deployed, you have to configure design and 
 
     1. Navigate to your subaccount and choose **Dashboard URL** under the **Kyma Environment** tab to open Kyma dashboard.
 
-          <!-- border; size:540px --> ![Open Kyma dashboard](./kyma-console.png)
+          ![Open Kyma dashboard](./kyma-console.png)
 
     2. Choose **Namespaces** on the left and choose **incident-management**.
 
-          <!-- border; size:540px --> ![Incident Management](./incident-management-namespace.png) 
+          ![Incident Management](./incident-management-namespace.png) 
 
     2. Choose **Service Management** &rarr; **Service Bindings** and choose **Create**.
 
-          <!-- border; size:540px --> ![Create Service Binding Button](./create-service-binding-button.png) 
+          ![Create Service Binding Button](./create-service-binding-button.png) 
 
     3. In the **Name** field, enter `incidents-runtime`.
 
     4. In the **Service Instance Name** dropdown, choose `incident-management-html5-apps-repo-runtime` and choose **Create**. 
 
-          <!-- border; size:540px --> ![Create Service Binding](./create-service-binding.png) 
+          ![Create Service Binding](./create-service-binding.png) 
         
 
     4. When the status of the service binding changes to **Provisioned**, scroll to the **Specification** section and choose the **Secret Name** **incidents-runtime**.
 
-          <!-- border; size:540px --> ![Choose Secret Name](./choose-secret-name.png) 
+          ![Choose Secret Name](./choose-secret-name.png) 
 
     5. In the **incidents-runtime** secret's page, scroll to the **Data** section and choose **Decode**.
 
-          <!-- border; size:540px --> ![Decode Secret](./decode-secret.png) 
+          ![Decode Secret](./decode-secret.png) 
     
     6. Keep the decoded details at hand, you need them in the next step.
 
@@ -450,7 +450,7 @@ When the application is successfully deployed, you have to configure design and 
         - **uri** = `uri from decoded secret details`
         - **xsappname** = `xsappname from decoded secret details`
 
-        <!-- border; size:540px --> ![Decoded Secret Details](./decoded-secret-details.png)
+        ![Decoded Secret Details](./decoded-secret-details.png)
     
     2. Select the **Use default JDK truststore** checkbox.
 
@@ -458,7 +458,7 @@ When the application is successfully deployed, you have to configure design and 
 
     4. Choose **Check Connection**. You get a message `Connection to "incident-management_cdm" established. Response returned: "401: Unauthorized"`.
 
-        <!-- border; size:540px --> ![Destination incident-management_cdm_ Configuration](./destination-cdm-configuration.png)
+        ![Destination incident-management_cdm_ Configuration](./destination-cdm-configuration.png)
 
 #### Create a new content provider
 
@@ -466,13 +466,13 @@ When the application is successfully deployed, you have to configure design and 
 
 2. Choose the application **SAP Build Work Zone, standard edition**.
 
-    <!-- border; size:540px --> ![WorkZone0](./integrate_launchpad_0.png)
+    ![WorkZone0](./integrate_launchpad_0.png)
 
 3. In the menu on the left side, choose the icon for **Channel Manager**.
 
 4. Choose **New** &rarr; **Content Provider** on the right.
 
-    <!-- border; size:540px --> ![New Content Provider](./new-content-provider.png)
+    ![New Content Provider](./new-content-provider.png)
 
 5. In the **New Content Provider** dialog:
 
@@ -485,30 +485,30 @@ When the application is successfully deployed, you have to configure design and 
     4. Choose **Save**.
 
 
-     <!-- border; size:540px --> ![New Content Provider dialog](./new-content-provider-dialog.png)
+     ![New Content Provider dialog](./new-content-provider-dialog.png)
 
 
 6. Choose the refresh icon to fetch the updated content from the **CDM** content provider. 
 
-    <!-- border; size:540px --> ![New Content Provider fetch](./new-content-provider-fetch.png)
+    ![New Content Provider fetch](./new-content-provider-fetch.png)
 
 #### Create site
 
 1. Navigate to **Site Directory** and choose **Create Site**.
 
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_7.png)
+    ![WorkZone7](./integrate_launchpad_7.png)
 
 17. In the **Site Name** field, enter **Incident Management Site** and choose **Create**.
 
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_71.png)
+    ![WorkZone7](./integrate_launchpad_71.png)
 
 18. When you're forwarded to your created site, choose **Role Assignments** and then choose **Edit**.
 
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_72.png)
+    ![WorkZone7](./integrate_launchpad_72.png)
 
 19. In the **Assignment status** field, switch on **Default Role** for your site and choose **Save**.
 
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_73.png)
+    ![WorkZone7](./integrate_launchpad_73.png)
 
 #### Assign CDM role collection
 
@@ -520,7 +520,7 @@ You need to assign your user to the **~cdm_defaultRole** role collection, so you
 
 4. Under **Role Collections** on the right, choose **Assign Role Collection** and assign the **~cdm_defaultRole** role collection to your user.
 
-    <!-- border; size:540px --> ![Add CDM role](./add_cdm_role.png)
+    ![Add CDM role](./add_cdm_role.png)
 
     You've assigned the **~cdm_defaultRole** role collection to your user.
 
@@ -532,19 +532,19 @@ You need to assign your user to the **~cdm_defaultRole** role collection, so you
 
 1. Navigate to **Site Directory** and find your site.
 
-    <!-- border; size:540px --> ![WorkZone8](./integrate_launchpad_8.png)
+    ![WorkZone8](./integrate_launchpad_8.png)
 
 21. Choose **Go to site**. 
 
-    <!-- border; size:540px --> ![WorkZone9](./integrate_launchpad_9.png)
+    ![WorkZone9](./integrate_launchpad_9.png)
 
 3. Choose the Incident Management application from the launch page. 
 
-    <!-- border; size:540px --> ![WorkZone10](./integrate_launchpad_10.png)
+    ![WorkZone10](./integrate_launchpad_10.png)
 
     You see the list report page.
 
-    <!-- border; size:540px --> ![WorkZone11](./integrate_launchpad_11.png)
+    ![WorkZone11](./integrate_launchpad_11.png)
 
 ### Summary
 

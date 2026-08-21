@@ -43,19 +43,19 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
 
 2. In the **package.json** file, make sure that the `name` property is set to `incident-management`.
 
-    ```json
-    {
-      "name": "incident-management",
-      "version": "1.0.0",
-      "dependencies": {
-        ....
-    ```
+   ```json
+   {
+     "name": "incident-management",
+     "version": "1.0.0",
+     "dependencies": {
+       ....
+   ```
 
 3. Add some additional libraries to the **package.json** file for the communication with external systems. In the terminal, go to the **incident-management** root folder of your project and run the following command:  
 
-    ```bash
-    npm add @sap-cloud-sdk/http-client@3.x @sap-cloud-sdk/util@3.x @sap-cloud-sdk/connectivity@3.x @sap-cloud-sdk/resilience@3.x
-    ```
+   ```bash
+   npm add @sap-cloud-sdk/http-client@3.x @sap-cloud-sdk/util@3.x @sap-cloud-sdk/connectivity@3.x @sap-cloud-sdk/resilience@3.x
+   ```
 
 4. Import the Business Partner API to your project:
 
@@ -78,48 +78,48 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
 
 5. Open **srv/external/API_BUSINESS_PARTNER.cds**. Search for **entity A_BusinessPartner**. Scroll down to the **to_BusinessPartnerAddress** section and replace it with the following excerpt:
 
-    ```CDS
-    to_BusinessPartnerAddress : Composition of many A_BusinessPartnerAddress on to_BusinessPartnerAddress.BusinessPartner = BusinessPartner;
-    ```
+   ```CDS
+   to_BusinessPartnerAddress : Composition of many A_BusinessPartnerAddress on to_BusinessPartnerAddress.BusinessPartner = BusinessPartner;
+   ```
 
 6. Search for **entity A_BusinessPartnerAddress**. Replace the associations for e-mail address and phone number with the following excerpt:
 
-    ```CDS
-    to_EmailAddress : Composition of many A_AddressEmailAddress on to_EmailAddress.AddressID = AddressID;
+   ```CDS
+   to_EmailAddress : Composition of many A_AddressEmailAddress on to_EmailAddress.AddressID = AddressID;
 
-    to_PhoneNumber : Composition of many A_AddressPhoneNumber on to_PhoneNumber.AddressID = AddressID;
-    ```
+   to_PhoneNumber : Composition of many A_AddressPhoneNumber on to_PhoneNumber.AddressID = AddressID;
+   ```
 
 7. In the **srv** folder, create a new file **remote.cds** and paste the following code in it:
 
-    ```CDS
-    using { API_BUSINESS_PARTNER as S4 } from './external/API_BUSINESS_PARTNER';
+   ```CDS
+   using { API_BUSINESS_PARTNER as S4 } from './external/API_BUSINESS_PARTNER';
 
-    service RemoteService {
-      entity BusinessPartner as projection on S4.A_BusinessPartner {
-        key BusinessPartner as ID,
-        FirstName as firstName,
-        LastName as lastName,
-        BusinessPartnerName as name,
-        to_BusinessPartnerAddress as addresses
-      }
-      entity BusinessPartnerAddress as projection on S4.A_BusinessPartnerAddress {
-                BusinessPartner as ID,
-                AddressID as addressId,
-                to_EmailAddress as email,
-                to_PhoneNumber as phoneNumber
-      }
-      entity EmailAddress as projection on S4.A_AddressEmailAddress {
-          key AddressID as addressId,
-          EmailAddress as email
-      }
+   service RemoteService {
+     entity BusinessPartner as projection on S4.A_BusinessPartner {
+       key BusinessPartner as ID,
+       FirstName as firstName,
+       LastName as lastName,
+       BusinessPartnerName as name,
+       to_BusinessPartnerAddress as addresses
+     }
+     entity BusinessPartnerAddress as projection on S4.A_BusinessPartnerAddress {
+               BusinessPartner as ID,
+               AddressID as addressId,
+               to_EmailAddress as email,
+               to_PhoneNumber as phoneNumber
+     }
+     entity EmailAddress as projection on S4.A_AddressEmailAddress {
+         key AddressID as addressId,
+         EmailAddress as email
+     }
 
-      entity PhoneNumber as projection on S4.A_AddressPhoneNumber {
-          key AddressID as addressId,
-          PhoneNumber as phone
-      }
-    }
-    ```
+     entity PhoneNumber as projection on S4.A_AddressPhoneNumber {
+         key AddressID as addressId,
+         PhoneNumber as phone
+     }
+   }
+   ```
 
 9. Add application logic for reading and saving a business partner:
 
@@ -314,22 +314,22 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
 
 10. To run the tests, navigate to the **tests/test.js** file and replace line no.3 with the following highlighted line:
 
-    ```js[3]
-    const cds = require('@sap/cds/lib')
-    const { default: axios } = require('axios') 
-    const { GET, POST, DELETE, PATCH, expect } = cds.test(__dirname + '../../', '--with-mocks');
+   ```js[3]
+   const cds = require('@sap/cds/lib')
+   const { default: axios } = require('axios') 
+   const { GET, POST, DELETE, PATCH, expect } = cds.test(__dirname + '../../', '--with-mocks');
 
-    axios.defaults.auth = { username: 'incident.support@tester.sap.com', password: 'initial' }
+   axios.defaults.auth = { username: 'incident.support@tester.sap.com', password: 'initial' }
 
-    jest.setTimeout(11111)
-    ...
-    ```
+   jest.setTimeout(11111)
+   ...
+   ```
 
 11. Run the tests:
 
-    ```bash
-    npm run test
-    ```
+   ```bash
+   npm run test
+   ```
 
  
  You've integrated the Business Partner API into your project and business logic to read the data from the back end system. New or changed customer data is stored in your application database.

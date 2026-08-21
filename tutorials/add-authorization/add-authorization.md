@@ -33,23 +33,23 @@ You've added a launch page for local testing to your application. Follow the ste
 
 2. To specify restrictions, add the `annotate ProcessorService with @(requires: 'support');` and the `annotate AdminService with @(requires: 'admin');` lines to the **srv/services.cds** file:
 
-    ```CDS
-    using { sap.capire.incidents as my } from '../db/schema';
+   ```CDS
+   using { sap.capire.incidents as my } from '../db/schema';
 
-    /**
-    * Used by support team members to process incidents
-    */
-    service ProcessorService  {
-      ...
-    }
-    annotate ProcessorService.Incidents with @odata.draft.enabled; 
-    annotate ProcessorService with @(requires: 'support');
+   /**
+   * Used by support team members to process incidents
+   */
+   service ProcessorService  {
+     ...
+   }
+   annotate ProcessorService.Incidents with @odata.draft.enabled; 
+   annotate ProcessorService with @(requires: 'support');
 
-    service AdminService {
-      ...
-    }
-    annotate AdminService with @(requires: 'admin');
-    ```
+   service AdminService {
+     ...
+   }
+   annotate AdminService with @(requires: 'admin');
+   ```
 
 With these changes, users with the **support** role can view and change the incidents and customers, while users with the **admin** role can perform admin activities such as auditing logs.
 
@@ -67,51 +67,51 @@ CAP offers a possibility to add local users for testing as part of the `cds` con
    
 2. In the **package.json** file, add the `cds.requires` section:
 
-    ```json
-    ...  
-    "dependencies": {
-      ...
-    },
-    "scripts": {
-      ...
-    },  
-    "cds": {
-      "requires": {
-        "[development]": {
-          "auth": {
-            "kind": "mocked",
-            "users": {}
-          }
-        }
-      }
-    },
-    ...
-    ```
+   ```json
+   ...  
+   "dependencies": {
+     ...
+   },
+   "scripts": {
+     ...
+   },  
+   "cds": {
+     "requires": {
+       "[development]": {
+         "auth": {
+           "kind": "mocked",
+           "users": {}
+         }
+       }
+     }
+   },
+   ...
+   ```
 
     The code creates the `cds.requires` section that didn't exist so far in the **package.json** file. Also, the code defines which configuration to use when running with the `[development]` profile. You define some general parameters for the authentication behavior. Notice that the users object is empty, in the next step, you'll define some test users.
 
 3. In the **package.json** file, replace the empty `users` object with the `users` object from following code:
 
-    ```json
-    ...
-    "cds": {
-        "requires": {
-          "[development]": {
-            "auth": {
-              "kind": "mocked",
-              "users": {
-                "alice": {
-                  "roles": ["support"]
-                },
-                "bob": {
-                  "roles": ["support"]
-                }
-              }
-            }
-          }
-        }
-      },
-    ```
+   ```json
+   ...
+   "cds": {
+       "requires": {
+         "[development]": {
+           "auth": {
+             "kind": "mocked",
+             "users": {
+               "alice": {
+                 "roles": ["support"]
+               },
+               "bob": {
+                 "roles": ["support"]
+               }
+             }
+           }
+         }
+       }
+     },
+   ```
 
     Each user entry is part of the `users` object. The key is the `id` of the user and they can have different properties. For this scenario, you define a `password` and an array of roles.
   
@@ -131,26 +131,26 @@ The authorization checks that you added to the CAP model apply not only when dep
 
 1. Add the `cds-starter-cloudfoundry` dependency to your `srv` module. This dependency is needed to enable authorization and authentication at runtime. Without that dependency, any call to a service annotated with `@requires` results in an authentication failure. Open your **srv/pom.xml** file and add the following snippet as a child node to the `<dependencies>` node:
 
-    ```xml
-    <dependency>
-      <groupId>com.sap.cds</groupId>
-      <artifactId>cds-starter-cloudfoundry</artifactId>
-    </dependency>
-    ```
+   ```xml
+   <dependency>
+     <groupId>com.sap.cds</groupId>
+     <artifactId>cds-starter-cloudfoundry</artifactId>
+   </dependency>
+   ```
    
 2. Now, we can add the mock users to the application's configuration. As with any other Spring Boot application, the configuration can be done in the application's **application.yaml** file. In our case, it's the file **srv/src/main/resources/application.yaml**. Add the following content to this file:
 
 
-    ```yaml
-    ...    
-    cds:
-      security:
-        mock.users:
-          alice:
-            roles: [ admin, support ]
-          bob:
-            roles: [ support ]
-    ```
+   ```yaml
+   ...    
+   cds:
+     security:
+       mock.users:
+         alice:
+           roles: [ admin, support ]
+         bob:
+           roles: [ support ]
+   ```
   
     You've added two users:
 
@@ -179,11 +179,11 @@ When accessing the **Incidents** service of the **Incident Management** applicat
 
 4. Leave the **Password** field empty.
 
-    <!-- border; size:540px --> ![Sign In Incident Management Application](./local-login-java.png)
+    ![Sign In Incident Management Application](./local-login-java.png)
 
     You can now access the **Incident Management** application.
 
-    <!-- border; size:540px --> ![Access Incident Management Application](./incident-management-app.png)
+    ![Access Incident Management Application](./incident-management-app.png)
 
 [OPTION END]
 
@@ -198,11 +198,11 @@ When accessing the **Incidents** service of the **Incident Management** applicat
 
 4. Leave the **Password** field empty.
 
-    <!-- border; size:540px --> ![Sign In Incident Management Application](./local-login-java.png)
+    ![Sign In Incident Management Application](./local-login-java.png)
 
     You can now access the **Incident Management** application.
 
-    <!-- border; size:540px --> ![Access Incident Management Application](./incident-management-app.png)
+    ![Access Incident Management Application](./incident-management-app.png)
 
 [OPTION END]
 

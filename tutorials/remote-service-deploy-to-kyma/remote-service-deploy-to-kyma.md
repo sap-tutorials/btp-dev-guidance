@@ -34,62 +34,62 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
 
 1. Create a new file **bupa.json** in the root folder of the project and paste the following code snippet in it:
 
-    ```json
-    {
-        "systemName": "<SYSTEM_NAME>",
-        "communicationArrangement": {
-            "communicationArrangementName": "<COMM_NAME>",
-            "scenarioId": "SAP_COM_0008",
-            "inboundAuthentication": "BasicAuthentication",
-            "outboundAuthentication": "BasicAuthentication",
-            "outboundServices": [
-                {
-                    "name": "Replicate Customers from S/4 System to Client",
-                    "isServiceActive": false
-                },
-                {
-                    "name": "Replicate Suppliers from S/4 System to Client",
-                    "isServiceActive": false
-                },
-                {
-                    "name": "Replicate Company Addresses from S/4 System to Client",
-                    "isServiceActive": false
-                },
-                {
-                    "name": "Replicate Workplace Addresses from S/4 System to Client",
-                    "isServiceActive": false
-                },
-                {
-                    "name": "Replicate Personal Addresses from S/4 System to Client",
-                    "isServiceActive": false
-                },
-                {
-                    "name": "Business Partner - Replicate from SAP S/4HANA Cloud to Client",
-                    "isServiceActive": false
-                },
-                {
-                    "name": "Business Partner Relationship - Replicate from SAP S/4HANA Cloud to Client",
-                    "isServiceActive": false
-                },
-                {
-                    "name": "Business Partner - Send Confirmation from SAP S/4HANA Cloud to Client",
-                    "isServiceActive": false
-                },
-                {
-                    "name": "BP Relationship - Send Confirmation from SAP S/4HANA Cloud to Client",
-                    "isServiceActive": false
-                }
-            ],
-            "communicationSystem": {
-                "communicationSystemHostname": "default.com",
-                "outboundCommunicationUser": {
-                    "username": "DefaultUser",
-                    "password": "DefaultPassword"
-                }
-            }
-        }
-    }
-    ```
+   ```json
+   {
+       "systemName": "<SYSTEM_NAME>",
+       "communicationArrangement": {
+           "communicationArrangementName": "<COMM_NAME>",
+           "scenarioId": "SAP_COM_0008",
+           "inboundAuthentication": "BasicAuthentication",
+           "outboundAuthentication": "BasicAuthentication",
+           "outboundServices": [
+               {
+                   "name": "Replicate Customers from S/4 System to Client",
+                   "isServiceActive": false
+               },
+               {
+                   "name": "Replicate Suppliers from S/4 System to Client",
+                   "isServiceActive": false
+               },
+               {
+                   "name": "Replicate Company Addresses from S/4 System to Client",
+                   "isServiceActive": false
+               },
+               {
+                   "name": "Replicate Workplace Addresses from S/4 System to Client",
+                   "isServiceActive": false
+               },
+               {
+                   "name": "Replicate Personal Addresses from S/4 System to Client",
+                   "isServiceActive": false
+               },
+               {
+                   "name": "Business Partner - Replicate from SAP S/4HANA Cloud to Client",
+                   "isServiceActive": false
+               },
+               {
+                   "name": "Business Partner Relationship - Replicate from SAP S/4HANA Cloud to Client",
+                   "isServiceActive": false
+               },
+               {
+                   "name": "Business Partner - Send Confirmation from SAP S/4HANA Cloud to Client",
+                   "isServiceActive": false
+               },
+               {
+                   "name": "BP Relationship - Send Confirmation from SAP S/4HANA Cloud to Client",
+                   "isServiceActive": false
+               }
+           ],
+           "communicationSystem": {
+               "communicationSystemHostname": "default.com",
+               "outboundCommunicationUser": {
+                   "username": "DefaultUser",
+                   "password": "DefaultPassword"
+               }
+           }
+       }
+   }
+   ```
 
      - For **systemName**, enter the name of your registered SAP S/4HANA Cloud system. For example, `SAP S/4HANA DEV System`.
      - For **communicationArrangementName**, enter a name for the communication arrangement that is created for the SAP S/4HANA Cloud tenant. For example, `INCIDENT_MANAGEMENT_0008`.
@@ -99,37 +99,37 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
 
 2.  Navigate to the **package.json** file in the root folder of the application. Add the `[production]` profile `credentials` (`destination` and `path`) to the settings for **API_BUSINESS_PARTNER**:
 
-    ```json
-    "API_BUSINESS_PARTNER": {
-        "kind": "odata-v2",
-        "model": "srv/external/API_BUSINESS_PARTNER",
-        "[production]": {
-            "credentials": {
-                "destination": "incident-management-s4-hana-cloud",
-                "path": "/sap/opu/odata/sap/API_BUSINESS_PARTNER"
-            }
-        }
-    }
-    ```
-    <!-- If you are deploying to Cloud Foundry, the **destination** is `incidents-api-access`. For Kyma, the **destination** is `incident-management-s4-hana-cloud`. -->
+   ```json
+   "API_BUSINESS_PARTNER": {
+       "kind": "odata-v2",
+       "model": "srv/external/API_BUSINESS_PARTNER",
+       "[production]": {
+           "credentials": {
+               "destination": "incident-management-s4-hana-cloud",
+               "path": "/sap/opu/odata/sap/API_BUSINESS_PARTNER"
+           }
+       }
+   }
+   ```
+   <!-- If you are deploying to Cloud Foundry, the **destination** is `incidents-api-access`. For Kyma, the **destination** is `incident-management-s4-hana-cloud`. -->
 
 
 2. Open the **chart/Chart.yaml** file and add the following code snippet to it:
 
-    ```yaml
-    - name: service-instance
-      alias: s4-hana-cloud
-      version: ">0.0.0"
-    ```
+   ```yaml
+   - name: service-instance
+     alias: s4-hana-cloud
+     version: ">0.0.0"
+   ```
 
 4. Open the **chart/values.yaml** file and add the following code snippet to it:
    
-    ```yaml
-    s4-hana-cloud:
-      serviceOfferingName: s4-hana-cloud
-      servicePlanName: api-access
-    ....
-    ```
+   ```yaml
+   s4-hana-cloud:
+     serviceOfferingName: s4-hana-cloud
+     servicePlanName: api-access
+   ....
+   ```
 
 ### Build images
 
@@ -142,20 +142,20 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
 
 1. Create the productive CAP build for your application: 
 
-    ```bash
-    cds build --production
-    ```
+   ```bash
+   cds build --production
+   ```
 
     The CAP build writes to the **gen/srv** folder.
 
 4. Build a new version of the CAP Node.js image:
 
-    ```bash
-    pack build <your-container-registry>/incident-management-srv:<new-image-version> \
-        --path gen/srv \
-        --builder paketobuildpacks/builder-jammy-base \
-        --publish
-    ```
+   ```bash
+   pack build <your-container-registry>/incident-management-srv:<new-image-version> \
+       --path gen/srv \
+       --builder paketobuildpacks/builder-jammy-base \
+       --publish
+   ```
 
     >- Make sure to replace `<your-container-registry>` with your docker server URL. 
     > 
@@ -176,26 +176,26 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
 
 7. In the VS Code terminal, navigate to the **ui-resources** folder and run the following command:
 
-    ```bash
-    npm install && npm run package
-    ```
+   ```bash
+   npm install && npm run package
+   ```
 
     This command builds and copies the archive **nsincidents.zip** inside the **ui-resources/resources** folder.
 
 8. In the VS Code terminal, navigate back to the root folder of your project:
 
-    ```bash
-    cd ..
-    ```
+   ```bash
+   cd ..
+   ```
 
 9. Build the UI deployer image:
 
-    ```bash
-    pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \
-        --path ui-resources \
-        --builder paketobuildpacks/builder-jammy-base \
-        --publish
-    ```
+   ```bash
+   pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \
+       --path ui-resources \
+       --builder paketobuildpacks/builder-jammy-base \
+       --publish
+   ```
 
     >- Make sure to replace `<your-container-registry>` with your docker server URL. 
     > 
@@ -218,39 +218,39 @@ Since the database image is unchanged, you don't need to build it again.
 
 1. Check your container image settings to your **chart/values.yaml** file:
 
-    ```yaml
-    global:
-      domain: 
-      imagePullSecret:
-        name: 
-      image:
-        registry: <your-container-registry>
-        tag: <image-version>
-    ```
+   ```yaml
+   global:
+     domain: 
+     imagePullSecret:
+       name: 
+     image:
+       registry: <your-container-registry>
+       tag: <image-version>
+   ```
 
     > Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image version>` is a string. 
 
 
 2. Overwrite the global image version for the CAP Node.js image and for the UI deployer image:
     
-    ```yaml
-    srv:
-      image:
-        repository: incident-management-srv
-        tag: <new-image-version>
-    ...
-    html5-apps-deployer:
-      ...
-      image:
-        repository: "incident-management-html5-deployer"
-        tag: <new-image-version>
-    ```
+   ```yaml
+   srv:
+     image:
+       repository: incident-management-srv
+       tag: <new-image-version>
+   ...
+   html5-apps-deployer:
+     ...
+     image:
+       repository: "incident-management-html5-deployer"
+       tag: <new-image-version>
+   ```
 
 3. Update the productive CAP build for your application: 
 
-    ```bash
-    cds build --production
-    ```
+   ```bash
+   cds build --production
+   ```
 
 4. Make sure that your SAP HANA Cloud instance is running. Free tier HANA instances are stopped overnight.
 
@@ -264,10 +264,10 @@ Since the database image is unchanged, you don't need to build it again.
 
 5. Deploy using the Helm command:
 
-    ```bash
-    helm upgrade --install incident-management --namespace incident-management ./gen/chart \
-   --set-file xsuaa.jsonParameters=xs-security.json --set-file s4-hana-cloud.jsonParameters=bupa.json
-    ```
+   ```bash
+   helm upgrade --install incident-management --namespace incident-management ./gen/chart \
+  --set-file xsuaa.jsonParameters=xs-security.json --set-file s4-hana-cloud.jsonParameters=bupa.json
+   ```
 
     This command installs the Helm chart with the release name **incident-management** in the namespace **incident-management**.
 
@@ -282,19 +282,19 @@ When creating new entries in the Incident Management application, you see all va
 
 6. Choose the Incident Management tile.
 
-    <!-- border; size:540px --> ![Incident Management tile on the launchpage](./incident-management-tile.png)
+    ![Incident Management tile on the launchpage](./incident-management-tile.png)
 
 9. Choose **Create** to start creating a new incident.
   
-    <!-- border; size:540px --> ![Create a new incident](./create-new-incident.png)
+    ![Create a new incident](./create-new-incident.png)
 
 11. Open the value help for the **Customer** field. 
 
-    <!-- border; size:540px --> ![Value help for Customer field](./value-help-customer.png)
+    ![Value help for Customer field](./value-help-customer.png)
 
 12. Verify that customer data is fetched from the SAP S/4HANA Cloud system. 
 
-    <!-- border; size:540px --> ![Data in value help](./value-help-data1.png)
+    ![Data in value help](./value-help-data1.png)
 
 
 Congratulations! You have successfully developed, configured, and deployed the Incident Management application using an external service and an SAP S/4HANA Cloud system.
