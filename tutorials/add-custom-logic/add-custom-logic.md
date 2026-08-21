@@ -40,31 +40,31 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
 
 3. Add the following code (the actual business logic) to the **services.js** file:
 
-    ```js
-    const cds = require('@sap/cds')
+   ```js
+   const cds = require('@sap/cds')
 
-    class ProcessorService extends cds.ApplicationService {
-      /** Registering custom event handlers */
-      init() {
-        this.before("UPDATE", "Incidents", (req) => this.onUpdate(req));
-        this.before("CREATE", "Incidents", (req) => this.changeUrgencyDueToSubject(req.data));
+   class ProcessorService extends cds.ApplicationService {
+     /** Registering custom event handlers */
+     init() {
+       this.before("UPDATE", "Incidents", (req) => this.onUpdate(req));
+       this.before("CREATE", "Incidents", (req) => this.changeUrgencyDueToSubject(req.data));
 
-        return super.init();
-      }
+       return super.init();
+     }
 
-      changeUrgencyDueToSubject(data) {
-        let urgent = data.title?.match(/urgent/i)
-        if (urgent) data.urgency_code = 'H'
-      }
+     changeUrgencyDueToSubject(data) {
+       let urgent = data.title?.match(/urgent/i)
+       if (urgent) data.urgency_code = 'H'
+     }
 
-      /** Custom Validation */
-      async onUpdate (req) {
-        let closed = await SELECT.one(1) .from (req.subject) .where `status.code = 'C'`
-        if (closed) req.reject `Can't modify a closed incident!`
-      }
-    }
-    module.exports = { ProcessorService }
-    ```
+     /** Custom Validation */
+     async onUpdate (req) {
+       let closed = await SELECT.one(1) .from (req.subject) .where `status.code = 'C'`
+       if (closed) req.reject `Can't modify a closed incident!`
+     }
+   }
+   module.exports = { ProcessorService }
+   ```
 
 3. Make sure that the SAP Fiori application is running. If you closed it, choose the **Preview Application** option in the **Application Info - incidents** tab and select the **watch-incidents** npm script.
 
@@ -76,11 +76,11 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
 
 4. Create a new incident with the word **urgent** in its title and with the urgency set to **Medium**. 
 
-    <!-- border; size:540px --> ![Create new incident](./create-new-incident.png)
+    ![Create new incident](./create-new-incident.png)
     
     You see that the value in the **Urgency** field is automatically set to **high**.
 
-    <!-- border; size:540px --> ![Fiori Elements Work List](./incidentapp.png)
+    ![Fiori Elements Work List](./incidentapp.png)
 
 
 [OPTION END]
@@ -99,70 +99,70 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
 
 3. Add the following code (the actual business logic) to the **ProcessorServiceHandler.java** file:
 
-    ```java
-    package customer.incident_management.handler;
+   ```java
+   package customer.incident_management.handler;
 
-    import cds.gen.processorservice.Incidents;
-    import cds.gen.processorservice.ProcessorService_;
-    import cds.gen.sap.capire.incidents.*;
-    import com.sap.cds.ql.Select;
-    import com.sap.cds.services.ErrorStatuses;
-    import com.sap.cds.services.ServiceException;
-    import com.sap.cds.services.cds.CqnService;
-    import com.sap.cds.services.handler.EventHandler;
-    import com.sap.cds.services.handler.annotations.Before;
-    import com.sap.cds.services.handler.annotations.ServiceName;
-    import com.sap.cds.services.persistence.PersistenceService;
-    import org.slf4j.Logger;
-    import org.slf4j.LoggerFactory;
-    import org.springframework.stereotype.Component;
-    import java.util.List;
-    import java.util.Locale;
+   import cds.gen.processorservice.Incidents;
+   import cds.gen.processorservice.ProcessorService_;
+   import cds.gen.sap.capire.incidents.*;
+   import com.sap.cds.ql.Select;
+   import com.sap.cds.services.ErrorStatuses;
+   import com.sap.cds.services.ServiceException;
+   import com.sap.cds.services.cds.CqnService;
+   import com.sap.cds.services.handler.EventHandler;
+   import com.sap.cds.services.handler.annotations.Before;
+   import com.sap.cds.services.handler.annotations.ServiceName;
+   import com.sap.cds.services.persistence.PersistenceService;
+   import org.slf4j.Logger;
+   import org.slf4j.LoggerFactory;
+   import org.springframework.stereotype.Component;
+   import java.util.List;
+   import java.util.Locale;
 
-    @Component
-    @ServiceName(ProcessorService_.CDS_NAME)
-    public class ProcessorServiceHandler implements EventHandler {
-        private static final Logger logger = LoggerFactory.getLogger(ProcessorServiceHandler.class);
-        private final PersistenceService db;
-        public ProcessorServiceHandler(PersistenceService db) {
-            this.db = db;
-        }
-        /*
-        * Change the urgency of an incident to "high" if the title contains the word "urgent"
-        */
-        @Before(event = CqnService.EVENT_CREATE)
-        public void ensureHighUrgencyForIncidentsWithUrgentInTitle(List<Incidents> incidents) {
-            for (Incidents incident : incidents) {
-                if (incident.getTitle().toLowerCase(Locale.ENGLISH).contains("urgent") &&
-                        incident.getUrgencyCode() == null || !incident.getUrgencyCode().equals("H")) {
-                    incident.setUrgencyCode("H");
-                    logger.info("Adjusted Urgency for incident '{}' to 'HIGH'.", incident.getTitle());
-                }
-            }
-        }
-        /*
-        * Handler to avoid updating a "closed" incident
-        */
-        @Before(event = CqnService.EVENT_UPDATE)
-        public void ensureNoUpdateOnClosedIncidents(Incidents incident) {
-            Incidents in = db.run(Select.from(Incidents_.class).where(i -> i.ID().eq(incident.getId()))).single(Incidents.class);
-            if (in.getStatusCode().equals("C")) {
-                throw new ServiceException(ErrorStatuses.CONFLICT, "Can't modify a closed incident");
-            }
-        }
-    }
-    ```
+   @Component
+   @ServiceName(ProcessorService_.CDS_NAME)
+   public class ProcessorServiceHandler implements EventHandler {
+       private static final Logger logger = LoggerFactory.getLogger(ProcessorServiceHandler.class);
+       private final PersistenceService db;
+       public ProcessorServiceHandler(PersistenceService db) {
+           this.db = db;
+       }
+       /*
+       * Change the urgency of an incident to "high" if the title contains the word "urgent"
+       */
+       @Before(event = CqnService.EVENT_CREATE)
+       public void ensureHighUrgencyForIncidentsWithUrgentInTitle(List<Incidents> incidents) {
+           for (Incidents incident : incidents) {
+               if (incident.getTitle().toLowerCase(Locale.ENGLISH).contains("urgent") &&
+                       incident.getUrgencyCode() == null || !incident.getUrgencyCode().equals("H")) {
+                   incident.setUrgencyCode("H");
+                   logger.info("Adjusted Urgency for incident '{}' to 'HIGH'.", incident.getTitle());
+               }
+           }
+       }
+       /*
+       * Handler to avoid updating a "closed" incident
+       */
+       @Before(event = CqnService.EVENT_UPDATE)
+       public void ensureNoUpdateOnClosedIncidents(Incidents incident) {
+           Incidents in = db.run(Select.from(Incidents_.class).where(i -> i.ID().eq(incident.getId()))).single(Incidents.class);
+           if (in.getStatusCode().equals("C")) {
+               throw new ServiceException(ErrorStatuses.CONFLICT, "Can't modify a closed incident");
+           }
+       }
+   }
+   ```
 
 3. Make sure that the SAP Fiori application is running. If you closed it, navigate to the **srv** folder in the terminal and run `mvn cds:watch`.
 
 
 4. Create a new incident with the word **urgent** in its title and with the urgency set to **Medium**. 
 
-    <!-- border; size:540px --> ![Create new incident](./create-new-incident.png)
+    ![Create new incident](./create-new-incident.png)
     
     You see that the value in the **Urgency** field is automatically set to **High**.
 
-    <!-- border; size:540px --> ![Fiori Elements Work List](./incidentapp.png)
+    ![Fiori Elements Work List](./incidentapp.png)
 
 [OPTION END]
 

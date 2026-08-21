@@ -46,37 +46,37 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 2. Choose **Create repository**.
 
-    <!-- border; size:540px --> ![Create repository](./create-repo.png)
+    ![Create repository](./create-repo.png)
 
 3. You're directed to the **Quick Setup** page of your new repository. Make sure to copy the URL of the repository as you'll need it in the next steps.
 
-    <!-- border; size:540px --> ![Quick Setup](./quick-setup.png)
+    ![Quick Setup](./quick-setup.png)
 
 ### Initialize a repository in SAP Business Application Studio
 
 1. In SAP Business Application Studio, navigate to **Source Control** and choose **Initialize Repository**.
 
-    <!-- border; size:540px --> ![Initialize repository](./initialize-repo.png)
+    ![Initialize repository](./initialize-repo.png)
 
 2. In the dropdown **Pick workspace folder to initialize git repo in**, choose the **incident-management** folder.
 
-    <!-- border; size:540px --> ![Pick workspace folder](./pick-workspace-folder.png)
+    ![Pick workspace folder](./pick-workspace-folder.png)
 
 3. Open the three dots menu next to **Source Control** and choose **Remote** &rarr; **Add Remote...**.
 
-    <!-- border; size:540px --> ![Add remote](./add-remote.png)
+    ![Add remote](./add-remote.png)
 
 4. Paste the URL of your repository in the **Provide repository URL** field and press <kbd>Enter<kbd>.
 
-    <!-- border; size:540px --> ![Provide repo URL](./provide-repo-url.png)
+    ![Provide repo URL](./provide-repo-url.png)
 
 5. Provide a remote name and press <kbd>Enter<kbd>.
 
-    <!-- border; size:540px --> ![Provide remote name](./provide-remote-name.png)
+    ![Provide remote name](./provide-remote-name.png)
 
 6. Stage your changes, add a commit message, and choose **Publish Branch**.
 
-    <!-- border; size:540px --> ![Publish branch](./publish-branch.png)
+    ![Publish branch](./publish-branch.png)
 
 7. Provide your GitHub username and password when prompted. When the changes are pushed, you see your project in your GitHub repository.
 
@@ -88,17 +88,17 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 4. Type **Continuous Integration & Delivery** in the search box and choose **Create**.
 
-    <!-- border; size:540px --> ![Continuous Integration and Delivery create service](./cicd-create-service.png)
+    ![Continuous Integration and Delivery create service](./cicd-create-service.png)
 
 6. Choose **Create** in the **New Instance or Subscription** popup without changing any values.
 
-    <!-- border; size:540px --> ![New Instance or Subscription popup](./cicd-create-service-popup.png)
+    ![New Instance or Subscription popup](./cicd-create-service-popup.png)
 
 7. Choose **View Subscription** and wait until the status changes to **Subscribed**.
 
-    <!-- border; size:540px --> ![View subscription](./cicd-view-subscription.png)
+    ![View subscription](./cicd-view-subscription.png)
 
-    <!-- border; size:540px --> ![Status subscribed](./cicd-status-subscribed.png)
+    ![Status subscribed](./cicd-status-subscribed.png)
 
 8. In your SAP BTP subaccount, choose **Security** &rarr; **Role Collections** in the left-hand pane.
 
@@ -106,11 +106,11 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 10. Choose **Edit**.
 
-    <!-- border; size:540px --> ![Edit role](./cicd-edit-role.png)
+    ![Edit role](./cicd-edit-role.png)
 
 11. In the **Users** section, enter your user and select the icon to add the user.
 
-    <!-- border; size:540px --> ![Add user](./cicd-add-user.png)
+    ![Add user](./cicd-add-user.png)
 
     > Keep the setting `Default Identity Provider` unless you have a custom identity provider configured.
 
@@ -128,7 +128,7 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 2. Choose **Continuous Integration & Delivery**.
 
-    <!-- border; size:540px --> ![CI/CD Go to application](./cicd-goto-app.png)
+    ![CI/CD Go to application](./cicd-goto-app.png)
 
 3. Use your SAP BTP global user name and global password to log in to the application.
  
@@ -137,7 +137,7 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 1. Choose the **Credentials** tab and choose the icon to add a new credential.
 
-    <!-- border; size:540px --> ![Add new credential](./add-credential.png)
+    ![Add new credential](./add-credential.png)
 
 2. Under **Create Credentials** on the right:
 
@@ -149,7 +149,7 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
     > See [Create a Credential for a Private GitHub Repository](https://help.sap.com/docs/continuous-integration-and-delivery/sap-continuous-integration-and-delivery/create-credential-for-private-github-repository?language=en-US) for instructions on how to create a GitHub personal access token if you don't have one.
 
-    <!-- border; size:540px --> ![Create GitHub credential](./create-github-credential.png)
+    ![Create GitHub credential](./create-github-credential.png)
 
 3. Choose the icon to add a new credential again and create a credential for Cloud Foundry:
 
@@ -159,13 +159,13 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
     - Enter your SAP BTP global password in the **Password** field.
     - Choose **Create**.
 
-    <!-- border; size:540px --> ![configure pipeline](./create-cf-credential.png)
+    ![configure pipeline](./create-cf-credential.png)
 
 ### Add a CI/CD job
 
 1. Navigate to the **Jobs** tab and choose the icon to add a new job.
 
-    <!-- border; size:540px --> ![Add new job](./add-job.png)
+    ![Add new job](./add-job.png)
 
 2. Enter **Incident-Management** in the **Job Name** field.
 
@@ -173,11 +173,11 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 1. Open the value help for the **Repository** field. 
 
-    <!-- border; size:540px --> ![Add job name](./job-name.png)
+    ![Add job name](./job-name.png)
 
 2. In the **Select Repository** popup, choose **Add Repository**. A popup opens.
 
-    <!-- border; size:540px --> ![Select Repository popup](./select-repository.png)
+    ![Select Repository popup](./select-repository.png)
 
 3. In the **Add Repository** popup, enter details for the repository you created in **Step 1: Create a repository**:
 
@@ -186,18 +186,18 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
     - Open the value help in the **Credentials** field and choose the credential **github** that you created in **Step 5: Add credentials**. 
     - Select **GitHub** from the dropdown in the **Type** field.
 
-    <!-- border; size:540px --> ![Add Repository popup](./add-repository.png)
+    ![Add Repository popup](./add-repository.png)
 
 
 #### Create credentials
 
 1. Open the value help in the **Webhook Credential** field.
 
-    <!-- border; size:540px --> ![Create Webhook value help](./webhook-value-help.png)
+    ![Create Webhook value help](./webhook-value-help.png)
 
 2. In the **Select Credentials** popup, choose **Create Credentials**.
 
-    <!-- border; size:540px --> ![Select Credentials popup](./select-credentials.png)
+    ![Select Credentials popup](./select-credentials.png)
 
 3. In the **Create Credentials** popup:
 
@@ -206,11 +206,11 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
     - Copy the generated secret from the **Secret** field and save it. You need it in **Step 7: Create a GitHub webhook**.
     - Choose **Create**. 
 
-    <!-- border; size:540px --> ![Create webhook](./create-webhook.png)
+    ![Create webhook](./create-webhook.png)
 
 4. Go back in the **Add Repository** popup and choose **Add** to complete the addition of a repository.
 
-    <!-- border; size:540px --> ![Complete repo addition](./complete-repo-add.png)
+    ![Complete repo addition](./complete-repo-add.png)
 
 #### Configure pipeline and stages
 
@@ -220,13 +220,13 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 2. Select **Cloud Foundry Environment** from the dropdown in the **Pipeline** field.
 
-    <!-- border; size:540px --> ![Configure pipeline](./configure-pipeline.png)
+    ![Configure pipeline](./configure-pipeline.png)
 
 3. In the **Stages** section, select **mta** from the dropdown in the **Build Tool** field.
 
 4. Select the latest Java and Node version from the dropdown in the **Build Tool Version** field. 
 
-    <!-- border; size:540px --> ![Configure stages](./configure-stages.png)
+    ![Configure stages](./configure-stages.png)
 
 
 #### Add unit tests and configure release
@@ -235,7 +235,7 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 2. Enter **test** in the **npm Script** field.
 
-    <!-- border; size:540px --> ![Add unit tests](./add-unit-tests.png)
+    ![Add unit tests](./add-unit-tests.png)
 
 3. In the **Release** section, switch the toggle **Deploy to Cloud Foundry Space** to **ON**. 
 
@@ -251,7 +251,7 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
     - Open the value help in the **Credentials** field and choose the credential **cf** that you created in **Step 5: Add credentials**.
     - Choose **Create**.
 
-    <!-- border; size:540px --> ![Configure release](./configure-release.png)
+    ![Configure release](./configure-release.png)
 
 [OPTION END]
 
@@ -261,13 +261,13 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 2. Select **Cloud Foundry Environment** from the dropdown in the **Pipeline** field.
 
-    <!-- border; size:540px --> ![Configure pipeline](./configure-pipeline.png)
+    ![Configure pipeline](./configure-pipeline.png)
 
 3. In the **Stages** section, select **mta** from the dropdown in the **Build Tool** field.
 
 4. Select the latest Java and Node version from the dropdown in the **Build Tool Version** field. 
 
-    <!-- border; size:540px --> ![Configure stages](./configure-stages-java.png)
+    ![Configure stages](./configure-stages-java.png)
 
 #### Configure release
 
@@ -285,7 +285,7 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
     - Open the value help in the **Credentials** field and choose the credential **cf** that you created in **Step 5: Add credentials**.
     - Choose **Create**.
 
-    <!-- border; size:540px --> ![Configure release](./configure-release.png)
+    ![Configure release](./configure-release.png)
 
 [OPTION END]
 
@@ -294,17 +294,17 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 1. Navigate to the **Repositories** tab and choose the **incident-management** repository that you created. Under the **Webhook Event Receiver** tab, choose **Webhook Data**.
 
-    <!-- border; size:540px --> ![Incident-Management repo](./incident-management-repo.png)
+    ![Incident-Management repo](./incident-management-repo.png)
 
 2. In the **Webhook Creation** popup, find the **Payload URL** field and copy its value.
 
-    <!-- border; size:540px --> ![Webhook Data popup](./webhook-data.png)
+    ![Webhook Data popup](./webhook-data.png)
 
 3. Go to your repository on GitHub and open the **Settings** tab.
 
 4. From the navigation pane on the left, choose **Webhooks** &rarr; **Add webhook**.
 
-    <!-- border; size:540px --> ![Add webhook](./add-webhook.png)
+    ![Add webhook](./add-webhook.png)
 
 5. Insert the data for your webhook:
 
@@ -314,7 +314,7 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
     - Under **Which events would you like to trigger this webhook**, select **Just the push event**. 
     - Choose **Add webhook**.
 
-    <!-- border; size:540px --> ![Configure webhook](./configure-webhook.png)
+    ![Configure webhook](./configure-webhook.png)
 
 ### Test your job
 
@@ -322,13 +322,13 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 2. Choose the **Incident-Management** job and choose **Run**.
 
-    <!-- border; size:540px --> ![Run job](./run-job.png)
+    ![Run job](./run-job.png)
 
 3. Verify that a new tile appears in the **Builds** view. This tile is marked as running.
 
-    <!-- border; size:540px --> ![Build running](./build-running.png)
+    ![Build running](./build-running.png)
 
 4. Wait until the job has finished and verify that the build tile is marked as successful.
 
-    <!-- border; size:540px --> ![Build successful](./build-successful.png)
+    ![Build successful](./build-successful.png)
  

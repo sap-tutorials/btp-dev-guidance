@@ -31,69 +31,69 @@ Since you already have a SQLite in-memory database that was automatically create
 
 2. In the **data** folder, create a new file **API_BUSINESS_PARTNER-A_BusinessPartner.csv** and add the following data to it:
 
-    ```csv
-    BusinessPartner;FirstName;LastName;BusinessPartnerName;BusinessPartnerIsBlocked;
-    1004155;Daniel;Watts;Daniel Watts;false
-    1004161;Stormy;Weathers;Stormy Weathers;false
-    1004100;Sunny;Sunshine;Sunny Sunshine;true
-    ```
+   ```csv
+   BusinessPartner;FirstName;LastName;BusinessPartnerName;BusinessPartnerIsBlocked;
+   1004155;Daniel;Watts;Daniel Watts;false
+   1004161;Stormy;Weathers;Stormy Weathers;false
+   1004100;Sunny;Sunshine;Sunny Sunshine;true
+   ```
 
 3. In the **data** folder, create a new file **API_BUSINESS_PARTNER-A_BusinessPartnerAddress.csv** and add the following data to it:
 
-    ```csv
-    BusinessPartner;AddressID;
-    1004155;123
-    1004161;345
-    1004100;456
-    ```
+   ```csv
+   BusinessPartner;AddressID;
+   1004155;123
+   1004161;345
+   1004100;456
+   ```
 
 4. In the **data** folder, create a new file **API_BUSINESS_PARTNER-A_AddressEmailAddress.csv** and add the following data to it:
 
-    ```csv
-    AddressID;EmailAddress;Person;OrdinalNumber
-    123;test@demo.com;Williams;123
-    345;testjohn@demo.com;Smith;222
-    456;testhencry@demo.com;johnson;333
-    ```
+   ```csv
+   AddressID;EmailAddress;Person;OrdinalNumber
+   123;test@demo.com;Williams;123
+   345;testjohn@demo.com;Smith;222
+   456;testhencry@demo.com;johnson;333
+   ```
 
 5. In the **data** folder, create a new file **API_BUSINESS_PARTNER-A_AddressPhoneNumber.csv** and add the following data to it:
 
-    ```csv
-    AddressID;PhoneNumber;Person;OrdinalNumber
-    123;+44-555-123;Daniel;123
-    345;+01-555-688;Stormy;222
-    456;+01-555-789;Sunny;333
-    ```
+   ```csv
+   AddressID;PhoneNumber;Person;OrdinalNumber
+   123;+44-555-123;Daniel;123
+   345;+01-555-688;Stormy;222
+   456;+01-555-789;Sunny;333
+   ```
 
 ### Run and test the Incident Management application locally
 
 1. Install dependencies.
 
-    ```bash
-    npm i
-    ```
+   ```bash
+   npm i
+   ```
 
 2. Run the mock server locally.
 
-    ```bash
-    cds mock API_BUSINESS_PARTNER
-    ```
+   ```bash
+   cds mock API_BUSINESS_PARTNER
+   ```
 
 3. In the terminal, you see the following output:
 
-    ```cds
-    [cds] - connect using bindings from: { registry: '~/.cds-services.json' }
-    [cds] - connect to db > sqlite { url: ':memory:' }
-       > init from db/data/sap.capire.incidents-Urgency.csv 
-       > init from db/data/sap.capire.incidents-Status.csv 
-       > init from db/data/sap.capire.incidents-Incidents.csv 
-       > init from db/data/sap.capire.incidents-Customers.csv 
-       > init from db/data/sap.capire.incidents-Conversations.csv 
-       > init from srv/external/data/API_BUSINESS_PARTNER-A_BusinessPartnerAddress.csv 
-       > init from srv/external/data/API_BUSINESS_PARTNER-A_BusinessPartner.csv 
-       > init from srv/external/data/API_BUSINESS_PARTNER-A_AddressPhoneNumber.csv 
-       > init from srv/external/data/API_BUSINESS_PARTNER-A_AddressEmailAddress.csv  
-    ```
+   ```cds
+   [cds] - connect using bindings from: { registry: '~/.cds-services.json' }
+   [cds] - connect to db > sqlite { url: ':memory:' }
+      > init from db/data/sap.capire.incidents-Urgency.csv 
+      > init from db/data/sap.capire.incidents-Status.csv 
+      > init from db/data/sap.capire.incidents-Incidents.csv 
+      > init from db/data/sap.capire.incidents-Customers.csv 
+      > init from db/data/sap.capire.incidents-Conversations.csv 
+      > init from srv/external/data/API_BUSINESS_PARTNER-A_BusinessPartnerAddress.csv 
+      > init from srv/external/data/API_BUSINESS_PARTNER-A_BusinessPartner.csv 
+      > init from srv/external/data/API_BUSINESS_PARTNER-A_AddressPhoneNumber.csv 
+      > init from srv/external/data/API_BUSINESS_PARTNER-A_AddressEmailAddress.csv  
+   ```
 
     > If the API_BUSINESS_PARTNER doesn't show up, remove the **.cds-services.json** file that resides in the user root folder, for example, **/home/user/.cds-services.json**.
 
@@ -103,34 +103,34 @@ Since you already have a SQLite in-memory database that was automatically create
 
 6. Choose **/launchpage.html** under **Web Applications**.
 
-    <!-- border; size:540px --> ![CAP index page](./cap-index-page.png)
+    ![CAP index page](./cap-index-page.png)
 
     **/launchpage.html** uses a [local launchpage](!https://pages.github.tools.sap/cap/golden-path/develop/Launchpage/Launchpage), while **/incidents/webapp/index.html** uses the **index.html** from [ui5 app](!https://pages.github.tools.sap/cap/golden-path/develop/btp-app-create-ui-fiori-elements/btp-app-create-ui-fiori-elements).
 
 7. Choose the **Incident Management** tile.
 
-    <!-- border; size:540px --> ![Incident Management tile on the launchpage](./incident-management-tile.png)
+    ![Incident Management tile on the launchpage](./incident-management-tile.png)
 
 7. When you're prompted to authenticate, use the following credentials:
 
     - Username: `alice`
     - Password: Empty / No Password
 
-    <!-- border; size:540px --> ![Log in](./incident-management-log-in.png)
+    ![Log in](./incident-management-log-in.png)
 
     > You find the user settings in the **.cdsrc.json** file.
 
 9. Choose **Create** to start creating a new incident.
   
-    <!-- border; size:540px --> ![Create a new incident](./create-new-incident.png)
+    ![Create a new incident](./create-new-incident.png)
 
 11. Open the value help for the **Customer** field.
 
-    <!-- border; size:540px --> ![Value help for Customer field](./value-help-customer.png)
+    ![Value help for Customer field](./value-help-customer.png)
 
 12. Verify that customer data is fetched from the mock server.
 
-    <!-- border; size:540px --> ![Data in value help](./value-help-data.png)
+    ![Data in value help](./value-help-data.png)
 
     To test the scenario, the value help for customers loads data from the mock server while creating a new incident.
 

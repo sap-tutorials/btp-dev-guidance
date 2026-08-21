@@ -41,13 +41,13 @@ author_profile: https://github.com/slavipande
 
 3. Search for the **SAP Build Work Zone, standard edition** tile and choose **Create**.
 
-    <!-- border; size:540px --> ![Create SAP Build Work Zone, standard edition](./create_workzone_instance.png)
+    ![Create SAP Build Work Zone, standard edition](./create_workzone_instance.png)
 
 4. Keep the default setting for **Service** and choose **free** for **Plan**.
 
 5. Choose **Create**.
 
-    <!-- border; size:540px --> ![New Instance or Subscription](./new_instance_dialog.png)
+    ![New Instance or Subscription](./new_instance_dialog.png)
 
 You have now subscribed to the SAP Build Work Zone, standard edition.
 
@@ -61,7 +61,7 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 4. Under **Role Collections** on the right, choose **Assign Role Collection** and assign the **Launchpad_Admin** role collection to your user.
 
-    <!-- border; size:540px --> ![Add role](./add_launchpad_admin_role.png)
+    ![Add role](./add_launchpad_admin_role.png)
 
     You've assigned the **Launchpad_Admin** role collection to your user.
 
@@ -81,33 +81,33 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 2. Choose the application **SAP Build Work Zone, standard edition**.
 
-    <!-- border; size:540px --> ![WorkZone0](./integrate_launchpad_0.png)
+    ![WorkZone0](./integrate_launchpad_0.png)
 
 3. In the menu on the left side, choose the icon for **Channel Manager**.
 
 4. Fetch the updated content.
 
-    <!-- border; size:540px --> ![WorkZone1](./integrate_launchpad_1.png)
+    ![WorkZone1](./integrate_launchpad_1.png)
 
 #### Add application to Content Explorer
 
 1. Choose **Content Manager** in the menu on the left and choose **Content Explorer**.
 
-    <!-- border; size:540px --> ![WorkZone2](./integrate_launchpad_20.png)
+    ![WorkZone2](./integrate_launchpad_20.png)
 
 6. Select the tile **HTML5 Apps** with your respective subdomain name.
 
-    <!-- border; size:540px --> ![WorkZone2](./integrate_launchpad_2.png)
+    ![WorkZone2](./integrate_launchpad_2.png)
 
 7. In the items table, select the checkbox for **incident-management** app and choose **Add**.
 
-    <!-- border; size:540px --> ![WorkZone3](./integrate_launchpad_3.png)
+    ![WorkZone3](./integrate_launchpad_3.png)
 
 #### Create a group
 
 1. Go back to the **Content Manager** and choose **Create** &rarr; **Group**.
 
-    <!-- border; size:540px --> ![WorkZone4](./integrate_launchpad_4.png)
+    ![WorkZone4](./integrate_launchpad_4.png)
 
 9. In the **Group title** field, enter **Incident Management Group**.
 
@@ -115,7 +115,7 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 11. Choose **Save**.
 
-    <!-- border; size:540px --> ![WorkZone5](./integrate_launchpad_5.png)
+    ![WorkZone5](./integrate_launchpad_5.png)
 
 #### Add application to the Everyone role
 
@@ -125,17 +125,17 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 14. Choose **Save**.
 
-    <!-- border; size:540px --> ![WorkZone6](./integrate_launchpad_6.png)
+    ![WorkZone6](./integrate_launchpad_6.png)
 
 #### Create site
 
 1. Navigate to **Site Directory** and choose **Create Site**.
 
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_7.png)
+    ![WorkZone7](./integrate_launchpad_7.png)
 
 17. In the **Site Name** field, enter **Incident Management Site** and choose **Create**.
 
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_71.png)
+    ![WorkZone7](./integrate_launchpad_71.png)
 
 18. Now, you're forwarded to your created site.
 
@@ -152,97 +152,97 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 
 2. Create file **cdm.json** in the **workzone** folder and paste the following code snippet in the file:
 
-    ```json
-    [
-        {
-        "_version": "3.0",
-        "identification": {
-            "id": "defaultCatalogId",
-            "title": "{{title}}",
-            "entityType": "catalog"
-        },
-        "payload": {
-            "viz": [
-            {
-                "appId": "ns.incidents",
-                "vizId": "incidents-display"
-            }
-            ]
-        },
-        "texts": [
-            {
-            "locale": "",
-            "textDictionary": {
-                "title": "Default Catalog Title"
-            }
-            }
-        ]
-        },
-        {
-        "_version": "3.0",
-        "identification": {
-            "id": "defaultGroupId",
-            "title": "{{title}}",
-            "entityType": "group"
-        },
-        "payload": {
-            "viz": [
-            {
-                "appId": "ns.incidents",
-                "vizId": "incidents-display"
-            }
-            ]
-        },
-        "texts": [
-            {
-            "locale": "",
-            "textDictionary": {
-                "title": "Business Apps"
-            }
-            }
-        ]
-        },
-        {
-        "_version": "3.0",
-        "identification": {
-            "id": "defaultRole",
-            "entityType": "role",
-            "title": "Default Role"
-        },
-        "payload": {
-            "apps": [
-            {
-                "id": "ns.incidents"
-            }
-            ],
-            "catalogs": [
-            {
-                "id": "defaultCatalogId"
-            }
-            ],
-            "groups": [
-            {
-                "id": "defaultGroupId"
-            }
-            ]
-        }
-        }
-    ]
-    ```
+   ```json
+   [
+       {
+       "_version": "3.0",
+       "identification": {
+           "id": "defaultCatalogId",
+           "title": "{{title}}",
+           "entityType": "catalog"
+       },
+       "payload": {
+           "viz": [
+           {
+               "appId": "ns.incidents",
+               "vizId": "incidents-display"
+           }
+           ]
+       },
+       "texts": [
+           {
+           "locale": "",
+           "textDictionary": {
+               "title": "Default Catalog Title"
+           }
+           }
+       ]
+       },
+       {
+       "_version": "3.0",
+       "identification": {
+           "id": "defaultGroupId",
+           "title": "{{title}}",
+           "entityType": "group"
+       },
+       "payload": {
+           "viz": [
+           {
+               "appId": "ns.incidents",
+               "vizId": "incidents-display"
+           }
+           ]
+       },
+       "texts": [
+           {
+           "locale": "",
+           "textDictionary": {
+               "title": "Business Apps"
+           }
+           }
+       ]
+       },
+       {
+       "_version": "3.0",
+       "identification": {
+           "id": "defaultRole",
+           "entityType": "role",
+           "title": "Default Role"
+       },
+       "payload": {
+           "apps": [
+           {
+               "id": "ns.incidents"
+           }
+           ],
+           "catalogs": [
+           {
+               "id": "defaultCatalogId"
+           }
+           ],
+           "groups": [
+           {
+               "id": "defaultGroupId"
+           }
+           ]
+       }
+       }
+   ]
+   ```
 
 #### Update the mta.yaml file
 
 1. Add `html5-repo-runtime` under resources:
 
-    ```yaml[3-7]
-       resources:
-        ...
-        - name: incident-management-html5-repo-runtime
-          type: org.cloudfoundry.managed-service
-          parameters:
-            service: html5-apps-repo
-            service-plan: app-runtime
-    ```
+   ```yaml[3-7]
+      resources:
+       ...
+       - name: incident-management-html5-repo-runtime
+         type: org.cloudfoundry.managed-service
+         parameters:
+           service: html5-apps-repo
+           service-plan: app-runtime
+   ```
 
 2. Update the `incident-management-destinations` module:
 
@@ -318,15 +318,15 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 
 5. Create a new module `incident-management-workzone-cdm` to add the CDM Configuration from the **cdm.json** file as part of the `incident-management-app-deployer`.
 
-    ```yaml
-      - name: incident-management-workzone-cdm
-        type: html5
-        path: workzone
-        build-parameters:
-          build-result: .
-          supported-platforms:
-            []
-    ```
+   ```yaml
+     - name: incident-management-workzone-cdm
+       type: html5
+       path: workzone
+       build-parameters:
+         build-result: .
+         supported-platforms:
+           []
+   ```
 
 5. Update the `incident-management-app-deployer` module:
 
@@ -369,193 +369,193 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 
 6. Verify. Here's how your **mta.yaml** file looks like at this stage:
 
-    ```yaml
-    _schema-version: 3.3.0
-    ID: incident-management
-    version: 1.0.0
-    description: "A simple CAP project."
-    parameters:
-      enable-parallel-deployments: true
-      deploy_mode: html5-repo
-    build-parameters:
-      before-all:
-        - builder: custom
-          commands:
-            - npm ci
-            - npx cds build --production
-    modules:
-      - name: incident-management-srv
-        type: nodejs
-        path: gen/srv
-        parameters:
-          buildpack: nodejs_buildpack
-          readiness-health-check-type: http
-          readiness-health-check-http-endpoint: /health
-        build-parameters:
-          builder: npm
-        provides:
-          - name: srv-api # required by consumers of CAP services (e.g. approuter)
-            properties:
-              srv-url: ${default-url}
-        requires:
-          - name: incident-management-db
-          - name: incident-management-auth
-          - name: incident-management-destination
+   ```yaml
+   _schema-version: 3.3.0
+   ID: incident-management
+   version: 1.0.0
+   description: "A simple CAP project."
+   parameters:
+     enable-parallel-deployments: true
+     deploy_mode: html5-repo
+   build-parameters:
+     before-all:
+       - builder: custom
+         commands:
+           - npm ci
+           - npx cds build --production
+   modules:
+     - name: incident-management-srv
+       type: nodejs
+       path: gen/srv
+       parameters:
+         buildpack: nodejs_buildpack
+         readiness-health-check-type: http
+         readiness-health-check-http-endpoint: /health
+       build-parameters:
+         builder: npm
+       provides:
+         - name: srv-api # required by consumers of CAP services (e.g. approuter)
+           properties:
+             srv-url: ${default-url}
+       requires:
+         - name: incident-management-db
+         - name: incident-management-auth
+         - name: incident-management-destination
 
-      - name: incident-management-db-deployer
-        type: hdb
-        path: gen/db
-        parameters:
-          buildpack: nodejs_buildpack
-        requires:
-          - name: incident-management-db
+     - name: incident-management-db-deployer
+       type: hdb
+       path: gen/db
+       parameters:
+         buildpack: nodejs_buildpack
+       requires:
+         - name: incident-management-db
 
-        - name: incident-management-app-deployer
-          type: com.sap.application.content
-          path: gen
-          requires:
-            - name: incident-management-auth
-            - name: incident-management-destination
-            - name: incident-management-html5-repo-host
-              parameters:
-                content-target: true
-          build-parameters:
-            build-result: app/
-            requires:
-              - name: incident-management-workzone-cdm
-                artifacts:
-                  - cdm.json
-                target-path: app/
-              - name: incidentmanagementincidents
-                artifacts:
-                  - incidents.zip
-                target-path: app/
-      
-      - name: incident-management-app-deployer
-        type: com.sap.application.content
-        path: gen
-        parameters:
-          config:
-            destinations:
-            - forwardAuthToken: true
-              name: incident-management-srv-api
-              url: ~{srv-api/srv-url}
-            - name: ui5
-              url: https://ui5.sap.com
-        requires:
-          - name: srv-api
-          - name: incident-management-auth
-          - name: incident-management-html5-repo-host
-            parameters:
-              content-target: true
-        build-parameters:
-          build-result: app/
-          requires:
-            - name: incident-management-workzone-cdm
-              artifacts:
-                - cdm.json
-              target-path: app/
-            - name: incidentmanagementincidents
-              artifacts:
-                - incidents.zip
-              target-path: app/
+       - name: incident-management-app-deployer
+         type: com.sap.application.content
+         path: gen
+         requires:
+           - name: incident-management-auth
+           - name: incident-management-destination
+           - name: incident-management-html5-repo-host
+             parameters:
+               content-target: true
+         build-parameters:
+           build-result: app/
+           requires:
+             - name: incident-management-workzone-cdm
+               artifacts:
+                 - cdm.json
+               target-path: app/
+             - name: incidentmanagementincidents
+               artifacts:
+                 - incidents.zip
+               target-path: app/
+     
+     - name: incident-management-app-deployer
+       type: com.sap.application.content
+       path: gen
+       parameters:
+         config:
+           destinations:
+           - forwardAuthToken: true
+             name: incident-management-srv-api
+             url: ~{srv-api/srv-url}
+           - name: ui5
+             url: https://ui5.sap.com
+       requires:
+         - name: srv-api
+         - name: incident-management-auth
+         - name: incident-management-html5-repo-host
+           parameters:
+             content-target: true
+       build-parameters:
+         build-result: app/
+         requires:
+           - name: incident-management-workzone-cdm
+             artifacts:
+               - cdm.json
+             target-path: app/
+           - name: incidentmanagementincidents
+             artifacts:
+               - incidents.zip
+             target-path: app/
 
-      - name: incidentmanagementincidents
-        type: html5
-        path: app/incidents
-        build-parameters:
-          build-result: dist
-          builder: custom
-          commands:
-            - npm ci
-            - npm run build
-          supported-platforms:
-            []
+     - name: incidentmanagementincidents
+       type: html5
+       path: app/incidents
+       build-parameters:
+         build-result: dist
+         builder: custom
+         commands:
+           - npm ci
+           - npm run build
+         supported-platforms:
+           []
 
-      - name: incident-management-destinations
-        type: com.sap.application.content
-        requires:
-          - name: incidents_html_repo_runtime
-            parameters:
-              service-key:
-                name: incidents-html5-app-runtime-service-key
-          - name: incident-management-auth
-            parameters:
-              service-key:
-                name: incident-management-auth-key
-          - name: incident-management-html5-repo-host
-            parameters:
-              service-key:
-                name: incident-management-html5-repo-host-key
-          - name: srv-api
-          - name: incident-management-destination
-            parameters:
-              content-target: true
-        build-parameters:
-          no-source: true
-        parameters:
-          content:
-            subaccount:
-              existing_destinations_policy: update
-              destinations:
-                - Name: incident-management_cdm
-                  ServiceInstanceName: incidents-html5-app-runtime-service
-                  ServiceKeyName: incidents-html5-app-runtime-service-key
-                  URL: https://html5-apps-repo-rt.${default-domain}/applications/cdm/<cloud-service-name>
+     - name: incident-management-destinations
+       type: com.sap.application.content
+       requires:
+         - name: incidents_html_repo_runtime
+           parameters:
+             service-key:
+               name: incidents-html5-app-runtime-service-key
+         - name: incident-management-auth
+           parameters:
+             service-key:
+               name: incident-management-auth-key
+         - name: incident-management-html5-repo-host
+           parameters:
+             service-key:
+               name: incident-management-html5-repo-host-key
+         - name: srv-api
+         - name: incident-management-destination
+           parameters:
+             content-target: true
+       build-parameters:
+         no-source: true
+       parameters:
+         content:
+           subaccount:
+             existing_destinations_policy: update
+             destinations:
+               - Name: incident-management_cdm
+                 ServiceInstanceName: incidents-html5-app-runtime-service
+                 ServiceKeyName: incidents-html5-app-runtime-service-key
+                 URL: https://html5-apps-repo-rt.${default-domain}/applications/cdm/<cloud-service-name>
 
-    resources:
-      - name: incident-management-db
-        type: com.sap.xs.hdi-container
-        parameters:
-          service: hana
-          service-plan: hdi-shared
-      - name: incident-management-html5-repo-host
-        type: org.cloudfoundry.managed-service
-        parameters:
-          service: html5-apps-repo
-          service-plan: app-host
-      - name: incident-management-auth
-        type: org.cloudfoundry.managed-service
-        parameters:
-          service: xsuaa
-          service-plan: application
-          path: ./xs-security.json
-          config:
-            xsappname: incident-management-${org}-${space}
-            tenant-mode: dedicated
-      - name: incidents_html_repo_runtime
-        type: org.cloudfoundry.managed-service
-        parameters:
-          service: html5-apps-repo
-          service-name: incidents-html5-app-runtime-service
-          service-plan: app-runtime
-      - name: incident-management-destination
-        type: org.cloudfoundry.managed-service
-        parameters:
-          service: destination
-          service-plan: lite
-          config:
-            init_data:
-              subaccount:
-                existing_destinations_policy: update
-                destinations:
-                  - Authentication: NoAuthentication
-                    Name: incident-management-rt
-                    ProxyType: Internet
-                    Type: HTTP
-                    URL: https://<subdomain>.launchpad.${default-domain}
-                    CEP.HTML5contentprovider: true
-  
-    ```
+   resources:
+     - name: incident-management-db
+       type: com.sap.xs.hdi-container
+       parameters:
+         service: hana
+         service-plan: hdi-shared
+     - name: incident-management-html5-repo-host
+       type: org.cloudfoundry.managed-service
+       parameters:
+         service: html5-apps-repo
+         service-plan: app-host
+     - name: incident-management-auth
+       type: org.cloudfoundry.managed-service
+       parameters:
+         service: xsuaa
+         service-plan: application
+         path: ./xs-security.json
+         config:
+           xsappname: incident-management-${org}-${space}
+           tenant-mode: dedicated
+     - name: incidents_html_repo_runtime
+       type: org.cloudfoundry.managed-service
+       parameters:
+         service: html5-apps-repo
+         service-name: incidents-html5-app-runtime-service
+         service-plan: app-runtime
+     - name: incident-management-destination
+       type: org.cloudfoundry.managed-service
+       parameters:
+         service: destination
+         service-plan: lite
+         config:
+           init_data:
+             subaccount:
+               existing_destinations_policy: update
+               destinations:
+                 - Authentication: NoAuthentication
+                   Name: incident-management-rt
+                   ProxyType: Internet
+                   Type: HTTP
+                   URL: https://<subdomain>.launchpad.${default-domain}
+                   CEP.HTML5contentprovider: true
+ 
+   ```
 
 #### Deploy your application in SAP BTP, Cloud Foundry runtime
 
 1. Open a terminal in your project's root folder and run the following commands:
 
-    ```bash
-    mbt build
-    cf deploy mta_archives/incident-management_1.0.0.mtar 
-    ```
+   ```bash
+   mbt build
+   cf deploy mta_archives/incident-management_1.0.0.mtar 
+   ```
 
 #### Create a new content provider
 
@@ -563,13 +563,13 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 
 2. Choose the application **SAP Build Work Zone, standard edition**.
 
-    <!-- border; size:540px --> ![WorkZone0](./integrate_launchpad_0.png)
+    ![WorkZone0](./integrate_launchpad_0.png)
 
 3. In the menu on the left side, choose the icon for **Channel Manager**.
 
 4. Choose **New** &rarr; **Content Provider** on the right.
 
-    <!-- border; size:540px --> ![New Content Provider](./new-content-provider.png)
+    ![New Content Provider](./new-content-provider.png)
 
 5. In the **New Content Provider** dialog:
 
@@ -582,30 +582,30 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
     4. Choose **Save**.
 
 
-     <!-- border; size:540px --> ![New Content Provider dialog](./new-content-provider-dialog.png)
+     ![New Content Provider dialog](./new-content-provider-dialog.png)
 
 
 6. Fetch the updated content from the **CDM** content provider. 
 
-    <!-- border; size:540px --> ![New Content Provider fetch](./new-content-provider-fetch.png)
+    ![New Content Provider fetch](./new-content-provider-fetch.png)
 
 #### Create site
 
 1. Navigate to **Site Directory** and choose **Create Site**.
 
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_7.png)
+    ![WorkZone7](./integrate_launchpad_7.png)
 
 17. In the **Site Name** field, enter **Incident Management Site** and choose **Create**.
 
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_71.png)
+    ![WorkZone7](./integrate_launchpad_71.png)
 
 18. When you're forwarded to your created site, choose **Role Assignments** and then choose **Edit**.
 
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_72.png)
+    ![WorkZone7](./integrate_launchpad_72.png)
 
 19. In the **Assignment status** field, switch on **Default Role** for your site and choose **Save**.
 
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_73.png)
+    ![WorkZone7](./integrate_launchpad_73.png)
 
 #### Assign CDM role collection
 
@@ -617,7 +617,7 @@ You need to assign your user to the **~cdm_defaultRole** role collection, so you
 
 4. Under **Role Collections** on the right, choose **Assign Role Collection** and assign the **~cdm_defaultRole** role collection to your user.
 
-    <!-- border; size:540px --> ![Add CDM role](./add_cdm_role.png)
+    ![Add CDM role](./add_cdm_role.png)
 
     You've assigned the **~cdm_defaultRole** role collection to your user.
 
@@ -629,19 +629,19 @@ You need to assign your user to the **~cdm_defaultRole** role collection, so you
 
 1. Navigate to **Site Directory** and find your site.
 
-    <!-- border; size:540px --> ![WorkZone8](./integrate_launchpad_8.png)
+    ![WorkZone8](./integrate_launchpad_8.png)
 
 21. Choose **Go to the site**. 
 
-    <!-- border; size:540px --> ![WorkZone9](./integrate_launchpad_9.png)
+    ![WorkZone9](./integrate_launchpad_9.png)
 
 3. Choose the Incident Management application from the launch page. 
 
-    <!-- border; size:540px --> ![WorkZone10](./integrate_launchpad_10.png)
+    ![WorkZone10](./integrate_launchpad_10.png)
 
     You see the list report page.
 
-    <!-- border; size:540px --> ![WorkZone11](./integrate_launchpad_11.png)
+    ![WorkZone11](./integrate_launchpad_11.png)
 
 ### Summary
 
