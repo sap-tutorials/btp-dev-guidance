@@ -11,6 +11,6 @@ author_profile: https://github.com/slavipande
 # Configure Connectivity Between SAP S/4HANA Cloud and SAP Business Technology Platform
 <!-- description --> This tutorial shows you how to add your SAP S/4HANA Cloud system to your global account in SAP BTP.
 
-> **OUT OF MAINTENANCE**
->
+### OUT OF MAINTENANCE
+
 > This tutorial has been replaced by an updated version and will be deleted soon. For the latest content and support, see [Develop a Side-by-Side CAP-Based Extension Application Following the SAP BTP Developer's Guide](https://discovery-center.cloud.sap/missiondetail/4426/4712/?tab=overview) on SAP Discovery Center.
