@@ -11,6 +11,6 @@ author_profile: https://github.com/slavipande
 # Add Authorization
 <!-- description --> This tutorial shows you how to enable authentication and authorization for your CAP application.
 
-> **OUT OF MAINTENANCE**
->
+### OUT OF MAINTENANCE
+
 > This tutorial has been replaced by an updated version and will be deleted soon. For the latest content and support, see [Develop a Full-Stack CAP Application Following the SAP BTP Developer's Guide](https://discovery-center.cloud.sap/missiondetail/4327/4608/) on SAP Discovery Center.
