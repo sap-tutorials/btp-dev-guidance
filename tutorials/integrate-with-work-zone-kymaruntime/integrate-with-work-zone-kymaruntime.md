@@ -220,7 +220,7 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
     > Run the following command to get your Kyma cluster's domain:
     >
     > ```bash
-    > kubectl get gateway -n kyma-system kyma-gateway \
+    > kubectl get gateways.networking.istio.io -n kyma-system kyma-gateway \
     >        -o jsonpath='{.spec.servers[0].hosts[0]}'
     > ```
     > Add the result without the leading `*.` in the placeholder `<cluster-domain>`.
